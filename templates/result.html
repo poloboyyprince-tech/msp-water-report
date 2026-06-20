@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+  <div class="row" style="justify-content:space-between;align-items:center">
+    <div>
+      <h2 style="margin-bottom:2px">Report ready
+        {% if location.city %}— {{ location.city }}, {{ location.state_abbr or 'MN' }} {{ location.zip }}{% else %}— {{ location.zip }}{% endif %}
+      </h2>
+      <p class="lead" style="margin:0">{{ profile.verdict }}</p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <a class="btn" href="{{ url_for('reports', filename=filename, download=1) }}">⬇ Download PDF</a>
+      <a class="btn ghost" href="{{ url_for('index') }}">+ New report</a>
+    </div>
+  </div>
+
+  <div class="cards" style="margin-top:18px">
+    <div class="metric {{ 'bad' if profile.score < 70 else 'warn' }}">
+      <div class="num">{{ profile.score }}</div>
+      <div class="lbl">Quality score · {{ profile.grade }}</div>
+    </div>
+    <div class="metric {{ 'bad' if profile.hardness.gpg > 10.5 else 'warn' }}">
+      <div class="num">{{ profile.hardness.gpg }}<span style="font-size:14px"> gpg</span></div>
+      <div class="lbl">{{ profile.hardness.label }} · {{ profile.hardness.mgl }} ppm</div>
+    </div>
+    <div class="metric warn">
+      <div class="num">{{ profile.tds }}</div>
+      <div class="lbl">Est. TDS (ppm)</div>
+    </div>
+    <div class="metric {{ 'bad' if n_concerns >= 4 else 'warn' }}">
+      <div class="num">{{ n_concerns }}</div>
+      <div class="lbl">Items above ideal levels</div>
+    </div>
+  </div>
+
+  <p class="muted" style="margin-top:16px">
+    <strong>Water provider{% if profile.match in ('mn_region','national') %} (estimated){% endif %}:</strong> {{ profile.provider }}
+    {% if profile.pfas_zone %}&nbsp;·&nbsp;<span style="color:var(--concern);font-weight:700">East Metro PFAS zone</span>{% endif %}
+    <br><strong>Where the water comes from:</strong> {{ profile.source_detail }}
+  </p>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>What's in your water</th><th>Your est. level</th><th>Normal / safe level</th><th>Rating</th></tr></thead>
+      <tbody>
+      {% for c in profile.table_rows %}
+        <tr>
+          <td><strong>{{ c.name }}</strong></td>
+          <td>{{ c.level or '—' }}</td>
+          <td>{{ c.safe or '—' }}</td>
+          <td><span class="pill {{ c.tier }}">{{ c.rating_label }}</span></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:10px">Levels are typical estimates for your area (gpg = grains
+    per gallon, ppm = parts per million). Ratings are benchmarked against EPA limits &amp; MN health
+    guidance — we'll review the specifics on a free water consultation.</p>
+</div>
+
+<div class="card" style="background:var(--navy);color:#fff;border:none">
+  <div style="font-size:11px;letter-spacing:1.5px;color:var(--goldl);font-weight:700;text-transform:uppercase">Recommended for this home</div>
+  <h2 style="color:#fff;margin:6px 0 4px">{{ config.systems[profile.recommendation.primary_key].name }} + {{ config.drinking[profile.recommendation.ro_default].name }}</h2>
+  <p style="color:var(--cream);margin:0">{{ profile.recommendation.reason }}</p>
+</div>
+
+<div class="card">
+  <h2 style="font-size:18px">PDF preview</h2>
+  <p class="muted">This is exactly what your prospect receives. Use <strong>Download PDF</strong> above to save and send it.</p>
+  <iframe class="preview" src="{{ url_for('reports', filename=filename) }}#view=FitH" title="Report preview"></iframe>
+</div>
+
+{% endblock %}

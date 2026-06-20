@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Generated reports & runtime history (re-created on the fly; not needed in the repo)
+output/*.pdf
+output/reports_index.json
+
+# Local-only config / editor / OS files
+.claude/
+.DS_Store
+*.log
+
+# A separate project that happens to live in this folder
+MSP-Pure-Water-Training-Hub.html

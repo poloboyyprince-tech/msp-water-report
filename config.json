@@ -1,0 +1,78 @@
+{
+  "company": {
+    "name": "MSP Pure Water",
+    "tagline": "PURE WATER",
+    "service_area": "Minneapolis – Saint Paul Metro",
+    "phone": "952-952-6206",
+    "email": "info@msppurewaterco.com",
+    "website": "msppurewaterco.com",
+    "rep_name": "",
+    "license": ""
+  },
+  "trust_badges": [
+    "Proudly Made in the USA",
+    "Lifetime Warranty",
+    "NSF-Certified Media",
+    "BBB Accredited Dealer"
+  ],
+  "offer": {
+    "headline": "Ready to Fix What's In Your Water?",
+    "subhead": "You've seen what's in your water — now let's solve it. Book a free, no-pressure water consultation by phone: we'll walk through your results and recommend the right system for your home and budget. Prefer an in-home water test? Just ask on the call.",
+    "cta_primary": "Schedule Your FREE Phone Consultation",
+    "cta_secondary": "Prefer an in-home water test? Just ask on the call and we'll set one up.",
+    "guarantee": "No pressure. No obligation. Just honest advice about your water."
+  },
+  "systems": {
+    "standard_mixed_bed": {
+      "name": "Whole Home Water Filtration System",
+      "for": [
+        "city"
+      ],
+      "short": "Whole-home filtration + conditioning for city water",
+      "blurb": "Our flagship for city water — whole-home filtration with USA-made media and Granular Activated Coconut-Shell Carbon, run by the MSP ProValve. Reduces hard-water scale and strips chlorine/chloramine taste throughout the home; 48,000-grain capacity protects your plumbing, fixtures and appliances."
+    },
+    "dual_tank_city": {
+      "name": "Dual-Tank City Water System",
+      "for": [
+        "city_hard"
+      ],
+      "short": "Two-tank system for very hard city water (20+ gpg)",
+      "blurb": "For very hard city water (over 20 gpg): two dedicated tanks — a high-capacity softening/conditioning tank plus a separate coconut-shell carbon tank — delivering 30 GPM and 48,000 grains so even the hardest water is fully handled without losing capacity."
+    },
+    "dual_tank_well": {
+      "name": "Dual-Tank Well System",
+      "for": [
+        "well"
+      ],
+      "short": "Air-injection iron/sulfur removal + softener",
+      "blurb": "Built for private wells — the MSP AIO ProValve uses a chemical-free pressurized air pocket with Katalox Light and catalytic coconut-shell carbon to oxidize and remove iron, sulfur and manganese, ahead of a high-capacity softening tank. Stops rust staining and rotten-egg odor, no chemicals needed."
+    },
+    "peroxide": {
+      "name": "Complete Iron & Sulfur Removal (Peroxide)",
+      "for": [
+        "well_severe"
+      ],
+      "short": "Hydrogen-peroxide injection for heavy iron/sulfur",
+      "blurb": "For wells with heavy iron, manganese or sulfur (rotten-egg) odor — a hydrogen-peroxide injection panel and holding tank oxidize contaminants at the point of entry, captured by catalytic carbon and finished with softening for clean, odor-free water."
+    },
+    "salt_free": {
+      "name": "Salt-Free Conditioning + Carbon System",
+      "for": [
+        "city_no_salt"
+      ],
+      "short": "No salt, keeps healthy minerals",
+      "blurb": "Whole-home coconut-shell carbon plus salt-free conditioning — prevents scale with no salt, sodium or brine discharge, while keeping beneficial minerals. Ideal for city water and low-sodium homes."
+    }
+  },
+  "drinking": {
+    "ro_tank": {
+      "name": "7-Stage Reverse Osmosis (AlkaPro)",
+      "blurb": "Under-sink 7-stage RO with an NSF membrane and alkaline remineralization — reduces PFAS, nitrate, arsenic, lead, sodium and TDS, then re-balances pH for great-tasting drinking water."
+    },
+    "ro_tankless": {
+      "name": "Tankless Reverse Osmosis",
+      "blurb": "Compact, space-saving tankless reverse osmosis with no storage tank — high-precision multi-stage filtration that reduces chlorine, TDS and common contaminants for fresh, purified water on demand right at the faucet."
+    }
+  },
+  "notes": "Edit this file to change phone, email, website, rep name, or pricing/CTA copy. Drop your real logo into the project folder as 'logo.png' to replace the built-in vector logo."
+}

@@ -1,0 +1,7 @@
+# MSP Pure Water — report generator
+# Install with:  python3 -m pip install --user -r requirements.txt
+reportlab>=4.0
+flask>=3.0
+gunicorn>=21.0      # production web server (used when hosted, e.g. on Render)
+# Optional — only used by the test suite to assert PDF page counts:
+# pymupdf>=1.23

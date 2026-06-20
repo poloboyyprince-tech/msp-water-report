@@ -1,0 +1,799 @@
+{
+  "_note": "Twin Cities metro water profiles. Hardness = typical FINISHED (at-the-tap) values from city drinking-water reports, MN Dept of Health, and local softener data; contaminant levels are typical regional estimates in real units (gpg / ppm / ppb / pCi/L) — confirm exact figures on a water consultation. Cities resolved by ZIP first (USPS postal city is unreliable here), then by geocoded city name against this list.",
+  "hardness_scale": [
+    {
+      "max_gpg": 3,
+      "label": "Soft"
+    },
+    {
+      "max_gpg": 7,
+      "label": "Moderately Hard"
+    },
+    {
+      "max_gpg": 10.5,
+      "label": "Hard"
+    },
+    {
+      "max_gpg": 15,
+      "label": "Very Hard"
+    },
+    {
+      "max_gpg": 999,
+      "label": "Extremely Hard"
+    }
+  ],
+  "concern_templates": {
+    "surface": [
+      {
+        "key": "tthm",
+        "level": "0.030–0.060 ppm",
+        "rating": "elevated"
+      },
+      {
+        "key": "haa5",
+        "level": "0.015–0.035 ppm",
+        "rating": "elevated"
+      },
+      {
+        "key": "lead",
+        "level": "0.003–0.008 ppm",
+        "rating": "elevated"
+      },
+      {
+        "key": "chlorine",
+        "level": "1.5–3.0 ppm",
+        "rating": "elevated"
+      },
+      {
+        "key": "chloride",
+        "level": "30–60 ppm",
+        "rating": "normal"
+      }
+    ],
+    "groundwater": [
+      {
+        "key": "manganese",
+        "level": "0.05–0.20 ppm",
+        "rating": "concerning"
+      },
+      {
+        "key": "iron",
+        "level": "0.3–1.0 ppm",
+        "rating": "high"
+      },
+      {
+        "key": "radium",
+        "level": "2–4 pCi/L",
+        "rating": "normal"
+      },
+      {
+        "key": "chloride",
+        "level": "30–60 ppm",
+        "rating": "normal"
+      },
+      {
+        "key": "nitrate",
+        "level": "1–4 ppm",
+        "rating": "normal"
+      }
+    ],
+    "groundwater_soft": [
+      {
+        "key": "manganese",
+        "level": "0.02–0.06 ppm",
+        "rating": "elevated"
+      },
+      {
+        "key": "sodium",
+        "level": "60–120 ppm",
+        "rating": "high"
+      },
+      {
+        "key": "chloride",
+        "level": "40–80 ppm",
+        "rating": "normal"
+      },
+      {
+        "key": "radium",
+        "level": "2–4 pCi/L",
+        "rating": "normal"
+      }
+    ]
+  },
+  "pfas_entry": {
+    "key": "pfas",
+    "level": "10–35 ppt",
+    "rating": "concerning"
+  },
+  "blended_extra": {
+    "key": "tthm",
+    "level": "0.025–0.050 ppm",
+    "rating": "elevated"
+  },
+  "east_metro_pfas_zips": [
+    "55125",
+    "55129",
+    "55016",
+    "55128",
+    "55042",
+    "55033",
+    "55071",
+    "55055",
+    "55001",
+    "55082",
+    "55109",
+    "55119",
+    "55075",
+    "55043"
+  ],
+  "core_zips": {
+    "minneapolis": [
+      "55401",
+      "55402",
+      "55403",
+      "55404",
+      "55405",
+      "55406",
+      "55407",
+      "55408",
+      "55409",
+      "55410",
+      "55411",
+      "55412",
+      "55413",
+      "55414",
+      "55415",
+      "55417",
+      "55419",
+      "55450",
+      "55454",
+      "55455"
+    ],
+    "saint paul": [
+      "55101",
+      "55102",
+      "55103",
+      "55104",
+      "55105",
+      "55106",
+      "55107",
+      "55108",
+      "55114",
+      "55116",
+      "55130"
+    ]
+  },
+  "zip_to_city": {
+    "55443": "brooklyn park",
+    "55444": "brooklyn park",
+    "55445": "brooklyn park",
+    "55429": "brooklyn center",
+    "55430": "brooklyn center",
+    "55428": "crystal",
+    "55427": "new hope",
+    "55416": "st louis park",
+    "55426": "st louis park",
+    "55422": "golden valley",
+    "55423": "richfield",
+    "55421": "columbia heights",
+    "55418": "minneapolis",
+    "55424": "edina",
+    "55435": "edina",
+    "55436": "edina",
+    "55439": "edina",
+    "55420": "bloomington",
+    "55425": "bloomington",
+    "55431": "bloomington",
+    "55437": "bloomington",
+    "55438": "bloomington",
+    "55432": "fridley",
+    "55433": "coon rapids",
+    "55448": "coon rapids",
+    "55434": "blaine",
+    "55449": "blaine",
+    "55112": "new brighton",
+    "55126": "shoreview",
+    "55113": "roseville",
+    "55109": "maplewood",
+    "55119": "maplewood",
+    "55117": "maplewood",
+    "55125": "woodbury",
+    "55129": "woodbury",
+    "55128": "oakdale",
+    "55110": "white bear lake",
+    "55337": "burnsville",
+    "55306": "burnsville",
+    "55122": "eagan",
+    "55123": "eagan",
+    "55121": "eagan",
+    "55124": "apple valley",
+    "55044": "lakeville",
+    "55068": "rosemount",
+    "55076": "inver grove heights",
+    "55077": "inver grove heights",
+    "55075": "south saint paul",
+    "55016": "cottage grove",
+    "55033": "hastings",
+    "55378": "savage",
+    "55379": "shakopee",
+    "55372": "prior lake",
+    "55317": "chanhassen",
+    "55318": "chaska",
+    "55344": "eden prairie",
+    "55346": "eden prairie",
+    "55347": "eden prairie",
+    "55305": "minnetonka",
+    "55343": "minnetonka",
+    "55345": "minnetonka",
+    "55311": "maple grove",
+    "55369": "maple grove",
+    "55316": "champlin",
+    "55303": "anoka",
+    "55304": "andover",
+    "55441": "plymouth",
+    "55442": "plymouth",
+    "55446": "plymouth",
+    "55447": "plymouth"
+  },
+  "cities": {
+    "minneapolis": {
+      "display": "Minneapolis",
+      "provider": "Minneapolis Water Works",
+      "source_type": "surface",
+      "hardness_gpg": 7.0,
+      "source_detail": "The Mississippi River — drawn at the Fridley intake and treated (and lime-softened) at Minneapolis's ultrafiltration plant in Columbia Heights."
+    },
+    "saint paul": {
+      "display": "Saint Paul",
+      "provider": "Saint Paul Regional Water Services",
+      "source_type": "surface",
+      "hardness_gpg": 8.0,
+      "source_detail": "The Mississippi River — pumped near Fridley through a chain of lakes (Charley, Pleasant, Sucker and Vadnais) to the McCarrons treatment plant in Maplewood, where it's lime-softened."
+    },
+    "columbia heights": {
+      "display": "Columbia Heights",
+      "provider": "City of Columbia Heights (Minneapolis supply)",
+      "source_type": "surface",
+      "hardness_gpg": 4.5,
+      "source_detail": "Treated Mississippi River water purchased wholesale from Minneapolis Water Works."
+    },
+    "hilltop": {
+      "display": "Hilltop",
+      "provider": "Minneapolis supply",
+      "source_type": "surface",
+      "hardness_gpg": 4.5,
+      "source_detail": "Treated Mississippi River water purchased wholesale from Minneapolis Water Works."
+    },
+    "richfield": {
+      "display": "Richfield",
+      "provider": "City of Richfield Public Utilities",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0,
+      "source_detail": "Groundwater from seven deep city wells tapping the Prairie du Chien–Jordan, Jordan and Wonewoc–Mt. Simon aquifers."
+    },
+    "golden valley": {
+      "display": "Golden Valley",
+      "provider": "City of Golden Valley (Joint Water Commission / Minneapolis)",
+      "source_type": "surface",
+      "hardness_gpg": 5.5,
+      "source_detail": "Treated Mississippi River water from Minneapolis, supplied through the Joint Water Commission (Crystal–New Hope–Golden Valley)."
+    },
+    "robbinsdale": {
+      "display": "Robbinsdale",
+      "provider": "City of Robbinsdale Public Utilities",
+      "source_type": "groundwater_soft",
+      "hardness_gpg": 5.5,
+      "source_detail": "Groundwater from the city's own wells (St. Peter and Prairie du Chien–Jordan aquifers), softened at Robbinsdale's treatment plant."
+    },
+    "saint anthony": {
+      "display": "St. Anthony Village",
+      "provider": "City of St. Anthony Village Public Utilities",
+      "source_type": "groundwater",
+      "hardness_gpg": 15.0,
+      "source_detail": "Groundwater from the city's own municipal wells (Prairie du Chien–Jordan aquifer)."
+    },
+    "maplewood": {
+      "display": "Maplewood",
+      "provider": "City of Maplewood (Saint Paul supply)",
+      "source_type": "surface",
+      "hardness_gpg": 8.0,
+      "source_detail": "Mississippi River water from Saint Paul Regional Water Services, lime-softened at the McCarrons plant."
+    },
+    "falcon heights": {
+      "display": "Falcon Heights",
+      "provider": "Saint Paul supply",
+      "source_type": "surface",
+      "hardness_gpg": 7.5,
+      "source_detail": "Mississippi River water from Saint Paul Regional Water Services (McCarrons plant)."
+    },
+    "lauderdale": {
+      "display": "Lauderdale",
+      "provider": "Saint Paul supply",
+      "source_type": "surface",
+      "hardness_gpg": 7.5,
+      "source_detail": "Mississippi River water from Saint Paul Regional Water Services (McCarrons plant)."
+    },
+    "west saint paul": {
+      "display": "West Saint Paul",
+      "source_type": "surface",
+      "hardness_gpg": 8.0,
+      "provider": "City of West Saint Paul (Saint Paul Regional Water Services)",
+      "source_detail": "Mississippi River water from Saint Paul Regional Water Services, lime-softened at the McCarrons plant."
+    },
+    "bloomington": {
+      "display": "Bloomington",
+      "provider": "City of Bloomington Utilities",
+      "source_type": "surface",
+      "hardness_gpg": 5.0,
+      "source_detail": "A blend of the city's own deep wells and treated Mississippi River water purchased from Minneapolis."
+    },
+    "brooklyn park": {
+      "display": "Brooklyn Park",
+      "source_type": "groundwater",
+      "hardness_gpg": 34.0
+    },
+    "brooklyn center": {
+      "display": "Brooklyn Center",
+      "source_type": "groundwater",
+      "hardness_gpg": 19.0
+    },
+    "crystal": {
+      "display": "Crystal",
+      "source_type": "surface",
+      "hardness_gpg": 5.5,
+      "provider": "City of Crystal (Joint Water Commission / Minneapolis)",
+      "source_detail": "Treated Mississippi River water from Minneapolis, supplied through the Joint Water Commission (Crystal–New Hope–Golden Valley)."
+    },
+    "new hope": {
+      "display": "New Hope",
+      "source_type": "surface",
+      "hardness_gpg": 5.5,
+      "provider": "City of New Hope (Joint Water Commission / Minneapolis)",
+      "source_detail": "Treated Mississippi River water from Minneapolis, supplied through the Joint Water Commission (Crystal–New Hope–Golden Valley)."
+    },
+    "plymouth": {
+      "display": "Plymouth",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "st louis park": {
+      "display": "St. Louis Park",
+      "source_type": "groundwater",
+      "hardness_gpg": 19.0
+    },
+    "edina": {
+      "display": "Edina",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "fridley": {
+      "display": "Fridley",
+      "source_type": "groundwater",
+      "hardness_gpg": 14.0
+    },
+    "coon rapids": {
+      "display": "Coon Rapids",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "blaine": {
+      "display": "Blaine",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "spring lake park": {
+      "display": "Spring Lake Park",
+      "source_type": "groundwater",
+      "hardness_gpg": 14.0
+    },
+    "new brighton": {
+      "display": "New Brighton",
+      "source_type": "groundwater",
+      "hardness_gpg": 24.0
+    },
+    "shoreview": {
+      "display": "Shoreview",
+      "source_type": "groundwater",
+      "hardness_gpg": 15.0
+    },
+    "arden hills": {
+      "display": "Arden Hills",
+      "source_type": "surface",
+      "hardness_gpg": 8.0,
+      "provider": "City of Arden Hills (Saint Paul Regional Water Services)",
+      "source_detail": "Mississippi River water from Saint Paul Regional Water Services (McCarrons plant)."
+    },
+    "little canada": {
+      "display": "Little Canada",
+      "source_type": "surface",
+      "hardness_gpg": 8.0,
+      "provider": "City of Little Canada (Saint Paul Regional Water Services)",
+      "source_detail": "Mississippi River water from Saint Paul Regional Water Services (McCarrons plant)."
+    },
+    "north saint paul": {
+      "display": "North Saint Paul",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "vadnais heights": {
+      "display": "Vadnais Heights",
+      "source_type": "groundwater",
+      "hardness_gpg": 15.0
+    },
+    "north oaks": {
+      "display": "North Oaks",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "roseville": {
+      "display": "Roseville",
+      "source_type": "surface",
+      "hardness_gpg": 7.0,
+      "source_detail": "Mississippi River water purchased wholesale from Saint Paul Regional Water Services (McCarrons plant)."
+    },
+    "white bear lake": {
+      "display": "White Bear Lake",
+      "source_type": "groundwater",
+      "hardness_gpg": 14.0,
+      "source_detail": "Groundwater from the city's own municipal wells (Prairie du Chien–Jordan aquifer)."
+    },
+    "mounds view": {
+      "display": "Mounds View",
+      "source_type": "groundwater",
+      "hardness_gpg": 13.0,
+      "source_detail": "Groundwater from the city's own municipal wells (Prairie du Chien–Jordan aquifer)."
+    },
+    "burnsville": {
+      "display": "Burnsville",
+      "source_type": "groundwater",
+      "hardness_gpg": 24.0
+    },
+    "eagan": {
+      "display": "Eagan",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "apple valley": {
+      "display": "Apple Valley",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "lakeville": {
+      "display": "Lakeville",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "rosemount": {
+      "display": "Rosemount",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "farmington": {
+      "display": "Farmington",
+      "source_type": "groundwater",
+      "hardness_gpg": 16.0
+    },
+    "inver grove heights": {
+      "display": "Inver Grove Heights",
+      "source_type": "groundwater",
+      "hardness_gpg": 21.0
+    },
+    "south saint paul": {
+      "display": "South Saint Paul",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "mendota heights": {
+      "display": "Mendota Heights",
+      "source_type": "surface",
+      "hardness_gpg": 8.0,
+      "provider": "City of Mendota Heights (Saint Paul Regional Water Services)",
+      "source_detail": "Mississippi River water from Saint Paul Regional Water Services, lime-softened at the McCarrons plant."
+    },
+    "cottage grove": {
+      "display": "Cottage Grove",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "hastings": {
+      "display": "Hastings",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "woodbury": {
+      "display": "Woodbury",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "oakdale": {
+      "display": "Oakdale",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "lake elmo": {
+      "display": "Lake Elmo",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "stillwater": {
+      "display": "Stillwater",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "oak park heights": {
+      "display": "Oak Park Heights",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "mahtomedi": {
+      "display": "Mahtomedi",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "forest lake": {
+      "display": "Forest Lake",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "hugo": {
+      "display": "Hugo",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "newport": {
+      "display": "Newport",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "saint paul park": {
+      "display": "Saint Paul Park",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "savage": {
+      "display": "Savage",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "shakopee": {
+      "display": "Shakopee",
+      "source_type": "groundwater",
+      "hardness_gpg": 23.0
+    },
+    "prior lake": {
+      "display": "Prior Lake",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "jordan": {
+      "display": "Jordan",
+      "source_type": "groundwater",
+      "hardness_gpg": 16.0
+    },
+    "belle plaine": {
+      "display": "Belle Plaine",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "new prague": {
+      "display": "New Prague",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "elko new market": {
+      "display": "Elko New Market",
+      "source_type": "groundwater",
+      "hardness_gpg": 25.0
+    },
+    "chanhassen": {
+      "display": "Chanhassen",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "chaska": {
+      "display": "Chaska",
+      "source_type": "groundwater",
+      "hardness_gpg": 25.0
+    },
+    "victoria": {
+      "display": "Victoria",
+      "source_type": "groundwater",
+      "hardness_gpg": 23.0
+    },
+    "waconia": {
+      "display": "Waconia",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "carver": {
+      "display": "Carver",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "watertown": {
+      "display": "Watertown",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "norwood young america": {
+      "display": "Norwood Young America",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "minnetonka": {
+      "display": "Minnetonka",
+      "source_type": "groundwater",
+      "hardness_gpg": 19.0
+    },
+    "hopkins": {
+      "display": "Hopkins",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "wayzata": {
+      "display": "Wayzata",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "orono": {
+      "display": "Orono",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "long lake": {
+      "display": "Long Lake",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "mound": {
+      "display": "Mound",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "minnetrista": {
+      "display": "Minnetrista",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "shorewood": {
+      "display": "Shorewood",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "excelsior": {
+      "display": "Excelsior",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "deephaven": {
+      "display": "Deephaven",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "eden prairie": {
+      "display": "Eden Prairie",
+      "source_type": "groundwater_soft",
+      "hardness_gpg": 6.0,
+      "source_detail": "Groundwater from deep city wells (Prairie du Chien–Jordan aquifer), softened at Eden Prairie's water treatment plant."
+    },
+    "maple grove": {
+      "display": "Maple Grove",
+      "source_type": "groundwater",
+      "hardness_gpg": 25.0,
+      "source_detail": "Groundwater from deep city wells in the Prairie du Chien–Jordan aquifer."
+    },
+    "champlin": {
+      "display": "Champlin",
+      "source_type": "groundwater",
+      "hardness_gpg": 17.0
+    },
+    "osseo": {
+      "display": "Osseo",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "dayton": {
+      "display": "Dayton",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "rogers": {
+      "display": "Rogers",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "corcoran": {
+      "display": "Corcoran",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "medina": {
+      "display": "Medina",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "maple plain": {
+      "display": "Maple Plain",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "anoka": {
+      "display": "Anoka",
+      "source_type": "groundwater",
+      "hardness_gpg": 15.0
+    },
+    "andover": {
+      "display": "Andover",
+      "source_type": "groundwater",
+      "hardness_gpg": 13.0
+    },
+    "ramsey": {
+      "display": "Ramsey",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "ham lake": {
+      "display": "Ham Lake",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "lino lakes": {
+      "display": "Lino Lakes",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "circle pines": {
+      "display": "Circle Pines",
+      "source_type": "groundwater",
+      "hardness_gpg": 15.0
+    },
+    "centerville": {
+      "display": "Centerville",
+      "source_type": "groundwater",
+      "hardness_gpg": 18.0
+    },
+    "east bethel": {
+      "display": "East Bethel",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "oak grove": {
+      "display": "Oak Grove",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    },
+    "saint francis": {
+      "display": "St. Francis",
+      "source_type": "groundwater",
+      "hardness_gpg": 22.0
+    }
+  },
+  "source_text": {
+    "surface": "Surface water (Mississippi River), municipally treated",
+    "groundwater": "Groundwater (deep wells)",
+    "groundwater_soft": "Groundwater — municipally softened",
+    "blended": "Blended surface & groundwater",
+    "well": "Private well (groundwater)"
+  },
+  "fallbacks": {
+    "mn_groundwater_suburb": {
+      "display": "Twin Cities Suburb",
+      "provider": "Municipal groundwater (well) utility",
+      "source_type": "groundwater",
+      "hardness_gpg": 20.0
+    },
+    "national_generic": {
+      "display": "Your Local Area",
+      "provider": "Local municipal water utility",
+      "source_type": "groundwater",
+      "hardness_gpg": 10.0
+    }
+  },
+  "source_detail": {
+    "surface": "Surface water from the Mississippi River, treated and disinfected at a regional plant.",
+    "groundwater": "Groundwater pumped from deep municipal wells in the Prairie du Chien–Jordan aquifer — the Twin Cities' primary drinking-water source.",
+    "groundwater_soft": "Groundwater from deep municipal wells, softened at the city's own treatment plant.",
+    "blended": "A blend of deep groundwater wells and treated surface water.",
+    "well": "A private well drawing from local groundwater."
+  }
+}

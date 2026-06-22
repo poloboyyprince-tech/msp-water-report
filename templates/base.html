@@ -72,8 +72,27 @@
   .repmeta{color:var(--grey);font-size:13px;flex:1 1 auto}
   .repdl{color:var(--navy);font-weight:700;font-size:13px;flex:0 0 auto}
   select{font-family:inherit;font-size:15px;background:#fff}
+  /* customer funnel */
+  .hero{text-align:center;max-width:760px;margin:8px auto 24px}
+  .hero h1{font-family:Georgia,serif;color:var(--navy);font-size:34px;line-height:1.15;margin:0 0 12px}
+  .hero h1 em{color:var(--gold);font-style:italic}
+  .hero p{color:var(--ink);font-size:16px;line-height:1.5;margin:0}
+  .formcard{max-width:680px;margin:0 auto}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .timepick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .timeopt{display:flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:10px;
+           padding:12px 14px;cursor:pointer;font-weight:600;color:var(--navy);font-size:14px}
+  .timeopt:hover{border-color:var(--gold);background:var(--cream)}
+  .timeopt input{accent-color:var(--gold);width:16px;height:16px}
+  .btn.big{font-size:18px;padding:16px 22px;justify-content:center}
+  .trustrow{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:22px auto 0;
+            color:var(--gold);font-weight:700;font-size:12.5px;letter-spacing:.5px}
+  .thanks{background:var(--navy);color:#fff;border:none}
+  .thanks h2{color:#fff}
+  .thanks a{color:var(--goldl)}
   footer{text-align:center;color:var(--grey);font-size:12px;padding:24px}
-  @media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.settings-grid{grid-template-columns:1fr}}
+  @media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.settings-grid{grid-template-columns:1fr}
+    .fgrid{grid-template-columns:1fr}.timepick{grid-template-columns:1fr}.hero h1{font-size:27px}}
 </style>
 </head>
 <body>
@@ -82,7 +101,7 @@
     <span class="mark">{% include "_logo.svg" %}</span>
     <div>
       <h1>MSP Pure Water</h1>
-      <div class="sub">Water Quality Report Generator</div>
+      <div class="sub">Free Home Water Report</div>
     </div>
   </div>
 </div>
@@ -92,6 +111,6 @@
   {% endwith %}
   {% block content %}{% endblock %}
 </main>
-<footer>MSP Pure Water · Minneapolis–Saint Paul Metro · for internal sales use</footer>
+<footer>{{ config.company.name if config else "MSP Pure Water" }} · Minneapolis–Saint Paul Metro · {{ config.company.phone if config else "" }}</footer>
 </body>
 </html>

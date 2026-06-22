@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Jane Smith",
+    "phone": "612-555-1234",
+    "email": "jane@example.com",
+    "address": "123 Maple St, Brooklyn Park, MN 55443",
+    "best_time": "12 – 3 PM",
+    "city": "Brooklyn Park",
+    "hardness": 34.0,
+    "grade": "F",
+    "date": "Jun 21, 2026 08:59 PM"
+  }
+]

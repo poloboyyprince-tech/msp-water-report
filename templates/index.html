@@ -1,110 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="card">
-  <h2>Generate a Water Quality Report</h2>
-  <p class="lead">Search by a prospect's <strong>address</strong>, <strong>city</strong>, or
-     <strong>ZIP code</strong>. You'll get a branded PDF to preview and download in seconds.</p>
-  <form method="post" action="{{ url_for('generate_route') }}" autocomplete="off">
-    <div class="row">
-      <div class="grow">
-        <label for="query">Address, city, or ZIP code</label>
-        <input type="text" id="query" name="query" list="citylist"
-               placeholder="e.g. Brooklyn Park   ·   55125   ·   123 Maple St, Woodbury, MN"
-               autofocus required>
-        <datalist id="citylist">
-          {% for c in cities %}<option value="{{ c }}">{% endfor %}
-        </datalist>
-        <div class="muted" style="margin-top:6px">{{ cities|length }} Twin Cities metro cities supported — start typing a city, or paste a full address.</div>
+<div class="hero">
+  <h1>What's <em>Really</em> In Your Water?</h1>
+  <p>Get your home's free, personalized water-quality report — based on your address and the
+     latest public data for the Twin Cities. See your hardness, contaminants, and exactly what
+     it means for your home in under a minute.</p>
+</div>
+
+<div class="card formcard">
+  <h2>Get My Free Water Report</h2>
+  <p class="lead">Tell us where to send your results and the best time to reach you — your report
+     appears on the next screen.</p>
+
+  <form method="post" action="{{ url_for('generate_route') }}" autocomplete="on">
+    <div class="fgrid">
+      <div>
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" autocomplete="name" required>
       </div>
-      <div><button class="btn" type="submit">⚡ Generate Report</button></div>
+      <div>
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+      <div>
+        <label for="address">Home address</label>
+        <input type="text" id="address" name="address" list="citylist"
+               placeholder="Street, city &amp; ZIP" autocomplete="street-address" required>
+        <datalist id="citylist">{% for c in cities %}<option value="{{ c }}">{% endfor %}</datalist>
+      </div>
     </div>
-    <div style="margin-top:12px">
-      <label class="muted" style="font-weight:500;display:inline-flex;align-items:center;gap:7px">
-        <input type="checkbox" name="offline" value="1"> Offline mode (skip live lookups — faster, no internet)
-      </label>
+
+    <div style="margin-top:16px">
+      <label>Best time to reach you</label>
+      <div class="timepick">
+        {% for t in best_times %}
+        <label class="timeopt">
+          <input type="radio" name="best_time" value="{{ t }}" {% if loop.first %}required{% endif %}>
+          <span>{{ t }}</span>
+        </label>
+        {% endfor %}
+      </div>
     </div>
+
+    <button class="btn big" type="submit" style="margin-top:20px;width:100%">
+      ⚡ Get My Free Water Report
+    </button>
+    <p class="muted" style="text-align:center;margin-top:12px">
+      No spam, ever. We use your info only to prepare your report and follow up about your results.
+    </p>
   </form>
 </div>
 
-{% if reports %}
-<div class="card">
-  <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
-    <h2 style="margin:0">Recent Reports</h2>
-    <span class="muted">{{ reports|length }} saved</span>
-  </div>
-  <input type="text" id="repfilter" placeholder="🔎 Search past reports by city, ZIP, or address"
-         style="margin-bottom:10px">
-  <div id="replist">
-    {% for r in reports %}
-      <a class="repitem" href="{{ url_for('reports', filename=r.filename, download=1) }}"
-         data-search="{{ (r.city ~ ' ' ~ r.zip ~ ' ' ~ r.address ~ ' ' ~ r.query)|lower }}">
-        <span class="repcity">{{ r.city }}{% if r.zip %} · {{ r.zip }}{% endif %}</span>
-        <span class="repmeta">{{ r.date }} &nbsp;·&nbsp; {{ r.hardness }} gpg &nbsp;·&nbsp; score {{ r.score }} ({{ r.grade }})</span>
-        <span class="repdl">⬇ PDF</span>
-      </a>
-    {% endfor %}
-  </div>
-  <div id="repnone" class="muted" style="display:none;padding:10px 2px">No saved reports match that search.</div>
+<div class="trustrow">
+  {% for b in config.trust_badges %}<span>✦ {{ b }}</span>{% endfor %}
 </div>
-{% endif %}
-
-<div class="card">
-  <details class="settings" {% if not has_logo %}open{% endif %}>
-    <summary>⚙️ Branding, systems &amp; company settings {% if has_logo %}· logo uploaded ✓{% else %}· using built-in logo{% endif %}</summary>
-    <form method="post" action="{{ url_for('settings') }}" enctype="multipart/form-data">
-      <div class="settings-grid">
-        <div class="full">
-          <label>Company logo (PNG or JPG — replaces the built-in shield on every report)</label>
-          <input type="file" name="logo" accept=".png,.jpg,.jpeg">
-          <div class="muted" style="margin-top:5px">
-            {% if has_logo %}A logo is currently uploaded.{% else %}No logo uploaded yet — reports use the built-in vector shield.{% endif %}
-          </div>
-        </div>
-        <div><label>Company name</label><input type="text" name="name" value="{{ config.company.name }}"></div>
-        <div><label>Phone</label><input type="text" name="phone" value="{{ config.company.phone }}"></div>
-        <div><label>Email</label><input type="text" name="email" value="{{ config.company.email }}"></div>
-        <div><label>Website</label><input type="text" name="website" value="{{ config.company.website }}"></div>
-        <div><label>Service area</label><input type="text" name="service_area" value="{{ config.company.service_area }}"></div>
-        <div class="full" style="border-top:1px solid var(--line);padding-top:14px">
-          <label>System photo (optional — shows on the recommended-system page when that system is recommended)</label>
-          <div class="row">
-            <select name="system_key" class="grow" style="padding:12px;border:1.5px solid var(--line);border-radius:10px">
-              {% for k, name, has in systems_with_images %}
-                <option value="{{ k }}">{{ name }}{% if has %}  ✓ photo uploaded{% endif %}</option>
-              {% endfor %}
-            </select>
-            <input class="grow" type="file" name="system_image" accept=".png,.jpg,.jpeg">
-          </div>
-        </div>
-        <div class="full" style="border-top:1px solid var(--line);padding-top:14px">
-          <label>Admin PIN <span class="muted" style="font-weight:400">(only needed if the site is published with a PIN set)</span></label>
-          <input type="password" name="admin_pin" placeholder="Leave blank when running on your own computer">
-        </div>
-      </div>
-      <div style="margin-top:16px"><button class="btn navy" type="submit">Save settings</button></div>
-    </form>
-  </details>
-</div>
-
-{% if reports %}
-<script>
-  (function(){
-    var f = document.getElementById('repfilter');
-    var items = Array.prototype.slice.call(document.querySelectorAll('#replist .repitem'));
-    var none = document.getElementById('repnone');
-    f.addEventListener('input', function(){
-      var q = f.value.trim().toLowerCase();
-      var shown = 0;
-      items.forEach(function(el){
-        var hit = !q || el.getAttribute('data-search').indexOf(q) !== -1;
-        el.style.display = hit ? '' : 'none';
-        if (hit) shown++;
-      });
-      none.style.display = shown ? 'none' : 'block';
-    });
-  })();
-</script>
-{% endif %}
 
 {% endblock %}

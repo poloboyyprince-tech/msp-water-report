@@ -1,17 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if lead %}
+<div class="card thanks">
+  <h2 style="margin:0 0 4px">Thanks{% if lead.name %}, {{ lead.name.split(' ')[0] }}{% endif %} — here's your water report. ✅</h2>
+  <p style="margin:0">
+    We'll reach out{% if lead.best_time %} during your <strong>{{ lead.best_time }}</strong> window{% endif %}
+    to go over your results on a free, no-pressure consultation. Want to talk sooner?
+    <a href="tel:{{ config.company.phone|replace(' ','')|replace('-','') }}"><strong>Call or text {{ config.company.phone }}</strong></a>.
+  </p>
+</div>
+{% endif %}
+
 <div class="card">
   <div class="row" style="justify-content:space-between;align-items:center">
     <div>
-      <h2 style="margin-bottom:2px">Report ready
+      <h2 style="margin-bottom:2px">Your Water
         {% if location.city %}— {{ location.city }}, {{ location.state_abbr or 'MN' }} {{ location.zip }}{% else %}— {{ location.zip }}{% endif %}
       </h2>
       <p class="lead" style="margin:0">{{ profile.verdict }}</p>
     </div>
     <div style="display:flex;gap:10px">
       <a class="btn" href="{{ url_for('reports', filename=filename, download=1) }}">⬇ Download PDF</a>
-      <a class="btn ghost" href="{{ url_for('index') }}">+ New report</a>
     </div>
   </div>
 

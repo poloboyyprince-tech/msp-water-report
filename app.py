@@ -12,6 +12,8 @@ import datetime
 import json
 import os
 import re
+import urllib.parse
+import urllib.request
 
 from flask import (Flask, request, render_template, send_from_directory,
                    redirect, url_for, flash, abort)
@@ -27,8 +29,11 @@ OUTPUT_DIR = os.path.join(HERE, "output")
 ASSETS_SYS = os.path.join(HERE, "assets", "systems")
 CONFIG_PATH = os.path.join(HERE, "config.json")
 INDEX_PATH = os.path.join(OUTPUT_DIR, "reports_index.json")
+LEADS_PATH = os.path.join(OUTPUT_DIR, "leads.json")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(ASSETS_SYS, exist_ok=True)
+
+BEST_TIMES = ["8 AM – 12 PM", "12 – 3 PM", "3 – 6 PM"]
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "msp-pure-water-local")
@@ -86,6 +91,62 @@ def recent_reports():
             if os.path.exists(os.path.join(OUTPUT_DIR, r.get("filename", "")))]
 
 
+# ---- lead capture ----------------------------------------------------------
+def _save_lead(lead):
+    try:
+        leads = json.load(open(LEADS_PATH, encoding="utf-8"))
+    except Exception:
+        leads = []
+    leads.insert(0, lead)
+    try:
+        with open(LEADS_PATH, "w", encoding="utf-8") as f:
+            json.dump(leads[:1000], f, indent=2, ensure_ascii=False)
+    except Exception:
+        pass
+
+
+def _email_lead(lead):
+    """Email the lead to the business via Web3Forms (free) if a key is configured."""
+    key = os.environ.get("WEB3FORMS_KEY", "").strip()
+    if not key:
+        return False
+    payload = {
+        "access_key": key,
+        "subject": f"🚰 New Water Report Lead — {lead['name']} ({lead['city']})",
+        "from_name": "MSP Pure Water — Website",
+        "Name": lead["name"], "Phone": lead["phone"], "Email": lead["email"],
+        "Address": lead["address"], "Best time to reach": lead["best_time"],
+        "City (report)": lead["city"], "Water hardness": f"{lead['hardness']} gpg",
+        "Water grade": lead["grade"], "Submitted": lead["date"],
+    }
+    try:
+        req = urllib.request.Request(
+            "https://api.web3forms.com/submit",
+            data=urllib.parse.urlencode(payload).encode(),
+            headers={"User-Agent": "MSP-Pure-Water/1.0",
+                     "Content-Type": "application/x-www-form-urlencoded"})
+        urllib.request.urlopen(req, timeout=8)
+        return True
+    except Exception:
+        return False
+
+
+def capture_lead(form, profile, location):
+    lead = {
+        "name": (form.get("name") or "").strip(),
+        "phone": (form.get("phone") or "").strip(),
+        "email": (form.get("email") or "").strip(),
+        "address": (form.get("address") or "").strip(),
+        "best_time": (form.get("best_time") or "").strip(),
+        "city": profile["display"],
+        "hardness": profile["hardness"]["gpg"], "grade": profile["grade"],
+        "date": datetime.datetime.now().strftime("%b %d, %Y %I:%M %p"),
+    }
+    _save_lead(lead)
+    lead["emailed"] = _email_lead(lead)
+    return lead
+
+
 # ---- core generation -------------------------------------------------------
 def build_from_query(raw, offline=False):
     """Resolve a free-form query and build the report.
@@ -138,38 +199,73 @@ def build_from_query(raw, offline=False):
 
 
 # ---- routes ----------------------------------------------------------------
+@app.route("/health")
+def health():
+    """Lightweight endpoint for an uptime pinger to keep the instance warm."""
+    return "ok", 200
+
+
 @app.route("/")
 def index():
+    # Public, customer-facing landing: the lead-capture form only.
     return render_template("index.html", config=load_config(),
-                           has_logo=bool(B.logo_path()), cities=all_cities(),
-                           reports=recent_reports(), systems_with_images=_systems_with_images())
+                           cities=all_cities(), best_times=BEST_TIMES)
 
 
 @app.route("/generate", methods=["POST"])
 def generate_route():
-    raw = (request.form.get("query") or "").strip()
-    offline = bool(request.form.get("offline"))
+    name = (request.form.get("name") or "").strip()
+    phone = (request.form.get("phone") or "").strip()
+    email = (request.form.get("email") or "").strip()
+    address = (request.form.get("address") or "").strip()
+    best_time = (request.form.get("best_time") or "").strip()
+
+    missing = [lbl for val, lbl in [(name, "name"), (phone, "phone number"),
+                                    (email, "email"), (address, "home address")] if not val]
+    if missing:
+        flash("Please fill in your " + ", ".join(missing) + " so we can prepare your report.")
+        return redirect(url_for("index"))
+
     try:
-        result, err = build_from_query(raw, offline=offline)
+        result, err = build_from_query(address, offline=True)
     except Exception as exc:  # never crash the page
-        flash(f"Sorry — could not generate that report ({exc}). Try again or use offline mode.")
+        flash(f"Sorry — something went wrong building your report ({exc}). Please try again.")
         return redirect(url_for("index"))
 
     if err:
-        if err["error"] == "empty":
-            flash("Type a prospect's address, city, or ZIP code to begin.")
-        else:
-            extra = ""
-            if err.get("suggestions"):
-                extra = " Did you mean: " + ", ".join(err["suggestions"]) + "?"
-            flash("Couldn't find that location. Enter a 5-digit ZIP, a Twin Cities "
-                  "city name, or a full address." + extra)
+        extra = ""
+        if err.get("suggestions"):
+            extra = " Did you mean: " + ", ".join(err["suggestions"]) + "?"
+        flash("We couldn't find that address. Please include your city and ZIP code "
+              "(e.g. “123 Maple St, Woodbury, MN 55125”)." + extra)
         return redirect(url_for("index"))
+
+    lead = capture_lead(request.form, result["profile"], result["location"])
 
     return render_template("result.html", config=load_config(),
                            profile=result["profile"], location=result["location"],
-                           filename=result["filename"],
+                           filename=result["filename"], lead=lead,
                            n_concerns=len(result["profile"]["flagged"]))
+
+
+@app.route("/admin/leads")
+def admin_leads():
+    if not ADMIN_PIN or request.args.get("pin", "") != ADMIN_PIN:
+        return "Not authorized. Add ?pin=YOURPIN to the URL.", 401
+    try:
+        leads = json.load(open(LEADS_PATH, encoding="utf-8"))
+    except Exception:
+        leads = []
+    rows = "".join(
+        f"<tr><td>{l.get('date','')}</td><td><b>{l.get('name','')}</b></td>"
+        f"<td>{l.get('phone','')}</td><td>{l.get('email','')}</td>"
+        f"<td>{l.get('address','')}</td><td>{l.get('best_time','')}</td>"
+        f"<td>{l.get('city','')} · {l.get('hardness','')} gpg · {l.get('grade','')}</td></tr>"
+        for l in leads)
+    return (f"<h2>Leads ({len(leads)})</h2><table border=1 cellpadding=6 "
+            f"style='border-collapse:collapse;font-family:sans-serif;font-size:14px'>"
+            f"<tr><th>When</th><th>Name</th><th>Phone</th><th>Email</th><th>Address</th>"
+            f"<th>Best time</th><th>Water</th></tr>{rows}</table>")
 
 
 @app.route("/reports/<path:filename>")

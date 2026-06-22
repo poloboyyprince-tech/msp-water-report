@@ -14,3 +14,6 @@ output/reports_index.json
 
 # A separate project that happens to live in this folder
 MSP-Pure-Water-Training-Hub.html
+
+# Captured leads (runtime data — never commit)
+output/leads.json

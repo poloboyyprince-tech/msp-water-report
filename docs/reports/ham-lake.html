@@ -1,0 +1,112 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ham Lake Water Report — MSP Pure Water</title>
+<meta name="description" content="Water quality report for Ham Lake, MN — hardness 22.0 gpg, Groundwater pumped from deep municipal wells in the Prairie du Chien–Jordan aquifer — the Twin Cities&#x27; primary drinking-water source.">
+<style>
+:root{--navy:#13243B;--navy2:#0C1A2C;--navy3:#1E3957;--gold:#C9A24B;--goldl:#DEC07A;
+--cream:#FAF8F3;--ink:#23303F;--grey:#6B7785;--line:#E2E6EC;--good:#2E8B57;--elev:#C98A2B;--concern:#B23B3B;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--cream);}
+a{color:var(--navy)}
+.topbar{background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:20px;border-bottom:3px solid var(--gold);}
+.topbar .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:16px}
+.topbar h1{font-family:Georgia,serif;font-size:20px;margin:0;font-weight:700}
+.topbar .sub{color:var(--goldl);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+main{max-width:980px;margin:26px auto 50px;padding:0 20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 24px rgba(19,36,59,.06);padding:26px;margin-bottom:22px}
+.card h2{font-family:Georgia,serif;color:var(--navy);margin:0 0 6px;font-size:22px}
+.kick{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin:0 0 4px}
+.lead{color:var(--grey);margin:0 0 16px}
+input[type=text]{width:100%;padding:14px;font-size:16px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+input[type=text]:focus{outline:none;border-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);border:none;border-radius:10px;padding:14px 22px;font-size:16px;font-weight:800;cursor:pointer;text-decoration:none;transition:.15s}
+.btn:hover{background:var(--goldl)}
+.btn.big{font-size:18px;padding:16px 24px;justify-content:center;width:100%}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--navy);font-weight:700}
+.row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.grow{flex:1 1 320px}
+.muted{color:var(--grey);font-size:13px}
+.hero{text-align:center;max-width:760px;margin:8px auto 22px}
+.hero h1{font-family:Georgia,serif;color:var(--navy);font-size:32px;line-height:1.15;margin:0 0 12px}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{color:var(--ink);font-size:16px;line-height:1.5;margin:0}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 0}
+.metric{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+.metric .num{font-family:Georgia,serif;font-size:30px;color:var(--navy);font-weight:700;line-height:1}
+.metric .lbl{font-size:11px;color:var(--grey);margin-top:7px;text-transform:uppercase;letter-spacing:.5px}
+.metric.bad{border-top:3px solid var(--concern)}.metric.warn{border-top:3px solid var(--elev)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-top:12px}
+table{width:100%;min-width:600px;border-collapse:collapse;font-size:13.5px}
+th{background:var(--navy);color:#fff;text-align:left;padding:9px 11px;font-size:11.5px;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+td.lvl,td.safe{font-size:12.5px;color:var(--grey)}
+.pill{font-size:11px;font-weight:800;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.pill.good{background:#E8F3EC;color:var(--good)}.pill.elevated{background:#FBF1DE;color:var(--elev)}
+.pill.high{background:#FBE7D6;color:#C2611C}.pill.concern{background:#F8E6E6;color:var(--concern)}
+.exp h3{font-family:Georgia,serif;color:var(--gold);margin:16px 0 4px;font-size:16px}
+.exp p{margin:0 0 4px;line-height:1.5}
+.reco{background:var(--navy);color:#fff;border-radius:14px;padding:22px;margin-bottom:16px}
+.reco .k{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase}
+.reco h2{color:var(--goldl);font-family:Georgia,serif;margin:6px 0 8px;font-size:21px}
+.reco p{color:var(--cream);margin:0;line-height:1.5}
+.syscards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.syscard{border:1.4px solid var(--gold);background:var(--cream);border-radius:12px;border-top:4px solid var(--navy);padding:16px}
+.syscard .tag{font-size:10.5px;font-weight:800;letter-spacing:1px;color:var(--gold);text-transform:uppercase}
+.syscard h3{font-family:Georgia,serif;color:var(--navy);margin:4px 0 2px;font-size:16px}
+.syscard .short{font-style:italic;color:var(--grey);font-size:12.5px;margin:0 0 6px}
+.syscard p{font-size:13px;line-height:1.45;margin:0;color:var(--ink)}
+.alt{margin:6px 0;font-size:14px;line-height:1.5}
+.cta{background:var(--navy);color:#fff;border:none;text-align:center}
+.cta h2{color:#fff;font-size:24px}
+.cta p{color:var(--cream);max-width:620px;margin:8px auto}
+.cta .phone{font-size:22px;font-weight:800;color:#fff;text-decoration:none;display:inline-block;margin:6px 0}
+.cta .small{color:var(--goldl);font-size:13px}
+.trust{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:.5px;margin-top:14px}
+footer{text-align:center;color:var(--grey);font-size:12px;padding:24px}
+.disc{color:var(--grey);font-size:11.5px;line-height:1.5;margin-top:14px}
+@media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.syscards{grid-template-columns:1fr}.hero h1{font-size:26px}}
+@media print{.noprint{display:none!important}.card{box-shadow:none;break-inside:avoid}body{background:#fff}}
+</style></head><body>
+<div class="topbar"><div class="wrap"><span><svg width="56" height="61" viewBox="0 0 92 100" xmlns="http://www.w3.org/2000/svg" aria-label="MSP Pure Water"><g><path d="M46,6 C41,10 27,15 15,20 C13,28 13,40 13,50 C13,64 22,73 46,82 C70,73 79,64 79,50 C79,40 79,28 77,20 C65,15 51,10 46,6 Z" fill="#C9A24B"/><path d="M46,6 C41,10 27,15 15,20 C13,28 13,40 13,50 C13,64 22,73 46,82 C70,73 79,64 79,50 C79,40 79,28 77,20 C65,15 51,10 46,6 Z" fill="#13243B" transform="translate(46,44) scale(0.93) translate(-46,-44)"/><path d="M46,6 C41,10 27,15 15,20 C13,28 13,40 13,50 C13,64 22,73 46,82 C70,73 79,64 79,50 C79,40 79,28 77,20 C65,15 51,10 46,6 Z" fill="none" stroke="#C9A24B" stroke-width="1" transform="translate(46,44) scale(0.84) translate(-46,-44)"/><path d="M46,22 C51,32 58,40 58,48 C58,56 53,60 46,60 C39,60 34,56 34,48 C34,40 41,32 46,22 Z" fill="#0C1A2C" stroke="#C9A24B" stroke-width="1.8"/><path d="M40,42 C36,45 36,51 39,55" fill="none" stroke="#DEC07A" stroke-width="1.1"/><rect x="22" y="72" width="48" height="18" rx="2" fill="#13243B" stroke="#C9A24B" stroke-width="1.3"/><text x="46" y="86" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="13" fill="#C9A24B" letter-spacing="1">MSP</text></g></svg></span>
+<div><h1>MSP Pure Water</h1><div class="sub">Free Home Water Report</div></div></div></div>
+<main>
+    <div class="hero"><h1>What's <em>Really</em> In Ham Lake's Water?</h1>
+      <p>Severe hardness and contaminants — this water needs treatment.</p></div>
+    <div class="noprint" style="text-align:center;margin:-8px 0 18px"><a class="btn ghost" href="../index.html">&larr; Check another address</a>
+      &nbsp; <a class="btn" href="#" onclick="window.print();return false">&#128424; Print / Save as PDF</a></div>
+    <div class="card"><p class="kick">Your water at a glance</p><h2>The Bottom Line</h2>
+      <div class="cards">
+      <div class="metric bad"><div class="num">33</div><div class="lbl">Water Score &middot; F</div></div>
+      <div class="metric bad"><div class="num">22.0<span style="font-size:14px"> gpg</span></div><div class="lbl">Extremely Hard &middot; 376 ppm</div></div>
+      <div class="metric warn"><div class="num">488</div><div class="lbl">Est. TDS (ppm)</div></div>
+      <div class="metric bad"><div class="num">4</div><div class="lbl">Items Above Ideal</div></div>
+    </div>
+      <p style="margin-top:16px"><b>Water provider:</b> City of Ham Lake Public Utilities<br>
+      <b>Where your water comes from:</b> Groundwater pumped from deep municipal wells in the Prairie du Chien–Jordan aquifer — the Twin Cities&#x27; primary drinking-water source.</p></div>
+    <div class="card"><p class="kick">The full breakdown</p><h2>What's In Your Water</h2>
+      <p class="lead" style="margin-bottom:0">These are the issues in your water that affect your home — and every one is something
+      an MSP Pure Water system removes or reduces.</p><div class="tablewrap"><table>
+      <thead><tr><th>What's in your water</th><th>Your est. level</th><th>Normal / safe level</th><th>Rating</th></tr></thead>
+      <tbody><tr><td><strong>Water Hardness</strong></td><td class="lvl">22.0 gpg  (376 ppm)</td><td class="safe">0–3 gpg (soft)</td><td><span class="pill concern">CONCERNING</span></td></tr><tr><td><strong>Total Dissolved Solids (TDS)</strong></td><td class="lvl">488 ppm</td><td class="safe">Under 300 ppm</td><td><span class="pill elevated">ELEVATED</span></td></tr><tr><td><strong>Manganese</strong></td><td class="lvl">0.05–0.20 ppm</td><td class="safe">Under 0.05 ppm</td><td><span class="pill concern">CONCERNING</span></td></tr><tr><td><strong>Iron</strong></td><td class="lvl">0.3–1.0 ppm</td><td class="safe">Under 0.3 ppm</td><td><span class="pill high">HIGH</span></td></tr></tbody></table></div>
+      <p class="muted" style="margin-top:10px">Levels are typical estimates for your area (gpg = grains per gallon,
+      ppm = parts per million). Ratings are benchmarked against EPA limits &amp; MN Department of Health guidance.</p></div>
+    <div class="card exp"><p class="kick">Why it matters</p><h2>The Concerns, Explained</h2><h3>Manganese</h3><p>The Minnesota Department of Health warns that high manganese can affect memory, attention and motor skills — with infants and children most at risk. It also stains laundry and fixtures brownish-black.</p><p class="muted"><b>Where it comes from:</b> Naturally occurring in Minnesota groundwater — very common in metro-area wells. &middot; <b>What you notice:</b> Black/brown staining on fixtures and laundry; bitter metallic taste.</p><h3>Iron</h3><p>Not a major health risk, but a constant nuisance.</p><p class="muted"><b>Where it comes from:</b> Naturally dissolved from Minnesota soil and rock into groundwater. &middot; <b>What you notice:</b> Rusty orange/red staining on sinks, tubs, toilets and laundry; metallic taste; clogs fixtures and appliances.</p></div>
+    <div class="card">
+      <div class="reco"><div class="k">Recommended for your water</div><h2>Dual-Tank City Water System + 7-Stage Reverse Osmosis (AlkaPro)</h2><p>At 22.0 gpg this is extremely hard city water — our Dual-Tank City Water System pairs a high-capacity softening/conditioning tank with a dedicated carbon tank to handle the hardness and chlorine, with reverse osmosis for your drinking water.</p></div>
+      <div class="syscards">
+        <div class="syscard"><div class="tag">Recommended — Whole Home</div><h3>Dual-Tank City Water System</h3>
+          <p class="short">Two-tank system for very hard city water (20+ gpg)</p><p>For very hard city water (over 20 gpg): two dedicated tanks — a high-capacity softening/conditioning tank plus a separate coconut-shell carbon tank — delivering 30 GPM and 48,000 grains so even the hardest water is fully handled without losing capacity.</p></div>
+        <div class="syscard"><div class="tag">Recommended — Drinking Water</div><h3>7-Stage Reverse Osmosis (AlkaPro)</h3>
+          <p class="short">Final-stage drinking &amp; cooking water</p><p>Under-sink 7-stage RO with an NSF membrane and alkaline remineralization — reduces PFAS, nitrate, arsenic, lead, sodium and TDS, then re-balances pH for great-tasting drinking water.</p></div>
+      </div>
+      <p class="kick" style="margin-top:18px">Also available</p><p class="alt"><b style="color:var(--navy)">Salt-Free Conditioning + Carbon System</b> — Prefer no salt or on a low-sodium diet? Our Salt-Free Conditioning + Carbon system keeps your minerals and adds zero sodium.</p><p class="alt"><b style="color:var(--navy)">Dual-Tank Well System</b> — On a private well? Our Dual-Tank Well system uses chemical-free air-injection to remove iron, sulfur and manganese — with a hydrogen-peroxide system for heavy iron & sulfur.</p></div>
+    <div class="card cta">
+      <h2>Ready to Fix What&#x27;s In Your Water?</h2>
+      <p>You&#x27;ve seen what&#x27;s in your water — now let&#x27;s solve it. Book a free, no-pressure water consultation by phone: we&#x27;ll walk through your results and recommend the right system for your home and budget. Prefer an in-home water test? Just ask on the call.</p>
+      <a class="phone" href="tel:9529526206">&#128222; Call or text 952-952-6206</a>
+      <p class="small">info@msppurewaterco.com &nbsp;|&nbsp; msppurewaterco.com &middot; <i>No pressure. No obligation. Just honest advice about your water.</i></p>
+      <div class="trust">&#10022; Proudly Made in the USA &nbsp;&nbsp; &#10022; Lifetime Warranty &nbsp;&nbsp; &#10022; NSF-Certified Media &nbsp;&nbsp; &#10022; BBB Accredited Dealer</div></div>
+    <p class="disc">Educational estimate by MSP Pure Water. Levels are typical regional values from public utility reports, the U.S. EPA, USGS and the Minnesota Department of Health — not a measurement of your individual tap. We'll review the specifics on a free water consultation.</p>
+    </main>
+<footer>MSP Pure Water &middot; Minneapolis – Saint Paul Metro &middot; 952-952-6206</footer>
+</body></html>

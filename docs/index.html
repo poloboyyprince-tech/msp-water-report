@@ -1,0 +1,112 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Home Water Report — MSP Pure Water</title>
+<meta name="description" content="Free instant Twin Cities water-quality report: hardness, contaminants, source, and what it means.">
+<style>
+:root{--navy:#13243B;--navy2:#0C1A2C;--navy3:#1E3957;--gold:#C9A24B;--goldl:#DEC07A;
+--cream:#FAF8F3;--ink:#23303F;--grey:#6B7785;--line:#E2E6EC;--good:#2E8B57;--elev:#C98A2B;--concern:#B23B3B;}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--cream);}
+a{color:var(--navy)}
+.topbar{background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:20px;border-bottom:3px solid var(--gold);}
+.topbar .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:16px}
+.topbar h1{font-family:Georgia,serif;font-size:20px;margin:0;font-weight:700}
+.topbar .sub{color:var(--goldl);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+main{max-width:980px;margin:26px auto 50px;padding:0 20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 24px rgba(19,36,59,.06);padding:26px;margin-bottom:22px}
+.card h2{font-family:Georgia,serif;color:var(--navy);margin:0 0 6px;font-size:22px}
+.kick{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin:0 0 4px}
+.lead{color:var(--grey);margin:0 0 16px}
+input[type=text]{width:100%;padding:14px;font-size:16px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+input[type=text]:focus{outline:none;border-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);border:none;border-radius:10px;padding:14px 22px;font-size:16px;font-weight:800;cursor:pointer;text-decoration:none;transition:.15s}
+.btn:hover{background:var(--goldl)}
+.btn.big{font-size:18px;padding:16px 24px;justify-content:center;width:100%}
+.btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--navy);font-weight:700}
+.row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.grow{flex:1 1 320px}
+.muted{color:var(--grey);font-size:13px}
+.hero{text-align:center;max-width:760px;margin:8px auto 22px}
+.hero h1{font-family:Georgia,serif;color:var(--navy);font-size:32px;line-height:1.15;margin:0 0 12px}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{color:var(--ink);font-size:16px;line-height:1.5;margin:0}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 0}
+.metric{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+.metric .num{font-family:Georgia,serif;font-size:30px;color:var(--navy);font-weight:700;line-height:1}
+.metric .lbl{font-size:11px;color:var(--grey);margin-top:7px;text-transform:uppercase;letter-spacing:.5px}
+.metric.bad{border-top:3px solid var(--concern)}.metric.warn{border-top:3px solid var(--elev)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-top:12px}
+table{width:100%;min-width:600px;border-collapse:collapse;font-size:13.5px}
+th{background:var(--navy);color:#fff;text-align:left;padding:9px 11px;font-size:11.5px;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+td.lvl,td.safe{font-size:12.5px;color:var(--grey)}
+.pill{font-size:11px;font-weight:800;padding:3px 9px;border-radius:20px;white-space:nowrap}
+.pill.good{background:#E8F3EC;color:var(--good)}.pill.elevated{background:#FBF1DE;color:var(--elev)}
+.pill.high{background:#FBE7D6;color:#C2611C}.pill.concern{background:#F8E6E6;color:var(--concern)}
+.exp h3{font-family:Georgia,serif;color:var(--gold);margin:16px 0 4px;font-size:16px}
+.exp p{margin:0 0 4px;line-height:1.5}
+.reco{background:var(--navy);color:#fff;border-radius:14px;padding:22px;margin-bottom:16px}
+.reco .k{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase}
+.reco h2{color:var(--goldl);font-family:Georgia,serif;margin:6px 0 8px;font-size:21px}
+.reco p{color:var(--cream);margin:0;line-height:1.5}
+.syscards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.syscard{border:1.4px solid var(--gold);background:var(--cream);border-radius:12px;border-top:4px solid var(--navy);padding:16px}
+.syscard .tag{font-size:10.5px;font-weight:800;letter-spacing:1px;color:var(--gold);text-transform:uppercase}
+.syscard h3{font-family:Georgia,serif;color:var(--navy);margin:4px 0 2px;font-size:16px}
+.syscard .short{font-style:italic;color:var(--grey);font-size:12.5px;margin:0 0 6px}
+.syscard p{font-size:13px;line-height:1.45;margin:0;color:var(--ink)}
+.alt{margin:6px 0;font-size:14px;line-height:1.5}
+.cta{background:var(--navy);color:#fff;border:none;text-align:center}
+.cta h2{color:#fff;font-size:24px}
+.cta p{color:var(--cream);max-width:620px;margin:8px auto}
+.cta .phone{font-size:22px;font-weight:800;color:#fff;text-decoration:none;display:inline-block;margin:6px 0}
+.cta .small{color:var(--goldl);font-size:13px}
+.trust{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;color:var(--gold);font-weight:700;font-size:12px;letter-spacing:.5px;margin-top:14px}
+footer{text-align:center;color:var(--grey);font-size:12px;padding:24px}
+.disc{color:var(--grey);font-size:11.5px;line-height:1.5;margin-top:14px}
+@media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.syscards{grid-template-columns:1fr}.hero h1{font-size:26px}}
+@media print{.noprint{display:none!important}.card{box-shadow:none;break-inside:avoid}body{background:#fff}}
+</style></head><body>
+<div class="topbar"><div class="wrap"><span><svg width="56" height="61" viewBox="0 0 92 100" xmlns="http://www.w3.org/2000/svg" aria-label="MSP Pure Water"><g><path d="M46,6 C41,10 27,15 15,20 C13,28 13,40 13,50 C13,64 22,73 46,82 C70,73 79,64 79,50 C79,40 79,28 77,20 C65,15 51,10 46,6 Z" fill="#C9A24B"/><path d="M46,6 C41,10 27,15 15,20 C13,28 13,40 13,50 C13,64 22,73 46,82 C70,73 79,64 79,50 C79,40 79,28 77,20 C65,15 51,10 46,6 Z" fill="#13243B" transform="translate(46,44) scale(0.93) translate(-46,-44)"/><path d="M46,6 C41,10 27,15 15,20 C13,28 13,40 13,50 C13,64 22,73 46,82 C70,73 79,64 79,50 C79,40 79,28 77,20 C65,15 51,10 46,6 Z" fill="none" stroke="#C9A24B" stroke-width="1" transform="translate(46,44) scale(0.84) translate(-46,-44)"/><path d="M46,22 C51,32 58,40 58,48 C58,56 53,60 46,60 C39,60 34,56 34,48 C34,40 41,32 46,22 Z" fill="#0C1A2C" stroke="#C9A24B" stroke-width="1.8"/><path d="M40,42 C36,45 36,51 39,55" fill="none" stroke="#DEC07A" stroke-width="1.1"/><rect x="22" y="72" width="48" height="18" rx="2" fill="#13243B" stroke="#C9A24B" stroke-width="1.3"/><text x="46" y="86" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="13" fill="#C9A24B" letter-spacing="1">MSP</text></g></svg></span>
+<div><h1>MSP Pure Water</h1><div class="sub">Free Home Water Report</div></div></div></div>
+<main>
+    <div class="hero"><h1>What's <em>Really</em> In Your Water?</h1>
+      <p>Get a free, instant water-quality report for your Twin Cities home — your hardness, what's in it,
+      where it comes from, and what it means. No sign-up, no waiting.</p></div>
+    <div class="card" style="max-width:680px;margin:0 auto">
+      <label for="q">Enter your city or ZIP code</label>
+      <div class="row">
+        <input class="grow" type="text" id="q" list="cl" placeholder="e.g. Brooklyn Park  ·  55125  ·  Eden Prairie" autofocus>
+        <datalist id="cl"><option value="Andover"><option value="Anoka"><option value="Apple Valley"><option value="Arden Hills"><option value="Belle Plaine"><option value="Blaine"><option value="Bloomington"><option value="Brooklyn Center"><option value="Brooklyn Park"><option value="Burnsville"><option value="Carver"><option value="Centerville"><option value="Champlin"><option value="Chanhassen"><option value="Chaska"><option value="Circle Pines"><option value="Columbia Heights"><option value="Coon Rapids"><option value="Corcoran"><option value="Cottage Grove"><option value="Crystal"><option value="Dayton"><option value="Deephaven"><option value="Eagan"><option value="East Bethel"><option value="Eden Prairie"><option value="Edina"><option value="Elko New Market"><option value="Excelsior"><option value="Falcon Heights"><option value="Farmington"><option value="Forest Lake"><option value="Fridley"><option value="Golden Valley"><option value="Ham Lake"><option value="Hastings"><option value="Hilltop"><option value="Hopkins"><option value="Hugo"><option value="Inver Grove Heights"><option value="Jordan"><option value="Lake Elmo"><option value="Lakeville"><option value="Lauderdale"><option value="Lino Lakes"><option value="Little Canada"><option value="Long Lake"><option value="Mahtomedi"><option value="Maple Grove"><option value="Maple Plain"><option value="Maplewood"><option value="Medina"><option value="Mendota Heights"><option value="Minneapolis"><option value="Minnetonka"><option value="Minnetrista"><option value="Mound"><option value="Mounds View"><option value="New Brighton"><option value="New Hope"><option value="New Prague"><option value="Newport"><option value="North Oaks"><option value="North Saint Paul"><option value="Norwood Young America"><option value="Oak Grove"><option value="Oak Park Heights"><option value="Oakdale"><option value="Orono"><option value="Osseo"><option value="Plymouth"><option value="Prior Lake"><option value="Ramsey"><option value="Richfield"><option value="Robbinsdale"><option value="Rogers"><option value="Rosemount"><option value="Roseville"><option value="Saint Paul"><option value="Saint Paul Park"><option value="Savage"><option value="Shakopee"><option value="Shoreview"><option value="Shorewood"><option value="South Saint Paul"><option value="Spring Lake Park"><option value="St. Anthony Village"><option value="St. Francis"><option value="St. Louis Park"><option value="Stillwater"><option value="Vadnais Heights"><option value="Victoria"><option value="Waconia"><option value="Watertown"><option value="Wayzata"><option value="West Saint Paul"><option value="White Bear Lake"><option value="Woodbury"></datalist>
+        <button class="btn" onclick="go()">See My Water Report &rarr;</button>
+      </div>
+      <p id="msg" class="muted" style="margin-top:10px">98 Twin Cities metro cities covered. Type your city name or ZIP and press the button.</p>
+    </div>
+    <div class="card cta">
+      <h2>Questions about your water?</h2>
+      <p>Talk it through with us — free, no pressure. We'll walk through your results and what (if anything) is worth doing.</p>
+      <a class="phone" href="tel:9529526206">&#128222; Call or text 952-952-6206</a>
+      <p class="small">info@msppurewaterco.com &nbsp;|&nbsp; msppurewaterco.com</p>
+    </div>
+    <script>
+      var ZIP={"55443": "brooklyn-park", "55444": "brooklyn-park", "55445": "brooklyn-park", "55429": "brooklyn-center", "55430": "brooklyn-center", "55428": "crystal", "55427": "new-hope", "55416": "st-louis-park", "55426": "st-louis-park", "55422": "golden-valley", "55423": "richfield", "55421": "columbia-heights", "55418": "minneapolis", "55424": "edina", "55435": "edina", "55436": "edina", "55439": "edina", "55420": "bloomington", "55425": "bloomington", "55431": "bloomington", "55437": "bloomington", "55438": "bloomington", "55432": "fridley", "55433": "coon-rapids", "55448": "coon-rapids", "55434": "blaine", "55449": "blaine", "55112": "new-brighton", "55126": "shoreview", "55113": "roseville", "55109": "maplewood", "55119": "maplewood", "55117": "maplewood", "55125": "woodbury", "55129": "woodbury", "55128": "oakdale", "55110": "white-bear-lake", "55337": "burnsville", "55306": "burnsville", "55122": "eagan", "55123": "eagan", "55121": "eagan", "55124": "apple-valley", "55044": "lakeville", "55068": "rosemount", "55076": "inver-grove-heights", "55077": "inver-grove-heights", "55075": "south-saint-paul", "55016": "cottage-grove", "55033": "hastings", "55378": "savage", "55379": "shakopee", "55372": "prior-lake", "55317": "chanhassen", "55318": "chaska", "55344": "eden-prairie", "55346": "eden-prairie", "55347": "eden-prairie", "55305": "minnetonka", "55343": "minnetonka", "55345": "minnetonka", "55311": "maple-grove", "55369": "maple-grove", "55316": "champlin", "55303": "anoka", "55304": "andover", "55441": "plymouth", "55442": "plymouth", "55446": "plymouth", "55447": "plymouth", "55401": "minneapolis", "55402": "minneapolis", "55403": "minneapolis", "55404": "minneapolis", "55405": "minneapolis", "55406": "minneapolis", "55407": "minneapolis", "55408": "minneapolis", "55409": "minneapolis", "55410": "minneapolis", "55411": "minneapolis", "55412": "minneapolis", "55413": "minneapolis", "55414": "minneapolis", "55415": "minneapolis", "55417": "minneapolis", "55419": "minneapolis", "55450": "minneapolis", "55454": "minneapolis", "55455": "minneapolis", "55101": "saint-paul", "55102": "saint-paul", "55103": "saint-paul", "55104": "saint-paul", "55105": "saint-paul", "55106": "saint-paul", "55107": "saint-paul", "55108": "saint-paul", "55114": "saint-paul", "55116": "saint-paul", "55130": "saint-paul"};
+      var CITY={"minneapolis": "minneapolis", "saint paul": "saint-paul", "columbia heights": "columbia-heights", "hilltop": "hilltop", "richfield": "richfield", "golden valley": "golden-valley", "robbinsdale": "robbinsdale", "saint anthony": "saint-anthony", "saint anthony village": "saint-anthony", "maplewood": "maplewood", "falcon heights": "falcon-heights", "lauderdale": "lauderdale", "west saint paul": "west-saint-paul", "bloomington": "bloomington", "brooklyn park": "brooklyn-park", "brooklyn center": "brooklyn-center", "crystal": "crystal", "new hope": "new-hope", "plymouth": "plymouth", "saint louis park": "st-louis-park", "edina": "edina", "fridley": "fridley", "coon rapids": "coon-rapids", "blaine": "blaine", "spring lake park": "spring-lake-park", "new brighton": "new-brighton", "shoreview": "shoreview", "arden hills": "arden-hills", "little canada": "little-canada", "north saint paul": "north-saint-paul", "vadnais heights": "vadnais-heights", "north oaks": "north-oaks", "roseville": "roseville", "white bear lake": "white-bear-lake", "mounds view": "mounds-view", "burnsville": "burnsville", "eagan": "eagan", "apple valley": "apple-valley", "lakeville": "lakeville", "rosemount": "rosemount", "farmington": "farmington", "inver grove heights": "inver-grove-heights", "south saint paul": "south-saint-paul", "mendota heights": "mendota-heights", "cottage grove": "cottage-grove", "hastings": "hastings", "woodbury": "woodbury", "oakdale": "oakdale", "lake elmo": "lake-elmo", "stillwater": "stillwater", "oak park heights": "oak-park-heights", "mahtomedi": "mahtomedi", "forest lake": "forest-lake", "hugo": "hugo", "newport": "newport", "saint paul park": "saint-paul-park", "savage": "savage", "shakopee": "shakopee", "prior lake": "prior-lake", "jordan": "jordan", "belle plaine": "belle-plaine", "new prague": "new-prague", "elko new market": "elko-new-market", "chanhassen": "chanhassen", "chaska": "chaska", "victoria": "victoria", "waconia": "waconia", "carver": "carver", "watertown": "watertown", "norwood young america": "norwood-young-america", "minnetonka": "minnetonka", "hopkins": "hopkins", "wayzata": "wayzata", "orono": "orono", "long lake": "long-lake", "mound": "mound", "minnetrista": "minnetrista", "shorewood": "shorewood", "excelsior": "excelsior", "deephaven": "deephaven", "eden prairie": "eden-prairie", "maple grove": "maple-grove", "champlin": "champlin", "osseo": "osseo", "dayton": "dayton", "rogers": "rogers", "corcoran": "corcoran", "medina": "medina", "maple plain": "maple-plain", "anoka": "anoka", "andover": "andover", "ramsey": "ramsey", "ham lake": "ham-lake", "lino lakes": "lino-lakes", "circle pines": "circle-pines", "centerville": "centerville", "east bethel": "east-bethel", "oak grove": "oak-grove", "saint francis": "saint-francis", "stpaul": "saint-paul", "minneapolis mn": "minneapolis", "mpls": "minneapolis"};
+      function norm(s){return s.toLowerCase().replace(/\./g,'').replace(/\bst\b/g,'saint').replace(/\s+/g,' ').trim();}
+      function resolve(raw){
+        raw=(raw||'').trim(); if(!raw) return null;
+        var m=raw.match(/\b(\d{5})\b/); if(m){return ZIP[m[1]]||null;}
+        var n=norm(raw); if(CITY[n]) return CITY[n];
+        var keys=Object.keys(CITY).sort(function(a,b){return b.length-a.length;});
+        for(var i=0;i<keys.length;i++){var k=keys[i]; if(k && new RegExp('\\b'+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b').test(n)) return CITY[k];}
+        return null;
+      }
+      function go(){
+        var s=resolve(document.getElementById('q').value);
+        if(s){window.location.href='reports/'+s+'.html';}
+        else{document.getElementById('msg').innerHTML='We don\'t have detailed data for that one yet — call or text us at <b>952-952-6206</b> and we\'ll pull it for you.';}
+      }
+      document.getElementById('q').addEventListener('keydown',function(e){if(e.key==='Enter')go();});
+    </script>
+    </main>
+<footer>MSP Pure Water &middot; Minneapolis – Saint Paul Metro &middot; 952-952-6206</footer>
+</body></html>

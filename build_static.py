@@ -18,6 +18,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from water_report import knowledge_base as kb
 
+# Custom domain for GitHub Pages (written to docs/CNAME so it survives rebuilds).
+CUSTOM_DOMAIN = "reports.msppurewaterco.com"
 DOCS = os.path.join(HERE, "docs")
 REPORTS = os.path.join(DOCS, "reports")
 os.makedirs(REPORTS, exist_ok=True)
@@ -309,6 +311,10 @@ def main():
                      "Free instant Twin Cities water-quality report: hardness, contaminants, source, and what it means."))
     # prevent GitHub Pages Jekyll processing
     open(os.path.join(DOCS, ".nojekyll"), "w").close()
+    # custom domain for GitHub Pages
+    if CUSTOM_DOMAIN:
+        with open(os.path.join(DOCS, "CNAME"), "w", encoding="utf-8") as f:
+            f.write(CUSTOM_DOMAIN + "\n")
     print(f"Built {built} city pages + landing into docs/  ({len(zip_to_slug)} ZIPs, {len(city_to_slug)} name keys mapped)")
 
 

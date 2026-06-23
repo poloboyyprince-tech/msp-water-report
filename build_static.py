@@ -201,8 +201,10 @@ def render_report(profile):
     hard_cls = "bad" if h["gpg"] > 10.5 else "warn"
     is_hard = h["gpg"] >= 7
 
-    src_short = {"surface": "River Water", "groundwater": "Well Water",
-                 "groundwater_soft": "Well Water", "blended": "Mixed", "well": "Private Well"}.get(p["source_type"], "City Water")
+    # It's all treated municipal water — "City Water" for everyone. Only a genuine
+    # private well would say otherwise. (The detailed line below still notes whether
+    # the city draws it from wells or the river.)
+    src_short = "Private Well" if p["source_type"] == "well" else "City Water"
     metrics = f"""<div class="cards">
       <div class="metric {hard_cls}"><div class="num">{h['gpg']}<span style="font-size:14px"> gpg</span></div><div class="lbl">Water Hardness</div></div>
       <div class="metric {hard_cls}"><div class="num" style="font-size:21px">{esc(h['label'])}</div><div class="lbl">How hard that is</div></div>

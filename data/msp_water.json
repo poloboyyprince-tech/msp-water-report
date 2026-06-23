@@ -25,90 +25,55 @@
   "concern_templates": {
     "surface": [
       {
-        "key": "tthm",
-        "level": "0.030–0.060 ppm",
-        "rating": "elevated"
+        "key": "chlorine",
+        "level": "Added by your city to kill germs",
+        "rating": "normal"
       },
       {
-        "key": "haa5",
-        "level": "0.015–0.035 ppm",
-        "rating": "elevated"
+        "key": "tthm",
+        "level": "Present, within EPA safe limits",
+        "rating": "normal"
       },
       {
         "key": "lead",
-        "level": "0.003–0.008 ppm",
+        "level": "Only if your home has old pipes",
         "rating": "elevated"
-      },
-      {
-        "key": "chlorine",
-        "level": "1.5–3.0 ppm",
-        "rating": "elevated"
-      },
-      {
-        "key": "chloride",
-        "level": "30–60 ppm",
-        "rating": "normal"
       }
     ],
     "groundwater": [
       {
-        "key": "manganese",
-        "level": "0.05–0.20 ppm",
-        "rating": "concerning"
-      },
-      {
-        "key": "iron",
-        "level": "0.3–1.0 ppm",
-        "rating": "high"
-      },
-      {
-        "key": "radium",
-        "level": "2–4 pCi/L",
+        "key": "chlorine",
+        "level": "Added by your city to kill germs",
         "rating": "normal"
       },
       {
         "key": "chloride",
-        "level": "30–60 ppm",
-        "rating": "normal"
-      },
-      {
-        "key": "nitrate",
-        "level": "1–4 ppm",
+        "level": "Slowly rising from road salt",
         "rating": "normal"
       }
     ],
     "groundwater_soft": [
       {
-        "key": "manganese",
-        "level": "0.02–0.06 ppm",
-        "rating": "elevated"
+        "key": "chlorine",
+        "level": "Added by your city to kill germs",
+        "rating": "normal"
       },
       {
         "key": "sodium",
-        "level": "60–120 ppm",
-        "rating": "high"
-      },
-      {
-        "key": "chloride",
-        "level": "40–80 ppm",
-        "rating": "normal"
-      },
-      {
-        "key": "radium",
-        "level": "2–4 pCi/L",
-        "rating": "normal"
+        "level": "Added when the city softens the water",
+        "rating": "elevated"
       }
     ]
   },
   "pfas_entry": {
     "key": "pfas",
-    "level": "10–35 ppt",
+    "level": "Found in your area's groundwater",
     "rating": "concerning"
   },
   "blended_extra": {
     "key": "tthm",
-    "level": "0.025–0.050 ppm",
-    "rating": "elevated"
+    "level": "Present, within EPA safe limits",
+    "rating": "normal"
   },
   "east_metro_pfas_zips": [
     "55125",

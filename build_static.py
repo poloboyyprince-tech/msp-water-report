@@ -80,7 +80,10 @@ td.lvl,td.safe{font-size:12.5px;color:var(--grey)}
 .pill.good{background:#E8F3EC;color:var(--good)}.pill.elevated{background:#FBF1DE;color:var(--elev)}
 .pill.high{background:#FBE7D6;color:#C2611C}.pill.concern{background:#F8E6E6;color:var(--concern)}
 .exp h3{font-family:Georgia,serif;color:var(--gold);margin:16px 0 4px;font-size:16px}
-.exp p{margin:0 0 4px;line-height:1.5}
+.exp p{margin:0 0 8px;line-height:1.6}
+.exp ul{margin:6px 0 10px;padding-left:20px;line-height:1.65}
+.exp li{margin:3px 0}
+.help{background:var(--cream);border-left:4px solid var(--gold);padding:11px 14px;border-radius:0 8px 8px 0;margin:12px 0 0!important;line-height:1.55}
 .reco{background:var(--navy);color:#fff;border-radius:14px;padding:22px;margin-bottom:16px}
 .reco .k{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase}
 .reco h2{color:var(--goldl);font-family:Georgia,serif;margin:6px 0 8px;font-size:21px}
@@ -128,111 +131,166 @@ def page(title, body, description=""):
 </body></html>"""
 
 
+EDU = {
+    "chlorine": {
+        "title": "Chlorine — Why Your Water Can Smell Like a Pool",
+        "what": "Your city adds a little chlorine to your water on purpose. It's a disinfectant that kills germs and keeps the water safe on its long trip through the pipes to your home. That part is genuinely a good thing.",
+        "notice": ["A “pool water” smell or taste, especially from the cold tap",
+                   "Dry skin and hair after showers",
+                   "Coffee, tea, or ice that taste a little “off”"],
+        "honest": "Chlorine in city water is safe to drink — it's doing its job. Most people just don't love the taste, or what it does to their skin and hair.",
+        "help": "Our Whole Home Water Filtration System runs your water through high-quality coconut-shell carbon that grabs the chlorine right at your house. Your water tastes and smells clean, and every shower is gentler on your skin and hair.",
+    },
+    "tthm": {
+        "title": "Disinfection Byproducts — Tiny Leftovers From Cleaning the Water",
+        "what": "When chlorine mixes with natural bits of leaves and soil in river water, it can make tiny amounts of byproducts (scientists call them TTHMs and HAA5s).",
+        "honest": "Your city keeps these below the EPA's legal safety limits, so your water is safe to drink. Even so, a lot of families like to lower them further in the water they actually drink and cook with.",
+        "help": "Our reverse-osmosis drinking system reduces these at your kitchen sink, so the water your family drinks is about as clean as water gets.",
+    },
+    "lead": {
+        "title": "Lead — It's About Your Home's Pipes, Not the City",
+        "what": "Here's the honest truth: there is no lead in the water your city sends out. But if your house was built before the mid-1980s, the older pipes, solder, or fixtures inside the home can add small amounts of lead while the water sits in them overnight.",
+        "honest": "So this one is really about your home, not your city. If your house is newer, this probably isn't an issue for you at all.",
+        "help": "If you do have older plumbing, the simplest peace-of-mind fix is a reverse-osmosis system at your kitchen sink — it removes lead from the water you drink and cook with.",
+    },
+    "chloride": {
+        "title": "Saltiness Is Slowly Rising (From Road Salt)",
+        "what": "Every winter, road salt washes off the streets into our lakes and groundwater. Year by year, that's slowly making Twin Cities water a little saltier (it's called chloride). Right now it's still at safe levels.",
+        "honest": "This isn't an emergency — it's a slow trend worth knowing about, and it can't be removed at the city plant.",
+        "help": "If you'd like it out of your drinking water, our reverse-osmosis system takes care of it.",
+    },
+    "sodium": {
+        "title": "Sodium — A Side Effect of the City Softening Your Water",
+        "what": "Your city softens your water for you, which is a nice perk. But the usual way to soften water adds a little sodium (salt) to it along the way.",
+        "honest": "For most people that's perfectly fine. But if anyone in your home watches their salt for health reasons, it's good to know.",
+        "help": "Our reverse-osmosis drinking system takes that sodium back out of your drinking water — so you get the best of both worlds.",
+    },
+    "pfas": {
+        "title": "PFAS — “Forever Chemicals” in the East Metro",
+        "what": "PFAS are man-made chemicals that don't break down in nature — that's why people call them “forever chemicals.” In parts of the East Metro, they got into the groundwater years ago from old 3M manufacturing.",
+        "honest": "This is a real, documented issue in your area — not something we made up. Cities are working on it, but the surest way to keep PFAS out of your family's drinking water is to filter it right at your tap.",
+        "help": "Reverse osmosis is one of the most effective ways to remove PFAS. Our drinking system gives you water you can feel good about.",
+    },
+}
+
+
 def render_report(profile):
     p = profile
     h = p["hardness"]
-    n = len(p["flagged"])
     city = esc(p["display"])
-    score_cls = "bad" if p["score"] < 70 else "warn"
+    co_name = esc(CO["name"])
     hard_cls = "bad" if h["gpg"] > 10.5 else "warn"
+    is_hard = h["gpg"] >= 7
 
-    # metric cards
     metrics = f"""<div class="cards">
-      <div class="metric {score_cls}"><div class="num">{p['score']}</div><div class="lbl">Water Score &middot; {esc(p['grade'])}</div></div>
-      <div class="metric {hard_cls}"><div class="num">{h['gpg']}<span style="font-size:14px"> gpg</span></div><div class="lbl">{esc(h['label'])} &middot; {h['mgl']} ppm</div></div>
-      <div class="metric warn"><div class="num">{p['tds']}</div><div class="lbl">Est. TDS (ppm)</div></div>
-      <div class="metric {'bad' if n>=4 else 'warn'}"><div class="num">{n}</div><div class="lbl">Items Above Ideal</div></div>
+      <div class="metric {hard_cls}"><div class="num">{h['gpg']}<span style="font-size:14px"> gpg</span></div><div class="lbl">Water Hardness</div></div>
+      <div class="metric {hard_cls}"><div class="num" style="font-size:21px">{esc(h['label'])}</div><div class="lbl">How hard that is</div></div>
+      <div class="metric warn"><div class="num">{p['tds']}</div><div class="lbl">Dissolved minerals (ppm)</div></div>
+      <div class="metric" style="border-top:3px solid var(--good)"><div class="num" style="color:var(--good);font-size:25px">Safe &#10003;</div><div class="lbl">Meets EPA standards</div></div>
     </div>"""
 
-    pfas = ('<div style="margin-top:10px;color:var(--concern);font-weight:700">East Metro PFAS zone — '
-            'within the documented 3M groundwater contamination area.</div>') if p["pfas_zone"] else ""
+    safe_card = f"""<div class="card"><p class="kick">First, the important part</p>
+      <h2>Is {city}'s Water Safe to Drink? Yes.</h2>
+      <p>Your city treats and tests your water around the clock, and it meets every federal and state
+      safety standard. This report isn't here to scare you. It's here to explain, in plain English,
+      what's in your water &mdash; and the difference between water that's <b>safe</b> and water that's
+      <b>soft, clean, and great-tasting</b>. That gap is where we come in.</p></div>"""
 
-    # contaminant table
-    rows = ""
-    for c in p["table_rows"]:
-        cls = TIER_CLASS.get(c["tier"], "elevated")
-        rows += (f'<tr><td><strong>{esc(c["name"])}</strong></td>'
-                 f'<td class="lvl">{esc(c.get("level") or "—")}</td>'
-                 f'<td class="safe">{esc(c.get("safe") or "—")}</td>'
-                 f'<td><span class="pill {cls}">{esc(c["rating_label"])}</span></td></tr>')
-    table = f"""<div class="tablewrap"><table>
-      <thead><tr><th>What's in your water</th><th>Your est. level</th><th>Normal / safe level</th><th>Rating</th></tr></thead>
-      <tbody>{rows}</tbody></table></div>
-      <p class="muted" style="margin-top:10px">Levels are typical estimates for your area (gpg = grains per gallon,
-      ppm = parts per million). Ratings are benchmarked against EPA limits &amp; MN Department of Health guidance.</p>"""
+    if is_hard:
+        hard_card = f"""<div class="card exp"><p class="kick">Your water's #1 issue</p>
+          <h2>Hard Water &mdash; and {city} Has a Lot of It</h2>
+          <p>“Hard” water just means your water carries a lot of dissolved minerals &mdash; mostly
+          calcium and magnesium &mdash; that it soaks up from rock deep underground. Minnesota has some of
+          the hardest water in the entire country, and {city} is right up there at about
+          <b>{h['gpg']} grains per gallon ({esc(h['label'])})</b>.</p>
+          <p><b>Here's what hard water does around your home:</b></p>
+          <ul>
+            <li>White, crusty buildup on faucets, showerheads, and glass</li>
+            <li>Spots and film on dishes and glasses, even after the dishwasher</li>
+            <li>Soap and shampoo that won't lather, so you use more of everything</li>
+            <li>Dry, itchy skin and dull, tangly hair</li>
+            <li>Stiff, scratchy laundry that wears out faster</li>
+            <li>Scale building up inside your water heater and pipes</li>
+          </ul>
+          <p>That last one quietly costs you the most: the mineral scale makes your water heater and
+          appliances work harder, so they wear out years sooner.</p>
+          <p class="help"><b>How we help:</b> This is exactly what our Whole Home Water Filtration System
+          is built for. It removes the hardness minerals before the water reaches any tap &mdash; so you get
+          softer skin and hair, spot-free dishes, far less soap use, and appliances that last much longer.</p></div>"""
+    else:
+        hard_card = f"""<div class="card exp"><p class="kick">The good news</p>
+          <h2>Your Water Is on the Softer Side</h2>
+          <p>At about <b>{h['gpg']} grains per gallon ({esc(h['label'])})</b>, {city}'s water is softer than
+          most of the metro &mdash; so you'll see less of the crusty buildup and spotting that hard-water
+          towns deal with. For you, the biggest improvements are at the kitchen tap (taste) and in the shower.</p>
+          <p class="help"><b>How we help:</b> Our Whole Home Water Filtration System polishes out the
+          chlorine taste and protects your home, and our reverse-osmosis drinking system makes your
+          drinking and cooking water crisp and clean.</p></div>"""
 
-    # concerns explained
-    explain = p["health_concerns"] + [c for c in p["elevated"]
-                                      if c["key"] in ("tthm", "haa5", "manganese", "chlorine", "iron", "sodium")]
-    seen, blocks = set(), ""
-    for c in explain:
-        if c["key"] in seen:
+    topic_cards = ""
+    for c in p["concerns"]:
+        e = EDU.get(c["key"])
+        if not e:
             continue
-        seen.add(c["key"])
-        meta = []
-        if c.get("sources"):
-            meta.append(f"<b>Where it comes from:</b> {esc(c['sources'])}")
-        if c.get("aesthetic"):
-            meta.append(f"<b>What you notice:</b> {esc(c['aesthetic'])}")
-        blocks += (f'<h3>{esc(c["name"])}</h3>'
-                   + (f'<p>{esc(c["health_effects"])}</p>' if c.get("health_effects") else "")
-                   + (f'<p class="muted">{" &middot; ".join(meta)}</p>' if meta else ""))
-    explain_card = f'<div class="card exp"><p class="kick">Why it matters</p><h2>The Concerns, Explained</h2>{blocks}</div>' if blocks else ""
+        notice = ("<ul>" + "".join(f"<li>{esc(x)}</li>" for x in e["notice"]) + "</ul>") if e.get("notice") else ""
+        honest = f'<p class="muted">{esc(e["honest"])}</p>' if e.get("honest") else ""
+        topic_cards += (f'<div class="card exp"><h2 style="font-size:19px">{esc(e["title"])}</h2>'
+                        f'<p>{esc(e["what"])}</p>{notice}{honest}'
+                        f'<p class="help"><b>How we help:</b> {esc(e["help"])}</p></div>')
 
-    # recommendation
     rec = p["recommendation"]
     sysd = CONFIG["systems"][rec["primary_key"]]
     ro = CONFIG["drinking"][rec["ro_default"]]
-    package = f"{sysd['name']} + {ro['name']}"
     alts = ""
     for k, note in rec["alternatives"]:
         if k in CONFIG["systems"]:
-            alts += f'<p class="alt"><b style="color:var(--navy)">{esc(CONFIG["systems"][k]["name"])}</b> — {note}</p>'
+            alts += f'<p class="alt"><b style="color:var(--navy)">{esc(CONFIG["systems"][k]["name"])}</b> &mdash; {note}</p>'
     reco = f"""<div class="card">
-      <div class="reco"><div class="k">Recommended for your water</div><h2>{esc(package)}</h2><p>{esc(rec['reason'])}</p></div>
+      <div class="reco"><div class="k">How {co_name} helps your home</div>
+        <h2>{esc(sysd['name'])} + {esc(ro['name'])}</h2><p>{esc(rec['reason'])}</p></div>
       <div class="syscards">
-        <div class="syscard"><div class="tag">Recommended — Whole Home</div><h3>{esc(sysd['name'])}</h3>
-          <p class="short">{esc(sysd.get('short',''))}</p><p>{esc(sysd['blurb'])}</p></div>
-        <div class="syscard"><div class="tag">Recommended — Drinking Water</div><h3>{esc(ro['name'])}</h3>
-          <p class="short">Final-stage drinking &amp; cooking water</p><p>{esc(ro['blurb'])}</p></div>
+        <div class="syscard"><div class="tag">For every tap in the house</div><h3>{esc(sysd['name'])}</h3>
+          <p>{esc(sysd['blurb'])}</p></div>
+        <div class="syscard"><div class="tag">For drinking &amp; cooking</div><h3>{esc(ro['name'])}</h3>
+          <p>{esc(ro['blurb'])}</p></div>
       </div>
-      <p class="kick" style="margin-top:18px">Also available</p>{alts}</div>"""
+      <p class="kick" style="margin-top:18px">Other options, depending on your home</p>{alts}</div>"""
 
-    # CTA
     offer = CONFIG["offer"]
     phone_digits = re.sub(r"[^0-9]", "", CO["phone"])
     badges = " &nbsp;&nbsp; ".join("&#10022; " + esc(b) for b in CONFIG.get("trust_badges", []))
     cta = f"""<div class="card cta">
-      <h2>{esc(offer['headline'])}</h2>
-      <p>{esc(offer['subhead'])}</p>
+      <h2>{esc(offer['headline'])}</h2><p>{esc(offer['subhead'])}</p>
       <a class="phone" href="tel:{phone_digits}">&#128222; Call or text {esc(CO['phone'])}</a>
       <p class="small">{esc(CO['email'])} &nbsp;|&nbsp; {esc(CO['website'])} &middot; <i>{esc(offer['guarantee'])}</i></p>
       <div class="trust">{badges}</div></div>"""
 
-    prov_lbl = "Water provider (estimated)" if p["match"] in ("mn_region", "national") else "Water provider"
-    disclaimer = (f'<p class="disc">Educational estimate by {esc(CO["name"])}. Levels are typical regional values '
-                  f'from public utility reports, the U.S. EPA, USGS and the Minnesota Department of Health — not a '
-                  f'measurement of your individual tap. We\'ll review the specifics on a free water consultation.</p>')
+    pfas_note = (f'<p style="color:var(--concern);font-weight:700;margin-top:8px">Heads up: your area is '
+                 f'inside the documented East Metro PFAS zone &mdash; see the section below.</p>') if p["pfas_zone"] else ""
+
+    disclaimer = (f'<p class="disc">Prepared by {co_name} as a free educational service. Hardness and '
+                  f'source come from your city’s published water reports, the Minnesota Department of '
+                  f'Health, USGS, and the U.S. EPA. Exact numbers vary by home and season — we’re '
+                  f'happy to go over your specifics on a free, no-pressure call.</p>')
 
     body = f"""
     <div class="hero"><h1>What's <em>Really</em> In {city}'s Water?</h1>
-      <p>{esc(p['verdict'])}</p></div>
-    <div class="noprint" style="text-align:center;margin:-8px 0 18px"><a class="btn ghost" href="../index.html">&larr; Check another address</a>
-      &nbsp; <a class="btn" href="#" onclick="window.print();return false">&#128424; Print / Save as PDF</a></div>
-    <div class="card"><p class="kick">Your water at a glance</p><h2>The Bottom Line</h2>
+      <p>A plain-English look at your tap water &mdash; what's in it, where it comes from, and what's actually worth doing about it.</p></div>
+    <div class="noprint" style="text-align:center;margin:-6px 0 18px">
+      <a class="btn ghost" href="../index.html">&larr; Check another city</a> &nbsp;
+      <a class="btn" href="#" onclick="window.print();return false">&#128424; Print / Save as PDF</a></div>
+    {safe_card}
+    <div class="card"><p class="kick">Your water at a glance</p><h2>The Quick Numbers</h2>
       {metrics}
-      <p style="margin-top:16px"><b>{prov_lbl}:</b> {esc(p['provider'])}<br>
-      <b>Where your water comes from:</b> {esc(p['source_detail'])}</p>{pfas}</div>
-    <div class="card"><p class="kick">The full breakdown</p><h2>What's In Your Water</h2>
-      <p class="lead" style="margin-bottom:0">These are the issues in your water that affect your home — and every one is something
-      an {esc(CO['name'])} system removes or reduces.</p>{table}</div>
-    {explain_card}
+      <p style="margin-top:16px"><b>Where your water comes from:</b> {esc(p['source_detail'])}</p>{pfas_note}</div>
+    {hard_card}
+    {topic_cards}
     {reco}
     {cta}
     {disclaimer}
     """
-    desc = f"Water quality report for {p['display']}, MN — hardness {h['gpg']} gpg, {p['source_detail']}"
-    return page(f"{p['display']} Water Report — {CO['name']}", body, desc)
+    desc = f"Free plain-English water report for {p['display']}, MN: hardness {h['gpg']} gpg, {p['source_detail']}"
+    return page(f"{p['display']} Water Report — {co_name}", body, desc)
 
 
 def build_profile_for(key):

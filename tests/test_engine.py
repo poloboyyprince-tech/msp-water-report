@@ -124,13 +124,21 @@ class TestRatings(unittest.TestCase):
         self.assertEqual(kb._hardness_rating(9), "high")
         self.assertEqual(kb._hardness_rating(20), "concerning")
 
-    def test_levels_use_real_units(self):
+    def test_hardness_uses_real_units(self):
+        # Hardness is the one real, measured number — it carries units.
         prof, _ = profile_for("Brooklyn Park")
         self.assertIn("gpg", prof["hardness_row"]["level"])
         self.assertIn("ppm", prof["tds_row"]["level"])
-        for c in prof["concerns"]:
-            self.assertTrue(re.search(r"(ppm|ppb|ppt|pCi/L|gpg)", c["level"]),
-                            f"{c['name']} level missing units: {c['level']}")
+        for c in prof["concerns"]:  # honest plain-language labels, not fabricated numbers
+            self.assertTrue(c["level"].strip(), f"{c['name']} has no label")
+
+    def test_no_fabricated_iron_manganese_on_city_water(self):
+        # Truthful model: city utilities treat iron/manganese — don't auto-flag them.
+        for q in ("Brooklyn Park", "Lakeville", "Plymouth", "Woodbury", "Minneapolis"):
+            prof, _ = profile_for(q)
+            keys = {c["key"] for c in prof["concerns"]}
+            self.assertNotIn("iron", keys, q)
+            self.assertNotIn("manganese", keys, q)
 
     def test_every_row_has_safe_level(self):
         prof, _ = profile_for("Brooklyn Park")
@@ -170,19 +178,18 @@ class TestRatings(unittest.TestCase):
 
 # ----------------------------------------------------- system recommendations
 class TestRecommendations(unittest.TestCase):
-    def test_over_20_gpg_gets_dual_tank_city(self):
-        # User rule: city water over 20 gpg -> Dual-Tank City Water System
-        for q in ("Brooklyn Park", "Maple Grove", "Plymouth", "New Brighton"):
+    def test_everyone_gets_whole_home_filtration(self):
+        # Current rule: city water -> Whole Home Water Filtration System for everyone,
+        # regardless of hardness (dual-tank is a large-household upsell only).
+        for q in ("Brooklyn Park", "Maple Grove", "Plymouth", "Minneapolis", "Eden Prairie"):
             prof, _ = profile_for(q)
-            self.assertGreater(prof["hardness"]["gpg"], 20)
-            self.assertEqual(prof["recommendation"]["primary_key"], "dual_tank_city", q)
-
-    def test_20_and_under_gets_whole_home_filtration(self):
-        # User rule: 20 gpg and under -> Whole Home Water Filtration System
-        for q in ("Minneapolis", "Lakeville", "Eden Prairie", "Woodbury", "Edina"):
-            prof, _ = profile_for(q)
-            self.assertLessEqual(prof["hardness"]["gpg"], 20)
             self.assertEqual(prof["recommendation"]["primary_key"], "standard_mixed_bed", q)
+
+    def test_dual_tank_is_large_household_upsell_only(self):
+        prof, _ = profile_for("Brooklyn Park")
+        alt = dict(prof["recommendation"]["alternatives"])
+        self.assertIn("dual_tank_city", alt)
+        self.assertRegex(alt["dual_tank_city"].lower(), r"resident|bathroom")
 
     def test_whole_home_system_is_named_filtration_not_softener(self):
         self.assertEqual(CONFIG["systems"]["standard_mixed_bed"]["name"],

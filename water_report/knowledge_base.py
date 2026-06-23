@@ -307,29 +307,32 @@ def recommend_systems(source_type, gpg, concerns, pfas):
     """Pick the MSP system that best fits this water. Returns keys + reasons;
     the report pulls display names/blurbs from config.
 
-    Rule (city/municipal water): over 20 gpg -> Dual-Tank City Water System;
-    20 gpg and under -> Whole Home Water Filtration System. Dual-tank/peroxide are
-    for private wells. Salt-free + RO are offered as alternatives.
+    Rule: city/municipal water -> Whole Home Water Filtration System for everyone.
+    Dual-Tank City is an UPSELL only for large homes (6+ full-time residents AND
+    5+ bathrooms). Dual-tank/peroxide are for private wells. Salt-free + RO are
+    alternatives. Plain, honest language.
     """
     ro_default = "ro_tank"
-    if gpg > 20:
-        primary = "dual_tank_city"
-        reason = (f"At {gpg} gpg this is {hardness_label(gpg).lower()} city water — our Dual-Tank "
-                  "City Water System pairs a high-capacity softening/conditioning tank with a "
-                  "dedicated carbon tank to handle the hardness and chlorine, with reverse osmosis "
-                  "for your drinking water.")
+    primary = "standard_mixed_bed"  # Whole Home Water Filtration System
+    if gpg >= 7:
+        reason = (f"Your water is {hardness_label(gpg).lower()} (about {gpg} grains per gallon). "
+                  "Our Whole Home Water Filtration System softens it and filters out the chlorine "
+                  "taste for every tap in the house, and we add a reverse-osmosis drinking system "
+                  "at your kitchen sink for clean, great-tasting water.")
     else:
-        primary = "standard_mixed_bed"  # Whole Home Water Filtration System
-        reason = (f"City water at {gpg} gpg — our Whole Home Water Filtration System reduces the "
-                  "hard-water scale and strips chlorine/chloramine taste throughout your home, with "
-                  "reverse osmosis at the kitchen tap.")
+        reason = (f"Your water is fairly soft for the metro (about {gpg} grains per gallon) and the "
+                  "city treats it well — so the biggest wins are at the tap. Our Whole Home Water "
+                  "Filtration System removes the chlorine taste throughout the house, and a "
+                  "reverse-osmosis drinking system gives you clean, great-tasting water to drink and cook with.")
 
     alternatives = [
-        ("salt_free", "Prefer no salt or on a low-sodium diet? Our Salt-Free Conditioning + Carbon "
-         "system keeps your minerals and adds zero sodium."),
-        ("dual_tank_well", "On a private well? Our Dual-Tank Well system uses chemical-free "
-         "air-injection to remove iron, sulfur and manganese — with a hydrogen-peroxide system for "
-         "heavy iron & sulfur."),
+        ("dual_tank_city", "Big household? For homes with <b>6 or more full-time residents and 5 or "
+         "more bathrooms</b>, we step up to the Dual-Tank system so you never run short on softened, "
+         "filtered water."),
+        ("salt_free", "Want no salt at all? Our Salt-Free Conditioning + Carbon system fights scale "
+         "and filters your water without adding any sodium."),
+        ("dual_tank_well", "On a private well (not city water)? We have dedicated well systems that "
+         "remove iron, sulfur and manganese — the stuff that causes orange stains and rotten-egg smell."),
     ]
     return {"primary_key": primary, "reason": reason, "ro_default": ro_default,
             "alternatives": alternatives}

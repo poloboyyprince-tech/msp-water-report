@@ -104,7 +104,26 @@ td.lvl,td.safe{font-size:12.5px;color:var(--grey)}
 footer{text-align:center;color:var(--grey);font-size:12px;padding:24px}
 .disc{color:var(--grey);font-size:11.5px;line-height:1.5;margin-top:14px}
 @media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}.syscards{grid-template-columns:1fr}.hero h1{font-size:26px}}
-@media print{.noprint{display:none!important}.card{box-shadow:none;break-inside:avoid}body{background:#fff}}
+@media print{
+  @page{margin:0.45in}
+  .noprint{display:none!important}
+  body{background:#fff;font-size:10.5px;color:#000}
+  main{margin:0;padding:0;max-width:100%}
+  .topbar{padding:7px 0;border-bottom-width:2px}
+  .topbar h1{font-size:14px}.topbar .sub{font-size:9px}
+  .card{box-shadow:none;border:none;padding:4px 0 2px;margin:0 0 7px;break-inside:avoid}
+  .card h2{font-size:14px;margin:0 0 2px}.kick{font-size:8.5px;margin:0 0 2px}
+  .hero{margin:4px auto 6px}.hero h1{font-size:17px;margin:0 0 4px}.hero p{font-size:10.5px}
+  .cards{gap:7px}.metric{padding:7px}.metric .num{font-size:19px}.metric .lbl{font-size:8.5px}
+  .exp p{margin:0 0 3px;line-height:1.3}.exp ul{margin:2px 0 4px;line-height:1.3}.exp li{margin:1px 0}
+  .help{padding:6px 9px;margin:5px 0 0!important;line-height:1.3}
+  .reco{padding:11px;margin-bottom:8px}.reco h2{font-size:14px}.reco p{line-height:1.3}
+  .syscards{gap:8px}.syscard{padding:8px}.syscard h3{font-size:13px}.syscard p{font-size:10px;line-height:1.25}
+  .alt{font-size:10px;margin:3px 0;line-height:1.3}
+  .cta{padding:12px}.cta h2{font-size:15px}.cta p{font-size:10px;margin:4px auto}.cta .phone{font-size:15px;margin:2px 0}.cta .small{font-size:9px}
+  .trust{font-size:9px;gap:10px;margin-top:8px}
+  footer{padding:7px;font-size:8.5px}.disc{font-size:8px;margin-top:8px}
+}
 """
 
 TIER_CLASS = {"good": "good", "elevated": "elevated", "high": "high", "concern": "concern"}
@@ -182,19 +201,21 @@ def render_report(profile):
     hard_cls = "bad" if h["gpg"] > 10.5 else "warn"
     is_hard = h["gpg"] >= 7
 
+    src_short = {"surface": "River Water", "groundwater": "Well Water",
+                 "groundwater_soft": "Well Water", "blended": "Mixed", "well": "Private Well"}.get(p["source_type"], "City Water")
     metrics = f"""<div class="cards">
       <div class="metric {hard_cls}"><div class="num">{h['gpg']}<span style="font-size:14px"> gpg</span></div><div class="lbl">Water Hardness</div></div>
       <div class="metric {hard_cls}"><div class="num" style="font-size:21px">{esc(h['label'])}</div><div class="lbl">How hard that is</div></div>
       <div class="metric warn"><div class="num">{p['tds']}</div><div class="lbl">Dissolved minerals (ppm)</div></div>
-      <div class="metric" style="border-top:3px solid var(--good)"><div class="num" style="color:var(--good);font-size:25px">Safe &#10003;</div><div class="lbl">Meets EPA standards</div></div>
+      <div class="metric" style="border-top:3px solid var(--gold)"><div class="num" style="font-size:18px">{src_short}</div><div class="lbl">Your water source</div></div>
     </div>"""
 
-    safe_card = f"""<div class="card"><p class="kick">First, the important part</p>
-      <h2>Is {city}'s Water Safe to Drink? Yes.</h2>
-      <p>Your city treats and tests your water around the clock, and it meets every federal and state
-      safety standard. This report isn't here to scare you. It's here to explain, in plain English,
-      what's in your water &mdash; and the difference between water that's <b>safe</b> and water that's
-      <b>soft, clean, and great-tasting</b>. That gap is where we come in.</p></div>"""
+    safe_card = f"""<div class="card"><p class="kick">The honest truth</p>
+      <h2>“Safe” Isn't the Same as “Soft &amp; Clean”</h2>
+      <p>{city}'s water meets the basic federal and state safety standards — your city does that part.
+      But meeting the legal minimum is a long way from <b>soft, clean, healthy, and great-tasting</b>
+      water. Hard minerals, the chlorine they add, and whatever your own pipes pick up are all still in
+      there — and that's exactly what we help families fix. Here's what's really in your water:</p></div>"""
 
     if is_hard:
         hard_card = f"""<div class="card exp"><p class="kick">Your water's #1 issue</p>

@@ -12,6 +12,7 @@ import html
 import json
 import os
 import re
+import shutil
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -23,6 +24,11 @@ CUSTOM_DOMAIN = "reports.msppurewaterco.com"
 DOCS = os.path.join(HERE, "docs")
 REPORTS = os.path.join(DOCS, "reports")
 os.makedirs(REPORTS, exist_ok=True)
+# Copy the brand logo into the published site so rebuilds always carry it.
+_logo_src = os.path.join(HERE, "assets", "logo.png")
+if os.path.exists(_logo_src):
+    os.makedirs(os.path.join(DOCS, "assets"), exist_ok=True)
+    shutil.copyfile(_logo_src, os.path.join(DOCS, "assets", "logo.png"))
 CONFIG = json.load(open(os.path.join(HERE, "config.json"), encoding="utf-8"))
 CO = CONFIG["company"]
 
@@ -39,18 +45,19 @@ LOGO_SVG = (
 )
 
 CSS = """
-:root{--navy:#13243B;--navy2:#0C1A2C;--navy3:#1E3957;--gold:#C9A24B;--goldl:#DEC07A;
---cream:#FAF8F3;--ink:#23303F;--grey:#6B7785;--line:#E2E6EC;--good:#2E8B57;--elev:#C98A2B;--concern:#B23B3B;}
+:root{--navy:#0e1d33;--navy2:#081320;--navy3:#22395c;--gold:#C9A84C;--goldl:#E2C97E;
+--cream:#FAF7F2;--ink:#1c1c1c;--grey:#6b6b6b;--line:#E7E3DC;--good:#2E8B57;--elev:#C98A2B;--concern:#B23B3B;}
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--cream);}
+body{margin:0;font-family:'DM Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--cream);}
 a{color:var(--navy)}
-.topbar{background:linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:20px;border-bottom:3px solid var(--gold);}
+.topbar{background:#fff;color:var(--navy);padding:12px 20px;border-bottom:3px solid var(--gold);}
 .topbar .wrap{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:16px}
-.topbar h1{font-family:Georgia,serif;font-size:20px;margin:0;font-weight:700}
-.topbar .sub{color:var(--goldl);font-size:12px;letter-spacing:2px;text-transform:uppercase}
+.topbar .logo{height:58px;width:auto;display:block}
+.topbar .vbar{width:1px;height:34px;background:var(--line)}
+.topbar .tag{font-family:'Montserrat',sans-serif;color:var(--navy);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
 main{max-width:980px;margin:26px auto 50px;padding:0 20px}
 .card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 24px rgba(19,36,59,.06);padding:26px;margin-bottom:22px}
-.card h2{font-family:Georgia,serif;color:var(--navy);margin:0 0 6px;font-size:22px}
+.card h2{font-family:'Montserrat',sans-serif;color:var(--navy);margin:0 0 6px;font-size:22px}
 .kick{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;margin:0 0 4px}
 .lead{color:var(--grey);margin:0 0 16px}
 input[type=text]{width:100%;padding:14px;font-size:16px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
@@ -63,12 +70,12 @@ input[type=text]:focus{outline:none;border-color:var(--gold)}
 .grow{flex:1 1 320px}
 .muted{color:var(--grey);font-size:13px}
 .hero{text-align:center;max-width:760px;margin:8px auto 22px}
-.hero h1{font-family:Georgia,serif;color:var(--navy);font-size:32px;line-height:1.15;margin:0 0 12px}
+.hero h1{font-family:'Montserrat',sans-serif;color:var(--navy);font-size:32px;line-height:1.15;margin:0 0 12px}
 .hero h1 em{color:var(--gold);font-style:italic}
 .hero p{color:var(--ink);font-size:16px;line-height:1.5;margin:0}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 0}
 .metric{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
-.metric .num{font-family:Georgia,serif;font-size:30px;color:var(--navy);font-weight:700;line-height:1}
+.metric .num{font-family:'Montserrat',sans-serif;font-size:30px;color:var(--navy);font-weight:700;line-height:1}
 .metric .lbl{font-size:11px;color:var(--grey);margin-top:7px;text-transform:uppercase;letter-spacing:.5px}
 .metric.bad{border-top:3px solid var(--concern)}.metric.warn{border-top:3px solid var(--elev)}
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin-top:12px}
@@ -79,19 +86,19 @@ td.lvl,td.safe{font-size:12.5px;color:var(--grey)}
 .pill{font-size:11px;font-weight:800;padding:3px 9px;border-radius:20px;white-space:nowrap}
 .pill.good{background:#E8F3EC;color:var(--good)}.pill.elevated{background:#FBF1DE;color:var(--elev)}
 .pill.high{background:#FBE7D6;color:#C2611C}.pill.concern{background:#F8E6E6;color:var(--concern)}
-.exp h3{font-family:Georgia,serif;color:var(--gold);margin:16px 0 4px;font-size:16px}
+.exp h3{font-family:'Montserrat',sans-serif;color:var(--gold);margin:16px 0 4px;font-size:16px}
 .exp p{margin:0 0 8px;line-height:1.6}
 .exp ul{margin:6px 0 10px;padding-left:20px;line-height:1.65}
 .exp li{margin:3px 0}
 .help{background:var(--cream);border-left:4px solid var(--gold);padding:11px 14px;border-radius:0 8px 8px 0;margin:12px 0 0!important;line-height:1.55}
 .reco{background:var(--navy);color:#fff;border-radius:14px;padding:22px;margin-bottom:16px}
 .reco .k{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase}
-.reco h2{color:var(--goldl);font-family:Georgia,serif;margin:6px 0 8px;font-size:21px}
+.reco h2{color:var(--goldl);font-family:'Montserrat',sans-serif;margin:6px 0 8px;font-size:21px}
 .reco p{color:var(--cream);margin:0;line-height:1.5}
 .syscards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .syscard{border:1.4px solid var(--gold);background:var(--cream);border-radius:12px;border-top:4px solid var(--navy);padding:16px}
 .syscard .tag{font-size:10.5px;font-weight:800;letter-spacing:1px;color:var(--gold);text-transform:uppercase}
-.syscard h3{font-family:Georgia,serif;color:var(--navy);margin:4px 0 2px;font-size:16px}
+.syscard h3{font-family:'Montserrat',sans-serif;color:var(--navy);margin:4px 0 2px;font-size:16px}
 .syscard .short{font-style:italic;color:var(--grey);font-size:12.5px;margin:0 0 6px}
 .syscard p{font-size:13px;line-height:1.45;margin:0;color:var(--ink)}
 .alt{margin:6px 0;font-size:14px;line-height:1.5}
@@ -137,14 +144,17 @@ def slug(key):
     return re.sub(r"[^a-z0-9]+", "-", key.lower()).strip("-")
 
 
-def page(title, body, description=""):
+def page(title, body, description="", asset_prefix=""):
     return f"""<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 <style>{CSS}</style></head><body>
-<div class="topbar"><div class="wrap"><span>{LOGO_SVG}</span>
-<div><h1>{esc(CO['name'])}</h1><div class="sub">Free Home Water Report</div></div></div></div>
+<div class="topbar"><div class="wrap">
+<a href="{asset_prefix}index.html" style="display:flex;align-items:center;text-decoration:none"><img class="logo" src="{asset_prefix}assets/logo.png" alt="{esc(CO['name'])}"></a>
+<span class="vbar"></span><div class="tag">Free Home Water Report</div></div></div>
 <main>{body}</main>
 <footer>{esc(CO['name'])} &middot; {esc(CO['service_area'])} &middot; {esc(CO['phone'])}</footer>
 </body></html>"""
@@ -313,7 +323,7 @@ def render_report(profile):
     {disclaimer}
     """
     desc = f"Free plain-English water report for {p['display']}, MN: hardness {h['gpg']} gpg, {p['source_detail']}"
-    return page(f"{p['display']} Water Report — {co_name}", body, desc)
+    return page(f"{p['display']} Water Report — {co_name}", body, desc, asset_prefix="../")
 
 
 def build_profile_for(key):

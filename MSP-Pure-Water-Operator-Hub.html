@@ -318,6 +318,62 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
 .quiz-cat{font-family:'Fraunces',serif; font-size:20px; font-weight:600; color:var(--navy); margin:34px 0 14px; padding-bottom:8px; border-bottom:2px solid var(--border2); letter-spacing:-0.3px}
 .quiz-cat:first-of-type{margin-top:4px}
 
+
+/* ============ AI ROLE-PLAY (from Training Hub) ============ */
+.mode-toggle{display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap}
+.mode-btn{flex:1; min-width:210px; text-align:left; padding:13px 18px; border:1.5px solid var(--border2); border-radius:13px; background:var(--panel); cursor:pointer; font-family:inherit; font-size:15px; font-weight:700; color:var(--ink); transition:all .15s; box-shadow:var(--shadow)}
+.mode-btn span{display:block; font-weight:500; font-size:12px; color:var(--muted); margin-top:3px; line-height:1.4}
+.mode-btn:hover{border-color:var(--blue)}
+.mode-btn.active{border-color:var(--purple); background:var(--purple-l)}
+.sim-choices{display:flex; flex-direction:column; gap:7px; padding:2px 2px 6px}
+.sim-choice{text-align:left; padding:10px 14px; border:1px solid var(--border2); border-radius:10px; background:var(--bg); font-family:inherit; font-size:13px; line-height:1.5; color:var(--ink); cursor:pointer; transition:all .14s}
+.sim-choice:hover{border-color:var(--blue); background:var(--bg2)}
+code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; padding:1px 6px; font-size:12.5px; font-family:ui-monospace,Menlo,Consolas,monospace}
+
+/* dashboard */
+.hero-card{background:linear-gradient(150deg,var(--navy),var(--navy2)); color:#eaf4f8; border-radius:20px; padding:38px 36px; margin-bottom:26px; position:relative; overflow:hidden}
+.hero-card::after{content:''; position:absolute; right:-60px; top:-60px; width:280px; height:280px; background:radial-gradient(circle,rgba(39,179,196,.25),transparent 70%)}
+.hero-card h1{font-family:'Fraunces',serif; font-size:clamp(28px,5vw,40px); font-weight:700; line-height:1.1; letter-spacing:-.8px; margin-bottom:12px; position:relative}
+.hero-card p{color:#a9c4d6; font-size:16px; max-width:560px; position:relative; margin:0}
+.tile-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:18px 0}
+.tile{background:var(--panel); border:1px solid var(--border); border-radius:15px; padding:20px; cursor:pointer; transition:all .16s; box-shadow:var(--shadow); text-align:left; font-family:inherit}
+.tile:hover{transform:translateY(-3px); border-color:var(--border2); box-shadow:0 8px 28px rgba(13,27,42,.1)}
+.tile-ico{width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:13px}
+.tile-t{font-family:'Fraunces',serif; font-size:18px; font-weight:600; margin-bottom:4px}
+.tile-d{font-size:13.5px; color:var(--muted); line-height:1.5}
+.ti-learn{background:var(--cyan-l)} .ti-sell{background:var(--blue-l)} .ti-practice{background:var(--purple-l)} .ti-ref{background:var(--green-l)}
+.stat-row{display:flex; gap:13px; flex-wrap:wrap; margin:18px 0}
+.stat{background:var(--panel); border:1px solid var(--border); border-radius:13px; padding:16px 20px; flex:1; min-width:130px; box-shadow:var(--shadow)}
+.stat-n{font-family:'Fraunces',serif; font-size:30px; font-weight:700; color:var(--teal); line-height:1}
+.stat-l{font-size:12.5px; color:var(--muted); margin-top:5px}
+
+/* simulator */
+.sim{background:var(--panel); border:1px solid var(--border); border-radius:15px; overflow:hidden; box-shadow:var(--shadow)}
+.sim-top{padding:15px 18px; border-bottom:1px solid var(--border); background:var(--bg2)}
+.sim-top h3{margin:0; font-size:15px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700}
+.sim-top p{margin:3px 0 0; font-size:12.5px; color:var(--muted)}
+.persona-pick{display:flex; gap:7px; flex-wrap:wrap; padding:12px 16px; border-bottom:1px solid var(--border); background:var(--bg2)}
+.pp-btn{padding:7px 13px; border-radius:7px; border:1px solid var(--border2); background:var(--panel); color:var(--muted); font-family:inherit; font-size:12.5px; font-weight:600; cursor:pointer; transition:all .14s}
+.pp-btn:hover{color:var(--ink); border-color:var(--blue)}
+.pp-btn.active{color:var(--blue); border-color:var(--blue); background:var(--blue-l)}
+.sim-msgs{height:380px; overflow-y:auto; padding:18px; display:flex; flex-direction:column; gap:11px}
+.sim-msgs::-webkit-scrollbar{width:5px}
+.sim-msgs::-webkit-scrollbar-thumb{background:var(--border2); border-radius:3px}
+.bub{max-width:85%; padding:11px 15px; border-radius:13px; font-size:13.5px; line-height:1.6}
+.bub-them{background:var(--bg2); border:1px solid var(--border); align-self:flex-start; border-radius:5px 13px 13px 13px}
+.bub-you{background:var(--navy); color:#eaf4f8; align-self:flex-end; border-radius:13px 5px 13px 13px}
+.bub-coach{background:var(--blue-l); border:1px solid #cfe4f6; align-self:center; max-width:94%; border-radius:11px; font-size:12.5px; color:#0d3a5e}
+.bub-name{font-size:9.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; opacity:.6; margin-bottom:4px}
+.sim-bar{padding:9px 14px; border-top:1px solid var(--border); display:flex; gap:9px; align-items:center}
+.sim-restart{padding:6px 13px; border:1px solid var(--border2); border-radius:7px; background:transparent; color:var(--muted); font-family:inherit; font-size:11.5px; font-weight:700; cursor:pointer}
+.sim-restart:hover{color:var(--ink); border-color:var(--blue)}
+.sim-hint{font-size:11px; color:var(--muted); flex:1}
+.sim-input-row{border-top:1px solid var(--border); padding:12px 14px; display:flex; gap:9px; align-items:flex-end}
+.sim-ta{flex:1; background:var(--bg2); border:1px solid var(--border2); border-radius:9px; padding:10px 14px; font-family:inherit; font-size:13.5px; color:var(--ink); resize:none; min-height:42px; max-height:110px; line-height:1.5}
+.sim-ta:focus{outline:none; border-color:var(--blue)}
+.sim-go{padding:10px 18px; background:var(--navy); color:#fff; border:none; border-radius:9px; font-family:inherit; font-size:13.5px; font-weight:700; cursor:pointer; white-space:nowrap}
+.sim-go:hover{opacity:.9} .sim-go:disabled{opacity:.4; cursor:not-allowed}
+
 </style>
 </head>
 <body>
@@ -372,6 +428,7 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
       <div class="nav-group">
         <div class="nav-group-label">Train</div>
         <button class="nav-link" data-view="quiz"><span class="nav-ico">✅</span> Knowledge Test</button>
+        <button class="nav-link" data-view="roleplay"><span class="nav-ico">🎭</span> AI Role-Play</button>
       </div>
       <div class="nav-group">
         <div class="nav-group-label">Market</div>
@@ -1244,6 +1301,56 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
       <div id="quizHolder"></div>
     </section>
 
+    <!-- ============ AI ROLE-PLAY ============ -->
+    <section class="view" id="view-roleplay">
+      <span class="module-tag mt-grow">Train</span>
+      <h1 class="view-title">AI Role-Play</h1>
+      <p class="lede">Drill objections until your responses are automatic — practice live against a customer that fights back. Two modes, both 100% free: instant <strong>scripted drills</strong> (any device, zero setup) or open-ended <strong>local AI</strong> that runs on your own machine, no cloud and no per-message charge.</p>
+      <div class="mode-toggle" id="modeToggle">
+        <button class="mode-btn active" data-mode="scripted">📋 Scripted Drills<span>Works on any device, zero setup — start right now</span></button>
+        <button class="mode-btn" data-mode="ai">🤖 Local AI<span>Free open-ended AI that runs on your own computer</span></button>
+      </div>
+
+      <div class="callout c-teal" id="scriptedInfo"><span class="ct">How scripted drills work</span>Pick a scenario and press Start. A customer hits you with an objection — <strong>type how you'd handle it in your own words</strong>, and you get instant coaching on which key moves you nailed (acknowledge, reassure, lead to a decision) and what to tighten, plus a strong sample answer to compare against. The wording is <strong>randomized every run</strong>, so it's never the same twice — you're always thinking on your feet. No internet or setup needed; works offline on any device.</div>
+
+      <div class="card" id="aiInfo" style="display:none">
+        <h3 style="margin-top:0">Local AI — one-time setup (free, no cloud)</h3>
+        <p style="color:var(--muted); font-size:14px">This runs a small AI model on your own computer with <strong>Ollama</strong> — no cloud, no API bill, no per-message charge. Heads up: it only works on the computer that's running Ollama (not phones), and wants a reasonably modern machine.</p>
+        <div class="steps">
+          <div class="step"><div class="step-n">1</div><div><div class="step-t">Install Ollama</div><div class="step-d">Free download at <strong>ollama.com</strong> — Mac, Windows, or Linux.</div></div></div>
+          <div class="step"><div class="step-n">2</div><div><div class="step-t">Download a model</div><div class="step-d">Open Terminal / Command Prompt and run <code>ollama pull llama3.2</code> — a small, fast model. Downloads once.</div></div></div>
+          <div class="step"><div class="step-n">3</div><div><div class="step-t">Let this page talk to it</div><div class="step-d">Ollama blocks web pages by default — allow it once. <strong>Mac:</strong> run <code>launchctl setenv OLLAMA_ORIGINS "*"</code>, then quit &amp; reopen Ollama. <strong>Windows:</strong> add an Environment Variable <code>OLLAMA_ORIGINS</code> set to <code>*</code>, then restart Ollama.</div></div></div>
+          <div class="step"><div class="step-n">4</div><div><div class="step-t">Used a different model?</div><div class="step-d">Open this file in a text editor and set <code>OLLAMA_MODEL</code> near the bottom to match. Default is <code>llama3.2</code>.</div></div></div>
+        </div>
+        <div class="callout c-blue" style="margin-top:4px"><span class="ct">That's it</span>With Ollama running, switch to Local AI mode below, pick a scenario, and chat freely — the customer improvises and coaches you, all on your own machine.</div>
+      </div>
+
+      <div class="sim">
+        <div class="sim-top"><h3>Objection &amp; Call Practice</h3><p id="simTopP">Pick a scenario, press Start, then type your response. No two runs are the same.</p></div>
+        <div class="persona-pick" id="personaPick">
+          <button class="pp-btn active" data-p="think">"Need to think"</button>
+          <button class="pp-btn" data-p="expensive">"Too expensive"</button>
+          <button class="pp-btn" data-p="quotes">"Other quotes"</button>
+          <button class="pp-btn" data-p="cheap">"Why so cheap?"</button>
+          <button class="pp-btn" data-p="skeptic">🤔 Skeptic</button>
+          <button class="pp-btn" data-p="random">🎲 Random</button>
+        </div>
+        <div class="sim-msgs" id="simMsgs">
+          <div class="bub bub-coach"><div class="bub-name">Coach</div>Pick a scenario above and press Start. The customer opens with the objection — your job is to handle it and get them booked.</div>
+        </div>
+        <div class="sim-bar">
+          <button class="sim-restart" onclick="startSim()">▶ Start / Restart</button>
+          <span class="sim-hint" id="simHint">Choose a scenario and start</span>
+        </div>
+        <div class="sim-input-row" id="aiInputRow">
+          <textarea class="sim-ta" id="simInput" placeholder="Type how you'd respond, in your own words…" onkeydown="simKey(event)" oninput="simResize(this)"></textarea>
+          <button class="sim-go" id="simGo" onclick="simSend()" disabled>Send</button>
+        </div>
+      </div>
+
+      <div class="callout c-teal" style="margin-top:16px"><span class="ct">Practice tip</span>Run "Need to think" and "Too expensive" several times each until your answers are automatic. Then hit "Random" — it throws a surprise objection at you, just like a real call.</div>
+    </section>
+
   </div>
 </div>
 
@@ -1869,6 +1976,229 @@ quizHolder.querySelectorAll('.quiz-opt').forEach(btn=>{
 });
 
 })();
+</script>
+<script>
+/* ===== AI ROLE-PLAY ENGINE (scripted drills + optional local Ollama AI) ===== */
+/* ====== ROLEPLAY: SCRIPTED DRILLS + OPTIONAL LOCAL AI (OLLAMA) ====== */
+/* ============================================================
+   SCRIPTED DRILLS (default) need no setup — they run right here.
+   LOCAL AI MODE (optional) runs a model on YOUR computer via
+   Ollama — no cloud, no API bill. Setup is in the "Local AI"
+   panel on the Practice page. If you pulled a model other than
+   llama3.2, change OLLAMA_MODEL below to match.
+   ============================================================ */
+const OLLAMA_URL   = "http://localhost:11434/api/chat";
+const OLLAMA_MODEL = "llama3.2";
+
+let practiceMode='scripted', scenario='think', simStarted=false, simHistory=[];
+const NAMES=['Sarah','Mike','Jen','Carlos','Dave','Lisa','Tom','Megan','Rick','Anna','Paul','Karen'];
+let custName='';
+function rng(arr,not){let v=arr[0];for(let i=0;i<8;i++){v=arr[Math.floor(Math.random()*arr.length)];if(arr.length<2||v!==not)break;}return v;}
+
+/* ---------- shared bubble helpers ---------- */
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function addSim(type,text){
+  const m=document.getElementById('simMsgs');const d=document.createElement('div');
+  if(type==='them'){d.className='bub bub-them';d.innerHTML='<div class="bub-name">Customer'+(custName?' · '+esc(custName):'')+'</div>'+splitCoach(text);}
+  else if(type==='you'){d.className='bub bub-you';d.innerHTML='<div class="bub-name">You</div><p style="margin:0">'+esc(text)+'</p>';}
+  else if(type==='coach'){d.className='bub bub-coach';d.innerHTML='<div class="bub-name">Coach</div><p style="margin:0">'+esc(text)+'</p>';}
+  else if(type==='loading'){d.className='bub bub-them';d.id='simLoad';d.innerHTML='<div class="bub-name">Customer</div><em style="color:var(--muted)">typing…</em>';}
+  m.appendChild(d);m.scrollTop=m.scrollHeight;
+}
+function coachMsg(html){const m=document.getElementById('simMsgs');const d=document.createElement('div');d.className='bub bub-coach';d.innerHTML='<div class="bub-name">Coach</div>'+html;m.appendChild(d);m.scrollTop=m.scrollHeight;}
+function splitCoach(text){
+  const mt=String(text).match(/\[COACH:(.*?)\]/s);
+  if(!mt)return '<p style="margin:0">'+esc(text)+'</p>';
+  const cust=text.replace(/\[COACH:.*?\]/s,'').trim();const coach=mt[1].trim();
+  let h=cust?'<p style="margin:0 0 8px">'+esc(cust)+'</p>':'';
+  if(coach)h+='<div style="background:var(--blue-l);border:1px solid #cfe4f6;border-radius:7px;padding:8px 10px;font-size:12px;color:#0d3a5e;margin-top:4px"><strong style="font-size:9.5px;letter-spacing:1px;text-transform:uppercase;opacity:.7;display:block;margin-bottom:3px">Coach</strong>'+esc(coach)+'</div>';
+  return h;
+}
+function labelFor(k){return (DRILLS[k]&&DRILLS[k].label)||(scenarios[k]&&scenarios[k].label)||k;}
+function resetSimBox(){
+  simStarted=false;simHistory=[];
+  document.getElementById('simMsgs').innerHTML='<div class="bub bub-coach"><div class="bub-name">Coach</div>Pick a scenario above and press Start.</div>';
+  const go=document.getElementById('simGo');if(go)go.disabled=true;
+}
+
+/* ---------- mode toggle ---------- */
+document.querySelectorAll('#modeToggle .mode-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    practiceMode=b.dataset.mode;
+    document.querySelectorAll('#modeToggle .mode-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById('scriptedInfo').style.display=practiceMode==='scripted'?'block':'none';
+    document.getElementById('aiInfo').style.display=practiceMode==='ai'?'block':'none';
+    document.getElementById('simTopP').textContent=practiceMode==='ai'
+      ? 'Local AI mode — pick a scenario, press Start, then chat freely. (Needs Ollama running — see the setup above.)'
+      : 'Pick a scenario, press Start, then type your response. No two runs are the same.';
+    resetSimBox();
+  });
+});
+
+/* ---------- scenario picker ---------- */
+document.querySelectorAll('#personaPick .pp-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    scenario=b.dataset.p;
+    document.querySelectorAll('#personaPick .pp-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById('simHint').textContent='Ready: '+labelFor(scenario);
+  });
+});
+
+/* ---------- START (routes by mode) ---------- */
+function startSim(){
+  document.getElementById('simMsgs').innerHTML='';
+  if(practiceMode==='ai')startAI();else startDrill();
+}
+
+/* ========== SCRIPTED DRILL ENGINE (varied lines + type-your-own + rubric) ========== */
+let drillKey='think', drillRound=0, drillSum=0, drillMax=0, lastLine='';
+const ROUNDS=2;
+function pickScenario(){
+  if(scenario==='random'){const keys=Object.keys(DRILLS);return keys[Math.floor(Math.random()*keys.length)];}
+  return DRILLS[scenario]?scenario:'think';
+}
+function custLine(pool){const line=rng(pool,lastLine);lastLine=line;addSim('them',line);}
+function startDrill(){
+  drillKey=pickScenario();drillRound=0;drillSum=0;drillMax=0;lastLine='';simStarted=true;
+  custName=rng(NAMES);
+  document.getElementById('simGo').disabled=false;
+  addSim('coach','Drill: '+DRILLS[drillKey].label+' — '+custName+' is on the line. Type how you\'d handle it, in your own words.');
+  custLine(DRILLS[drillKey].openers);
+  document.getElementById('simInput').focus();
+}
+function scriptedTurn(text){
+  const d=DRILLS[drillKey];const t=' '+text.toLowerCase()+' ';
+  let hits=0;const rows=[];
+  d.moves.forEach(mv=>{
+    const ok=mv.any.some(k=>t.indexOf(k)>=0);
+    if(ok){hits++;rows.push('<div style="color:#15803d">✓ '+esc(mv.label)+'</div>');}
+    else rows.push('<div style="color:#b45309">△ '+esc(mv.hint)+'</div>');
+  });
+  const warns=[];
+  (d.bad||[]).forEach(b=>{if(b.any.some(k=>t.indexOf(k)>=0))warns.push('<div style="color:#c0392b">✗ '+esc(b.note)+'</div>');});
+  let html='';
+  if(text.trim().split(/\s+/).length<6)html+='<div style="color:#b45309;margin-bottom:6px">△ Pretty short — on a real call you\'d acknowledge, reassure, and guide them. Go fuller.</div>';
+  html+='<div style="font-size:9.5px;letter-spacing:1px;text-transform:uppercase;opacity:.6;margin-bottom:4px">You hit '+hits+'/'+d.moves.length+' key moves</div>'+rows.join('')+warns.join('');
+  coachMsg(html);
+  drillSum+=hits;drillMax+=d.moves.length;drillRound++;
+  if(drillRound<ROUNDS)setTimeout(()=>custLine(d.followups),360);
+  else setTimeout(()=>endDrill(d),360);
+}
+function endDrill(d){
+  simStarted=false;
+  let html='<div style="font-size:9.5px;letter-spacing:1px;text-transform:uppercase;opacity:.6;margin-bottom:4px">Drill complete — '+drillSum+'/'+drillMax+' key moves</div>';
+  html+='<p style="margin:0 0 8px">Here\'s one strong way to handle it — compare it to how you did:</p>';
+  html+='<div style="background:var(--bg2);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:9px 13px;font-style:italic;color:var(--ink2);line-height:1.6">'+esc(d.model)+'</div>';
+  html+='<p style="margin:8px 0 0">Press Start to run it again — you\'ll get a different version each time. Or pick another scenario.</p>';
+  coachMsg(html);
+}
+
+/* ========== OPTIONAL LOCAL AI (OLLAMA) ========== */
+const scenarios={
+  think:{label:'"I need to think about it"',sys:`You are a Twin Cities homeowner on a call with an MSP Pure Water rep. The pitch sounded good but when they try to close you say "I need to think about it." You're a bit hesitant, partly the price. If the rep just says "okay sure" you slip away. If they reassure you they're the best option and gently lead you to a decision on the call, you book. 1-3 sentences. After every 1-2 exchanges add [COACH: ] feedback on what to do next.`},
+  expensive:{label:'"Too expensive"',sys:`You are a Twin Cities homeowner who just heard the price and push back that it's more than expected. You want to feel the value. If the rep reframes against competitor pricing and the cost of hard water and stays confident (no discounting), you come around. 1-3 sentences. Add [COACH: ] feedback on price handling.`},
+  quotes:{label:'"Other quotes"',sys:`You are a Twin Cities homeowner who wants other quotes first. Interested, just want to be sure. If the rep arms you with comparison questions, reassures they're the best value, and leads you to decide now, you warm up. 1-3 sentences. Add [COACH: ] feedback.`},
+  cheap:{label:'"Why so cheap?"',sys:`You are a skeptical Twin Cities homeowner. The low price makes you suspicious — "what's the catch?" The rep must explain it honestly (commissions/overhead, US parts, volume) and pivot to quality. 1-3 sentences. Add [COACH: ] feedback.`},
+  skeptic:{label:'Skeptic',sys:`You are David, a Twin Cities homeowner burned by pushy salespeople before. Guarded, question claims, suspicious of the low price. The rep must be calm, transparent, and NOT pushy. Oversell and you shut down; honesty warms you up. 1-3 sentences. Add [COACH: ] feedback on trust-building.`},
+  random:{label:'Random objection',sys:`You are a Twin Cities homeowner on an MSP Pure Water call. Randomly open with ONE of: "I need to think about it," "that's more than I expected," "I want other quotes," or "why is your price so low?" Respond to the rep; handle it well → warm up and book. 1-3 sentences. Add [COACH: ] feedback after every 1-2 exchanges.`}
+};
+const CONTEXT='\n\nContext: Whole-home softener + tankless RO $2,999 all-in (Dual Tank City $3,799; Salt-Free $3,599; Dual Tank Well $3,999; Iron/Sulfur peroxide $5,999). Company: MSP Pure Water, Twin Cities MN. Reps are warm and personable, never salesy, and lead to a decision on the call. You are the customer responding to the rep.';
+async function callAI(messages){
+  const sc=scenarios[scenario]||scenarios.random;
+  const res=await fetch(OLLAMA_URL,{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:OLLAMA_MODEL,stream:false,messages:[{role:'system',content:sc.sys+CONTEXT},...messages]})});
+  const data=await res.json();
+  return (data.message&&data.message.content)||data.error||'(no response)';
+}
+function startAI(){
+  simStarted=true;simHistory=[];custName='';document.getElementById('simGo').disabled=false;
+  addSim('coach','Local AI drill: '+(scenarios[scenario]||scenarios.random).label+'. The customer will open — type your responses below.');
+  triggerCustomer('Start the conversation — open with your objection naturally, as if the rep just tried to close.');
+  document.getElementById('simInput').focus();
+}
+async function triggerCustomer(prompt){
+  addSim('loading','');
+  try{const reply=await callAI([{role:'user',content:prompt}]);
+    document.getElementById('simLoad')?.remove();addSim('them',reply);simHistory.push({role:'assistant',content:reply});
+  }catch(e){document.getElementById('simLoad')?.remove();addSim('coach','⚠️ Couldn\'t reach your local AI. Make sure Ollama is running and you allowed OLLAMA_ORIGINS (see setup above). In the meantime, Scripted Drills work with zero setup.');}
+}
+async function simSend(){
+  const inp=document.getElementById('simInput');const t=inp.value.trim();
+  if(!t||!simStarted)return;
+  inp.value='';inp.style.height='auto';
+  addSim('you',t);
+  if(practiceMode==='scripted'){scriptedTurn(t);return;}
+  document.getElementById('simGo').disabled=true;
+  simHistory.push({role:'user',content:t});addSim('loading','');
+  try{const reply=await callAI(simHistory);
+    document.getElementById('simLoad')?.remove();simHistory.push({role:'assistant',content:reply});addSim('them',reply);
+  }catch(e){document.getElementById('simLoad')?.remove();coachMsg('⚠️ Couldn\'t reach your local AI — is Ollama running? See the setup above.');}
+  document.getElementById('simGo').disabled=false;inp.focus();
+}
+function simKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();simSend();}}
+function simResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,110)+'px';}
+
+/* ========== SCRIPTED DRILL SCENARIOS (varied lines + scoring rubric) ==========
+   moves = the key things a great response does (keyword-matched, lowercase).
+   bad   = things to avoid. model = one strong sample answer shown at the end. */
+const DISCOUNT={note:"You started discounting — don't fold on price; reassure the value instead.",any:['knock off','knock a','discount','lower the price','cheaper for you','take off','i can do better','give you a deal','drop the price','wiggle room','meet you']};
+const PRESSURE={note:"That leaned on pressure or fake urgency — keep it warm, don't corner them.",any:['have to decide','right now','book up fast','only today','last chance','won\'t last','decide now','expires','today only']};
+const LEAD={label:"Led toward a decision on the call",hint:"Lead them to a decision on the call — offer a day (e.g. Tuesday or Thursday).",any:['taken care of','get you on','schedule','tuesday','thursday','monday','what day','book you','calendar','set you up','get started','which day','mornings or afternoons','on the books']};
+const DRILLS={
+  think:{label:'"I need to think about it"',
+    openers:["this all sounds good, but I think I just need some time to think it over.","honestly, let me sit on it for a bit and I'll get back to you.","it's a big decision — I want to think about it before I commit.","can I think about it and maybe call you back?","I like it, I just need to chew on it for a day or two."],
+    followups:["if I'm honest, it's mostly the price that's giving me pause.","it's just a bigger commitment than I was expecting.","I don't want to rush into something this big, you know?","I've been burned before, so I like to take my time.","I just want to make sure I'm making the right call."],
+    moves:[
+      {label:"Acknowledged it warmly (didn't jump to convincing)",hint:"Acknowledge the hesitation first — validate it before anything else.",any:['understand','get it','for sure','totally','fair','makes sense','no problem','i hear','of course','real decision','big decision','i feel']},
+      {label:"Dug for the real concern",hint:"Isolate the real concern — ask if it's the price or the system.",any:['is it the price','is it','what\'s holding','holding you back','on your mind','specific','main thing','mostly the','what is it','one thing','anything about','what\'s giving','is it mainly']},
+      {label:"Reassured the value / positioned as the best option",hint:"Reassure them you're the best option — lifetime warranty, value, better price.",any:['best','warranty','lifetime','better price','more system','quality','value','nothing better','right call','outperform','bigger','put your mind']},
+      LEAD],
+    bad:[DISCOUNT,PRESSURE],
+    model:"Yeah, for sure — it's a real decision and I want you feeling 1000% good about it. If I'm being honest, there's usually one thing on people's mind — is it the price, or something about the system? Whatever it is, for your home this is the right call: more system, a lifetime warranty, and a better price than anybody around here. So how are you feeling — let's just get you taken care of. I've got Tuesday or Thursday, which works better?"},
+  expensive:{label:'"Too expensive"',
+    openers:["oof — honestly, that's a good bit more than I was expecting to spend.","that's a little steep for me, I'm not gonna lie.","I don't know, that price is higher than I had in my head.","hm, that's more than the other place quoted me actually.","that's a lot of money up front for me right now."],
+    followups:["I mean, is there any wiggle room on the price?","it's just a lot to spend all at once.","how do I know it's actually worth that much?","I wasn't planning to spend that much this month.","money's a little tight, that's all."],
+    moves:[
+      {label:"Acknowledged without getting defensive",hint:"Acknowledge it — don't get defensive about the price.",any:['understand','get it','i hear','totally','fair','i\'d feel the same','makes sense','feel you','of course']},
+      {label:"Reframed against competitor pricing",hint:"Reframe against the competition — they charge 5–15k for less.",any:['culligan','ecowater','competitor','everyone else','bigger tank','fraction','more system','us-made','us made','lifetime','5,000','15,000','five to','smaller system']},
+      {label:"Used the cost-of-hard-water angle",hint:"Flip it: hard water already costs them every year; this pays for itself.",any:['water heater','every year','pays for itself','bottled water','detergent','energy','costs you','saves you','appliances','money back']},
+      LEAD],
+    bad:[DISCOUNT,PRESSURE],
+    model:"Totally understand — I'd feel the same if I hadn't seen what everyone else charges. Culligan and EcoWater run five to fifteen grand for a smaller system. You're getting a bigger tank, US-made parts, and a lifetime valve warranty none of them offer — for a fraction of that. And honestly, hard water already costs you every year — water heater, detergent, bottled water — so it pays for itself. Let's get you taken care of — Tuesday or Thursday?"},
+  quotes:{label:'"Other quotes"',
+    openers:["it sounds good, but I want to get a couple other quotes first.","I usually like to shop around before a big purchase like this.","let me see what a few other companies say before I decide.","I've got two other guys coming out to quote me too.","I never go with the first quote, no offense."],
+    followups:["that's helpful, but I think I'll still make a couple calls.","how do I know you're actually the best deal?","the other company seemed cheaper at first glance.","I just don't want to commit before I've compared.","I'd feel better checking a couple options."],
+    moves:[
+      {label:"Welcomed the comparison (no defensiveness)",hint:"Welcome it — never tell them not to shop.",any:['smart','i\'d never tell you not','never tell you','go for it','good idea','makes sense','of course','great','no problem','i get it']},
+      {label:"Armed them with the right comparison questions",hint:"Arm them: ask about tank grains, US resin, lifetime valve warranty.",any:['tank size','grains','resin','us-made','us made','lifetime','valve warranty','ask them','ask every','ask each','three things','warranty','how we stack']},
+      {label:"Reassured you're the best value",hint:"Reassure you're the best value — most can't match you.",any:['best value','come right back','can\'t touch','can\'t match','won\'t match','most can\'t','confident','stack up','best price','best in']},
+      LEAD],
+    bad:[PRESSURE,{note:"You discouraged them from shopping — that reads defensive. Welcome it instead.",any:['don\'t bother','won\'t find','you don\'t need to','no point','waste of time','why bother']}],
+    model:"Smart move, and I'd never tell you not to. If you call around, ask each one: tank size in grains, is the resin US-made, and does the valve carry a lifetime warranty — most can't touch us on any of the three. Honestly the folks who shop around come right back, so I'd hate for you to spend the afternoon on the phone just to land right back here. Let's just get you taken care of — Tuesday or Thursday?"},
+  cheap:{label:'"Why so cheap?"',
+    openers:["honestly, the price kind of makes me suspicious — why are you so cheap?","that seems too good to be true. what's the catch?","everyone else is way more expensive. how are you this cheap?","if it's that cheap, is the equipment even any good?","what's the catch — nobody's that much cheaper for no reason."],
+    followups:["so I'm not getting cheaper, lower-quality equipment?","there's gotta be a catch somewhere, right?","are there hidden fees I'm not seeing?","why would the big companies charge so much more then?","I just don't want to regret going with the cheap option."],
+    moves:[
+      {label:"Welcomed the question (no defensiveness)",hint:"Welcome the question — it's a trust question, not an attack.",any:['fair question','love that you asked','good question','glad you asked','great question','i get it','happy to explain']},
+      {label:"Explained the 'why' honestly",hint:"Explain WHY you're cheaper: no big commissions/overhead, US parts, volume.",any:['commission','overhead','showroom','volume','us-made','us made','don\'t overcharge','reps','salesman','no markup','marketing']},
+      {label:"Pivoted to quality / outperforms",hint:"Pivot to quality — you outperform the big guys (warranty, tank, resin).",any:['outperform','better','more, not less','bigger tank','lifetime','10%','resin','quality','superior','best','not less']},
+      LEAD],
+    bad:[PRESSURE],
+    model:"Fair question — I love that you asked. The big companies pay reps thousands in commission per job, plus showrooms and overhead. We do volume, use US-made parts, and just don't overcharge. And honestly our system outperforms theirs — lifetime valve warranty no one else offers, a bigger tank, US-made 10% resin. You're getting more, not less. So let's get you taken care of — Tuesday or Thursday?"},
+  skeptic:{label:'Skeptic',
+    openers:["I've been burned by pushy salespeople before, so I'm pretty skeptical here.","no offense, but I don't really trust sales pitches like this.","every company says they're the best — why should I believe you?","I've had bad experiences with this kind of thing before.","I'm just waiting for the catch, honestly."],
+    followups:["I just don't want to get nickel-and-dimed later.","how do I know you'll actually stand behind it?","what happens when something breaks — am I on my own?","prove to me this isn't the same old runaround.","what's the fine print I'm not seeing?"],
+    moves:[
+      {label:"Lowered the pressure / disarmed the skepticism",hint:"Disarm it — make it clear you won't pressure them.",any:['no pressure','i\'m not going to','not going to push','won\'t push','get it','understand','i hear you','take your time','your call','no rush','let you decide']},
+      {label:"Put them in control / asked what they need",hint:"Put them in control — ask what they'd need to feel comfortable.",any:['what would','biggest thing','make sure of','comfortable','what questions','what do you need','your decision','feel good about','make sense to you']},
+      {label:"Backed it with specifics / transparency",hint:"Back it with specifics — warranty, low maintenance, your direct number, no surprise fees.",any:['lifetime','warranty','direct number','my number','salt','filter','no surprise','transparent','honest','no hidden','straight up','here\'s exactly']},
+      LEAD],
+    bad:[PRESSURE,{note:"'Trust me' / a hard push is exactly what a skeptic shuts down on.",any:['trust me','no-brainer','just do it','you should do it','believe me','i promise']}],
+    model:"I completely get it, and I'm not going to do that to you — I'd rather be straight with you and let you decide, no pressure. What's the biggest thing you'd want to be sure of? Straight up: lifetime warranty on the valve and tank, the only upkeep is salt and an annual filter, and you'll have my direct number the whole way — no surprise fees. When you're comfortable, I'd love to get you on the schedule."}
+};
+
 </script>
 </body>
 </html>

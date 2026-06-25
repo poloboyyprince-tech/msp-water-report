@@ -299,6 +299,25 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
 .pill.soon{background:var(--amber-l);color:var(--amber)}
 .pill.up{background:var(--blue-l);color:var(--blue)}
 .pill.ok{background:var(--green-l);color:var(--green)}
+
+/* ============ KNOWLEDGE TEST (from Training Hub) ============ */
+/* quiz */
+.quiz{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:20px 22px; margin-bottom:14px; box-shadow:var(--shadow)}
+.quiz-q{font-weight:700; font-size:15px; margin-bottom:14px}
+.quiz-opts{display:flex; flex-direction:column; gap:8px}
+.quiz-opt{padding:11px 16px; border:1px solid var(--border2); border-radius:9px; font-size:14px; cursor:pointer; background:var(--bg); text-align:left; font-family:inherit; color:var(--ink); transition:all .14s}
+.quiz-opt:hover{background:var(--bg2); border-color:var(--blue)}
+.quiz-opt.correct{background:var(--green-l); border-color:var(--green); color:#14532d; pointer-events:none}
+.quiz-opt.wrong{background:var(--red-l); border-color:var(--red); color:#7f1d1d; pointer-events:none}
+.quiz-opt.reveal{background:var(--green-l); border-color:var(--green); color:#14532d; pointer-events:none}
+.quiz-fb{display:none; margin-top:11px; padding:11px 15px; border-radius:9px; font-size:13.5px; line-height:1.6}
+.quiz-fb.show{display:block}
+.quiz-fb.ok{background:var(--green-l); color:#14532d} .quiz-fb.no{background:var(--red-l); color:#7f1d1d}
+.quiz-score{position:sticky; top:14px; z-index:10; background:var(--navy); color:#fff; border-radius:12px; padding:14px 20px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; box-shadow:var(--shadow)}
+.quiz-score b{font-family:'Fraunces',serif; font-size:22px}
+.quiz-cat{font-family:'Fraunces',serif; font-size:20px; font-weight:600; color:var(--navy); margin:34px 0 14px; padding-bottom:8px; border-bottom:2px solid var(--border2); letter-spacing:-0.3px}
+.quiz-cat:first-of-type{margin-top:4px}
+
 </style>
 </head>
 <body>
@@ -349,6 +368,10 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
         <div class="nav-group-label">Tools</div>
         <button class="nav-link" data-view="tools"><span class="nav-ico">🧮</span> Deal &amp; CAC Calculators</button>
         <button class="nav-link" data-view="trackers"><span class="nav-ico">🗂️</span> Referral &amp; RO Trackers</button>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-label">Train</div>
+        <button class="nav-link" data-view="quiz"><span class="nav-ico">✅</span> Knowledge Test</button>
       </div>
       <div class="nav-group">
         <div class="nav-group-label">Market</div>
@@ -688,7 +711,7 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
       <div class="tbl-wrap" data-search-group="Price">
         <table>
           <tr><th>System</th><th>Starting Price</th><th>Typical Retail</th><th>Notes</th></tr>
-          <tr data-q="dual tank well water aio air injection iron 7 ppm sulfur manganese 4499"><td><strong>Dual-Tank Well</strong> (AIO, iron ≤7 ppm)</td><td class="num">$4,499</td><td>$9,000–$15,000</td><td>Iron/sulfur/manganese; well jobs carry more service + go-back risk</td></tr>
+          <tr data-q="dual tank well water aio air injection iron 7 ppm sulfur manganese 3999"><td><strong>Dual-Tank Well</strong> (AIO, iron ≤7 ppm)</td><td class="num">$3,999</td><td>$9,000–$15,000</td><td>Iron/sulfur/manganese; well jobs carry more service + go-back risk</td></tr>
           <tr data-q="iron sulfur removal peroxide injection heavy iron slime toilet 5999"><td><strong>Iron &amp; Sulfur Removal</strong> (iron &gt;7 ppm)</td><td class="num">$5,999</td><td>$9,500–$15,000</td><td>Heavy iron / strong sulfur / slime-in-toilet (peroxide-injection class)</td></tr>
           <tr data-q="pre sediment filter well 5 micron sand debris"><td><strong>Pre-Sediment Filter</strong> (well)</td><td class="num">$399</td><td>—</td><td>5-micron; protects from sand/debris ($149 filter change every 6 mo)</td></tr>
           <tr data-q="uv light purifier bacteria well only contact time"><td><strong>UV Light Purifier</strong> (well only)</td><td class="num">$699</td><td>—</td><td>Bacteria; well only. Be honest — helps but needs contact time; don't promise 100%</td></tr>
@@ -733,7 +756,7 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
           <tr><td>Alkaline / remineralization filter</td><td class="num">~$25</td></tr>
         </table>
       </div>
-      <div class="callout c-green"><span class="ct">Landed bundle ≠ unit</span><strong>Heavy iron &amp; sulfur (peroxide):</strong> ~$3,100–$3,200 landed (unit + peroxide pump + RO + pre-sediment + bits), sells at $5,999. <strong>Standard well (AIO):</strong> ~$1,500 landed (unit + bits), sells at $4,499. Don't confuse the unit cost with the system cost.</div>
+      <div class="callout c-green"><span class="ct">Landed bundle ≠ unit</span><strong>Heavy iron &amp; sulfur (peroxide):</strong> ~$3,100–$3,200 landed (unit + peroxide pump + RO + pre-sediment + bits), sells at $5,999. <strong>Standard well (AIO):</strong> ~$1,500 landed (unit + bits), sells at $3,999. Don't confuse the unit cost with the system cost.</div>
 
       <h2>Payment timing</h2>
       <div class="callout c-amber"><span class="ct">Collect on completion — no big deposits</span>Standard rule: charge after work is complete. On virtual/phone sales especially, <strong>do not collect large deposits up front</strong> — it adds friction at the wrong moment. The installer collects 100% on completion. Use a contract with contractor's-lien language as backstop.</div>
@@ -756,7 +779,7 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
 
         <div class="card" data-q="salt free conditioner complete system nac puronics carbon tank no soft water honest 2699 3599"><div class="card-head"><h3>Salt-Free — Conditioner &amp; Complete System</h3><span class="badge b-amber">Honest framing required · $2,699 / $3,599</span></div><p>Built like Puronics units (same NAC media) at a fraction of their ~$6K–$7K. No salt, brine, drain, or electricity. Two ways to sell it: the <strong>conditioner alone at $2,699</strong>, or the <strong>Complete System at $3,599</strong> which adds the carbon tank for chlorine removal (NAC can't be mixed with carbon, so it needs its own tank). <strong>The honest truth:</strong> it does <em>not</em> make truly soft water, has no health/heavy-metal benefit, and only reduces scale. ~99% choose salt once explained — but offering both makes you the unbiased one. Media lasts ~3–5 years.</p></div>
 
-        <div class="card" data-q="dual tank well aio air injection iron 7 ppm sulfur manganese 4499"><div class="card-head"><h3>Dual-Tank Well (AIO)</h3><span class="badge b-teal">Well default · $4,499</span></div><p>For well water with <strong>iron ≤ 7 ppm.</strong> An air-injection downflow valve injects oxygen, converting iron to rust that's filtered out; handles iron, minor sulfur, manganese. The default well system. <strong>Never guarantee 100% removal</strong> — set expectations.</p></div>
+        <div class="card" data-q="dual tank well aio air injection iron 7 ppm sulfur manganese 3999"><div class="card-head"><h3>Dual-Tank Well (AIO)</h3><span class="badge b-teal">Well default · $3,999</span></div><p>For well water with <strong>iron ≤ 7 ppm.</strong> An air-injection downflow valve injects oxygen, converting iron to rust that's filtered out; handles iron, minor sulfur, manganese. The default well system. <strong>Never guarantee 100% removal</strong> — set expectations.</p></div>
 
         <div class="card" data-q="hydrogen peroxide injection heavy well iron sulfur rotten egg slime toilet 5999"><div class="card-head"><h3>Hydrogen-Peroxide Injection</h3><span class="badge b-red">Heaviest well · $5,999</span></div><p>For <strong>iron &gt; 7 ppm</strong>, strong rotten-egg smell, or slimy film in the toilet tank (bacteria sign). A peroxide pump draws from a ~5-gal jug (customer refills, ~$70/jug) and oxidizes through a carbon tank before softening. Big-box charges $9.5K–$15K.</p></div>
 
@@ -794,7 +817,7 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
       </div>
 
       <div class="callout c-red"><span class="ct">⚠ Never guarantee 100% removal of anything</span>Set expectations — well customers are pickier and the problems are real. When unsure, post the customer's stated issues / lab results to the community and get a system prescribed <strong>before</strong> ordering.</div>
-      <div class="callout c-amber"><span class="ct">Why well jobs price higher</span>Wells need more service and carry higher go-back risk — that's priced into the $4,499 / $5,999 menu, above city jobs.</div>
+      <div class="callout c-amber"><span class="ct">Why well jobs price higher</span>Wells need more service and carry higher go-back risk — that's priced into the $3,999 / $5,999 menu, above city jobs.</div>
     </section>
 
     <!-- ============ INSTALL VARIABLES ============ -->
@@ -1102,7 +1125,7 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
               <option data-sell="2699" data-cost="500">Carbon-Only Filter ($2,699)</option>
               <option data-sell="2699" data-cost="900">Salt-Free Conditioner · NAC only ($2,699)</option>
               <option data-sell="3599" data-cost="1200">Salt-Free Complete System · NAC + carbon ($3,599)</option>
-              <option data-sell="4499" data-cost="1500">Dual-Tank Well · AIO — landed bundle ($4,499)</option>
+              <option data-sell="3999" data-cost="1500">Dual-Tank Well · AIO — landed bundle ($3,999)</option>
               <option data-sell="5999" data-cost="3150">Iron &amp; Sulfur · peroxide — landed bundle ($5,999)</option>
               <option data-sell="699" data-cost="200">Tankless Under-Sink RO ($699)</option>
               <option data-sell="599" data-cost="200">Tank Under-Sink RO ($599)</option>
@@ -1210,6 +1233,15 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
       </div>
 
       <div class="callout c-amber"><span class="ct">The lock-in line, said plainly</span>When they ask <em>"can I buy the filters myself?"</em> — the answer is a plain <strong>"no, those come through us."</strong> No apology. At the ~1-year mark the lifetime-support group chat pings them: "ship to your door or send a tech, same price either way, $199, covers all three filters."</div>
+    </section>
+
+    <!-- ============ KNOWLEDGE TEST ============ -->
+    <section class="view" id="view-quiz">
+      <span class="module-tag mt-grow">Train</span>
+      <h1 class="view-title">Knowledge Test</h1>
+      <p class="lede">Everything a rep needs cold for a sales call — 58 questions across 8 topics, grouped by topic. Tap an answer to check it, read the feedback, and work through all of it until you nail every one without hesitating. That standard — every rep certified on this test — is part of the operating SOP.</p>
+      <div class="quiz-score"><span>Your score</span><span><b id="scoreNum">0</b> / <span id="scoreTotal">10</span></span></div>
+      <div id="quizHolder"></div>
     </section>
 
   </div>
@@ -1495,6 +1527,347 @@ mark{background:#fdf0bf;color:inherit;padding:0 2px;border-radius:3px}
     });
     renderRec();
   }
+})();
+</script>
+<script>
+(function(){
+/* ===== KNOWLEDGE TEST (data + scoring lifted from Training Hub) ===== */
+const quizData=[
+  // ===== DIAGNOSING THE WATER =====
+  {cat:"Diagnosing the Water",q:"A customer on Minneapolis city water says their water tastes and smells like a pool. Most likely cause?",a:1,
+   o:[["Too much iron","Iron causes orange staining, not a chemical/pool taste."],
+      ["Chloramine added by the city","Correct! The Twin Cities disinfect with chloramine. By the tap it's just affecting taste and smell — catalytic carbon removes it."],
+      ["Sulfur","Sulfur is a rotten-egg smell, not a pool smell."],
+      ["Bacteria","Bacteria doesn't cause a pool smell — that's the disinfectant."]]},
+  {cat:"Diagnosing the Water",q:"Orange / rust-colored stains in the toilet, sinks, and tubs tell you what?",a:2,
+   o:[["Sulfur","Sulfur is a rotten-egg smell, not orange staining."],
+      ["High chloramine","Chloramine is a chemical, not a staining mineral."],
+      ["Iron in the water","Correct! Iron leaves rust-colored stains on everything it touches — extremely common in Minnesota wells."],
+      ["Hardness","Hardness leaves white/chalky deposits, not orange."]]},
+  {cat:"Diagnosing the Water",q:"A Minnesota well customer reports BLACK specks and dark staining. The culprit?",a:1,
+   o:[["Bacteria","Bacteria shows as a slimy film, not black specks."],
+      ["Manganese","Correct! Manganese is iron's partner in MN groundwater — black/dark-brown staining, handled by the same iron-removal media."],
+      ["Chloramine","Chloramine is a taste/odor issue, not staining."],
+      ["Hardness","Hardness is white, not black."]]},
+  {cat:"Diagnosing the Water",q:"Water smells like rotten eggs, worse on the hot side. What is it and what fixes it?",a:0,
+   o:[["Sulfur — the hydrogen peroxide injection system","Correct! Rotten egg = sulfur. Peroxide oxidizes it and it vents out of the valve."],
+      ["Iron — a standard softener","Iron is orange staining, and a plain softener won't fix sulfur."],
+      ["Hardness — a carbon filter","Hardness is scale, not smell."],
+      ["Chloramine — UV light","That's a city-water chemical; UV is for bacteria."]]},
+  {cat:"Diagnosing the Water",q:"A well customer lifts the toilet tank lid and sees a slimy film. What does that indicate?",a:2,
+   o:[["Iron","Iron is orange staining, not slime."],
+      ["Hardness","Hardness is white crust, not slime."],
+      ["Bacteria — recommend a UV light","Correct! A slimy film means bacterial growth. Well water has no disinfectant, so add UV. Be honest: it greatly reduces bacteria, nothing's 100%."],
+      ["Sulfur","Sulfur is a smell, not a film."]]},
+  {cat:"Diagnosing the Water",q:"White crusty buildup on faucets and spots on dishes point to what — and the fix?",a:1,
+   o:[["Iron → a well system","Iron is orange, not white."],
+      ["Hardness → a water softener","Correct! Calcium and magnesium are hardness — the #1 metro issue. A softener removes them."],
+      ["Chloramine → carbon","Chloramine is taste/smell, not white scale."],
+      ["Bacteria → UV","Bacteria is slime, not scale."]]},
+  {cat:"Diagnosing the Water",q:"Which invisible, colorless, tasteless MN contaminant is a real HEALTH concern an under-sink RO removes?",a:3,
+   o:[["Hardness","A home/appliance issue, handled by the softener."],
+      ["Chloramine","A taste/odor issue handled by carbon."],
+      ["Iron","Mostly an aesthetic/staining issue."],
+      ["Arsenic (and nitrate)","Correct! Arsenic occurs naturally in much of MN's groundwater and is a carcinogen. RO at the kitchen sink removes it (and nitrate)."]]},
+  {cat:"Diagnosing the Water",q:"What does TDS measure?",a:0,
+   o:[["Total Dissolved Solids — all the dissolved 'stuff' in the water (minerals, metals, chemicals)","Correct! Measured in PPM. RO cuts it 95–99% — the before/after TDS demo is your best live proof."],
+      ["Only the water's hardness","TDS is everything dissolved, not just hardness."],
+      ["The chlorine level only","TDS covers far more than chlorine."],
+      ["The water pressure","TDS has nothing to do with pressure."]]},
+
+  // ===== WHICH SYSTEM & WHAT IT COSTS =====
+  {cat:"Which System & What It Costs",q:"What's the default city-water recommendation and price?",a:1,
+   o:[["A salt-free conditioner","Salt-free is only if they ask — it doesn't truly soften."],
+      ["Standard Whole Home + tankless RO — $2,999","Correct! Covers ~99% of city customers up to 20 GPG hardness. RO included."],
+      ["Whole-home RO","Almost never — it's corrosive and needs a repipe."],
+      ["A Dual Tank Well system","That's for well water."]]},
+  {cat:"Which System & What It Costs",q:"A city customer's hardness tests at 24 GPG. Which system?",a:2,
+   o:[["Standard system","Over 20 GPG we don't sell the standard — it wears a single mixed bed too fast."],
+      ["XL bigger-tank standard","We don't route hard water to an XL — the rule is the dual tank."],
+      ["Dual Tank City Water — $3,799, automatically","Correct! Over 20 GPG always goes Dual Tank City. Separate self-cleaning tanks handle very hard water far better."],
+      ["Salt-free system","Salt-free doesn't soften at all."]]},
+  {cat:"Which System & What It Costs",q:"A customer specifically asks for a salt-free system. What do we sell — and how?",a:0,
+   o:[["Whole Home Salt-Free WITH a carbon tank — $3,599; never the media alone","Correct! Salt-free is never sold alone; it always ships with a carbon tank for chloramine and taste."],
+      ["Just the salt-free media","We never sell the salt-free media on its own."],
+      ["The standard softener instead","If they insisted on salt-free, don't switch the product on them — be honest about the trade-off."],
+      ["Nothing — it's not real","It's real; it reduces scale but doesn't truly soften."]]},
+  {cat:"Which System & What It Costs",q:"Well water, under ~7 PPM iron, no sulfur smell. Which system and price?",a:1,
+   o:[["Resin-only softener","Never resin-only on a well."],
+      ["Dual Tank Well System — $3,999","Correct! Air-injection valve plus iron-removal media. Wells always get a well-water filtration system."],
+      ["Whole-home RO","Corrosive and almost never the answer."],
+      ["Standard city system — $2,999","That's for city water, not a well."]]},
+  {cat:"Which System & What It Costs",q:"Well water with a rotten-egg smell OR over ~7 PPM iron. Which system and price?",a:2,
+   o:[["Standard Dual Tank Well","The air-injection dual tank is for under-7-PPM iron with no sulfur."],
+      ["Salt-free system","Does nothing for iron or sulfur."],
+      ["Iron/Sulfur (hydrogen peroxide) system — $5,999","Correct! Peroxide oxidizes both heavy iron and sulfur. Our most involved system."],
+      ["UV light only","UV is for bacteria, not iron or sulfur."]]},
+  {cat:"Which System & What It Costs",q:"A well customer says they ONLY have hard water — no iron, no smell. What do you sell?",a:1,
+   o:[["A resin-only softener","Never. Well water always has more going on than it seems."],
+      ["A well-water filtration system — never resin-only on a well","Correct! A plain softener leaves iron, manganese, and bacteria untreated. Wells always get a filtration system."],
+      ["Nothing — send them to the city","Wells aren't on city water; they still need treatment."],
+      ["Whole-home RO","Corrosive and almost never right."]]},
+  {cat:"Which System & What It Costs",q:"A customer insists they want a whole-home RO system. Best move?",a:2,
+   o:[["Sell it — it's the best water","It makes water corrosive and leaches copper from pipes."],
+      ["Upsell them even further","No — you'd be selling them a problem."],
+      ["Talk them out of it — it's corrosive, needs a PEX repipe, $25k+; downsell to softener + sink RO","Correct! Saves them ~$20k and gives the same pure drinking water."],
+      ["Refuse and end the call","Educate and downsell, don't bail."]]},
+  {cat:"Which System & What It Costs",q:"The salt-free system reduces scale — but what does it NOT do?",a:1,
+   o:[["Skip the salt and brine","It does skip those — that's a feature."],
+      ["Actually soften the water or give the soft-water feel","Correct! Before/after tests show almost no change in hardness. Most people are disappointed if they wanted real soft water."],
+      ["Avoid needing a drain","It does avoid a drain."],
+      ["Reduce scale buildup","It does reduce scale — just no true softening."]]},
+
+  // ===== SPECS & WHAT MAKES US DIFFERENT =====
+  {cat:"Specs & What Makes Us Different",q:"Why is the ceramic disc valve such a strong selling point?",a:2,
+   o:[["It increases water pressure","Pressure comes from the distributor tube, not the valve."],
+      ["It filters more contaminants","Filtering is the carbon and resin."],
+      ["It never wears out — lifetime warranty","Correct! Ceramic doesn't wear like plastic pistons, which fail in 2–5 years and need a paid service call."],
+      ["It makes the system quieter","Ceramic doesn't change the noise."]]},
+  {cat:"Specs & What Makes Us Different",q:"What's our water-line size, and why does it matter?",a:0,
+   o:[["1¼ inch — no water-pressure loss (competitors use ¾ inch)","Correct! A bigger line means 27–30 GPM and no bottleneck. A ¾-inch line is like a thumb over a garden hose."],
+      ["¾ inch — same as everyone","That's the competitors' smaller line."],
+      ["It doesn't affect pressure","It's the main driver of pressure."],
+      ["2 inch — overkill","Ours is 1¼ inch."]]},
+  {cat:"Specs & What Makes Us Different",q:"Our resin — brand and crosslink percentage?",a:1,
+   o:[["Imported, 4% crosslinked","That's what big-box uses."],
+      ["ResinTech, US-made, 10% crosslinked","Correct! Highest chloramine resistance available; lasts far longer than 4% big-box resin."],
+      ["Generic, 8%","Ours is specifically ResinTech 10%."],
+      ["A Home Depot house brand","No — US-made ResinTech."]]},
+  {cat:"Specs & What Makes Us Different",q:"What carbon do we use?",a:0,
+   o:[["Jacobi coconut-shell carbon (catalytic for chloramine)","Correct! Premium coconut-shell; the catalytic version handles the Twin Cities' chloramine."],
+      ["Generic coal-based carbon","No — premium Jacobi coconut shell."],
+      ["No carbon at all","Carbon is what removes the chemical taste."],
+      ["Sand","Not a filter media for chemicals."]]},
+  {cat:"Specs & What Makes Us Different",q:"What's the difference between activated and catalytic carbon?",a:1,
+   o:[["There's no difference","There is — it's how they remove contaminants."],
+      ["Catalytic chemically neutralizes tough stuff (chloramine, sulfur); activated just traps it on the surface","Correct! That's why we use catalytic for our chloraminated water."],
+      ["Activated is the stronger one","Catalytic does everything activated does, plus more."],
+      ["Catalytic removes hardness","Hardness is the resin's job."]]},
+  {cat:"Specs & What Makes Us Different",q:"Up to 99% of what does the whole system (with RO) filter out?",a:0,
+   o:[["Chlorine, chloramine, fluoride, PFAS ('forever chemicals'), and heavy metals","Correct! Carbon handles chemicals, resin handles dissolved minerals/metals, and the RO polishes the drinking water."],
+      ["Only hardness minerals","It does far more than hardness."],
+      ["Only chlorine","Much more than chlorine."],
+      ["Nothing you can measure","TDS before/after proves otherwise."]]},
+  {cat:"Specs & What Makes Us Different",q:"What can carbon and resin NOT reliably remove on their own?",a:2,
+   o:[["Chlorine","Carbon handles chlorine."],
+      ["Hardness","Resin handles hardness."],
+      ["Bacteria/cysts/viruses (need UV) and heavy sediment (need a pre-filter)","Correct! That's exactly why wells get a pre-filter and UV added."],
+      ["Chloramine","Catalytic carbon handles chloramine."]]},
+  {cat:"Specs & What Makes Us Different",q:"GPM — what is it, and what's ours?",a:0,
+   o:[["Gallons Per Minute; ours flows 27–30 (competitors 10–15)","Correct! That's why our system never drops your home's water pressure."],
+      ["Grams Per Mineral","Not a real measurement."],
+      ["Gallons Per Month","Not what GPM means."],
+      ["A type of warranty","No — it's a flow rate."]]},
+  {cat:"Specs & What Makes Us Different",q:"Why does the RO include a built-in alkaline filter instead of leaving the water pure?",a:1,
+   o:[["To kill remaining bacteria","pH doesn't affect bacteria."],
+      ["Pure RO water is aggressive and leaches minerals — adding some back makes it healthy, better-tasting, and raises pH to ~8.5","Correct! Like premium bottled water; most ROs leave you flat, slightly acidic water."],
+      ["To make the drinking water hard again","The softener handled hardness upstream — this is remineralizing."],
+      ["To add chlorine for safety","No chlorine is added."]]},
+
+  // ===== HOW OUR SYSTEMS WORK — THE SCIENCE =====
+  {cat:"How Our Systems Work — the Science",q:"How does a water softener actually remove hardness?",a:0,
+   o:[["Ion exchange — the resin beads swap the calcium & magnesium for sodium","Correct! As hard water flows through, the hardness sticks to the sodium-coated beads and sodium goes into the water."],
+      ["It boils the minerals off","No heat involved."],
+      ["A magnet pulls the minerals out","Magnets aren't how softeners work."],
+      ["A fine screen strains them out","Dissolved minerals are far too small to strain."]]},
+  {cat:"How Our Systems Work — the Science",q:"What actually happens during regeneration?",a:1,
+   o:[["The carbon gets replaced","Regeneration is about the resin, not swapping carbon."],
+      ["The resin is flushed with brine (salt water) to knock the hardness off and recharge the beads","Correct! That's why the customer keeps salt in the brine tank. It usually runs around 2–3am."],
+      ["The tank just refills with fresh water","It's an active flush with brine, not a refill."],
+      ["The system shuts off for the day","It keeps working; regeneration is a short cycle."]]},
+  {cat:"How Our Systems Work — the Science",q:"How does our AIO valve remove iron from well water?",a:0,
+   o:[["It injects a pocket of air that oxidizes the dissolved iron into rust particles, which the media then filters out","Correct! Dissolved iron is invisible until it meets oxygen — the air pocket turns it to rust, and the tank backwashes the rust to drain."],
+      ["It adds salt to bind the iron","Salt is for the softener, not iron removal."],
+      ["It heats the water to release the iron","No heat involved."],
+      ["A magnet catches the iron","Not how it works."]]},
+  {cat:"How Our Systems Work — the Science",q:"Is manganese removed differently from iron?",a:1,
+   o:[["Yes — it needs a completely separate system","No — the same well-water system handles both."],
+      ["No — same process: oxidize it into a solid, then the media filters it out","Correct! Manganese is just a bit more stubborn to oxidize, but our iron-removal media handles iron and manganese together as one job."],
+      ["Manganese can't be removed","It can — the same way as iron."],
+      ["Only RO removes manganese","The whole-home well system removes it; RO is for drinking water."]]},
+  {cat:"How Our Systems Work — the Science",q:"How does the hydrogen peroxide system handle iron AND sulfur at the same time?",a:0,
+   o:[["Peroxide is a strong oxidizer — it turns iron into filterable rust and converts the sulfur gas, which vents out of the valve","Correct! One oxidizer, both problems — that's why it's the call for heavy iron or any rotten-egg smell."],
+      ["It freezes them out of the water","No."],
+      ["It adds chlorine to the water","We don't add chlorine — it's peroxide."],
+      ["It uses a magnet","Not how it works."]]},
+  {cat:"How Our Systems Work — the Science",q:"Why does catalytic carbon beat regular activated carbon on chloramine?",a:0,
+   o:[["Catalytic carbon chemically breaks the chloramine apart; activated carbon only traps chemicals on its surface","Correct! That's why it's the right call for the Twin Cities' chloramine."],
+      ["It's just a physically bigger filter","Size isn't the difference — it's the chemistry."],
+      ["It adds a chemical to the water","It removes, it doesn't add."],
+      ["There's no real difference","There is — catalytic neutralizes, activated only adsorbs."]]},
+  {cat:"How Our Systems Work — the Science",q:"How does a UV light kill bacteria?",a:0,
+   o:[["UV-C light scrambles the bacteria's DNA as they flow past, so they can't reproduce — no chemicals","Correct! It's never 100% because it needs clear water and contact time, which a flowing system can't fully guarantee."],
+      ["It heats the water to boiling","No heat — it's light."],
+      ["It adds chlorine to disinfect","No chemicals added."],
+      ["It filters bacteria out by size","UV doesn't filter — it disrupts their DNA."]]},
+  {cat:"How Our Systems Work — the Science",q:"How does reverse osmosis remove arsenic, nitrate, and TDS?",a:0,
+   o:[["Water is forced through a membrane with pores so tiny only water molecules pass; the contaminants are rejected and flushed to drain","Correct! Then the alkaline filter adds good minerals back. That's how TDS drops 95–99%."],
+      ["Carbon adsorbs them","Carbon handles chemicals, not dissolved arsenic/nitrate/TDS."],
+      ["A softener swaps them out","Softeners handle hardness, not these."],
+      ["UV light destroys them","UV is for bacteria, not dissolved solids."]]},
+  // ===== MAINTENANCE, WARRANTY & LOGISTICS =====
+  {cat:"Maintenance, Warranty & Logistics",q:"What's the softener maintenance the customer actually does?",a:0,
+   o:[["Check the brine tank every 2–3 months and add a $8–$10 salt bag if low (we top it off at install)","Correct! That's the only routine maintenance. The system self-cleans automatically."],
+      ["Nothing, ever","They do need to keep salt topped up."],
+      ["Replace the resin monthly","Resin lasts years; it's covered 5."],
+      ["Add salt daily","Every couple months, not daily."]]},
+  {cat:"Maintenance, Warranty & Logistics",q:"RO filter replacement?",a:1,
+   o:[["Never needs filters","RO filters are changed annually."],
+      ["3 filters, $199, once a year","Correct! Simple push-button DIY swap, or we handle it on a visit."],
+      ["Weekly","Once a year."],
+      ["$500 a year","It's $199 for all three."]]},
+  {cat:"Maintenance, Warranty & Logistics",q:"After the first year, what's the service trip charge — and is there a maintenance plan?",a:2,
+   o:[["Free trips forever","Trips are free only the first year."],
+      ["$500 per trip","It's $150."],
+      ["$150 per trip — and there's no recurring maintenance plan","Correct! Trip fees waived year one, $150 after. We don't lock customers into a plan."],
+      ["$1,000 per trip","It's $150."]]},
+  {cat:"Maintenance, Warranty & Logistics",q:"What's the warranty breakdown?",a:0,
+   o:[["Lifetime on valve & tank, 5 years on the media bed, 1 year on the RO","Correct! Plus trip fees waived the first year."],
+      ["1 year on everything","No — lifetime on the valve and tank."],
+      ["Lifetime on absolutely everything","Media is 5 years, RO is 1 year."],
+      ["90 days","Far longer than that."]]},
+  {cat:"Maintenance, Warranty & Logistics",q:"The power goes out. What happens to the system?",a:1,
+   o:[["Nothing works without power","The main system keeps working."],
+      ["Whole-home system keeps softening & filtering (only the self-cleaning pauses); the tankless RO won't make water during the outage","Correct! Self-cleaning only runs ~once a month, and settings hold on a 72-hour backup."],
+      ["Everything keeps working, including the tankless RO","Tankless RO needs power to push water through the membrane."],
+      ["The system is damaged","No damage — it just pauses self-cleaning."]]},
+  {cat:"Maintenance, Warranty & Logistics",q:"A customer says soft water feels slippery, like the soap won't rinse off. What do you tell them?",a:2,
+   o:[["The system is broken","It's working correctly."],
+      ["They're using too much soap","Not the cause."],
+      ["That slippery feel is your skin's natural oils — hard water stripped them and left a soap-scum film before","Correct! Soft water rinses soap fully; the 'squeaky' hard-water feel was actually stripped skin."],
+      ["It's leftover salt in the water","Softened water doesn't leave salt on your skin."]]},
+  {cat:"Maintenance, Warranty & Logistics",q:"What's the difference between a softener and a filter?",a:0,
+   o:[["Softener removes hardness minerals & heavy metals (ion exchange); a filter like RO removes contaminants, chemicals & odors","Correct! Our package does both — whole-home softens/filters, the RO purifies drinking water."],
+      ["They're the same thing","Different jobs."],
+      ["A filter softens the water","Softening is the resin's job."],
+      ["A softener purifies drinking water","That's the RO's job."]]},
+  {cat:"Maintenance, Warranty & Logistics",q:"A customer wants to pay by credit card. What changes?",a:1,
+   o:[["Same price","There's a card surcharge."],
+      ["Add a 3% surcharge (cash/check/debit is the base price)","Correct! Always mention it upfront so there's no surprise."],
+      ["We don't take cards","We do — with a 3% surcharge."],
+      ["They get 10% off","No discount for cards."]]},
+
+  // ===== RUNNING THE SALES CALL =====
+  {cat:"Running the Sales Call",q:"What's the very first thing you qualify on every call?",a:0,
+   o:[["City water or well water","Correct! It decides almost everything about what they need."],
+      ["Their budget","Source comes first — it drives the whole recommendation."],
+      ["Their name only","You greet them, but the qualifying anchor is the water source."],
+      ["The faucet color","That comes at the close."]]},
+  {cat:"Running the Sales Call",q:"Which two initial questions size the system?",a:1,
+   o:[["Their income and age","Not how we size it."],
+      ["Number of full-time residents and number of bathrooms","Correct! More people and bathrooms = more water use, which can move them to the XL or dual-tank."],
+      ["Their zip code","Useful for hardness, but not the sizing question."],
+      ["Their monthly water bill","Not a sizing input."]]},
+  {cat:"Running the Sales Call",q:"What faucet colors do we offer for the RO faucet?",a:0,
+   o:[["Brushed nickel, chrome, matte black, and brushed gold","Correct! Ask at the close so we color-match — people who answer this almost never cancel."],
+      ["Only chrome","We have four options."],
+      ["White and black","Brushed nickel, chrome, matte black, brushed gold."],
+      ["Copper and brass","Not our options."]]},
+  {cat:"Running the Sales Call",q:"Why do you ask if there's an electrical outlet under the kitchen sink?",a:2,
+   o:[["To plug in the softener","The softener installs in the basement, not under the sink."],
+      ["It doesn't matter","It decides which RO you can install."],
+      ["A tankless RO needs a plug; no outlet means you install a tank-style RO instead","Correct! Tankless RO runs on power. No under-sink outlet → install the tank-style RO, which is gravity/pressure-fed and needs no electricity. Ask at the close."],
+      ["To run the UV light","UV is a well-water item in the basement, not under the sink."]]},
+  {cat:"Running the Sales Call",q:"How long does the standard mixed-bed system last versus the dual-tank?",a:1,
+   o:[["Both about 5 years","Both last much longer."],
+      ["Standard 7–12 years; dual-tank 12–20+ years","Correct! After the standard's run, you can swap the tank; the dual-tank keeps carbon and resin separate so both last longer."],
+      ["Both 30+ years","Optimistic — 7–12 and 12–20+."],
+      ["The standard lasts longer","The dual-tank lasts longer."]]},
+  {cat:"Running the Sales Call",q:"In a Twin Cities home, where does the softener install — and what's a 'loop'?",a:0,
+   o:[["In the basement near the main line; a loop is pre-plumbed capped pipes for an easy tie-in","Correct! No loop means the plumber makes the tie-in and drain — an added cost. Ask about the shutoff valve early."],
+      ["Outside by the street; a loop is a trenched line","That's Sun Belt slab homes, not Minnesota."],
+      ["On the roof; a loop is a vent","Not a thing."],
+      ["It doesn't need plumbing","Every whole-home system ties into the main line."]]},
+  {cat:"Running the Sales Call",q:"How do we handle 'I need to talk to my spouse'?",a:1,
+   o:[["Set a callback for next week","We don't hand them off to call back."],
+      ["We get ahead of it early in the call by asking who else needs to be in on the decision — so it rarely comes up at the end","Correct! Decision-makers are qualified in Guided Discovery. If it still comes up, treat it like 'I need to think about it.'"],
+      ["End the call","No — keep guiding."],
+      ["Immediately drop the price","Price isn't the issue here."]]},
+
+  // ===== OBJECTIONS & CLOSING =====
+  {cat:"Objections & Closing",q:"A customer asks why you're so much cheaper than EcoWater. Best response?",a:1,
+   o:[["Because we use cheaper materials","Never suggest lower quality — it kills the sale and isn't true."],
+      ["Big companies pay reps huge commissions and carry big overhead — we do volume, US-made parts, and don't overcharge","Correct! Builds trust, then pivot to the lifetime valve warranty. We outperform them."],
+      ["Because we offer a worse warranty","Not true — our valve warranty is better."],
+      ["Because we're going out of business","Never."]]},
+  {cat:"Objections & Closing",q:"What's the posture on every objection?",a:2,
+   o:[["Hard-close them as fast as possible","We don't pressure or force."],
+      ["Let them go think about it and call you back","That's where leads die — lead them to a decision on the call."],
+      ["Acknowledge, reassure you're the best option, then guide them to a decision on the call — never pressure","Correct! Confident and warm, leading them to the best decision: doing it."],
+      ["Keep listing more features until they cave","More info doesn't solve objections — finding the real concern does."]]},
+  {cat:"Objections & Closing",q:"'I want to get other quotes.' Best move?",a:0,
+   o:[["Arm them with the comparison questions (tank grains, US resin, lifetime valve warranty), reassure you're the best value, and lead to a decision now","Correct! Most shoppers come right back — guide them to deciding instead of sending them off."],
+      ["Tell them not to shop around","Never — that breaks trust."],
+      ["End the call and wait","Passive — a lost lead."],
+      ["Immediately slash the price","Don't fold; lead with value."]]},
+  {cat:"Objections & Closing",q:"You give the price and the customer goes quiet. What do you do?",a:1,
+   o:[["Immediately drop the price","Silence isn't a no — don't undercut yourself."],
+      ["Let the silence sit a few seconds — don't talk them out of it","Correct! Silence after a price is processing. The first to speak usually loses."],
+      ["Keep piling on features","Stop — let them process."],
+      ["Hang up","No — give them a moment."]]},
+
+  // ===== CRM, OUTREACH & FOLLOW-UP =====
+  {cat:"CRM, Outreach & Follow-Up",q:"What's our CRM?",a:0,
+   o:[["Home Service Hub — a white-labeled version of GoHighLevel","Correct! Every lead, call, note, text, and pipeline stage lives there."],
+      ["Salesforce","No — Home Service Hub."],
+      ["A spreadsheet","Everything lives in Home Service Hub."],
+      ["ScheduleDrop","That's the scheduling tool, not the CRM."]]},
+  {cat:"CRM, Outreach & Follow-Up",q:"Speed to lead — how fast do you call a brand-new lead?",a:1,
+   o:[["Within a day","Way too slow."],
+      ["Within 1 minute — they're still holding their phone","Correct! Every minute you wait, your odds of reaching them drop fast."],
+      ["Within an hour","Still too slow — call within a minute."],
+      ["Whenever you get to it","No — speed to lead is the #1 rule."]]},
+  {cat:"CRM, Outreach & Follow-Up",q:"What's the daily outreach cadence on an active lead?",a:0,
+   o:[["3 calls (morning, afternoon, after work) + 1 text per day — after work is the best window","Correct! After work is when most people are home and on their phones."],
+      ["1 call a week","Far too little."],
+      ["10 calls an hour","That's harassment, not cadence."],
+      ["Email only","We call (FaceTime audio) and text."]]},
+  {cat:"CRM, Outreach & Follow-Up",q:"How long do you work a lead before moving it into nurture?",a:2,
+   o:[["1 day","Too soon."],
+      ["6 months","Too long to actively dial."],
+      ["About 2 weeks, then the breakup text and into Nurture","Correct! Two weeks of the cadence, then the breakup text, then long-term nurture."],
+      ["You never stop calling","After ~2 weeks they move to nurture's automated sequence."]]},
+  {cat:"CRM, Outreach & Follow-Up",q:"What's our scheduling tool?",a:1,
+   o:[["Jobber","We use ScheduleDrop now."],
+      ["ScheduleDrop","Correct! It handles the install calendar and contractor timesheets."],
+      ["Google Calendar","No — ScheduleDrop."],
+      ["We don't schedule","ScheduleDrop runs scheduling."]]},
+  {cat:"CRM, Outreach & Follow-Up",q:"Before you edit or build an automation in Home Service Hub, what must you do?",a:0,
+   o:[["Tell Steve first — otherwise his backend update will overwrite your change","Correct! He'll flag your account so it's left alone."],
+      ["Nothing — just change it","His next push would erase your work."],
+      ["Delete the old automation","Don't touch it without telling Steve."],
+      ["Email the customer","Unrelated — this is internal."]]}
+];
+
+const quizHolder=document.getElementById('quizHolder');
+let score=0;const answered=new Set();
+document.getElementById('scoreTotal').textContent=quizData.length;
+let lastCat='';
+quizData.forEach((item,i)=>{
+  if(item.cat && item.cat!==lastCat){
+    const h=document.createElement('div');h.className='quiz-cat';h.textContent=item.cat;
+    quizHolder.appendChild(h);lastCat=item.cat;
+  }
+  const card=document.createElement('div');card.className='quiz';
+  let opts='';
+  item.o.forEach((opt,j)=>{opts+='<button class="quiz-opt" data-i="'+i+'" data-j="'+j+'">'+opt[0]+'</button>';});
+  card.innerHTML='<div class="quiz-q">'+(i+1)+'. '+item.q+'</div><div class="quiz-opts">'+opts+'</div><div class="quiz-fb" id="fb-'+i+'"></div>';
+  quizHolder.appendChild(card);
+});
+quizHolder.querySelectorAll('.quiz-opt').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const i=+btn.dataset.i,j=+btn.dataset.j,item=quizData[i];
+    const card=btn.closest('.quiz');const fb=document.getElementById('fb-'+i);
+    card.querySelectorAll('.quiz-opt').forEach(o=>o.style.pointerEvents='none');
+    const correct=(j===item.a);
+    if(correct){btn.classList.add('correct');fb.className='quiz-fb show ok';}
+    else{btn.classList.add('wrong');fb.className='quiz-fb show no';
+      card.querySelectorAll('.quiz-opt')[item.a].classList.add('reveal');}
+    fb.textContent=item.o[correct?j:item.a][1];
+    if(!answered.has(i)){answered.add(i);if(correct){score++;document.getElementById('scoreNum').textContent=score;}}
+  });
+});
+
 })();
 </script>
 </body>

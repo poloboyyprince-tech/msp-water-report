@@ -1174,7 +1174,7 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
 
       <div class="card">
         <h3 style="margin-top:0">Deal Profit Builder</h3>
-        <p class="card-sub">Pick the system — it prefills the menu price and approximate dealer cost. Adjust labor, material, and your CAC to see gross profit vs. the floor. <strong>Price = equipment + labor + ~$250 CAC + $1,000 profit.</strong></p>
+        <p class="card-sub">Pick the system — it prefills the menu price and approximate dealer cost. Adjust labor and your CAC to see gross profit vs. the floor. <strong>Price = equipment + labor + CAC + $1,000 profit.</strong></p>
         <div class="calc-grid">
           <div class="field"><label>System</label>
             <select id="d-system">
@@ -1196,7 +1196,6 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
           <div class="field"><label>Sell price ($)</label><input id="d-sell" type="number" inputmode="numeric"></div>
           <div class="field"><label>Equipment / dealer cost ($)</label><input id="d-cost" type="number" inputmode="numeric"></div>
           <div class="field"><label>Installer labor ($)</label><input id="d-labor" type="number" inputmode="numeric" value="400"></div>
-          <div class="field"><label>Material ($)</label><input id="d-mat" type="number" inputmode="numeric" value="75"></div>
           <div class="field"><label>Marketing / CAC ($)</label><input id="d-cac" type="number" inputmode="numeric" value="250"></div>
         </div>
         <div class="result" id="d-result">
@@ -1482,7 +1481,7 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
 
   /* ---- Deal Profit Builder ---- */
   var dSys=$('d-system'), dRo=$('d-ro'), dSell=$('d-sell'), dCost=$('d-cost'),
-      dLabor=$('d-labor'), dMat=$('d-mat'), dCac=$('d-cac');
+      dLabor=$('d-labor'), dCac=$('d-cac');
   function applySystem(){
     var opt = dSys.options[dSys.selectedIndex];
     dSell.value = opt.getAttribute('data-sell');
@@ -1491,9 +1490,9 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
   }
   function calcDeal(){
     var sell=+dSell.value||0, cost=+dCost.value||0, labor=+dLabor.value||0,
-        mat=+dMat.value||0, cac=+dCac.value||0;
+        cac=+dCac.value||0;
     if(dRo.checked){ sell+=699; cost+=200; }
-    var profit = sell - cost - labor - mat - cac;
+    var profit = sell - cost - labor - cac;
     var margin = sell ? (profit/sell*100) : 0;
     var res=$('d-result'), note=$('d-note');
     $('d-profit').textContent = fmt(profit);
@@ -1509,7 +1508,7 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
   if(dSys){
     dSys.addEventListener('change', applySystem);
     dRo.addEventListener('change', calcDeal);
-    [dSell,dCost,dLabor,dMat,dCac].forEach(function(el){ el.addEventListener('input', calcDeal); });
+    [dSell,dCost,dLabor,dCac].forEach(function(el){ el.addEventListener('input', calcDeal); });
     applySystem();
   }
 

@@ -136,7 +136,7 @@ td.lvl,td.safe{font-size:12.5px;color:var(--grey)}
 .site-footer .fnav{display:flex;flex-direction:column;gap:14px;flex:0 0 21.3%;margin-top:20px}
 .site-footer .fnav a{font-family:'DM Sans',sans-serif;color:#fff;font-size:16px;line-height:21px}
 .site-footer .fdiv{max-width:1170px;margin:42px auto 30px;border-top:1px solid #ffffff}
-.site-footer .fbottom{max-width:1170px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#fff;font-size:16px}
+.site-footer .fbottom{max-width:1170px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#fff;font-size:16px;line-height:1.3}
 .site-footer .fbottom a{color:#fff}
 .site-footer .flinks{display:flex;gap:67px;margin-right:68px}
 .disc{color:var(--grey);font-size:13px;line-height:1.6;margin-top:20px}

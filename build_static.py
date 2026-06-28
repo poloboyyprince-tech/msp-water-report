@@ -68,7 +68,7 @@ a{color:var(--navy)}
 .topbar .nav a{font-family:'DM Sans',sans-serif;color:#1a2744;text-decoration:none;font-size:20px;font-weight:400;padding:20px;transition:all .3s ease}
 .topbar .nav a:hover{background:#d4b870;color:#fff}
 .topbar .callbox{display:inline-block;width:256px;text-align:center;text-decoration:none;line-height:1.3;margin-left:10px;margin-right:5px}
-.topbar .callbox .pico{width:17px;height:17px;fill:#DE3B3B;vertical-align:-2px;margin-right:7px}
+.topbar .callbox .pico{width:19px;height:19px;fill:#e93d3d;vertical-align:-4px;margin-right:7px}
 .topbar .callbox .ct{display:block;color:#1a2744;font-family:'DM Sans',sans-serif;font-weight:400;font-size:20px;margin-bottom:10px}
 .topbar .callbox .cn{display:block;color:#1a2744;font-family:'DM Sans',sans-serif;font-weight:400;font-size:20px}
 main{max-width:var(--maxw);margin:44px auto 64px;padding:0 24px}

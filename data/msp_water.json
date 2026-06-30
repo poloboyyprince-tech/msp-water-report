@@ -26,7 +26,7 @@
     "surface": [
       {
         "key": "chlorine",
-        "level": "Added by your city to kill germs",
+        "level": "Chloramine — a long-lasting disinfectant your city adds",
         "rating": "normal"
       },
       {
@@ -43,7 +43,7 @@
     "groundwater": [
       {
         "key": "chlorine",
-        "level": "Added by your city to kill germs",
+        "level": "Chloramine — a long-lasting disinfectant your city adds",
         "rating": "normal"
       },
       {
@@ -55,7 +55,7 @@
     "groundwater_soft": [
       {
         "key": "chlorine",
-        "level": "Added by your city to kill germs",
+        "level": "Chloramine — a long-lasting disinfectant your city adds",
         "rating": "normal"
       },
       {

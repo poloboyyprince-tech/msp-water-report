@@ -316,13 +316,13 @@ def recommend_systems(source_type, gpg, concerns, pfas):
     primary = "standard_mixed_bed"  # Whole Home Water Filtration System
     if gpg >= 7:
         reason = (f"Your water is {hardness_label(gpg).lower()} (about {gpg} grains per gallon). "
-                  "Our Whole Home Water Filtration System softens it and filters out the chlorine "
+                  "Our Whole Home Water Filtration System softens it and filters out the chloramine "
                   "taste for every tap in the house, and we add a reverse-osmosis drinking system "
                   "at your kitchen sink for clean, great-tasting water.")
     else:
         reason = (f"Your water is fairly soft for the metro (about {gpg} grains per gallon) and the "
                   "city treats it well — so the biggest wins are at the tap. Our Whole Home Water "
-                  "Filtration System removes the chlorine taste throughout the house, and a "
+                  "Filtration System removes the chloramine taste throughout the house, and a "
                   "reverse-osmosis drinking system gives you clean, great-tasting water to drink and cook with.")
 
     alternatives = [

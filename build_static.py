@@ -211,17 +211,17 @@ def page(title, body, description="", asset_prefix=""):
 
 EDU = {
     "chlorine": {
-        "title": "Chlorine — Why Your Water Can Smell Like a Pool",
-        "what": "Your city adds a little chlorine to your water on purpose. It's a disinfectant that kills germs and keeps the water safe on its long trip through the pipes to your home. That part is genuinely a good thing.",
-        "notice": ["A “pool water” smell or taste, especially from the cold tap",
-                   "Dry skin and hair after showers",
+        "title": "Chloramine — Why Your Water Tastes and Smells Like a Pool",
+        "what": "Here's something most people don't know: Twin Cities water plants don't use plain chlorine. They use chloramine — chlorine combined with a small amount of ammonia. They do it on purpose, and it's a smart choice: chloramine is a longer-lasting disinfectant that keeps germs out of the water the whole way through the pipes to your home, and it leaves behind fewer byproducts than plain chlorine would.",
+        "notice": ["A “pool water” or faintly chemical smell and taste",
+                   "Dry, itchy skin and dull hair after showers",
                    "Coffee, tea, or ice that taste a little “off”"],
-        "honest": "Chlorine in city water is safe to drink — it's doing its job. Most people just don't love the taste, or what it does to their skin and hair.",
-        "help": "Our Whole Home Water Filtration System runs your water through high-quality coconut-shell carbon that grabs the chlorine right at your house. Your water tastes and smells clean, and every shower is gentler on your skin and hair.",
+        "honest": "Chloramine is safe to drink — it's doing its job. But here's the catch: unlike plain chlorine, chloramine does NOT disappear if you let a glass of water sit out overnight. It stays put. That's exactly why people notice the taste, and why it keeps affecting your skin and hair every single shower.",
+        "help": "Chloramine is also tougher to filter out than plain chlorine — it slips right past basic carbon filters. Our Whole Home Water Filtration System uses high-quality catalytic coconut-shell carbon, the kind specifically built to grab chloramine, right where the water enters your house. The result: water that tastes and smells clean from every tap, and showers that are easier on your skin and hair.",
     },
     "tthm": {
         "title": "Disinfection Byproducts — Tiny Leftovers From Cleaning the Water",
-        "what": "When chlorine mixes with natural bits of leaves and soil in river water, it can make tiny amounts of byproducts (scientists call them TTHMs and HAA5s).",
+        "what": "Disinfecting river water leaves behind tiny traces of byproducts (scientists call them TTHMs and HAA5s). The good news: because Twin Cities plants use chloramine instead of plain chlorine, these are kept lower than they otherwise would be.",
         "honest": "Your city keeps these below the EPA's legal safety limits, so your water is safe to drink. Even so, a lot of families like to lower them further in the water they actually drink and cook with.",
         "help": "Our reverse-osmosis drinking system reduces these at your kitchen sink, so the water your family drinks is about as clean as water gets.",
     },
@@ -275,7 +275,7 @@ def render_report(profile):
       <h2>“Safe” Isn't the Same as “Soft &amp; Clean”</h2>
       <p>{city}'s water meets the basic federal and state safety standards — your city does that part.
       But meeting the legal minimum is a long way from <b>soft, clean, healthy, and great-tasting</b>
-      water. Hard minerals, the chlorine they add, and whatever your own pipes pick up are all still in
+      water. Hard minerals, the chloramine they add, and whatever your own pipes pick up are all still in
       there — and that's exactly what we help families fix. Here's what's really in your water:</p></div>"""
 
     if is_hard:
@@ -306,7 +306,7 @@ def render_report(profile):
           most of the metro &mdash; so you'll see less of the crusty buildup and spotting that hard-water
           towns deal with. For you, the biggest improvements are at the kitchen tap (taste) and in the shower.</p>
           <p class="help"><b>How we help:</b> Our Whole Home Water Filtration System polishes out the
-          chlorine taste and protects your home, and our reverse-osmosis drinking system makes your
+          chloramine taste and protects your home, and our reverse-osmosis drinking system makes your
           drinking and cooking water crisp and clean.</p></div>"""
 
     topic_cards = ""

@@ -809,6 +809,7 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
           <tr data-q="dual tank extra large self-cleaning carbon longest lasting best city 3999"><td><strong>Complete Home — Dual-Tank XL</strong></td><td class="num">$3,999</td><td>$6,000–$9,000</td><td>Self-cleaning carbon tank; longest-lasting city system. $1,000 over Large for ~$300 more cost — easy honest upsell</td></tr>
           <tr data-q="carbon only chlorine taste without softening no resin no salt 2199"><td><strong>Carbon-Only Filter</strong></td><td class="num">$2,199</td><td>varies</td><td>Chlorine/taste removal without softening; low build cost (~$300), clears the $1,000 floor with room</td></tr>
           <tr data-q="salt free conditioner nac only no carbon no soft water 2999"><td><strong>Salt-Free Conditioner</strong> (NAC only)</td><td class="num">$2,999</td><td>$6,000–$7,000</td><td>Conditioner alone — no carbon tank. No true soft water / no health benefit — honest framing required</td></tr>
+          <tr data-q="salt free plus carbon paired pair bundle conditioner carbon tank chlorine 4499"><td><strong>Salt-Free + Carbon</strong> (paired)</td><td class="num">$4,499</td><td>$6,000–$7,000</td><td>NAC conditioner <strong>+ Carbon-Only tank</strong> when they also want chlorine/taste handled — $4,499 paired (vs. $5,198 separately)</td></tr>
         </table>
       </div>
 
@@ -881,7 +882,7 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
 
         <div class="card" data-q="carbon only filter chlorine chemicals taste without softening 2199"><div class="card-head"><h3>Carbon-Only Filter</h3><span class="badge b-blue">$2,199</span></div><p>Whole-home carbon removing chlorine, chemicals, taste/odor <em>without softening</em> (no resin, no salt, no brine tank). Low build cost (~$300), so at $2,199 it clears the ~$1,000 floor — and it's ~$800 under the Complete Home softener, so the resin/softening is the natural ~$800 upsell. Prescribe only when the customer genuinely wants filtration without softening.</p></div>
 
-        <div class="card" data-q="salt free conditioner nac puronics carbon tank pair no soft water honest 2999"><div class="card-head"><h3>Salt-Free Conditioner (NAC)</h3><span class="badge b-amber">Honest framing required · $2,999</span></div><p>Built like Puronics units (same NAC media) at a fraction of their ~$6K–$7K. No salt, brine, drain, or electricity. Sell it as the <strong>conditioner at $2,999</strong>. NAC can't be mixed with carbon, so if they also want chlorine/taste handled, <strong>pair it with the Carbon-Only tank ($2,199)</strong> as a second line item — two units, quoted separately. <strong>The honest truth:</strong> it does <em>not</em> make truly soft water, has no health/heavy-metal benefit, and only reduces scale. ~99% choose salt once explained — but offering both makes you the unbiased one. Media lasts ~3–5 years.</p></div>
+        <div class="card" data-q="salt free conditioner nac puronics carbon tank pair no soft water honest 2999"><div class="card-head"><h3>Salt-Free Conditioner (NAC)</h3><span class="badge b-amber">Honest framing required · $2,999</span></div><p>Built like Puronics units (same NAC media) at a fraction of their ~$6K–$7K. No salt, brine, drain, or electricity. Sell it as the <strong>conditioner at $2,999</strong>. NAC can't be mixed with carbon, so if they also want chlorine/taste handled, <strong>pair it with the Carbon-Only tank — $4,499 for the pair</strong> (vs. $5,198 bought separately). <strong>The honest truth:</strong> it does <em>not</em> make truly soft water, has no health/heavy-metal benefit, and only reduces scale. ~99% choose salt once explained — but offering both makes you the unbiased one. Media lasts ~3–5 years.</p></div>
 
         <div class="card" data-q="dual tank well aio air injection iron 7 ppm sulfur manganese 4499"><div class="card-head"><h3>Dual-Tank Well (AIO)</h3><span class="badge b-teal">Well default · $4,499</span></div><p>For well water with <strong>iron ≤ 7 ppm.</strong> An air-injection downflow valve injects oxygen, converting iron to rust that's filtered out; handles iron, minor sulfur, manganese. The default well system. <strong>Never guarantee 100% removal</strong> — set expectations.</p></div>
 
@@ -1228,6 +1229,7 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
               <option data-sell="3999" data-cost="1000">Complete Home — Dual-Tank XL ($3,999)</option>
               <option data-sell="2199" data-cost="300">Carbon-Only Filter ($2,199)</option>
               <option data-sell="2999" data-cost="900">Salt-Free Conditioner · NAC only ($2,999)</option>
+              <option data-sell="4499" data-cost="1200">Salt-Free + Carbon · paired ($4,499)</option>
               <option data-sell="4499" data-cost="1500">Dual-Tank Well · AIO — landed bundle ($4,499)</option>
               <option data-sell="5999" data-cost="3150">Iron &amp; Sulfur · peroxide — landed bundle ($5,999)</option>
               <option data-sell="699" data-cost="200">Tankless Under-Sink RO ($699)</option>
@@ -1741,7 +1743,7 @@ const quizData=[
   {cat:"Which System & What It Costs",q:"A customer specifically asks for a salt-free system. What do we sell, and how?",a:2,
    o:[["The loose salt-free media on its own","We never sell loose media — it always comes in a tank."],
       ["Switch them to the standard softener","Don't swap the product on them — be honest about the trade-off and let them choose."],
-      ["The conditioner at $2,999; pair a carbon tank if they want chlorine handled","Correct — sell the NAC conditioner at $2,999. NAC can't be mixed with carbon, so if they also want chlorine/taste handled, add the Carbon-Only tank ($2,199) as a second line item. Be honest: it conditions scale but doesn't truly soften."],
+      ["The conditioner at $2,999; pair a carbon tank if they want chlorine handled","Correct — sell the NAC conditioner at $2,999. NAC can't be mixed with carbon, so if they also want chlorine/taste handled, pair it with the Carbon-Only tank: $4,499 for the pair. Be honest: it conditions scale but doesn't truly soften."],
       ["Nothing — it isn't a real product","It's real; it cuts scale but doesn't truly soften."]]},
   {cat:"Which System & What It Costs",q:"Well water, under ~7 PPM iron, no sulfur smell. Which system and price?",a:3,
    o:[["Standard city system — $2,999","That's for city water; wells always get a well-water system."],
@@ -2040,7 +2042,7 @@ const quizData=[
       ["A whole-home carbon filter instead","Carbon won't remove the iron; the well system does."]]},
   {cat:"Scenarios — Put It Together",q:"A city customer with very hard water specifically asks for salt-free. What do you sell — and set expectations on?",a:1,
    o:[["The standard softener instead — they'll thank you","Don't swap the product on them — present the trade-off and let them decide."],
-      ["The conditioner at $2,999; set honest expectations","Correct — sell the NAC conditioner at $2,999 (pair a carbon tank if they want chlorine handled too), and on very hard water be honest: it cuts scale but won't give the true soft-water feel."],
+      ["The conditioner at $2,999; set honest expectations","Correct — sell the NAC conditioner at $2,999 (pair the Carbon-Only tank for $4,499 total if they want chlorine handled too), and on very hard water be honest: it cuts scale but won't give the true soft-water feel."],
       ["Salt-free media alone, loose — the cheapest option","We never sell loose media — it always comes in a tank."],
       ["Salt-free, and promise it feels just like a softener","Never over-promise — before/after tests show almost no change in hardness."]]}
 ];

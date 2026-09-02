@@ -145,13 +145,22 @@
     }
     function render() {
       var s = state(); if (totalEl) totalEl.textContent = money(s.total); if (lineEl) lineEl.textContent = s.parts.length ? s.parts.join(" · ") : "Standard configuration";
-      if (cta) { cta.setAttribute("href", "/preview/schedule/?system=" + encodeURIComponent(cfg.id)); cta.textContent = "Schedule installation · " + money(s.total); }
+      if (cta) { cta.setAttribute("href", "/preview/schedule/?system=" + encodeURIComponent(cfg.id)); cta.textContent = "Schedule Online · " + money(s.total); }
       if (window.MSPIntake) window.MSPIntake.setPreset({ system_interest: cfg.interest, water_source: cfg.water_source || "", system_id: cfg.id, system_config: s.line });
     }
     box.addEventListener("change", render);
     if (cta) cta.addEventListener("click", function () { render(); if (window.MSPTrack) window.MSPTrack.event("schedule_click", { label: "configurator", system: cfg.id, total: state().total }); });
     render();
   });
+  /* Inside-the-system stepper */
+  $$("[data-stepper]").forEach(function (st) {
+    var items = $$(".aspect", st), cur = $("[data-current]", st), i = 0;
+    function show(n) { i = (n + items.length) % items.length; items.forEach(function (a, k) { a.setAttribute("data-active", k === i ? "true" : "false"); }); if (cur) cur.textContent = i + 1; }
+    $("[data-prev]", st).addEventListener("click", function () { show(i - 1); });
+    $("[data-next]", st).addEventListener("click", function () { show(i + 1); });
+  });
+  /* Option chip labels ("— Tank RO") */
+  $$("[data-group]").forEach(function (g) { var lab = $("[data-choice]", g); g.addEventListener("change", function () { var r = g.querySelector("input:checked"); if (!lab) return; if (r && r.type === "checkbox") lab.textContent = "— " + (r.checked ? "Added" : "No"); else if (r) lab.textContent = "— " + r.nextElementSibling.textContent.replace(/\s\+\$[\d,]+$/, ""); else { var cb = g.querySelector('input[type="checkbox"]'); if (cb) lab.textContent = "— " + (cb.checked ? "Added" : "No"); } }); });
   /* Gallery thumbs */
   $$(".gallery").forEach(function (g) { var main = g.querySelector(".main img"); g.querySelectorAll(".thumbs button").forEach(function (b) { b.addEventListener("click", function () { main.src = b.getAttribute("data-src"); main.alt = b.getAttribute("data-alt") || ""; g.querySelectorAll(".thumbs button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); }); }); });
   /* Schedule page: show chosen configuration */

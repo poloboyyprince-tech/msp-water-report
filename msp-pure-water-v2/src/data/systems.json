@@ -140,7 +140,154 @@
     "MSP ceramic disc valve with 72-hour memory backup",
     "NSF-certified media, lifetime warranty"
    ],
-   "nsf": true
+   "nsf": true,
+   "aspects": [
+    {
+     "kicker": "MSP Ceramic Disc Valve",
+     "crossed": "Manual upkeep",
+     "headline": "It runs itself.",
+     "body": "The MSP ceramic disc valve on top of the tank washes and recharges the system on its own. You never have to touch it. Ceramic discs inside last for years where the plastic and Teflon pistons other companies use wear and leak, and a 72-hour memory backup means a power outage never erases your settings.",
+     "stats": [
+      [
+       "Valve flow",
+       "28 GPM"
+      ],
+      [
+       "Memory backup",
+       "72 hours"
+      ],
+      [
+       "Sealing",
+       "Ceramic disc"
+      ]
+     ]
+    },
+    {
+     "kicker": "Jacobi Catalytic Carbon Tank",
+     "crossed": "Chlorine taste & smell",
+     "headline": "Goodbye, chlorine.",
+     "body": "The city adds chlorine to keep water safe in the pipes, but you don't want to drink or shower in it. The Jacobi catalytic carbon tank is made from real coconut shells and grabs chlorine, chloramine, organic chemicals and bad tastes as water passes through. Every faucet in the house gets cleaner, better-tasting water.",
+     "stats": [
+      [
+       "Carbon",
+       "15 lbs"
+      ],
+      [
+       "Source",
+       "Coconut shell"
+      ],
+      [
+       "Maker",
+       "Jacobi Carbons"
+      ]
+     ]
+    },
+    {
+     "kicker": "10% Crosslinked Resin",
+     "crossed": "Hard water spots",
+     "headline": "Soft water, every tap.",
+     "body": "Hard water is water full of dissolved rock, calcium and magnesium. That's what leaves spots on dishes, crusty white buildup on faucets and dry skin. Millions of 10% crosslinked resin beads trade those rock minerals out of your water before it reaches your pipes. Softer skin, cleaner dishes, appliances that last years longer.",
+     "stats": [
+      [
+       "Capacity",
+       "48,000 grains"
+      ],
+      [
+       "Resin",
+       "75 lbs, 10% crosslinked"
+      ]
+     ]
+    },
+    {
+     "kicker": "Polishing Gravel",
+     "crossed": "Channeling",
+     "headline": "Every bead gets used.",
+     "body": "Polishing gravel packed under the media spreads water evenly across the whole tank and keeps fine media out of the distributor. Even flow means full contact time, so you get every grain of the rated capacity instead of water racing through one path.",
+     "stats": [
+      [
+       "Purpose",
+       "Even flow"
+      ],
+      [
+       "Prevents",
+       "Channeling, media loss"
+      ]
+     ]
+    },
+    {
+     "kicker": "The Numbers",
+     "crossed": "Guesswork",
+     "headline": "Built to spec.",
+     "body": "Everything is sized for a real household: high flow so showers, laundry and sprinklers can all run at once with no pressure loss. NSF-certified media, lifetime warranty, and a free reverse osmosis drinking-water system included.",
+     "stats": [
+      [
+       "System flow",
+       "28 GPM"
+      ],
+      [
+       "Media tank",
+       "12\" × 52\""
+      ],
+      [
+       "Brine tank",
+       "15\" × 35\""
+      ],
+      [
+       "Warranty",
+       "Lifetime"
+      ]
+     ]
+    }
+   ],
+   "callouts": [
+    {
+     "label": "Control valve",
+     "x": 30,
+     "y": 7
+    },
+    {
+     "label": "Carbon",
+     "x": 30,
+     "y": 34
+    },
+    {
+     "label": "Softening resin",
+     "x": 30,
+     "y": 57
+    },
+    {
+     "label": "Gravel",
+     "x": 30,
+     "y": 86
+    },
+    {
+     "label": "Brine tank",
+     "x": 72,
+     "y": 62
+    }
+   ],
+   "description_lines": [
+    [
+     "MSP Ceramic Disc Valve",
+     "Automatically backwashes and regenerates the system. Ceramic discs for long life, highly configurable, 72-hour memory backup."
+    ],
+    [
+     "Jacobi Catalytic Carbon Tank (15 lbs)",
+     "Treats chlorine, chloramine, organic chemicals, taste and odor."
+    ],
+    [
+     "10% Crosslinked Resin (75 lbs)",
+     "USA-made, 10% crosslinked for superior durability. Removes hardness with no pressure loss."
+    ],
+    [
+     "Polishing Gravel",
+     "Supports the media bed for even flow and prevents channeling."
+    ],
+    [
+     "Free Reverse Osmosis Add-On",
+     "Your choice of tank or tankless drinking-water system, included with installation."
+    ]
+   ]
   },
   {
    "id": "dual-tank-city",
@@ -246,7 +393,146 @@
     "Dedicated media beds last longer and filter deeper",
     "NSF-certified media, lifetime warranty"
    ],
-   "nsf": true
+   "nsf": true,
+   "aspects": [
+    {
+     "kicker": "Jacobi Catalytic Carbon Tank",
+     "crossed": "Chlorine taste & smell",
+     "headline": "A whole tank for chlorine.",
+     "body": "Tank one is a dedicated Jacobi catalytic carbon tank. With its own full media bed it treats chlorine, chloramine, organic chemicals, taste and odor at full strength, and the MSP ceramic disc valve backwashes it clean on schedule, something most dual-tank systems never do for the carbon side.",
+     "stats": [
+      [
+       "Carbon",
+       "1.5 cu. ft."
+      ],
+      [
+       "Source",
+       "Coconut shell"
+      ]
+     ]
+    },
+    {
+     "kicker": "10% Crosslinked Resin",
+     "crossed": "Hard water spots",
+     "headline": "A whole tank for softening.",
+     "body": "Tank two holds high-capacity 10% crosslinked resin that trades calcium and magnesium out of your water. Because it doesn't share a vessel with carbon, the bed is deeper, the contact time longer, and the capacity higher for big households and heavy water use.",
+     "stats": [
+      [
+       "Capacity",
+       "48,000 grains per tank"
+      ],
+      [
+       "Resin",
+       "1.5 cu. ft., 10% crosslinked"
+      ]
+     ]
+    },
+    {
+     "kicker": "MSP Ceramic Disc Valve",
+     "crossed": "Manual upkeep",
+     "headline": "One valve runs both tanks.",
+     "body": "A single MSP ceramic disc valve controls both tanks and backwashes them automatically. Ceramic sealing discs don't score, swell or tear like the rubber seals in piston valves, so the system stays leak-free without service calls.",
+     "stats": [
+      [
+       "Valve flow",
+       "30 GPM"
+      ],
+      [
+       "Sealing",
+       "Ceramic disc"
+      ]
+     ]
+    },
+    {
+     "kicker": "Polishing Gravel",
+     "crossed": "Channeling",
+     "headline": "Even flow in both tanks.",
+     "body": "Polishing gravel in each tank supports the media bed, spreads flow across the full diameter and prevents channeling, so both the Jacobi catalytic carbon tank and the 10% crosslinked resin tank deliver their full rated capacity.",
+     "stats": [
+      [
+       "Purpose",
+       "Even flow"
+      ],
+      [
+       "Prevents",
+       "Channeling, media loss"
+      ]
+     ]
+    },
+    {
+     "kicker": "The Numbers",
+     "crossed": "Guesswork",
+     "headline": "Built for demand.",
+     "body": "Sized for larger homes: 30 GPM valve flow, 28 GPM system flow, dedicated media beds that last longer and filter deeper. NSF-certified media, lifetime warranty, and a free reverse osmosis drinking-water system included.",
+     "stats": [
+      [
+       "System flow",
+       "28 GPM"
+      ],
+      [
+       "Media tanks",
+       "10\" × 54\""
+      ],
+      [
+       "Brine tank",
+       "15\" × 35\""
+      ],
+      [
+       "Warranty",
+       "Lifetime"
+      ]
+     ]
+    }
+   ],
+   "callouts": [
+    {
+     "label": "Control valve",
+     "x": 33,
+     "y": 6
+    },
+    {
+     "label": "Softening resin",
+     "x": 22,
+     "y": 44
+    },
+    {
+     "label": "Carbon tank",
+     "x": 46,
+     "y": 44
+    },
+    {
+     "label": "Gravel",
+     "x": 34,
+     "y": 86
+    },
+    {
+     "label": "Brine tank",
+     "x": 76,
+     "y": 62
+    }
+   ],
+   "description_lines": [
+    [
+     "MSP Ceramic Disc Valve",
+     "One valve controls both tanks, backwashes and regenerates automatically, 72-hour memory backup."
+    ],
+    [
+     "Jacobi Catalytic Carbon Tank (1.5 cu. ft.)",
+     "A dedicated tank for chlorine, chloramine, organic chemicals, taste and odor."
+    ],
+    [
+     "10% Crosslinked Resin Tank (1.5 cu. ft.)",
+     "A dedicated high-capacity softening tank, 48,000 grains."
+    ],
+    [
+     "Polishing Gravel",
+     "In both tanks for even flow and no channeling."
+    ],
+    [
+     "Free Reverse Osmosis Add-On",
+     "Your choice of tank or tankless drinking-water system, included with installation."
+    ]
+   ]
   },
   {
    "id": "salt-free",
@@ -350,7 +636,136 @@
     "Protects water heaters, dishwashers and plumbing from scale",
     "Lowest-maintenance system in our lineup"
    ],
-   "nsf": true
+   "nsf": true,
+   "aspects": [
+    {
+     "kicker": "Jacobi Catalytic Carbon Tank",
+     "crossed": "Chlorine taste & smell",
+     "headline": "Goodbye, chlorine.",
+     "body": "The Jacobi catalytic carbon tank removes chlorine, chloramine, organic chemicals and odors from all your water, made from renewable coconut shells and finished with a catalytic surface that breaks chloramine down instead of just holding it.",
+     "stats": [
+      [
+       "Carbon",
+       "1.5 cu. ft."
+      ],
+      [
+       "Source",
+       "Coconut shell"
+      ]
+     ]
+    },
+    {
+     "kicker": "Salt-Free Conditioning Tank",
+     "crossed": "Salt bags & brine",
+     "headline": "Scale, without the salt.",
+     "body": "The conditioning tank transforms hardness minerals so they can no longer form scale on pipes, water heaters and fixtures, while leaving healthy calcium and magnesium in the water. No salt, no brine discharge, no regeneration. It is not a softener, so you won't get the slick soft-water feel.",
+     "stats": [
+      [
+       "Salt required",
+       "None"
+      ],
+      [
+       "Drain line",
+       "Not needed"
+      ]
+     ]
+    },
+    {
+     "kicker": "Clack In/Out Head",
+     "crossed": "Programming & electricity",
+     "headline": "Nothing to set. Nothing to plug in.",
+     "body": "A Clack in/out head with a 3/4-inch distributor directs water down through the media and back up the riser. No regeneration cycle, no timer, no power, and a full 1-inch to 1¼-inch bypass for service.",
+     "stats": [
+      [
+       "Distributor",
+       "3/4\""
+      ],
+      [
+       "Bypass",
+       "1\" – 1¼\""
+      ]
+     ]
+    },
+    {
+     "kicker": "Polishing Gravel",
+     "crossed": "Channeling",
+     "headline": "Every grain gets used.",
+     "body": "Polishing gravel supports the media bed and spreads flow evenly through the tank, so the full carbon volume is in contact with your water on every pass.",
+     "stats": [
+      [
+       "Purpose",
+       "Even flow"
+      ],
+      [
+       "Prevents",
+       "Channeling, media loss"
+      ]
+     ]
+    },
+    {
+     "kicker": "The Numbers",
+     "crossed": "Guesswork",
+     "headline": "The simplest system to own.",
+     "body": "Zero electricity, zero drain line, zero salt. 28 GPM valve flow, NSF-certified media, lifetime warranty, and a free tankless reverse osmosis drinking-water system included.",
+     "stats": [
+      [
+       "Valve flow",
+       "28 GPM"
+      ],
+      [
+       "Media tank",
+       "10\" × 54\""
+      ],
+      [
+       "Softening",
+       "Not applicable"
+      ],
+      [
+       "Warranty",
+       "Lifetime"
+      ]
+     ]
+    }
+   ],
+   "callouts": [
+    {
+     "label": "Carbon tank",
+     "x": 35,
+     "y": 44
+    },
+    {
+     "label": "Conditioning tank",
+     "x": 64,
+     "y": 44
+    },
+    {
+     "label": "Gravel",
+     "x": 35,
+     "y": 86
+    }
+   ],
+   "description_lines": [
+    [
+     "Jacobi Catalytic Carbon Tank (1.5 cu. ft.)",
+     "Removes chlorine, chloramine, chemicals and odors from all your water."
+    ],
+    [
+     "Salt-Free Conditioning Tank",
+     "Transforms hardness minerals so they cannot form scale. Does not soften."
+    ],
+    [
+     "Clack In/Out Head (3/4\" distributor)",
+     "No regeneration, no electricity, no drain, no salt."
+    ],
+    [
+     "Polishing Gravel",
+     "Supports even water distribution through the media."
+    ],
+    [
+     "Free Tankless Reverse Osmosis",
+     "HW800 AlkaPro tankless drinking-water system, included with installation."
+    ]
+   ]
   },
   {
    "id": "dual-tank-well",
@@ -473,7 +888,154 @@
     "30 GPM valve flow built for well pumps",
     "NSF-certified media, lifetime warranty"
    ],
-   "nsf": true
+   "nsf": true,
+   "aspects": [
+    {
+     "kicker": "MSP AIO Ceramic Disc Valve",
+     "crossed": "Iron stains & metallic taste",
+     "headline": "Air does the work.",
+     "body": "Well water often carries dissolved iron and manganese you can't see, until it stains your sinks orange. The MSP AIO ceramic disc valve keeps a pocket of pressurized air inside the tank. When water passes through, the air naturally turns those dissolved metals into solid particles the media can catch. No chemicals added, ever.",
+     "stats": [
+      [
+       "Treatment",
+       "Chemical-free"
+      ],
+      [
+       "Targets",
+       "Iron, manganese"
+      ],
+      [
+       "Valve flow",
+       "30 GPM"
+      ]
+     ]
+    },
+    {
+     "kicker": "Katalox Light Media",
+     "crossed": "Orange staining",
+     "headline": "Iron, trapped.",
+     "body": "Once the air pocket turns iron and manganese into solid bits, the Katalox Light media bed traps them like a net, down to about 3 microns, and even nudges your water's pH up for better taste. It cleans itself with automatic backwashing, so maintenance stays close to zero.",
+     "stats": [
+      [
+       "Media",
+       "Katalox Light"
+      ],
+      [
+       "Filtration",
+       "~3 microns"
+      ],
+      [
+       "Maintenance",
+       "Self-cleaning"
+      ]
+     ]
+    },
+    {
+     "kicker": "10% Crosslinked Resin",
+     "crossed": "Hard water spots",
+     "headline": "Soft water, every tap.",
+     "body": "Well water is usually hard water too. The second tank is packed with 10% crosslinked resin beads that pull out the calcium and magnesium, so on top of clear, stain-free water you get soft water at every faucet and shower.",
+     "stats": [
+      [
+       "Capacity",
+       "48,000 grains"
+      ],
+      [
+       "Resin",
+       "1.5 cu. ft., 10% crosslinked"
+      ]
+     ]
+    },
+    {
+     "kicker": "Polishing Gravel",
+     "crossed": "Channeling",
+     "headline": "Even flow in both tanks.",
+     "body": "Polishing gravel under the Katalox Light and under the 10% crosslinked resin keeps flow even, prevents channeling and holds fine media out of the distributor, so both tanks deliver their full rated capacity.",
+     "stats": [
+      [
+       "Purpose",
+       "Even flow"
+      ],
+      [
+       "Prevents",
+       "Channeling, media loss"
+      ]
+     ]
+    },
+    {
+     "kicker": "The Numbers",
+     "crossed": "Guesswork",
+     "headline": "Built for well pumps.",
+     "body": "30 GPM valve flow built to keep up with well pumps, NSF-certified media, lifetime warranty, and a free reverse osmosis drinking-water system included. Add the pre-sediment filter and UV purifier for complete well protection.",
+     "stats": [
+      [
+       "Valve flow",
+       "30 GPM"
+      ],
+      [
+       "System flow",
+       "27 GPM"
+      ],
+      [
+       "Media tanks",
+       "10\" × 54\""
+      ],
+      [
+       "Warranty",
+       "Lifetime"
+      ]
+     ]
+    }
+   ],
+   "callouts": [
+    {
+     "label": "AIO valve",
+     "x": 28,
+     "y": 6
+    },
+    {
+     "label": "Softening resin",
+     "x": 24,
+     "y": 44
+    },
+    {
+     "label": "Katalox Light",
+     "x": 48,
+     "y": 44
+    },
+    {
+     "label": "Gravel",
+     "x": 36,
+     "y": 86
+    },
+    {
+     "label": "Brine tank",
+     "x": 74,
+     "y": 62
+    }
+   ],
+   "description_lines": [
+    [
+     "MSP AIO Ceramic Disc Valve",
+     "Creates a pressurized air pocket that oxidizes iron and manganese with no chemicals."
+    ],
+    [
+     "Katalox Light Media",
+     "Traps the oxidized particles and boosts pH. Self-cleaning with automatic backwash."
+    ],
+    [
+     "10% Crosslinked Resin Tank (1.5 cu. ft.)",
+     "A dedicated softening tank, 48,000 grains."
+    ],
+    [
+     "Polishing Gravel",
+     "Under both media beds for even flow."
+    ],
+    [
+     "Free Reverse Osmosis Add-On",
+     "Your choice of tank or tankless drinking-water system, included with installation."
+    ]
+   ]
   },
   {
    "id": "iron-sulfur",
@@ -596,7 +1158,151 @@
     "Consistent chemical feed with dedicated holding tank",
     "Complete package: oxidation + filtration + softening"
    ],
-   "nsf": true
+   "nsf": true,
+   "aspects": [
+    {
+     "kicker": "Hydrogen Peroxide Injection Panel",
+     "crossed": "Rotten-egg odor",
+     "headline": "Sulfur, destroyed at the door.",
+     "body": "The injection panel doses hydrogen peroxide the moment water enters your home. Peroxide is a far stronger oxidizer than air: it turns hydrogen sulfide gas into filterable sulfur and dissolved iron into solid particles within seconds, and it kills the sulfur bacteria that keep making the smell.",
+     "stats": [
+      [
+       "Oxidizer",
+       "Hydrogen peroxide"
+      ],
+      [
+       "Feed",
+       "Panel + holding tank"
+      ]
+     ]
+    },
+    {
+     "kicker": "Jacobi Catalytic Carbon Tank",
+     "crossed": "Leftover peroxide",
+     "headline": "Caught, and cleaned up.",
+     "body": "A dedicated Jacobi catalytic carbon tank captures the oxidized iron and sulfur particles. The peroxide itself is consumed on the catalytic carbon and filtered out, so nothing but treated water reaches your faucets.",
+     "stats": [
+      [
+       "Carbon",
+       "1.5 cu. ft."
+      ],
+      [
+       "Source",
+       "Coconut shell"
+      ]
+     ]
+    },
+    {
+     "kicker": "10% Crosslinked Resin",
+     "crossed": "Hard water spots",
+     "headline": "Soft water, every tap.",
+     "body": "A dedicated tank of 10% crosslinked resin removes calcium and magnesium hardness for fully softened water, on top of odor-free, stain-free water from the oxidation stages ahead of it.",
+     "stats": [
+      [
+       "Capacity",
+       "48,000 grains per tank"
+      ],
+      [
+       "Resin",
+       "1.5 cu. ft., 10% crosslinked"
+      ]
+     ]
+    },
+    {
+     "kicker": "MSP Ceramic Disc Valve & Polishing Gravel",
+     "crossed": "Manual upkeep",
+     "headline": "Self-cleaning, top to bottom.",
+     "body": "The MSP ceramic disc valve backwashes captured contaminants down the drain automatically, and polishing gravel under each media bed keeps flow even and prevents channeling. Ceramic discs mean no rubber seals to wear out.",
+     "stats": [
+      [
+       "Valve flow",
+       "30 GPM"
+      ],
+      [
+       "Sealing",
+       "Ceramic disc"
+      ]
+     ]
+    },
+    {
+     "kicker": "The Numbers",
+     "crossed": "Guesswork",
+     "headline": "Maximum strength.",
+     "body": "Our most powerful well-water solution: oxidation, filtration and softening in one complete package, 28 GPM system flow, NSF-certified media, lifetime warranty, and a free reverse osmosis drinking-water system included.",
+     "stats": [
+      [
+       "System flow",
+       "28 GPM"
+      ],
+      [
+       "Media tanks",
+       "10\" × 54\""
+      ],
+      [
+       "Injection",
+       "H₂O₂ panel + tank"
+      ],
+      [
+       "Warranty",
+       "Lifetime"
+      ]
+     ]
+    }
+   ],
+   "callouts": [
+    {
+     "label": "Control valve",
+     "x": 26,
+     "y": 6
+    },
+    {
+     "label": "Softening resin",
+     "x": 26,
+     "y": 44
+    },
+    {
+     "label": "Carbon tank",
+     "x": 46,
+     "y": 44
+    },
+    {
+     "label": "Injection panel",
+     "x": 74,
+     "y": 40
+    },
+    {
+     "label": "Holding tank",
+     "x": 74,
+     "y": 74
+    },
+    {
+     "label": "Brine tank",
+     "x": 14,
+     "y": 62
+    }
+   ],
+   "description_lines": [
+    [
+     "Hydrogen Peroxide Injection Panel & Holding Tank",
+     "Doses peroxide at the point of entry to destroy sulfur odor, iron and iron bacteria."
+    ],
+    [
+     "Jacobi Catalytic Carbon Tank (1.5 cu. ft.)",
+     "Captures the oxidized particles and consumes the residual peroxide."
+    ],
+    [
+     "10% Crosslinked Resin Tank (1.5 cu. ft.)",
+     "A dedicated softening tank, 48,000 grains."
+    ],
+    [
+     "MSP Ceramic Disc Valve & Polishing Gravel",
+     "Automatic backwash to drain; even flow through both tanks."
+    ],
+    [
+     "Free Reverse Osmosis Add-On",
+     "Your choice of tank or tankless drinking-water system, included with installation."
+    ]
+   ]
   },
   {
    "id": "ro-tankless",
@@ -675,7 +1381,107 @@
     "Alkaline remineralization for taste",
     "DIY filter changes, no service calls needed"
    ],
-   "nsf": true
+   "nsf": true,
+   "aspects": [
+    {
+     "kicker": "7-Stage High-Precision Filtration",
+     "crossed": "Dissolved solids",
+     "headline": "Down to 0.0001 microns.",
+     "body": "A human hair is about 70 microns wide. This system filters down to 0.0001 microns through a spiral-flow RO membrane, reducing dissolved solids, chlorine, organic chemicals and everyday contaminants. Seven stages of protection between the pipe and your glass.",
+     "stats": [
+      [
+       "Stages",
+       "7"
+      ],
+      [
+       "Precision",
+       "0.0001 micron"
+      ]
+     ]
+    },
+    {
+     "kicker": "Alkaline Remineralization",
+     "crossed": "Flat-tasting water",
+     "headline": "The good minerals, back in.",
+     "body": "Most RO systems strip everything out, including the minerals that make water taste great. The HW800 AlkaPro adds healthy minerals back in and balances the pH, so your water tastes crisp.",
+     "stats": [
+      [
+       "Remineralization",
+       "Built in"
+      ],
+      [
+       "pH",
+       "Balanced"
+      ]
+     ]
+    },
+    {
+     "kicker": "Tankless Design",
+     "crossed": "Under-sink clutter",
+     "headline": "800 gallons a day, no tank.",
+     "body": "Maximum output and 70% less under-sink space. Water is treated the moment you ask for it, with a 2:1 drain ratio that sends far less water down the drain than a traditional tank system.",
+     "stats": [
+      [
+       "Capacity",
+       "800 GPD"
+      ],
+      [
+       "Drain ratio",
+       "2:1"
+      ],
+      [
+       "Flow",
+       "0.53 GPM"
+      ]
+     ]
+    },
+    {
+     "kicker": "DIY Filter Changes",
+     "crossed": "Service calls",
+     "headline": "Twist. Swap. Done.",
+     "body": "Filters twist out and twist in. No tools, no technician, no appointment. The auto-flush system even cleans the RO membrane by itself to make every filter last longer.",
+     "stats": [
+      [
+       "Filter change",
+       "DIY"
+      ],
+      [
+       "Auto flush",
+       "Built in"
+      ]
+     ]
+    }
+   ],
+   "callouts": [
+    {
+     "label": "Tankless RO unit",
+     "x": 36,
+     "y": 50
+    },
+    {
+     "label": "Dedicated faucet",
+     "x": 75,
+     "y": 44
+    }
+   ],
+   "description_lines": [
+    [
+     "7-Stage Filtration",
+     "0.0001-micron spiral-flow RO membrane with pre- and post-filtration."
+    ],
+    [
+     "Alkaline Remineralization",
+     "Adds beneficial minerals back for taste and balanced pH."
+    ],
+    [
+     "Auto Flush & DIY Filters",
+     "Membrane self-flushes; filters twist out by hand."
+    ],
+    [
+     "Dedicated Faucet",
+     "Chrome drinking-water faucet at the kitchen sink."
+    ]
+   ]
   },
   {
    "id": "ro-tank",
@@ -754,7 +1560,92 @@
     "Corrosion-resistant steel shell, heavy-duty base",
     "Compact footprint fits under most kitchen sinks"
    ],
-   "nsf": true
+   "nsf": true,
+   "aspects": [
+    {
+     "kicker": "Multi-Stage Prefiltration",
+     "crossed": "Chlorine & sediment",
+     "headline": "Protected before the membrane.",
+     "body": "Sediment and carbon stages strip chlorine and particles before water reaches the RO membrane, so the membrane lasts longer and the water tastes cleaner.",
+     "stats": [
+      [
+       "Stages",
+       "Multi-stage"
+      ],
+      [
+       "Faucet",
+       "Dedicated, chrome"
+      ]
+     ]
+    },
+    {
+     "kicker": "RO Membrane",
+     "crossed": "Dissolved solids",
+     "headline": "94–99% of solids, gone.",
+     "body": "The reverse osmosis membrane rejects 94 to 99 percent of total dissolved solids, the minerals and residue that give tap water a flat or off taste.",
+     "stats": [
+      [
+       "TDS rejection",
+       "94–99%"
+      ],
+      [
+       "Production",
+       "50 GPD"
+      ]
+     ]
+    },
+    {
+     "kicker": "Pressurized Steel Tank",
+     "crossed": "Waiting at the tap",
+     "headline": "Ready to pour, instantly.",
+     "body": "A food-grade butyl bladder inside the corrosion-resistant steel tank keeps purified water pressurized and fresh, so glasses, pots and coffee makers fill the second you open the faucet.",
+     "stats": [
+      [
+       "Tank",
+       "11.5\" × 16\""
+      ],
+      [
+       "System",
+       "16\" × 5.5\" × 18\""
+      ]
+     ]
+    }
+   ],
+   "callouts": [
+    {
+     "label": "Filter bank",
+     "x": 34,
+     "y": 44
+    },
+    {
+     "label": "Storage tank",
+     "x": 76,
+     "y": 56
+    },
+    {
+     "label": "Dedicated faucet",
+     "x": 60,
+     "y": 72
+    }
+   ],
+   "description_lines": [
+    [
+     "Multi-Stage Prefiltration",
+     "Sediment and carbon stages protect the membrane."
+    ],
+    [
+     "RO Membrane",
+     "94–99% TDS rejection, 50 GPD."
+    ],
+    [
+     "Pressurized Steel Tank",
+     "Food-grade bladder, 11.5\" × 16\"."
+    ],
+    [
+     "Dedicated Faucet",
+     "Chrome drinking-water faucet at the kitchen sink."
+    ]
+   ]
   },
   {
    "id": "sediment-filter",
@@ -792,7 +1683,17 @@
    ],
    "warranty": null,
    "options": [],
-   "nsf": false
+   "nsf": false,
+   "description_lines": [
+    [
+     "20\" × 4.5\" Housing",
+     "Captures sand, silt, dirt and rust ahead of your system."
+    ],
+    [
+     "15 GPM Flow",
+     "Sized for well pumps, ~10,000 gallon filter life."
+    ]
+   ]
   },
   {
    "id": "uv-purifier",
@@ -830,7 +1731,17 @@
    ],
    "warranty": null,
    "options": [],
-   "nsf": false
+   "nsf": false,
+   "description_lines": [
+    [
+     "Stainless Steel Chamber",
+     "UV lamp and quartz sleeve; one lamp included."
+    ],
+    [
+     "Placement",
+     "Installed after filtration. Does not remove iron, sediment or dissolved chemicals."
+    ]
+   ]
   }
  ]
 }

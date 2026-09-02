@@ -1,222 +1,622 @@
 {
-  "promo": {
-    "ro_included": "Reverse osmosis drinking-water system included with every whole-home system — tank or tankless, your choice.",
-    "financing": "Financing options available — ask during your consultation.",
-    "travel": "Travel fees may apply for installations beyond 35 miles from Minneapolis."
+ "promo": {
+  "ro_included": "Reverse osmosis drinking-water system included with every whole-home system — tank or tankless, your choice.",
+  "financing": "Financing options available — ask during your consultation.",
+  "travel": "Travel fees may apply for installations beyond 35 miles from Minneapolis."
+ },
+ "categories": [
+  {
+   "id": "city",
+   "label": "City Water Systems",
+   "intro": "Municipal water in the Twin Cities is treated and safe, but it typically carries hardness minerals plus chlorine or chloramine disinfectant. These systems soften and filter every tap in the house."
   },
-  "categories": [
-    {"id": "city", "label": "City Water Systems", "intro": "Municipal water in the Twin Cities is treated and safe, but it typically carries hardness minerals plus chlorine or chloramine disinfectant. These systems soften and filter every tap in the house."},
-    {"id": "well", "label": "Well Water Systems", "intro": "Private wells in Minnesota commonly carry iron, manganese and hardness, and in some areas hydrogen sulfide. Final well configuration depends on a water test — we review that during your consultation."},
-    {"id": "ro", "label": "Drinking Water / Reverse Osmosis", "intro": "Point-of-use reverse osmosis treats the water you drink and cook with at a dedicated kitchen faucet. Included free with any whole-home system, or installed on its own."},
-    {"id": "addon", "label": "Optional Add-Ons", "intro": "Protection layers recommended for most well-water installs."}
-  ],
-  "systems": [
+  {
+   "id": "well",
+   "label": "Well Water Systems",
+   "intro": "Private wells in Minnesota commonly carry iron, manganese and hardness, and in some areas hydrogen sulfide. Final well configuration depends on a water test — we review that with you by phone."
+  },
+  {
+   "id": "ro",
+   "label": "Drinking Water / Reverse Osmosis",
+   "intro": "Point-of-use reverse osmosis treats the water you drink and cook with at a dedicated kitchen faucet. Included free with any whole-home system, or installed on its own."
+  },
+  {
+   "id": "addon",
+   "label": "Optional Add-Ons",
+   "intro": "Protection layers recommended for most well-water installs."
+  }
+ ],
+ "systems": [
+  {
+   "id": "whole-home-softener",
+   "category": "city",
+   "name": "Whole Home Filtration & Softening System",
+   "short": "Whole Home Filtration & Softening",
+   "badge": "Most Popular",
+   "price": 2999,
+   "image": "system-whole-home.webp",
+   "image_alt": "MSP Pure Water whole-home filtration and softening system: single media tank cutaway showing carbon, softening resin and polishing gravel, with brine tank",
+   "for": "Twin Cities homes on municipal water that want soft water and no chlorine taste at every faucet, in one compact footprint.",
+   "problems": [
+    "Hard water & scale",
+    "Spots on dishes",
+    "Dry skin & hair",
+    "Chlorine / chloramine taste & odor"
+   ],
+   "stages": [
     {
-      "id": "whole-home-softener",
-      "category": "city",
-      "name": "Whole Home Filtration & Softening System",
-      "short": "Whole Home Filtration & Softening",
-      "badge": "Most Popular",
-      "price": 2999,
-      "image": "system-whole-home.webp",
-      "image_alt": "MSP Pure Water whole-home filtration and softening system: single media tank cutaway showing carbon, softening resin and polishing gravel, with brine tank",
-      "for": "Twin Cities homes on municipal water that want soft water and no chlorine taste at every faucet, in one compact footprint.",
-      "problems": ["Hard water & scale", "Spots on dishes", "Dry skin & hair", "Chlorine / chloramine taste & odor"],
-      "stages": [
-        {"n": "01", "title": "Catalytic coconut-shell carbon", "text": "Treats chlorine, chloramine and the tastes and odors that come with municipal disinfection."},
-        {"n": "02", "title": "USA-made 10% crosslinked softening resin", "text": "Ion exchange removes the calcium and magnesium that cause hard water, scale and spotting."},
-        {"n": "03", "title": "Polishing gravel bed", "text": "Supports the media for even flow and maximum contact time."},
-        {"n": "04", "title": "MSP ProValve control", "text": "Automatically backwashes and regenerates the system. Ceramic-disc valve with a 72-hour memory backup."}
-      ],
-      "specs": [
-        ["Valve flow rate", "28 GPM"],
-        ["System flow rate", "28 GPM"],
-        ["Softening capacity", "48,000 grains"],
-        ["Softening resin", "75 lbs"],
-        ["Carbon", "15 lbs"],
-        ["Media tank", "12\" × 52\""],
-        ["Brine tank", "15\" × 35\""],
-        ["Memory backup", "72 hours"]
-      ],
-      "included": ["Reverse osmosis drinking-water system (tank or tankless)", "Professional installation", "System walkthrough at install", "Lifetime warranty"],
-      "warranty": "Lifetime warranty"
+     "n": "01",
+     "title": "Catalytic coconut-shell carbon",
+     "text": "Treats chlorine, chloramine and the tastes and odors that come with municipal disinfection."
     },
     {
-      "id": "dual-tank-city",
-      "category": "city",
-      "name": "Dual Tank Whole Home Filtration System",
-      "short": "Dual Tank Whole Home Filtration",
-      "badge": null,
-      "price": 3999,
-      "image": "system-dual-tank.webp",
-      "image_alt": "MSP Pure Water dual tank whole-home system: two media tank cutaways with a brine tank",
-      "for": "Larger households or homeowners who want dedicated, higher-capacity carbon filtration and softening in separate tanks.",
-      "problems": ["Hard water & scale", "Chlorine / chloramine taste & odor", "Higher water demand"],
-      "stages": [
-        {"n": "01", "title": "Dedicated carbon filtration tank", "text": "A full tank of catalytic carbon for chlorine, chloramine, taste and odor."},
-        {"n": "02", "title": "Dedicated softening tank", "text": "A separate ion-exchange resin tank sized for higher-capacity softening."},
-        {"n": "03", "title": "Automatic backwash & regeneration", "text": "Each tank cleans itself on schedule."}
-      ],
-      "specs": [],
-      "specs_note": "Full tank and valve specifications are confirmed for your household size at the consultation.",
-      "included": ["Reverse osmosis drinking-water system (tank or tankless)", "Professional installation", "System walkthrough at install", "Lifetime warranty"],
-      "warranty": "Lifetime warranty"
+     "n": "02",
+     "title": "USA-made 10% crosslinked softening resin",
+     "text": "Ion exchange removes the calcium and magnesium that cause hard water, scale and spotting."
     },
     {
-      "id": "salt-free",
-      "category": "city",
-      "name": "Whole Home Complete Salt-Free Filtration System",
-      "short": "Complete Salt-Free Filtration",
-      "badge": null,
-      "price": 4499,
-      "image": "system-dual-tank.webp",
-      "image_alt": "MSP Pure Water salt-free whole-home filtration system with two media tanks",
-      "for": "Homeowners who want whole-home carbon filtration and scale protection without salt, brine or a traditional softener.",
-      "problems": ["Chlorine / chloramine taste & odor", "Scale buildup", "No salt or brine tank"],
-      "stages": [
-        {"n": "01", "title": "Whole-home carbon filtration", "text": "Catalytic carbon for chlorine, chloramine, taste and odor."},
-        {"n": "02", "title": "Salt-free scale conditioning", "text": "Conditions hardness minerals so they are less likely to adhere as scale. It does not remove calcium and magnesium the way an ion-exchange softener does, so it will not give the same soft-water feel."}
-      ],
-      "specs": [],
-      "specs_note": "Full specifications are confirmed for your household at the consultation.",
-      "included": ["Tankless reverse osmosis drinking-water system", "Professional installation", "System walkthrough at install", "Lifetime warranty"],
-      "warranty": "Lifetime warranty"
+     "n": "03",
+     "title": "Polishing gravel bed",
+     "text": "Supports the media for even flow and maximum contact time."
     },
     {
-      "id": "dual-tank-well",
-      "category": "well",
-      "name": "Dual Tank Well Water Whole Home Filtration System",
-      "short": "Dual Tank Well Water Filtration",
-      "badge": "Chemical-Free",
-      "price": 4499,
-      "image": "system-well-dual.webp",
-      "image_alt": "MSP Pure Water dual tank well-water system: softening resin tank and Katalox Light media tank cutaways with brine tank",
-      "for": "Minnesota well homes dealing with iron staining, rotten-egg odor, manganese and hard water — treated without chemicals.",
-      "problems": ["Iron staining", "Rotten-egg / sulfur odor", "Manganese", "Hard water & scale", "Metallic taste"],
-      "stages": [
-        {"n": "01", "title": "MSP AIO ProValve air oxidation", "text": "Keeps a pressurized air pocket in the tank. Dissolved iron, sulfur and manganese oxidize into solid particles the media can capture. No chemicals added."},
-        {"n": "02", "title": "Katalox Light media", "text": "Traps the oxidized particles and nudges pH up for better taste. Self-cleans with automatic backwashing."},
-        {"n": "03", "title": "Dedicated softening tank", "text": "USA-made resin removes calcium and magnesium hardness."},
-        {"n": "04", "title": "Automatic backwash on both tanks", "text": "Maintenance stays close to zero."}
-      ],
-      "specs": [
-        ["Valve flow rate", "30 GPM"],
-        ["System flow rate", "27 GPM"],
-        ["Softening capacity", "48,000 grains"],
-        ["Softening resin", "1.5 cu. ft."],
-        ["Media tanks", "10\" × 54\""],
-        ["Brine tank", "15\" × 35\""]
-      ],
-      "included": ["Reverse osmosis drinking-water system (tank or tankless)", "Professional installation", "System walkthrough at install", "Lifetime warranty"],
-      "warranty": "Lifetime warranty",
-      "note": "Final well-water configuration may depend on water test results. We review testing as part of the consultation."
-    },
-    {
-      "id": "iron-sulfur",
-      "category": "well",
-      "name": "Iron & Sulfur Treatment System",
-      "short": "Iron & Sulfur Treatment",
-      "badge": "Advanced",
-      "price": 5999,
-      "image": "system-well-dual.webp",
-      "image_alt": "MSP Pure Water advanced iron and sulfur treatment system with two media tanks",
-      "for": "Wells with heavier iron and sulfur loads where air oxidation alone is not enough.",
-      "problems": ["Heavy iron staining", "Strong sulfur odor", "Hard water & scale", "Metallic taste"],
-      "stages": [
-        {"n": "01", "title": "Hydrogen peroxide injection", "text": "Chemical oxidation converts dissolved iron and hydrogen sulfide into filterable form."},
-        {"n": "02", "title": "Carbon filtration", "text": "Captures the oxidized particles and any residual oxidant."},
-        {"n": "03", "title": "Softening", "text": "Ion-exchange resin removes hardness for soft water at every tap."}
-      ],
-      "specs": [],
-      "specs_note": "Injection rate and tank sizing are set from your water test at the consultation.",
-      "included": ["Reverse osmosis drinking-water system (tank or tankless)", "Professional installation", "System walkthrough at install", "Lifetime warranty"],
-      "warranty": "Lifetime warranty",
-      "note": "Final well-water configuration may depend on water test results. We review testing as part of the consultation."
-    },
-    {
-      "id": "ro-tankless",
-      "category": "ro",
-      "name": "HW800 AlkaPro Tankless Reverse Osmosis",
-      "short": "Tankless RO",
-      "badge": "Included Free With Any Whole-Home System",
-      "price": 799,
-      "image": "system-ro-tankless.webp",
-      "image_alt": "HW800 AlkaPro tankless reverse osmosis unit, white with black front panel, next to a chrome drinking-water faucet",
-      "for": "Kitchens where under-sink space matters and you want drinking water treated on demand, with minerals added back for taste.",
-      "problems": ["Drinking-water taste", "Dissolved solids (TDS)", "Bottled-water replacement"],
-      "stages": [
-        {"n": "01", "title": "7-stage filtration", "text": "Pre-filtration, a 0.0001-micron spiral-flow RO membrane and post-filtration."},
-        {"n": "02", "title": "Alkaline remineralization", "text": "Adds minerals back after the membrane for taste and balanced pH."},
-        {"n": "03", "title": "Auto flush & twist-out filters", "text": "The membrane self-flushes and filter changes are tool-free."}
-      ],
-      "specs": [
-        ["Filtration stages", "7"],
-        ["Filtering precision", "0.0001 micron"],
-        ["Capacity", "800 GPD"],
-        ["Flow rate", "0.53 GPM"],
-        ["Drain ratio", "2:1"],
-        ["Under-sink footprint", "No storage tank"]
-      ],
-      "included": ["Dedicated drinking-water faucet", "Professional installation", "Lifetime warranty"],
-      "warranty": "Lifetime warranty"
-    },
-    {
-      "id": "ro-tank",
-      "category": "ro",
-      "name": "Tank Reverse Osmosis System",
-      "short": "Tank RO",
-      "badge": "Included Free With Any Whole-Home System",
-      "price": 799,
-      "image": "system-ro-tankless.webp",
-      "image_alt": "MSP Pure Water reverse osmosis drinking-water system with dedicated chrome faucet",
-      "for": "The proven under-sink configuration: purified water stored in a pressurized tank and delivered instantly when you open the faucet.",
-      "problems": ["Drinking-water taste", "Dissolved solids (TDS)", "Bottled-water replacement"],
-      "stages": [
-        {"n": "01", "title": "Multi-stage filtration", "text": "Sediment and carbon pre-filters protect the RO membrane."},
-        {"n": "02", "title": "Reverse osmosis membrane", "text": "Rejects a broad range of dissolved solids."},
-        {"n": "03", "title": "Pressurized storage tank", "text": "Purified water is ready the moment you open the tap."}
-      ],
-      "specs": [
-        ["Production", "50 GPD"],
-        ["TDS rejection", "94–99%"],
-        ["Configuration", "Under-sink with storage tank"]
-      ],
-      "included": ["Dedicated drinking-water faucet", "Professional installation", "Lifetime warranty"],
-      "warranty": "Lifetime warranty"
-    },
-    {
-      "id": "sediment-filter",
-      "category": "addon",
-      "name": "Pre-System Sediment Filter",
-      "short": "Pre-Sediment Filter",
-      "badge": "Recommended for wells",
-      "price": 399,
-      "price_prefix": "+",
-      "image": "addon-sediment.webp",
-      "image_alt": "Pre-system sediment filter with blue housing and black cap",
-      "for": "The first line of defense on a well. Captures sand, silt, dirt and rust before they reach the resin, media and valves downstream.",
-      "problems": ["Sediment", "Sand & silt", "Rust particles"],
-      "stages": [],
-      "specs": [["Housing", "20\" × 4.5\""], ["Flow rate", "15 GPM"], ["Filter life", "~10,000 gal."]],
-      "included": ["Installed ahead of your whole-home system"],
-      "warranty": null
-    },
-    {
-      "id": "uv-purifier",
-      "category": "addon",
-      "name": "Whole-Home UV Purifier",
-      "short": "UV Purifier",
-      "badge": "Disinfection barrier",
-      "price": 899,
-      "price_prefix": "+",
-      "image": "addon-uv.webp",
-      "image_alt": "Whole-house ultraviolet purifier: stainless steel chamber with UV lamps, quartz sleeves, ballast and mounting clamps",
-      "for": "An additional disinfection barrier for well water. UV light inactivates microorganisms as water flows through a stainless chamber. It does not remove iron, sediment or dissolved chemicals, so it is installed after filtration.",
-      "problems": ["Microbial concerns on a well", "Bacteria / virus disinfection barrier"],
-      "stages": [],
-      "specs": [["Chamber", "Stainless steel"], ["Bulb", "1 included"], ["Placement", "After prefiltration"]],
-      "included": ["Installed after your whole-home system", "One UV lamp"],
-      "warranty": null
+     "n": "04",
+     "title": "MSP ProValve control",
+     "text": "Automatically backwashes and regenerates the system. Ceramic-disc valve with a 72-hour memory backup."
     }
-  ]
+   ],
+   "specs": [
+    [
+     "Valve flow rate",
+     "28 GPM"
+    ],
+    [
+     "System flow rate",
+     "28 GPM"
+    ],
+    [
+     "Softening capacity",
+     "48,000 grains"
+    ],
+    [
+     "Softening resin",
+     "75 lbs"
+    ],
+    [
+     "Carbon",
+     "15 lbs"
+    ],
+    [
+     "Media tank",
+     "12\" × 52\""
+    ],
+    [
+     "Brine tank",
+     "15\" × 35\""
+    ],
+    [
+     "Memory backup",
+     "72 hours"
+    ]
+   ],
+   "included": [
+    "Reverse osmosis drinking-water system (tank or tankless)",
+    "Professional installation",
+    "System walkthrough at install",
+    "Lifetime warranty"
+   ],
+   "warranty": "Lifetime warranty",
+   "options": [
+    {
+     "key": "ro",
+     "label": "Reverse osmosis drinking system",
+     "type": "single",
+     "choices": [
+      {
+       "label": "Tankless RO (HW800 AlkaPro)",
+       "add": 0,
+       "inc": true
+      },
+      {
+       "label": "Tank RO",
+       "add": 0,
+       "inc": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dual-tank-city",
+   "category": "city",
+   "name": "Dual Tank Whole Home Filtration System",
+   "short": "Dual Tank Whole Home Filtration",
+   "badge": null,
+   "price": 3999,
+   "image": "system-dual-tank.webp",
+   "image_alt": "MSP Pure Water dual tank whole-home system: two media tank cutaways with a brine tank",
+   "for": "Larger households or homeowners who want dedicated, higher-capacity carbon filtration and softening in separate tanks.",
+   "problems": [
+    "Hard water & scale",
+    "Chlorine / chloramine taste & odor",
+    "Higher water demand"
+   ],
+   "stages": [
+    {
+     "n": "01",
+     "title": "Dedicated carbon filtration tank",
+     "text": "A full tank of catalytic carbon for chlorine, chloramine, taste and odor."
+    },
+    {
+     "n": "02",
+     "title": "Dedicated softening tank",
+     "text": "A separate ion-exchange resin tank sized for higher-capacity softening."
+    },
+    {
+     "n": "03",
+     "title": "Automatic backwash & regeneration",
+     "text": "Each tank cleans itself on schedule."
+    }
+   ],
+   "specs": [],
+   "specs_note": "Full tank and valve specifications are confirmed for your household size during your phone consultation.",
+   "included": [
+    "Reverse osmosis drinking-water system (tank or tankless)",
+    "Professional installation",
+    "System walkthrough at install",
+    "Lifetime warranty"
+   ],
+   "warranty": "Lifetime warranty",
+   "options": [
+    {
+     "key": "ro",
+     "label": "Reverse osmosis drinking system",
+     "type": "single",
+     "choices": [
+      {
+       "label": "Tankless RO (HW800 AlkaPro)",
+       "add": 0,
+       "inc": true
+      },
+      {
+       "label": "Tank RO",
+       "add": 0,
+       "inc": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "salt-free",
+   "category": "city",
+   "name": "Whole Home Complete Salt-Free Filtration System",
+   "short": "Complete Salt-Free Filtration",
+   "badge": null,
+   "price": 4499,
+   "image": "system-dual-tank.webp",
+   "image_alt": "MSP Pure Water salt-free whole-home filtration system with two media tanks",
+   "for": "Homeowners who want whole-home carbon filtration and scale protection without salt, brine or a traditional softener.",
+   "problems": [
+    "Chlorine / chloramine taste & odor",
+    "Scale buildup",
+    "No salt or brine tank"
+   ],
+   "stages": [
+    {
+     "n": "01",
+     "title": "Whole-home carbon filtration",
+     "text": "Catalytic carbon for chlorine, chloramine, taste and odor."
+    },
+    {
+     "n": "02",
+     "title": "Salt-free scale conditioning",
+     "text": "Conditions hardness minerals so they are less likely to adhere as scale. It does not remove calcium and magnesium the way an ion-exchange softener does, so it will not give the same soft-water feel."
+    }
+   ],
+   "specs": [],
+   "specs_note": "Full specifications are confirmed for your household during your phone consultation.",
+   "included": [
+    "Tankless reverse osmosis drinking-water system",
+    "Professional installation",
+    "System walkthrough at install",
+    "Lifetime warranty"
+   ],
+   "warranty": "Lifetime warranty",
+   "options": [
+    {
+     "key": "ro",
+     "label": "Reverse osmosis drinking system",
+     "type": "single",
+     "choices": [
+      {
+       "label": "Tankless RO (HW800 AlkaPro)",
+       "add": 0,
+       "inc": true
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dual-tank-well",
+   "category": "well",
+   "name": "Dual Tank Well Water Whole Home Filtration System",
+   "short": "Dual Tank Well Water Filtration",
+   "badge": "Chemical-Free",
+   "price": 4499,
+   "image": "system-well-dual.webp",
+   "image_alt": "MSP Pure Water dual tank well-water system: softening resin tank and Katalox Light media tank cutaways with brine tank",
+   "for": "Minnesota well homes dealing with iron staining, rotten-egg odor, manganese and hard water — treated without chemicals.",
+   "problems": [
+    "Iron staining",
+    "Rotten-egg / sulfur odor",
+    "Manganese",
+    "Hard water & scale",
+    "Metallic taste"
+   ],
+   "stages": [
+    {
+     "n": "01",
+     "title": "MSP AIO ProValve air oxidation",
+     "text": "Keeps a pressurized air pocket in the tank. Dissolved iron, sulfur and manganese oxidize into solid particles the media can capture. No chemicals added."
+    },
+    {
+     "n": "02",
+     "title": "Katalox Light media",
+     "text": "Traps the oxidized particles and nudges pH up for better taste. Self-cleans with automatic backwashing."
+    },
+    {
+     "n": "03",
+     "title": "Dedicated softening tank",
+     "text": "USA-made resin removes calcium and magnesium hardness."
+    },
+    {
+     "n": "04",
+     "title": "Automatic backwash on both tanks",
+     "text": "Maintenance stays close to zero."
+    }
+   ],
+   "specs": [
+    [
+     "Valve flow rate",
+     "30 GPM"
+    ],
+    [
+     "System flow rate",
+     "27 GPM"
+    ],
+    [
+     "Softening capacity",
+     "48,000 grains"
+    ],
+    [
+     "Softening resin",
+     "1.5 cu. ft."
+    ],
+    [
+     "Media tanks",
+     "10\" × 54\""
+    ],
+    [
+     "Brine tank",
+     "15\" × 35\""
+    ]
+   ],
+   "included": [
+    "Reverse osmosis drinking-water system (tank or tankless)",
+    "Professional installation",
+    "System walkthrough at install",
+    "Lifetime warranty"
+   ],
+   "warranty": "Lifetime warranty",
+   "note": "Final well-water configuration may depend on water test results. We review testing as part of your phone consultation.",
+   "options": [
+    {
+     "key": "ro",
+     "label": "Reverse osmosis drinking system",
+     "type": "single",
+     "choices": [
+      {
+       "label": "Tankless RO (HW800 AlkaPro)",
+       "add": 0,
+       "inc": true
+      },
+      {
+       "label": "Tank RO",
+       "add": 0,
+       "inc": true
+      }
+     ]
+    },
+    {
+     "key": "sediment",
+     "label": "Pre-system sediment filter",
+     "type": "toggle",
+     "add": 399,
+     "rec": true,
+     "note": "Recommended for most wells"
+    },
+    {
+     "key": "uv",
+     "label": "Whole-home UV purifier",
+     "type": "toggle",
+     "add": 899,
+     "note": "Disinfection barrier after filtration"
+    }
+   ]
+  },
+  {
+   "id": "iron-sulfur",
+   "category": "well",
+   "name": "Iron & Sulfur Treatment System",
+   "short": "Iron & Sulfur Treatment",
+   "badge": "Advanced",
+   "price": 5999,
+   "image": "system-well-dual.webp",
+   "image_alt": "MSP Pure Water advanced iron and sulfur treatment system with two media tanks",
+   "for": "Wells with heavier iron and sulfur loads where air oxidation alone is not enough.",
+   "problems": [
+    "Heavy iron staining",
+    "Strong sulfur odor",
+    "Hard water & scale",
+    "Metallic taste"
+   ],
+   "stages": [
+    {
+     "n": "01",
+     "title": "Hydrogen peroxide injection",
+     "text": "Chemical oxidation converts dissolved iron and hydrogen sulfide into filterable form."
+    },
+    {
+     "n": "02",
+     "title": "Carbon filtration",
+     "text": "Captures the oxidized particles and any residual oxidant."
+    },
+    {
+     "n": "03",
+     "title": "Softening",
+     "text": "Ion-exchange resin removes hardness for soft water at every tap."
+    }
+   ],
+   "specs": [],
+   "specs_note": "Injection rate and tank sizing are set from your water test during your phone consultation.",
+   "included": [
+    "Reverse osmosis drinking-water system (tank or tankless)",
+    "Professional installation",
+    "System walkthrough at install",
+    "Lifetime warranty"
+   ],
+   "warranty": "Lifetime warranty",
+   "note": "Final well-water configuration may depend on water test results. We review testing as part of your phone consultation.",
+   "options": [
+    {
+     "key": "ro",
+     "label": "Reverse osmosis drinking system",
+     "type": "single",
+     "choices": [
+      {
+       "label": "Tankless RO (HW800 AlkaPro)",
+       "add": 0,
+       "inc": true
+      },
+      {
+       "label": "Tank RO",
+       "add": 0,
+       "inc": true
+      }
+     ]
+    },
+    {
+     "key": "sediment",
+     "label": "Pre-system sediment filter",
+     "type": "toggle",
+     "add": 399,
+     "rec": true,
+     "note": "Recommended for most wells"
+    },
+    {
+     "key": "uv",
+     "label": "Whole-home UV purifier",
+     "type": "toggle",
+     "add": 899,
+     "note": "Disinfection barrier after filtration"
+    }
+   ]
+  },
+  {
+   "id": "ro-tankless",
+   "category": "ro",
+   "name": "HW800 AlkaPro Tankless Reverse Osmosis",
+   "short": "Tankless RO",
+   "badge": "Included Free With Any Whole-Home System",
+   "price": 799,
+   "image": "system-ro-tankless.webp",
+   "image_alt": "HW800 AlkaPro tankless reverse osmosis unit, white with black front panel, next to a chrome drinking-water faucet",
+   "for": "Kitchens where under-sink space matters and you want drinking water treated on demand, with minerals added back for taste.",
+   "problems": [
+    "Drinking-water taste",
+    "Dissolved solids (TDS)",
+    "Bottled-water replacement"
+   ],
+   "stages": [
+    {
+     "n": "01",
+     "title": "7-stage filtration",
+     "text": "Pre-filtration, a 0.0001-micron spiral-flow RO membrane and post-filtration."
+    },
+    {
+     "n": "02",
+     "title": "Alkaline remineralization",
+     "text": "Adds minerals back after the membrane for taste and balanced pH."
+    },
+    {
+     "n": "03",
+     "title": "Auto flush & twist-out filters",
+     "text": "The membrane self-flushes and filter changes are tool-free."
+    }
+   ],
+   "specs": [
+    [
+     "Filtration stages",
+     "7"
+    ],
+    [
+     "Filtering precision",
+     "0.0001 micron"
+    ],
+    [
+     "Capacity",
+     "800 GPD"
+    ],
+    [
+     "Flow rate",
+     "0.53 GPM"
+    ],
+    [
+     "Drain ratio",
+     "2:1"
+    ],
+    [
+     "Under-sink footprint",
+     "No storage tank"
+    ]
+   ],
+   "included": [
+    "Dedicated drinking-water faucet",
+    "Professional installation",
+    "Lifetime warranty"
+   ],
+   "warranty": "Lifetime warranty",
+   "options": []
+  },
+  {
+   "id": "ro-tank",
+   "category": "ro",
+   "name": "Tank Reverse Osmosis System",
+   "short": "Tank RO",
+   "badge": "Included Free With Any Whole-Home System",
+   "price": 799,
+   "image": "system-ro-tankless.webp",
+   "image_alt": "MSP Pure Water reverse osmosis drinking-water system with dedicated chrome faucet",
+   "for": "The proven under-sink configuration: purified water stored in a pressurized tank and delivered instantly when you open the faucet.",
+   "problems": [
+    "Drinking-water taste",
+    "Dissolved solids (TDS)",
+    "Bottled-water replacement"
+   ],
+   "stages": [
+    {
+     "n": "01",
+     "title": "Multi-stage filtration",
+     "text": "Sediment and carbon pre-filters protect the RO membrane."
+    },
+    {
+     "n": "02",
+     "title": "Reverse osmosis membrane",
+     "text": "Rejects a broad range of dissolved solids."
+    },
+    {
+     "n": "03",
+     "title": "Pressurized storage tank",
+     "text": "Purified water is ready the moment you open the tap."
+    }
+   ],
+   "specs": [
+    [
+     "Production",
+     "50 GPD"
+    ],
+    [
+     "TDS rejection",
+     "94–99%"
+    ],
+    [
+     "Configuration",
+     "Under-sink with storage tank"
+    ]
+   ],
+   "included": [
+    "Dedicated drinking-water faucet",
+    "Professional installation",
+    "Lifetime warranty"
+   ],
+   "warranty": "Lifetime warranty",
+   "options": []
+  },
+  {
+   "id": "sediment-filter",
+   "category": "addon",
+   "name": "Pre-System Sediment Filter",
+   "short": "Pre-Sediment Filter",
+   "badge": "Recommended for wells",
+   "price": 399,
+   "price_prefix": "+",
+   "image": "addon-sediment.webp",
+   "image_alt": "Pre-system sediment filter with blue housing and black cap",
+   "for": "The first line of defense on a well. Captures sand, silt, dirt and rust before they reach the resin, media and valves downstream.",
+   "problems": [
+    "Sediment",
+    "Sand & silt",
+    "Rust particles"
+   ],
+   "stages": [],
+   "specs": [
+    [
+     "Housing",
+     "20\" × 4.5\""
+    ],
+    [
+     "Flow rate",
+     "15 GPM"
+    ],
+    [
+     "Filter life",
+     "~10,000 gal."
+    ]
+   ],
+   "included": [
+    "Installed ahead of your whole-home system"
+   ],
+   "warranty": null,
+   "options": []
+  },
+  {
+   "id": "uv-purifier",
+   "category": "addon",
+   "name": "Whole-Home UV Purifier",
+   "short": "UV Purifier",
+   "badge": "Disinfection barrier",
+   "price": 899,
+   "price_prefix": "+",
+   "image": "addon-uv.webp",
+   "image_alt": "Whole-house ultraviolet purifier: stainless steel chamber with UV lamps, quartz sleeves, ballast and mounting clamps",
+   "for": "An additional disinfection barrier for well water. UV light inactivates microorganisms as water flows through a stainless chamber. It does not remove iron, sediment or dissolved chemicals, so it is installed after filtration.",
+   "problems": [
+    "Microbial concerns on a well",
+    "Bacteria / virus disinfection barrier"
+   ],
+   "stages": [],
+   "specs": [
+    [
+     "Chamber",
+     "Stainless steel"
+    ],
+    [
+     "Bulb",
+     "1 included"
+    ],
+    [
+     "Placement",
+     "After prefiltration"
+    ]
+   ],
+   "included": [
+    "Installed after your whole-home system",
+    "One UV lamp"
+   ],
+   "warranty": null,
+   "options": []
+  }
+ ]
 }

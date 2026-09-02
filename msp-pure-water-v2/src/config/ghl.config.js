@@ -66,6 +66,8 @@ window.MSP_GHL = {
     water_source:        "contact.water_source",
     water_problems:      "contact.water_problems",
     system_interest:     "contact.system_interest",
+    system_id:           "contact.system_id",
+    system_config:       "contact.system_configuration",
     bathrooms:           "contact.bathrooms",
     household_size:      "contact.household_size",
     existing_equipment:  "contact.existing_equipment",

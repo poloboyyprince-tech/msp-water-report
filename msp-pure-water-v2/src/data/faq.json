@@ -1,17 +1,66 @@
 [
-  {"q":"How much does a whole-home system cost?","a":"Every price is published on our pricing page. Whole-home city systems run $2,999 to $4,499 and well systems $4,499 to $5,999, with a reverse osmosis drinking-water system included free. Reverse osmosis on its own is $799, a pre-sediment filter is $399 and a UV purifier is $899. Financing options are available, and travel fees may apply beyond 35 miles from Minneapolis."},
-  {"q":"What is the difference between filtration and softening?","a":"A water softener uses ion exchange to remove calcium and magnesium hardness. Carbon filtration targets different problems, mainly chlorine and chloramine taste and odor. They solve different things, which is why our whole-home city systems combine both."},
-  {"q":"Do I need a different system for well water?","a":"Usually, yes. City-water treatment focuses on hardness and municipal disinfectants. Private wells often also carry iron, sulfur, manganese and sediment, which need oxidation and filtration that a softener alone cannot handle. We keep the two system lines separate so you never pay for equipment your water does not need."},
-  {"q":"What does reverse osmosis do?","a":"Reverse osmosis pushes water through a semipermeable membrane that rejects a broad range of dissolved solids, then delivers the treated water to a dedicated faucet at your kitchen sink. It is a point-of-use system for drinking and cooking water, not a whole-home system, which is why we pair it with whole-home treatment."},
-  {"q":"Tank RO or tankless RO — what's the difference?","a":"A tank system slowly fills a pressurized storage tank so purified water is ready instantly. A tankless system treats water on demand, takes up far less under-sink space and has no storage tank. Both are $799 and both are included free with any whole-home system."},
-  {"q":"Does the system treat every faucet?","a":"Whole-home systems are installed where water enters the house, so every shower, faucet and appliance receives treated water. Reverse osmosis is the exception: it treats drinking water at one dedicated faucet."},
-  {"q":"Is salt-free conditioning the same as a softener?","a":"No. Salt-free conditioning reduces how much scale sticks to surfaces but leaves calcium and magnesium in the water. You will not get the slick soft-water feel of an ion-exchange softener. It is the right choice for homeowners who specifically want to avoid salt."},
-  {"q":"How much maintenance is required?","a":"Whole-home systems backwash and regenerate themselves automatically. Your part is keeping the brine tank topped up with salt on softening systems and swapping reverse osmosis filters on schedule, which twist out by hand on the tankless unit. Well add-ons like the sediment filter and UV lamp are replaced periodically."},
-  {"q":"How often do I add salt?","a":"It depends on your water hardness and how much water your household uses. We size the system and set the regeneration schedule for your home at installation and show you how to check the brine tank."},
-  {"q":"Will installation affect my water pressure?","a":"Systems are sized for real households. Our whole-home city system is rated for 28 GPM system flow and the dual-tank well system for 27 GPM, so showers, laundry and sprinklers can run together."},
-  {"q":"How long does installation take?","a":"Most installations are completed in a single visit. We connect the equipment to your main water line, configure it for your water and walk you through how it works before we leave."},
-  {"q":"Should my well water be tested?","a":"Yes, especially if you suspect iron, sulfur or manganese. Treatment depends on the form and concentration of the problem, so we review testing as part of your consultation and set the final configuration from the results."},
-  {"q":"What warranty is included?","a":"Whole-home and reverse osmosis systems carry a lifetime warranty on the system. We go through the exact terms with you at the consultation before anything is installed."},
-  {"q":"Can I schedule online?","a":"Yes. Choose a date and time that works for you on our schedule page. No deposit is required to reserve, and you will get a confirmation right away."},
-  {"q":"How does the Best Price Guarantee work?","a":"Bring us a competing written quote on comparable equipment and installation and we will beat the price. Best-price customers also get priority booking on the schedule."}
+ {
+  "q": "Do you come to my home for a consultation?",
+  "a": "No. Everything before installation happens over the phone. You pick a time online, we call you, go over your water and your home, recommend the right system at its published price, and set your installation date. The only visit is the installation itself."
+ },
+ {
+  "q": "How much does a whole-home system cost?",
+  "a": "Every price is published on our pricing page. Whole-home city systems run $2,999 to $4,499 and well systems $4,499 to $5,999, with a reverse osmosis drinking-water system included free. Reverse osmosis on its own is $799, a pre-sediment filter is $399 and a UV purifier is $899. Financing options are available, and travel fees may apply beyond 35 miles from Minneapolis."
+ },
+ {
+  "q": "What is the difference between filtration and softening?",
+  "a": "A water softener uses ion exchange to remove calcium and magnesium hardness. Carbon filtration targets different problems, mainly chlorine and chloramine taste and odor. They solve different things, which is why our whole-home city systems combine both."
+ },
+ {
+  "q": "Do I need a different system for well water?",
+  "a": "Usually, yes. City-water treatment focuses on hardness and municipal disinfectants. Private wells often also carry iron, sulfur, manganese and sediment, which need oxidation and filtration that a softener alone cannot handle. We keep the two system lines separate so you never pay for equipment your water does not need."
+ },
+ {
+  "q": "What does reverse osmosis do?",
+  "a": "Reverse osmosis pushes water through a semipermeable membrane that rejects a broad range of dissolved solids, then delivers the treated water to a dedicated faucet at your kitchen sink. It is a point-of-use system for drinking and cooking water, not a whole-home system, which is why we pair it with whole-home treatment."
+ },
+ {
+  "q": "Tank RO or tankless RO — what's the difference?",
+  "a": "A tank system slowly fills a pressurized storage tank so purified water is ready instantly. A tankless system treats water on demand, takes up far less under-sink space and has no storage tank. Both are $799 and both are included free with any whole-home system."
+ },
+ {
+  "q": "Does the system treat every faucet?",
+  "a": "Whole-home systems are installed where water enters the house, so every shower, faucet and appliance receives treated water. Reverse osmosis is the exception: it treats drinking water at one dedicated faucet."
+ },
+ {
+  "q": "Is salt-free conditioning the same as a softener?",
+  "a": "No. Salt-free conditioning reduces how much scale sticks to surfaces but leaves calcium and magnesium in the water. You will not get the slick soft-water feel of an ion-exchange softener. It is the right choice for homeowners who specifically want to avoid salt."
+ },
+ {
+  "q": "How much maintenance is required?",
+  "a": "Whole-home systems backwash and regenerate themselves automatically. Your part is keeping the brine tank topped up with salt on softening systems and swapping reverse osmosis filters on schedule, which twist out by hand on the tankless unit. Well add-ons like the sediment filter and UV lamp are replaced periodically."
+ },
+ {
+  "q": "How often do I add salt?",
+  "a": "It depends on your water hardness and how much water your household uses. We size the system and set the regeneration schedule for your home at installation and show you how to check the brine tank."
+ },
+ {
+  "q": "Will installation affect my water pressure?",
+  "a": "Systems are sized for real households. Our whole-home city system is rated for 28 GPM system flow and the dual-tank well system for 27 GPM, so showers, laundry and sprinklers can run together."
+ },
+ {
+  "q": "How long does installation take?",
+  "a": "Most installations are completed in a single visit. We connect the equipment to your main water line, configure it for your water and walk you through how it works before we leave."
+ },
+ {
+  "q": "Should my well water be tested?",
+  "a": "Yes, especially if you suspect iron, sulfur or manganese. Treatment depends on the form and concentration of the problem, so we go over testing on the call and set the final configuration from the results."
+ },
+ {
+  "q": "What warranty is included?",
+  "a": "Whole-home and reverse osmosis systems carry a lifetime warranty on the system. We go through the exact terms with you on the phone before anything is installed."
+ },
+ {
+  "q": "Can I schedule online?",
+  "a": "Yes. Choose a date and time for your phone consultation on our schedule page. No deposit is required, you get a confirmation right away, and we call you at that time."
+ },
+ {
+  "q": "How does the Best Price Guarantee work?",
+  "a": "Bring us a competing written quote on comparable equipment and installation and we will beat the price. Best-price customers also get priority booking on the schedule."
+ }
 ]

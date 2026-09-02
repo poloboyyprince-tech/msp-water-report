@@ -3,7 +3,7 @@
   "use strict";
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   /* ?static=1 = QA/screenshot mode: no video, no motion, everything revealed */
-  var STATIC = /[?&]static=1/.test(location.search); if (STATIC) { reduce = true; var sv = document.querySelector(".hero-media video"); if (sv) { var im = document.createElement("img"); im.src = sv.getAttribute("poster"); im.alt = ""; sv.replaceWith(im); } }
+  var STATIC = /[?&]static=1/.test(location.search); if (STATIC) { reduce = true; document.querySelectorAll(".hero-media video,.phero-media video").forEach(function (sv) { var im = document.createElement("img"); im.src = sv.getAttribute("poster"); im.alt = ""; sv.replaceWith(im); }); }
   var $ = function (s, r) { return (r || document).querySelector(s); }, $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
   /* Announcement bar */
@@ -16,11 +16,12 @@
   }
   /* Desktop dropdowns */
   $$(".nav [aria-haspopup]").forEach(function (btn) {
-    var sub = btn.nextElementSibling;
-    function open(v) { btn.setAttribute("aria-expanded", v); sub.setAttribute("data-open", v); }
+    var sub = btn.nextElementSibling, timer;
+    function open(v) { clearTimeout(timer); btn.setAttribute("aria-expanded", v); sub.setAttribute("data-open", v); }
     btn.addEventListener("click", function () { open(btn.getAttribute("aria-expanded") !== "true"); });
     btn.parentElement.addEventListener("mouseenter", function () { open("true"); });
-    btn.parentElement.addEventListener("mouseleave", function () { open("false"); });
+    /* grace period so the pointer can travel into the panel */
+    btn.parentElement.addEventListener("mouseleave", function () { clearTimeout(timer); timer = setTimeout(function () { open("false"); }, 320); });
     btn.parentElement.addEventListener("focusout", function (e) { if (!btn.parentElement.contains(e.relatedTarget)) open("false"); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") open("false"); });
   });
@@ -49,8 +50,29 @@
     window.addEventListener("scroll", function () { if (!raf) { raf = true; requestAnimationFrame(tick); } }, { passive: true }); tick();
   }
 
+  /* Page transitions: short fade out on internal navigation, fade in on load */
+  if (!reduce) {
+    document.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest("a[href]"); if (!a) return;
+      var href = a.getAttribute("href") || "";
+      if (a.target === "_blank" || a.hasAttribute("download") || /^(tel:|mailto:|#|javascript:)/.test(href) || a.hasAttribute("data-no-transition")) return;
+      var url; try { url = new URL(a.href, location.href); } catch (err) { return; }
+      if (url.origin !== location.origin) return;
+      if (url.pathname === location.pathname && url.search === location.search && url.hash) return;
+      e.preventDefault(); document.body.classList.add("page-leave");
+      setTimeout(function () { location.href = url.href; }, 190);
+    });
+    window.addEventListener("pageshow", function () { document.body.classList.remove("page-leave"); });
+  }
+
   /* Hero video: respect reduced motion + data saver; pause when offscreen */
   var hv = $(".hero-media video");
+  $$(".phero-media video").forEach(function (v) {
+    if (reduce || (navigator.connection && navigator.connection.saveData)) { v.removeAttribute("autoplay"); v.pause(); var pi = document.createElement("img"); pi.src = v.getAttribute("poster"); pi.alt = ""; v.replaceWith(pi); return; }
+    var pp = v.play(); if (pp && pp.catch) pp.catch(function () {});
+    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) v.play().catch(function () {}); else v.pause(); }); }).observe(v);
+  });
   if (hv) {
     var saver = navigator.connection && navigator.connection.saveData;
     if (reduce || saver) { hv.removeAttribute("autoplay"); hv.pause(); hv.setAttribute("data-paused", "true"); }
@@ -107,6 +129,37 @@
     try { sessionStorage.setItem("msp_booked", "1"); } catch (e) {}
   }
   document.addEventListener("msp:booked", function () { var s = $("[data-booked-inline]"); if (s) { s.hidden = false; s.scrollIntoView({ behavior: reduce ? "auto" : "smooth" }); } });
+
+  /* System configurator (product buy box) */
+  $$("[data-configurator]").forEach(function (box) {
+    var cfg = JSON.parse(box.querySelector("script[type='application/json']").textContent);
+    var totalEl = box.querySelector("[data-total]"), cta = box.querySelector("[data-cta]"), lineEl = box.querySelector("[data-config-line]");
+    function money(n) { return "$" + n.toLocaleString("en-US"); }
+    function state() {
+      var total = cfg.price, parts = [];
+      cfg.options.forEach(function (g) {
+        if (g.type === "single") { var r = box.querySelector('input[name="cfg-' + g.key + '"]:checked'); if (r) { var c = g.choices[parseInt(r.value, 10)]; total += c.add; parts.push(c.label); } }
+        else { var cb = box.querySelector('input[name="cfg-' + g.key + '"]'); if (cb && cb.checked) { total += g.add; parts.push(g.label); } }
+      });
+      return { total: total, parts: parts, line: cfg.name + (parts.length ? " + " + parts.join(" + ") : "") + " — " + money(total) + " installed" };
+    }
+    function render() {
+      var s = state(); if (totalEl) totalEl.textContent = money(s.total); if (lineEl) lineEl.textContent = s.parts.length ? s.parts.join(" · ") : "Standard configuration";
+      if (cta) { cta.setAttribute("href", "/preview/schedule/?system=" + encodeURIComponent(cfg.id)); cta.textContent = "Schedule installation · " + money(s.total); }
+      if (window.MSPIntake) window.MSPIntake.setPreset({ system_interest: cfg.interest, water_source: cfg.water_source || "", system_id: cfg.id, system_config: s.line });
+    }
+    box.addEventListener("change", render);
+    if (cta) cta.addEventListener("click", function () { render(); if (window.MSPTrack) window.MSPTrack.event("schedule_click", { label: "configurator", system: cfg.id, total: state().total }); });
+    render();
+  });
+  /* Gallery thumbs */
+  $$(".gallery").forEach(function (g) { var main = g.querySelector(".main img"); g.querySelectorAll(".thumbs button").forEach(function (b) { b.addEventListener("click", function () { main.src = b.getAttribute("data-src"); main.alt = b.getAttribute("data-alt") || ""; g.querySelectorAll(".thumbs button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); }); }); });
+  /* Schedule page: show chosen configuration */
+  $$("[data-config-summary]").forEach(function (el) {
+    var pre = (window.MSPIntake && window.MSPIntake.preset()) || {}; var q = new URLSearchParams(location.search);
+    if (pre.system_config) { el.setAttribute("data-show", "true"); el.querySelector(".cs-line").textContent = pre.system_config; }
+    else if (q.get("system")) { el.setAttribute("data-show", "true"); el.querySelector(".cs-line").textContent = q.get("system").replace(/-/g, " "); }
+  });
 
   /* Current year */
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });

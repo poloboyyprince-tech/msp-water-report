@@ -28,6 +28,7 @@
     if (pre.water_problems && pre.water_problems.length) state.data.water_problems = pre.water_problems.slice();
     if (pre.system_interest) state.data.system_interest = pre.system_interest;
     if (pre.inquiry_type) state.data.inquiry_type = pre.inquiry_type;
+    if (pre.system_config) { state.data.system_config = pre.system_config; state.data.system_id = pre.system_id || ""; }
     var startAt = parseInt(root.getAttribute("data-start") || "0", 10); if (startAt) state.step = Math.min(startAt, STEPS.length - 1);
     var consent = (window.MSP_GHL && window.MSP_GHL.consent) || {};
 

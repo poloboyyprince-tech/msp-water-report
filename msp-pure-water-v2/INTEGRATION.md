@@ -54,7 +54,7 @@ Developers see the readiness banner on `localhost` or with `?msp-debug=1`.
 ## 3. Customer journey → GHL objects
 
 ```
-Visitor → water-source card / problem explorer (pre-fills intake)
+Visitor → water-source card / problem explorer / product configurator (pre-fills intake)
        → FIND MY SYSTEM (5 steps) → POST JSON → Inbound Webhook workflow
             → contact created/updated, custom fields, tags, opportunity
             → internal "NEW WEBSITE LEAD" notification, customer confirmation
@@ -81,6 +81,7 @@ webhook workflow's *Create/Update Contact* action.
 | water_source | Water Source (dropdown: City Water / Well Water / Not Sure) | |
 | water_problems | Water Problems (text; comma-separated) | |
 | system_interest | System Interest (dropdown) | |
+| system_id, system_config | System ID, System Configuration | set when the visitor used a product-page configurator, e.g. "Dual Tank Well Water Filtration + Tank RO + Whole-home UV purifier — $5,398 installed" |
 | bathrooms, household_size | Bathrooms, Household Size | optional |
 | existing_equipment | Existing Equipment | optional |
 | customer_notes | Customer Notes | optional |
@@ -195,3 +196,11 @@ calendar → book → check appointment on calendar, linked contact, stage,
 booking notification, ScheduleDrop task, customer confirmation, `/booked/`.
 Use `?utm_source=test&utm_medium=qa&utm_campaign=acceptance` on the first URL
 to verify attribution retention.
+
+
+## 11. Operating model note
+
+Consultations are phone calls, not home visits. The calendar should be a phone-call
+calendar (GHL calendar type "Round robin" or "Personal" with location = phone),
+and every confirmation/reminder template should say "we will call you at this time".
+The only visit is installation, which the team schedules during the call.

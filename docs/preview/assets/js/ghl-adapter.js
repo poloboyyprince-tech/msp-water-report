@@ -39,6 +39,7 @@
       system_interest: data.system_interest || "", bathrooms: data.bathrooms || "", household_size: data.household_size || "",
       existing_equipment: data.existing_equipment || "", customer_notes: data.notes || "",
       sms_consent: data.sms_consent ? "Yes" : "No",
+      system_id: data.system_id || "", system_config: data.system_config || "",
       lead_source: data.lead_source || attr.lead_source || "Direct", inquiry_type: data.inquiry_type || "Find My System",
       website_entry_page: attr.website_entry_page || "", landing_page: attr.landing_page || "", referrer: attr.referrer || "",
       utm_source: attr.utm_source || "", utm_medium: attr.utm_medium || "", utm_campaign: attr.utm_campaign || "",
@@ -77,10 +78,11 @@
   function calendarUrl(prefill) {
     var cal = C.calendar || {}; if (!set(cal.calendarEmbedUrl)) return "";
     var lead = prefill || loadLead() || {}; var map = cal.prefill || {};
+    try { var pre = JSON.parse(sessionStorage.getItem("msp_intake") || "{}"); ["water_source", "system_interest", "system_config"].forEach(function (k) { if (!lead[k] && pre[k]) lead[k] = pre[k]; }); } catch (e) {}
     var q = [];
     ["first_name", "last_name", "email", "phone"].forEach(function (k) { if (lead[k]) q.push(encodeURIComponent(map[k] || k) + "=" + encodeURIComponent(lead[k])); });
     /* Pass intake context along so it can be read from the appointment/contact. */
-    ["water_source", "system_interest", "water_problems", "city", "lead_source", "utm_source", "utm_medium", "utm_campaign"].forEach(function (k) { if (lead[k]) q.push(encodeURIComponent(k) + "=" + encodeURIComponent(lead[k])); });
+    ["water_source", "system_interest", "system_config", "water_problems", "city", "lead_source", "utm_source", "utm_medium", "utm_campaign"].forEach(function (k) { if (lead[k]) q.push(encodeURIComponent(k) + "=" + encodeURIComponent(lead[k])); });
     return cal.calendarEmbedUrl + (cal.calendarEmbedUrl.indexOf("?") > -1 ? "&" : "?") + q.join("&");
   }
 

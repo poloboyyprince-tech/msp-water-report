@@ -1,0 +1,8 @@
+{
+ "greater": [
+  {"region":"Central Minnesota","cities":["St. Cloud","Sartell","Sauk Rapids","Princeton","Milaca","Little Falls","Brainerd","Baxter"]},
+  {"region":"Southern Minnesota","cities":["Rochester","Mankato","Northfield","Faribault","Owatonna","Red Wing","New Prague","Le Sueur","Albert Lea","Austin"]},
+  {"region":"Western Minnesota","cities":["Hutchinson","Litchfield","Willmar","Glencoe","Delano","Annandale","Cokato","Montevideo"]},
+  {"region":"Northern Minnesota","cities":["Duluth","Cloquet","Grand Rapids","Pine City","Hinckley","Mora","Alexandria","Bemidji"]}
+ ]
+}

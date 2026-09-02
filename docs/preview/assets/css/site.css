@@ -548,36 +548,38 @@ body.page-leave{opacity:0;transition:opacity .18s ease-in}
 .nsf-line{color:#0A5AA8}.nsf-line svg{color:#0A5AA8}
 
 /* Product page (reference structure) */
-.pdp{display:grid;grid-template-columns:minmax(0,.9fr) minmax(360px,1.1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.pdp{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:stretch}
 @media (max-width:900px){.pdp{grid-template-columns:1fr}}
-.pdp-media{border-radius:var(--radius-lg);overflow:hidden;background:#0c2452;aspect-ratio:1;position:sticky;top:calc(var(--header-h) + 16px)}
-.pdp-media img{width:100%;height:100%;object-fit:cover}
-@media (max-width:900px){.pdp-media{position:static}}
-.buy h1{font-size:clamp(1.7rem,2.8vw,2.3rem);margin:0}
-.buy .price{font-size:2.4rem;color:var(--gold-600);margin-top:.25rem}
-.buy .price-note{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:.2rem 0 1rem}
-.cfg-group{margin-bottom:.9rem}
+.pdp-media{border-radius:var(--radius-lg);overflow:hidden;background:radial-gradient(90% 70% at 50% 50%,#173a6e 0%,#0c2452 55%,#081a3c 100%);min-height:520px}
+.pdp-media img{width:100%;height:100%;object-fit:contain}
+@media (max-width:900px){.pdp-media{aspect-ratio:1;min-height:0}}
+.buy{display:flex;flex-direction:column;justify-content:space-between}
+.buy h1{font-size:clamp(1.4rem,2.2vw,1.75rem);margin:0;line-height:1.1}
+.buy .pills{margin:.5rem 0 .6rem}
+.buy .price{font-size:2rem;color:var(--gold-600);margin-top:0}
+.buy .price-note{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:.1rem 0 .7rem}
+.cfg-group{margin-bottom:.6rem}
 .cfg-group>span{display:block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:.45rem}
 .cfg-group>span em{font-style:normal;color:var(--ink);letter-spacing:.06em;text-transform:none;font-weight:500}
 .chipopt{position:relative}
 .chipopt input{position:absolute;opacity:0;width:1px;height:1px}
-.chipopt span{display:inline-flex;align-items:center;padding:.5rem .9rem;border-radius:var(--radius);border:1.5px solid var(--line);font-size:.85rem;font-weight:600;cursor:pointer;line-height:1.2;transition:all .15s}
+.chipopt span{display:inline-flex;align-items:center;padding:.4rem .8rem;border-radius:var(--radius);border:1.5px solid var(--line);font-size:.85rem;font-weight:600;cursor:pointer;line-height:1.2;transition:all .15s}
 .chipopt input:checked+span{background:var(--gold);border-color:var(--gold);color:var(--navy-900)}
 .chipopt input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
-.buy .btn-block{margin-top:.5rem}
-.buy .or{text-align:center;font-size:.85rem;color:var(--muted);margin:.6rem 0 .2rem}.buy .or a{color:var(--gold-600);font-weight:600;text-decoration:none}
+.buy .btn-block{margin-top:.3rem;padding:.9rem 1.5rem}
+.buy .or{text-align:center;font-size:.82rem;color:var(--muted);margin:.45rem 0 .1rem}.buy .or a{color:var(--gold-600);font-weight:600;text-decoration:none}
 .buy .fine{font-size:.8rem;color:var(--muted);margin:0}
-.trust-row{list-style:none;margin:1.25rem 0;padding:1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;text-align:center}
-.trust-row li{display:grid;justify-items:center;gap:.35rem;font-size:.7rem;color:var(--muted)}
-.trust-row svg{width:20px;height:20px;color:var(--gold-600)}
+.trust-row{list-style:none;margin:.8rem 0;padding:.7rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;text-align:center}
+.trust-row li{display:grid;justify-items:center;gap:.25rem;font-size:.66rem;color:var(--muted)}
+.trust-row svg{width:18px;height:18px;color:var(--gold-600)}
 @media (max-width:560px){.trust-row{grid-template-columns:repeat(2,1fr)}}
 .acc details{border-bottom:1px solid var(--line)}
-.acc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:.9rem 0;font-weight:600;font-size:.95rem}
+.acc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;font-weight:600;font-size:.9rem}
 .acc summary::-webkit-details-marker{display:none}
 .acc summary svg{width:16px;height:16px;color:var(--muted);transition:transform .2s}
 .acc details[open] summary svg{transform:rotate(180deg)}
-.acc-body{padding:0 0 1rem;font-size:.9rem;color:var(--muted)}
-.acc-body p{margin:0 0 .5rem}.acc-body b{color:var(--ink);font-weight:600}
+.acc-body{padding:0 0 .6rem;font-size:.82rem;line-height:1.45;color:var(--muted)}
+.acc-body p{margin:0 0 .3rem}.acc-body b{color:var(--ink);font-weight:600}
 .acc-body .spec-line{padding-top:.4rem;border-top:1px dashed var(--line)}
 
 /* Inside the System stepper */

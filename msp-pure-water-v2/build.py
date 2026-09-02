@@ -185,7 +185,7 @@ def hero():
         webm = '<source src="/assets/video/hero.webm" type="video/webm">' if os.path.exists(os.path.join(SRC, "video/hero.webm")) else ""
         video = ('<video autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster.jpg" aria-hidden="true" tabindex="-1">%s%s<source src="/assets/video/hero.mp4" type="video/mp4"></video>' % (mobile, webm))
     else:
-        video = '<img src="/assets/img/%s" alt="" fetchpriority="high">' % ("hero-poster.jpg" if HAS_POSTER else "system-whole-home.webp")
+        video = '<img src="/assets/img/%s" alt="" fetchpriority="high">' % ("hero-poster.jpg" if HAS_POSTER else "system-whole-home.v3.webp")
     return ('<section class="hero" id="top"><div class="hero-media" data-parallax="30">%s</div>%s'
       '<div class="container hero-inner"><div class="hero-promo reveal"><b>Included</b> Reverse osmosis drinking-water system with every whole-home system</div>'
       '<h1 class="reveal">Better water.<br><em>Throughout your entire home.</em></h1>'

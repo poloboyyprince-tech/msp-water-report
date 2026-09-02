@@ -34,7 +34,7 @@
    "short": "Whole Home Filtration & Softening",
    "badge": "Most Popular",
    "price": 2999,
-   "image": "system-whole-home.webp",
+   "image": "system-whole-home.v3.webp",
    "image_alt": "MSP Pure Water whole-home filtration and softening system: single media tank cutaway showing carbon, softening resin and polishing gravel, with brine tank",
    "for": "Twin Cities homes on municipal water that want soft water and no chlorine taste at every faucet, in one compact footprint.",
    "problems": [
@@ -296,7 +296,7 @@
    "short": "Dual Tank Whole Home Filtration",
    "badge": null,
    "price": 3999,
-   "image": "system-dual-tank.webp",
+   "image": "system-dual-tank.v3.webp",
    "image_alt": "Dual Tank Whole Home Water Filtration System: softening resin tank and carbon filtration tank cutaways with brine tank",
    "for": "Larger households and heavy water use: carbon filtration and softening each get their own full-strength tank.",
    "problems": [
@@ -541,7 +541,7 @@
    "short": "Complete Salt-Free Filtration",
    "badge": null,
    "price": 4499,
-   "image": "system-salt-free.webp",
+   "image": "system-salt-free.v3.webp",
    "image_alt": "Whole Home Complete Salt-Free Filtration System: carbon filtration tank cutaway and salt-free conditioning tank",
    "for": "Homeowners who want whole-home carbon filtration and scale protection with no salt bags, no brine discharge and no regeneration cycles.",
    "problems": [
@@ -774,7 +774,7 @@
    "short": "Dual Tank Well Water Filtration",
    "badge": "Chemical-Free",
    "price": 4499,
-   "image": "system-well-dual.webp",
+   "image": "system-well-dual.v3.webp",
    "image_alt": "MSP Pure Water dual tank well-water system: softening resin tank and Katalox Light media tank cutaways with brine tank",
    "for": "Minnesota well homes dealing with iron staining, manganese and hard water, treated without chemicals.",
    "problems": [
@@ -1044,7 +1044,7 @@
    "short": "Iron & Sulfur Treatment",
    "badge": "Sulfur Treatment",
    "price": 5999,
-   "image": "system-iron-sulfur.webp",
+   "image": "system-iron-sulfur.v3.webp",
    "image_alt": "Iron & Sulfur Treatment System: hydrogen peroxide injection panel, holding tank, carbon and softening tanks",
    "for": "The system for rotten-egg sulfur odor, and for wells with heavier iron loads where air oxidation alone is not enough.",
    "problems": [
@@ -1311,7 +1311,7 @@
    "short": "Tankless RO",
    "badge": "Included Free With Any Whole-Home System",
    "price": 799,
-   "image": "system-ro-tankless.webp",
+   "image": "system-ro-tankless.v3.webp",
    "image_alt": "HW800 AlkaPro tankless reverse osmosis unit, white with black front panel, next to a chrome drinking-water faucet",
    "for": "Kitchens where under-sink space matters and you want drinking water treated on demand, with minerals added back for taste.",
    "problems": [
@@ -1490,7 +1490,7 @@
    "short": "Tank RO",
    "badge": "Included Free With Any Whole-Home System",
    "price": 799,
-   "image": "system-ro-tank.webp",
+   "image": "system-ro-tank.v3.webp",
    "image_alt": "Tank reverse osmosis system: multi-stage filter bank with pressurized storage tank and chrome faucet",
    "for": "The proven under-sink configuration: purified water stored in a pressurized tank and delivered instantly when you open the faucet.",
    "problems": [
@@ -1655,7 +1655,7 @@
    "badge": "Recommended for wells",
    "price": 399,
    "price_prefix": "+",
-   "image": "addon-sediment.webp",
+   "image": "addon-sediment.v3.webp",
    "image_alt": "Pre-system sediment filter with blue housing and black cap",
    "for": "The first line of defense on a well. Captures sand, silt, dirt and rust before they reach the resin, media and valves downstream.",
    "problems": [
@@ -1703,7 +1703,7 @@
    "badge": "Disinfection barrier",
    "price": 899,
    "price_prefix": "+",
-   "image": "addon-uv.webp",
+   "image": "addon-uv.v3.webp",
    "image_alt": "Whole-house ultraviolet purifier: stainless steel chamber with UV lamps, quartz sleeves, ballast and mounting clamps",
    "for": "An additional disinfection barrier for well water. UV light inactivates microorganisms as water flows through a stainless chamber. It does not remove iron, sediment or dissolved chemicals, so it is installed after filtration.",
    "problems": [

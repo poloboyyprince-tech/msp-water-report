@@ -17,7 +17,7 @@ BASEPATH = OPT.base.rstrip("/")
 SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, OPT.out)
 def J(p): return json.load(open(os.path.join(SRC, p), encoding="utf-8"))
 SITE = J("config/site.json"); SYS = J("data/systems.json"); PROBLEMS = J("data/problems.json")
-FAQ = J("data/faq.json"); CITIES = J("data/cities.json"); REVIEWS = J("data/reviews.json"); REGIONS = J("data/regions.json")
+FAQ = J("data/faq.json"); CITIES = J("data/cities.json"); REVIEWS = J("data/reviews.json"); REGIONS = J("data/regions.json"); COMPONENTS = J("data/components.json")
 FOOTER_CITIES = CITIES[:20]
 LEGAL = J("data/legal-source.json") if os.path.exists(os.path.join(SRC, "data/legal-source.json")) else {}
 SYSTEMS = {s["id"]: s for s in SYS["systems"]}
@@ -467,6 +467,16 @@ def carousel(systems, label):
     return ('<div class="carousel" data-carousel><div class="carousel-head"><div class="carousel-dots" role="tablist" aria-label="%s">%s</div><div class="carousel-nav"><button type="button" data-prev aria-label="Previous system">%s</button><span class="count"><span data-current>1</span> / %d</span><button type="button" data-next aria-label="Next system">%s</button></div></div>%s</div>') % (
         e(label), dots, ICON["arrow"].replace('<svg', '<svg style="transform:rotate(180deg)"'), n, ICON["arrow"], "".join(slide(s, i, n) for i, s in enumerate(systems)))
 
+def components_section(s):
+    ids = s.get("components") or []
+    if not ids: return ""
+    cards = ""
+    for cid in ids:
+        c = COMPONENTS[cid]
+        cards += ('<article class="comp reveal"><span class="kicker">%s</span><h3>%s</h3><dl><div><dt>What it is</dt><dd>%s</dd></div><div><dt>What it does</dt><dd>%s</dd></div><div><dt>Why it matters</dt><dd>%s</dd></div></dl><ul class="comp-stats">%s</ul></article>') % (
+            e(c["kicker"]), e(c["name"]), e(c["what"]), e(c["does"]), e(c["value"]), "".join("<li><b>%s</b><span>%s</span></li>" % (e(v), e(k)) for k, v in c["stats"]))
+    return ('<section class="section" id="inside"><div class="container"><div class="grid grid-2" style="align-items:end;margin-bottom:2rem"><div><p class="kicker">Inside the system</p><h2>Every component, and why we chose it.</h2></div><p class="lead">No mystery boxes. These are the exact parts in the %s, what each one does to your water, and the value it adds over what most companies install.</p></div><div class="comp-grid">%s</div></div></section>') % (e(s["short"]), cards)
+
 def product_page(s):
     cat = {"city": "City water", "well": "Well water", "ro": "Drinking water", "addon": "Well water add-on"}[s["category"]]
     cat_link = {"city": "/city-water-filtration/", "well": "/well-water-filtration/", "ro": "/reverse-osmosis/", "addon": "/well-water-filtration/#add-ons"}[s["category"]]
@@ -483,6 +493,7 @@ def product_page(s):
             '<div class="product"><div>%s<div class="detail-block" style="margin-top:1.5rem"><h4>Who it\'s for</h4><p class="lead">%s</p><ul class="tags">%s</ul>%s</div>%s<div class="detail-block"><h4>Verified specifications</h4>%s</div>'
             '<div class="detail-block"><h4>What happens next</h4><ol class="steps-list" style="margin:0;max-width:none"><li>Schedule a phone consultation online (no deposit).</li><li>We call you, confirm the configuration and the price, and set your installation date.</li><li>Professional installation, then a walkthrough of your new system.</li></ol></div></div>'
             '<aside>%s</aside></div></div></section>') % (cat_link, cat, e(s["short"]), gallery, e(s["for"]), "".join("<li>%s</li>" % e(p) for p in s["problems"]), note, stages, specs, configurator(s))
+    body += components_section(s)
     body += '<section class="section cream"><div class="container"><p class="kicker">Compare</p><h2>Other %s options</h2><div class="grid grid-3" style="margin-top:1.5rem">%s</div><p style="margin-top:1.5rem"><a class="link" href="/compare-systems/">Full side-by-side comparison</a></p></div></section>' % (cat.lower(), "".join(system_card(x) for x in related))
     body += faq_block([q for q in FAQ if any(k in q["q"].lower() for k in {"city": ["come to my home", "cost", "filtration and softening", "salt", "pressure"], "well": ["come to my home", "well", "tested", "maintenance", "warranty"], "ro": ["come to my home", "reverse osmosis", "tank", "every faucet"], "addon": ["come to my home", "sediment", "uv", "well"]}[s["category"]])][:4]) + final_cta()
     schema = {"@context": "https://schema.org", "@type": "Product", "name": s["name"], "description": s["for"], "image": BASE + "/assets/img/" + s["image"], "brand": {"@type": "Brand", "name": "MSP Pure Water"},

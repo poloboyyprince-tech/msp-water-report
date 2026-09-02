@@ -46,7 +46,7 @@
    "stages": [
     {
      "n": "01",
-     "title": "Catalytic coconut-shell carbon",
+     "title": "Jacobi catalytic coconut-shell carbon",
      "text": "Treats chlorine, chloramine and the tastes and odors that come with municipal disinfection."
     },
     {
@@ -61,7 +61,7 @@
     },
     {
      "n": "04",
-     "title": "MSP ProValve control",
+     "title": "MSP ProValve ceramic-disc control",
      "text": "Automatically backwashes and regenerates the system. Ceramic-disc valve with a 72-hour memory backup."
     }
    ],
@@ -124,6 +124,14 @@
       }
      ]
     }
+   ],
+   "components": [
+    "provalve",
+    "jacobi-carbon",
+    "resin-10",
+    "gravel",
+    "brine",
+    "tank"
    ]
   },
   {
@@ -144,7 +152,7 @@
    "stages": [
     {
      "n": "01",
-     "title": "Dedicated catalytic carbon tank",
+     "title": "Dedicated Jacobi catalytic carbon tank",
      "text": "Granular catalytic coconut-shell carbon treats chlorine, chloramine, taste and odor."
     },
     {
@@ -159,7 +167,7 @@
     },
     {
      "n": "04",
-     "title": "One ProValve controls both tanks",
+     "title": "One ProValve ceramic-disc valve controls both tanks",
      "text": "Backwashes and regenerates automatically, including the carbon tank."
     }
    ],
@@ -214,6 +222,14 @@
       }
      ]
     }
+   ],
+   "components": [
+    "provalve",
+    "jacobi-carbon",
+    "resin-10",
+    "gravel",
+    "brine",
+    "tank"
    ]
   },
   {
@@ -234,7 +250,7 @@
    "stages": [
     {
      "n": "01",
-     "title": "Whole-home coconut-shell carbon",
+     "title": "Jacobi coconut-shell carbon",
      "text": "Removes chlorine, chloramine, chemicals and odors from all your water."
     },
     {
@@ -249,7 +265,7 @@
     },
     {
      "n": "04",
-     "title": "No electricity, no drain, no salt",
+     "title": "Clack in/out head, no electricity, no drain, no salt",
      "text": "The simplest system to own."
     }
    ],
@@ -303,6 +319,13 @@
       }
      ]
     }
+   ],
+   "components": [
+    "jacobi-carbon",
+    "saltfree-media",
+    "clack-head",
+    "gravel",
+    "tank"
    ]
   },
   {
@@ -329,12 +352,12 @@
     },
     {
      "n": "02",
-     "title": "Katalox Light media",
+     "title": "Katalox Light catalytic media",
      "text": "Traps the oxidized particles and nudges pH up for better taste. Self-cleans with automatic backwashing."
     },
     {
      "n": "03",
-     "title": "Dedicated softening tank",
+     "title": "Dedicated 10% crosslinked softening tank",
      "text": "USA-made resin removes calcium and magnesium hardness."
     },
     {
@@ -410,6 +433,14 @@
      "add": 899,
      "note": "Disinfection barrier after filtration"
     }
+   ],
+   "components": [
+    "aio-valve",
+    "katalox",
+    "provalve",
+    "resin-10",
+    "brine",
+    "tank"
    ]
   },
   {
@@ -436,12 +467,12 @@
     },
     {
      "n": "02",
-     "title": "Dedicated catalytic carbon tank",
+     "title": "Dedicated Jacobi catalytic carbon tank",
      "text": "Captures the oxidized particles and consumes the peroxide so it never reaches your faucets."
     },
     {
      "n": "03",
-     "title": "Dedicated softening tank",
+     "title": "Dedicated 10% crosslinked softening tank",
      "text": "Ion-exchange resin removes hardness for fully softened water."
     },
     {
@@ -517,6 +548,14 @@
      "add": 899,
      "note": "Disinfection barrier after filtration"
     }
+   ],
+   "components": [
+    "h2o2-panel",
+    "jacobi-carbon",
+    "provalve",
+    "resin-10",
+    "brine",
+    "tank"
    ]
   },
   {

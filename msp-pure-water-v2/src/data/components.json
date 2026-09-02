@@ -1,0 +1,90 @@
+{
+ "provalve": {
+  "kicker": "Control valve",
+  "name": "MSP ProValve Ceramic-Disc Control Valve",
+  "what": "The automatic valve on top of the tank that routes every gallon: service, backwash, brine draw, rinse and refill. Instead of a piston sliding across rubber seals and plastic spacers (the design most residential softeners still use), the ProValve meters water with flat, high-hardness ceramic sealing discs.",
+  "does": "Tracks how much water your home uses and regenerates only when the resin is actually spent, then backwashes the media and recharges it on its own. A 72-hour memory backup keeps your settings and schedule through a power outage.",
+  "value": "Ceramic is harder than the sand and grit that ride along in water, so the sealing faces don't score, swell, crack or tear the way rubber seals do. Piston-style valves typically need seal-and-spacer rebuilds; a ceramic-disc valve is built to be leak-free and maintenance-free for the life of the system. MSP is one of the few residential water-treatment companies in Minnesota installing ceramic-disc valves instead of plastic and Teflon-coated piston designs.",
+  "stats": [["Sealing", "Ceramic disc"], ["Regeneration", "Metered, on demand"], ["Memory backup", "72 hours"]]
+ },
+ "aio-valve": {
+  "kicker": "Air-oxidation head",
+  "name": "MSP AIO ProValve Air-Injection Control",
+  "what": "The same ceramic-disc control valve, fitted with an air-injection head. During each regeneration it draws in air and holds a compressed air pocket at the top of the media tank.",
+  "does": "Well water falls through that air pocket on its way into the tank. Dissolved iron and manganese react with the oxygen and turn into solid particles that the Katalox Light bed below can catch. Every night the valve replenishes the air pocket and backwashes the captured solids to drain.",
+  "value": "Oxidation without chemicals, feed pumps or solution tanks. Nothing to buy, dose or refill, and the 30 GPM valve body is sized to keep up with a well pump.",
+  "stats": [["Valve flow", "30 GPM"], ["Oxidizer", "Air (chemical-free)"], ["Sealing", "Ceramic disc"]]
+ },
+ "jacobi-carbon": {
+  "kicker": "Filtration media",
+  "name": "Jacobi AquaSorb Catalytic Coconut-Shell Carbon",
+  "what": "Granular activated carbon made by Jacobi Carbons, steam-activated from coconut-shell charcoal and finished with a catalytic surface, no chemical impregnation. Coconut shell is a renewable agricultural by-product, which is why we specify it over coal-based carbon.",
+  "does": "Adsorbs organic chemicals, including VOCs, pesticides and the compounds behind bad taste and odor, and catalytically breaks down chloramine and free chlorine, the disinfectants your city adds at the plant. It also reduces hydrogen sulfide. Ordinary carbon only adsorbs chloramine slowly; the catalytic surface decomposes it.",
+  "value": "Jacobi's own testing shows about 65% better chloramine reduction than standard coal-based carbon after 10,000 bed volumes, and 24% better than catalytic coal carbon. Coconut-shell carbon is also harder, so it sheds less dust into your water and lasts longer in a backwashing tank. Every shower, load of laundry and glass of water gets the benefit, not just one faucet.",
+  "stats": [["Source", "Coconut shell (renewable)"], ["Targets", "Chlorine, chloramine, organics, H₂S"], ["Maker", "Jacobi Carbons"]]
+ },
+ "resin-10": {
+  "kicker": "Softening media",
+  "name": "USA-Made 10% Crosslinked Softening Resin",
+  "what": "Millions of styrene-divinylbenzene ion-exchange beads. The 10% figure is the amount of divinylbenzene crosslinking that holds each bead together; most budget softeners use 8%.",
+  "does": "As water passes through, the beads trade their sodium for the calcium and magnesium that make water hard. When capacity is used up, the valve rinses the beads with brine and they're ready again.",
+  "value": "Higher crosslinking means lower moisture inside the bead (roughly 39–43% versus 43–47% for 8% resin), so chlorine can't migrate in and fracture it. Industry guidance rates 10% resin at about twice the service life of 8% under the same conditions, and it tolerates iron and daily regeneration stress better. That's the difference between resin that lasts a decade and resin that lasts two.",
+  "stats": [["Crosslink", "10% DVB"], ["Capacity", "48,000 grains"], ["Origin", "Made in the USA"]]
+ },
+ "katalox": {
+  "kicker": "Oxidation & filtration media",
+  "name": "Katalox Light Catalytic Media (Watch Water, Germany)",
+  "what": "A lightweight zeolite core (ZEOSORB) coated with 10% manganese dioxide, manufactured in Germany by Watch Water and certified to NSF/ANSI 61 for drinking water and NSF/ANSI 372 lead-free.",
+  "does": "The manganese-dioxide surface catalyzes the oxidation of dissolved iron and manganese into solid particles and then filters them out, down to about 3 microns. It also handles hydrogen sulfide and tolerates oxidizers like air, peroxide and chlorine without breaking down.",
+  "value": "Because it's light, it backwashes clean at flow rates a normal well pump can deliver, unlike heavy greensand-style media. Multi-stage Katalox Light systems have treated iron at 60–100 ppm without chemicals; a typical Minnesota well is a fraction of that. Long media life and a self-cleaning bed keep maintenance close to zero.",
+  "stats": [["Coating", "10% MnO₂"], ["Filtration", "~3 microns"], ["Certified", "NSF/ANSI 61 & 372"]]
+ },
+ "h2o2-panel": {
+  "kicker": "Chemical oxidation",
+  "name": "Hydrogen Peroxide Injection Panel & Solution Tank",
+  "what": "A proportional chemical-feed panel and dedicated holding tank that doses food-grade hydrogen peroxide into the line the moment water enters your home.",
+  "does": "Peroxide is a far stronger oxidizer than air. It converts hydrogen sulfide (the rotten-egg gas) to elemental sulfur and dissolved iron to solid ferric particles within seconds, and it kills the sulfur-reducing bacteria that keep producing the odor in the first place.",
+  "value": "Where air oxidation runs out of oxygen on heavy sulfur or iron loads, peroxide finishes the job, usually without the contact tank other chemical feeds need. The oxidized solids and any residual peroxide are consumed on the catalytic carbon tank downstream, so nothing but treated water reaches your faucets. The effect is typically noticeable within an hour of startup.",
+  "stats": [["Oxidizer", "Food-grade H₂O₂"], ["Targets", "Sulfur odor, heavy iron, iron bacteria"], ["Residual", "Consumed on catalytic carbon"]]
+ },
+ "saltfree-media": {
+  "kicker": "Conditioning media",
+  "name": "Salt-Free Scale Conditioning Media",
+  "what": "A conditioning bed in its own tank, with a simple in/out head instead of a regenerating valve. No salt, no brine, no drain line, no electricity.",
+  "does": "As hard water passes over the media, dissolved calcium and magnesium are converted into microscopic crystals that stay suspended in the water and rinse through your plumbing instead of bonding to it as scale.",
+  "value": "Water heaters, dishwashers and fixtures are protected from scale while the beneficial minerals stay in the water. It's the lowest-maintenance system in the lineup. It is not a softener: it does not remove hardness, so you won't get the slick soft-water feel, and we'll tell you that plainly on the call.",
+  "stats": [["Salt required", "None"], ["Drain line", "Not needed"], ["Electricity", "None"]]
+ },
+ "clack-head": {
+  "kicker": "Control head",
+  "name": "Clack In/Out Control Head, 3/4\" Distributor",
+  "what": "A Clack in/out head on the carbon tank with a 3/4-inch distributor tube. There's no regeneration cycle to run, so the head simply directs flow down through the media and back up the riser.",
+  "does": "Distributes water evenly across the top of the bed and collects it at the bottom so the whole media volume is used.",
+  "value": "Fewer moving parts than a regenerating valve, nothing to program, and a full 1-inch to 1¼-inch bypass for service.",
+  "stats": [["Distributor", "3/4\""], ["Bypass", "1\" – 1¼\""], ["Regeneration", "None required"]]
+ },
+ "gravel": {
+  "kicker": "Underbed",
+  "name": "Polishing Gravel Underbed",
+  "what": "Graded quartz gravel packed beneath the media around the bottom distributor.",
+  "does": "Supports the media bed, spreads flow evenly across the full tank diameter and keeps fine media out of the distributor screen.",
+  "value": "Even flow means every bead and every grain of carbon gets contact time, so you get the full rated capacity instead of water channeling through one path. It's a small component that makes the expensive ones work.",
+  "stats": [["Purpose", "Flow distribution"], ["Prevents", "Channeling, media loss"]]
+ },
+ "brine": {
+  "kicker": "Salt storage",
+  "name": "Brine Tank With Safety Float",
+  "what": "A 15\" × 35\" salt tank with a brine well and safety float, plumbed to the control valve.",
+  "does": "Holds the salt and makes the brine solution the valve draws in to recharge the resin.",
+  "value": "The safety float stops the tank from overfilling if a valve ever sticks, and metered regeneration means salt is used only when the resin actually needs it, not on a timer.",
+  "stats": [["Size", "15\" × 35\""], ["Protection", "Safety float"]]
+ },
+ "tank": {
+  "kicker": "Vessel",
+  "name": "Fiberglass-Wound Composite Mineral Tank",
+  "what": "A polyethylene-lined, fiberglass-wound pressure vessel with a full-length riser tube and distributor.",
+  "does": "Holds the media under household pressure and carries treated water back up the riser to the valve.",
+  "value": "Corrosion-proof, rated well above municipal and well-pump pressures, and sized (12\" × 52\" or 10\" × 54\") so the media has the depth it needs for full contact time at 28 GPM.",
+  "stats": [["Construction", "Fiberglass-wound composite"], ["Liner", "Polyethylene"]]
+ }
+}

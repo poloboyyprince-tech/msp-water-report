@@ -185,7 +185,7 @@ def hero():
         webm = '<source src="/assets/video/hero.webm" type="video/webm">' if os.path.exists(os.path.join(SRC, "video/hero.webm")) else ""
         video = ('<video autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster.jpg" aria-hidden="true" tabindex="-1">%s%s<source src="/assets/video/hero.mp4" type="video/mp4"></video>' % (mobile, webm))
     else:
-        video = '<img src="/assets/img/%s" alt="" fetchpriority="high">' % ("hero-poster.jpg" if HAS_POSTER else "system-whole-home.v3.webp")
+        video = '<img src="/assets/img/%s" alt="" fetchpriority="high">' % ("hero-poster.jpg" if HAS_POSTER else "system-whole-home.v4.webp")
     return ('<section class="hero" id="top"><div class="hero-media" data-parallax="30">%s</div>%s'
       '<div class="container hero-inner"><div class="hero-promo reveal"><b>Included</b> Reverse osmosis drinking-water system with every whole-home system</div>'
       '<h1 class="reveal">Better water.<br><em>Throughout your entire home.</em></h1>'
@@ -227,10 +227,10 @@ def system_card(s, compact=False):
     pre = '<span class="pre">%s</span>' % s["price_prefix"] if s.get("price_prefix") else ""
     incl = "".join("<li>%s<span>%s</span></li>" % (ICON["check"], e(i)) for i in s["included"][:3])
     promo = ('<div class="promo-line">%s RO drinking system included</div>' % ICON["drop"] if s["category"] in ("city", "well") else "") + ('<div class="promo-line nsf-line">%s Every component NSF certified</div>' % ICON["shield"] if s.get("nsf") else "")
-    return ('<article class="syscard reveal" id="%s"><div class="syscard-media">%s<img src="/assets/img/%s" srcset="/assets/img/%s 640w, /assets/img/%s 1024w" sizes="(max-width:640px) 90vw, 400px" width="1024" height="1024" loading="lazy" alt="%s"></div>'
-            '<div class="syscard-body"><h3>%s</h3><div class="price">%s%s<small>installed</small></div>%s<p class="for">%s</p><ul class="tags">%s</ul><ul class="incl">%s</ul>'
+    return ('<article class="syscard reveal" id="%s"><div class="syscard-media"><img src="/assets/img/%s" srcset="/assets/img/%s 640w, /assets/img/%s 1024w" sizes="(max-width:640px) 90vw, 400px" width="1024" height="1024" loading="lazy" alt="%s"></div>'
+            '<div class="syscard-body">%s<h3>%s</h3><div class="price">%s%s<small>installed</small></div>%s<p class="for">%s</p><ul class="tags">%s</ul><ul class="incl">%s</ul>'
             '<div class="syscard-actions"><a class="btn btn-gold" href="/schedule/?system=%s" data-intake=\'%s\' data-intake-via="system_card">Schedule</a><a class="btn btn-outline on-light" href="%s">%s</a></div></div></article>') % (
-        s["id"] + ("-card" if compact else ""), badge, img, img640, img, e(s["image_alt"]), e(s["name"]), pre, money(s["price"]), promo, e(s["for"]),
+        s["id"] + ("-card" if compact else ""), img, img640, img, e(s["image_alt"]), badge, e(s["name"]), pre, money(s["price"]), promo, e(s["for"]),
         "".join("<li>%s</li>" % e(p) for p in s["problems"]), incl, s["id"], json.dumps({"system_interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")}),
         sys_href(s), "Configure")
 
@@ -453,12 +453,12 @@ def slide(s, i, n):
     specs = ('<table class="specs compact"><tbody>%s</tbody></table>' % "".join("<tr><th>%s</th><td>%s</td></tr>" % (e(k), e(v)) for k, v in s["specs"][:5])) if s["specs"] else '<p class="note">%s</p>' % e(s.get("specs_note", ""))
     badge = '<span class="badge">%s</span>' % e(s["badge"]) if s.get("badge") else ""
     intake = json.dumps({"system_interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")})
-    return ('<article class="slide" id="%s" data-active="%s" role="tabpanel" aria-label="%s"><div class="slide-media">%s<img src="/assets/img/%s" srcset="/assets/img/%s 640w, /assets/img/%s 1024w" sizes="(max-width:860px) 90vw, 360px" width="1024" height="1024" loading="%s" alt="%s"></div>'
-            '<div class="slide-body"><div><h3>%s</h3><div class="price">%s%s<small>installed</small></div><div class="pills">%s</div></div><p style="margin:0;color:var(--muted)">%s</p><ul class="tags">%s</ul>'
+    return ('<article class="slide" id="%s" data-active="%s" role="tabpanel" aria-label="%s"><div class="slide-media"><img src="/assets/img/%s" srcset="/assets/img/%s 640w, /assets/img/%s 1024w" sizes="(max-width:860px) 90vw, 360px" width="1024" height="1024" loading="%s" alt="%s"></div>'
+            '<div class="slide-body"><div>%s<h3>%s</h3><div class="price">%s%s<small>installed</small></div><div class="pills">%s</div></div><p style="margin:0;color:var(--muted)">%s</p><ul class="tags">%s</ul>'
             '<div class="slide-cols"><div><h4>How it works</h4>%s</div><div><h4>Why it leads the industry</h4>%s<h4 style="margin-top:.9rem">Verified specifications</h4>%s</div></div>'
             '<div class="slide-actions"><a class="btn btn-gold" href="%s" data-intake=\'%s\'>Configure &amp; schedule</a><a class="btn btn-outline on-light" href="%s">Full details</a>%s</div></div></article>') % (
-        s["id"], "true" if i == 0 else "false", e(s["name"]), badge, s["image"], s["image"].replace(".webp", "-640.webp"), s["image"], "eager" if i == 0 else "lazy", e(s["image_alt"]),
-        e(s["name"]), s.get("price_prefix", ""), money(s["price"]), nsf_badge(True) if s.get("nsf") else "", e(s.get("what_it_does") or s["for"]), "".join("<li>%s</li>" % e(p) for p in s["problems"]), stages, leads_list(s), specs, sys_href(s), intake, sys_href(s),
+        s["id"], "true" if i == 0 else "false", e(s["name"]), s["image"], s["image"].replace(".webp", "-640.webp"), s["image"], "eager" if i == 0 else "lazy", e(s["image_alt"]),
+        badge, e(s["name"]), s.get("price_prefix", ""), money(s["price"]), nsf_badge(True) if s.get("nsf") else "", e(s.get("what_it_does") or s["for"]), "".join("<li>%s</li>" % e(p) for p in s["problems"]), stages, leads_list(s), specs, sys_href(s), intake, sys_href(s),
         '<span class="promo-line">%s RO drinking system included</span>' % ICON["drop"] if s["category"] in ("city", "well") else "")
 
 def carousel(systems, label):

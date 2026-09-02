@@ -183,7 +183,7 @@ p{margin:0 0 1em} .lead{font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--muted
 .syscard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .syscard-media{background:#0c2452;aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
 .syscard-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)} .syscard:hover .syscard-media img{transform:scale(1.04)}
-.badge{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--navy-900);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:.4rem .75rem;border-radius:999px;z-index:1;line-height:1;display:inline-flex;align-items:center;white-space:nowrap}
+.badge{position:static;display:inline-flex;margin-bottom:.5rem;background:var(--gold);color:var(--navy-900);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:.4rem .75rem;border-radius:999px;z-index:1;line-height:1;display:inline-flex;align-items:center;white-space:nowrap}
 .badge.soft{background:rgba(255,255,255,.12);color:#fff;border:1px solid var(--line-dark)}
 .syscard-body{padding:clamp(1.25rem,2vw,1.75rem);display:flex;flex-direction:column;gap:.9rem;flex:1}
 .syscard-body h3{font-size:1.55rem;margin:0}

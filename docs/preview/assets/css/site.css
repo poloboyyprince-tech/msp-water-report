@@ -181,8 +181,8 @@ p{margin:0 0 1em} .lead{font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--muted
 /* System cards */
 .syscard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s;position:relative}
 .syscard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.syscard-media{background:radial-gradient(120% 100% at 50% 100%,#1b2f52 0%,var(--navy-900) 60%);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.syscard-media img{width:80%;height:88%;object-fit:contain;transition:transform .6s var(--ease)} .syscard:hover .syscard-media img{transform:scale(1.04)}
+.syscard-media{background:#0c2452;aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.syscard-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)} .syscard:hover .syscard-media img{transform:scale(1.04)}
 .badge{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--navy-900);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:.4rem .75rem;border-radius:999px;z-index:1;line-height:1;display:inline-flex;align-items:center;white-space:nowrap}
 .badge.soft{background:rgba(255,255,255,.12);color:#fff;border:1px solid var(--line-dark)}
 .syscard-body{padding:clamp(1.25rem,2vw,1.75rem);display:flex;flex-direction:column;gap:.9rem;flex:1}
@@ -439,8 +439,8 @@ body.page-leave{opacity:0;transition:opacity .18s ease-in}
 .product{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:clamp(24px,4vw,56px);align-items:start}
 @media (max-width:900px){.product{grid-template-columns:1fr}}
 .gallery{display:grid;gap:.75rem}
-.gallery .main{border-radius:var(--radius-lg);background:radial-gradient(120% 100% at 50% 100%,#1b2f52 0%,var(--navy-900) 60%);aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:2rem;overflow:hidden}
-.gallery .main img{max-height:100%;object-fit:contain}
+.gallery .main{border-radius:var(--radius-lg);background:#0c2452;aspect-ratio:1;overflow:hidden}
+.gallery .main img{width:100%;height:100%;object-fit:cover}
 .gallery .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
 .gallery .thumbs button{border:1.5px solid var(--line);border-radius:var(--radius);background:var(--navy-900);padding:0;aspect-ratio:1;overflow:hidden;cursor:pointer}
 .gallery .thumbs button[aria-pressed="true"]{border-color:var(--gold)}
@@ -509,8 +509,8 @@ body.page-leave{opacity:0;transition:opacity .18s ease-in}
 .slide[data-active="true"]{display:grid}
 .carousel:not(.js) .slide{display:grid;margin-bottom:1.5rem}
 @media (max-width:860px){.slide{grid-template-columns:1fr}}
-.slide-media{border-radius:var(--radius);background:radial-gradient(120% 100% at 50% 100%,#1b2f52 0%,var(--navy-900) 60%);aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:1.25rem;position:relative}
-.slide-media img{max-height:100%;object-fit:contain}
+.slide-media{border-radius:var(--radius);background:#0c2452;aspect-ratio:1;overflow:hidden;position:relative}
+.slide-media img{width:100%;height:100%;object-fit:cover}
 .slide-body{display:grid;gap:.85rem}
 .slide-body h3{font-size:clamp(1.5rem,2.4vw,2rem);margin:0}
 .slide-body .price{font-size:2rem}
@@ -535,3 +535,13 @@ body.page-leave{opacity:0;transition:opacity .18s ease-in}
 .comp-stats li{display:grid;gap:.1rem}
 .comp-stats b{font-family:var(--font-display);font-size:1.15rem;font-weight:600;line-height:1.1}
 .comp-stats span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* NSF badge + leads */
+.nsf{display:inline-flex;align-items:center;gap:.55rem;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--ink);line-height:1.15}
+.nsf svg{width:44px;height:44px;flex:none}
+.nsf.nsf-sm svg{width:38px;height:38px}
+.dark .nsf{color:#fff}
+.slide-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.leads{list-style:none;margin:0;padding:0;display:grid;gap:.4rem;font-size:.9rem}
+.leads li{display:flex;gap:.5rem;align-items:flex-start}.leads svg{width:15px;height:15px;flex:none;color:var(--gold-600);margin-top:.25rem}
+.nsf-line{color:#0A5AA8}.nsf-line svg{color:#0A5AA8}

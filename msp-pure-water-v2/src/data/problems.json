@@ -6,7 +6,7 @@
   "nav": "Hard Water",
   "tag": "City & Well",
   "cause": "Minnesota groundwater is naturally hard. Dissolved calcium and magnesium picked up from limestone and dolomite bedrock stay in the water all the way to your tap.",
-  "approach": "Ion-exchange softening resin trades the calcium and magnesium for sodium ions before water reaches your plumbing. For homes that want scale protection without salt, a salt-free conditioner reduces scale adhesion but does not remove the minerals.",
+  "approach": "10% crosslinked resin trades the calcium and magnesium for sodium ions before water reaches your plumbing. For homes that want scale protection without salt, a salt-free conditioner reduces scale adhesion but does not remove the minerals.",
   "systems": [
    "whole-home-softener",
    "dual-tank-city",
@@ -51,7 +51,7 @@
   "page": false,
   "tag": "City & Well",
   "cause": "Hardness minerals react with soap to form a film that is hard to rinse away, leaving skin and hair feeling dry and dull. Chlorine in city water adds to the effect.",
-  "approach": "Softening removes the minerals that cause soap film. On city water, catalytic carbon also removes chlorine and chloramine before the shower.",
+  "approach": "Softening removes the minerals that cause soap film. On city water, the Jacobi catalytic carbon tank also removes chlorine and chloramine before the shower.",
   "systems": [
    "whole-home-softener",
    "dual-tank-city",
@@ -66,7 +66,7 @@
   "nav": "Chlorine / Chloramine",
   "tag": "City",
   "cause": "Municipal utilities add chlorine or chloramine to keep water safe on its way through the distribution system. It does its job in the pipes, but the taste and smell arrive at your tap along with it.",
-  "approach": "Catalytic coconut-shell carbon is selected specifically because it treats chloramine as well as free chlorine. Every whole-home city system includes it, so showers, laundry and every faucet get treated water.",
+  "approach": "The Jacobi catalytic carbon tank is selected specifically because it treats chloramine as well as free chlorine. Every whole-home city system includes it, so showers, laundry and every faucet get treated water.",
   "systems": [
    "whole-home-softener",
    "dual-tank-city",
@@ -114,7 +114,7 @@
   "nav": "Sulfur / Rotten Egg Odor",
   "tag": "Well",
   "cause": "Hydrogen sulfide gas, produced by naturally occurring bacteria in groundwater or in a water heater. You smell it most at hot taps and first thing in the morning.",
-  "approach": "Hydrogen sulfide needs chemical oxidation. Our Iron & Sulfur Treatment System injects hydrogen peroxide ahead of catalytic carbon filtration, then softens. It is the one system we install for rotten-egg odor.",
+  "approach": "Hydrogen sulfide needs chemical oxidation. Our Iron & Sulfur Treatment System injects hydrogen peroxide ahead of the Jacobi catalytic carbon tank, then softens. It is the one system we install for rotten-egg odor.",
   "systems": [
    "iron-sulfur"
   ],

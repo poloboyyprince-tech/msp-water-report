@@ -1,0 +1,314 @@
+{
+ "STANDARD": {
+  "name": "Whole Home Water Filtration and Softening System",
+  "badge": "MOST POPULAR",
+  "priceNote": null,
+  "whatItDoes": "Softens and filters every drop of water entering your home. One high-capacity media tank handles hardness, chlorine, chloramine, taste and odor — so every faucet, shower and appliance gets treated water.",
+  "howItWorks": [
+   "Granular catalytic coconut-shell carbon treats chlorine, chloramine and harmful contaminants first.",
+   "USA-made 10% crosslinked softening resin removes the calcium and magnesium that cause hard water.",
+   "Polishing gravel supports the media bed for even flow and maximum contact time.",
+   "The MSP ProValve automatically backwashes and regenerates the system — no effort from you."
+  ],
+  "leads": [
+   "48,000-grain softening capacity",
+   "28 GPM system flow — no pressure loss",
+   "Ceramic-disc ProValve with 72-hour memory backup",
+   "NSF-certified media, lifetime warranty"
+  ],
+  "specs": [
+   [
+    "Valve Flow Rate",
+    "28 GPM"
+   ],
+   [
+    "System Flow Rate",
+    "28 GPM"
+   ],
+   [
+    "Softening Capacity",
+    "48,000 grains"
+   ],
+   [
+    "Resin",
+    "75 lbs"
+   ],
+   [
+    "Carbon",
+    "15 lbs"
+   ],
+   [
+    "Media Tank",
+    "12\" × 52\""
+   ],
+   [
+    "Brine Tank",
+    "15\" × 35\""
+   ]
+  ]
+ },
+ "DUAL_CITY": {
+  "name": "Dual Tank Whole Home Water Filtration System",
+  "badge": null,
+  "priceNote": null,
+  "whatItDoes": "Gives carbon filtration and water softening their own dedicated high-capacity tanks. Each media bed works at full strength — ideal for larger households and heavy water use.",
+  "howItWorks": [
+   "Tank one: granular activated catalytic coconut-shell carbon treats chlorine, chloramine, taste and odor.",
+   "Tank two: high-capacity 10% crosslinked resin removes hardness minerals.",
+   "Polishing gravel in both tanks keeps flow even and prevents channeling.",
+   "A single ProValve controls both tanks and backwashes them automatically."
+  ],
+  "leads": [
+   "The only dual-tank system designed to self-clean the carbon tank",
+   "30 GPM valve flow for high-demand homes",
+   "Dedicated media beds last longer and filter deeper",
+   "NSF-certified media, lifetime warranty"
+  ],
+  "specs": [
+   [
+    "Valve Flow Rate",
+    "30 GPM"
+   ],
+   [
+    "System Flow Rate",
+    "27 GPM"
+   ],
+   [
+    "Softening Capacity",
+    "48,000 grains"
+   ],
+   [
+    "Resin",
+    "1.5 cu. ft."
+   ],
+   [
+    "Media Tanks",
+    "10\" × 54\""
+   ],
+   [
+    "Brine Tank",
+    "15\" × 35\""
+   ]
+  ]
+ },
+ "SALT_FREE": {
+  "name": "Whole Home Complete Salt-Free Filtration System",
+  "badge": "SALT-FREE",
+  "priceNote": null,
+  "whatItDoes": "Whole-home carbon filtration plus salt-free scale conditioning — no salt bags, no brine discharge, no regeneration cycles. Keeps healthy minerals in your water while stopping them from sticking to pipes and appliances.",
+  "howItWorks": [
+   "Granular activated coconut-shell carbon removes chlorine, chemicals and odors from all your water.",
+   "The salt-free conditioning tank transforms hardness minerals so they can no longer form scale.",
+   "Polishing gravel supports even water distribution through the media.",
+   "Zero electricity, zero drain line, zero salt — the simplest system to own."
+  ],
+  "leads": [
+   "No salt, no brine discharge — eco-friendly by design",
+   "Keeps beneficial calcium and magnesium in your water",
+   "Protects water heaters, dishwashers and plumbing from scale",
+   "Lowest maintenance system in our lineup"
+  ],
+  "specs": [
+   [
+    "Valve Flow Rate",
+    "28 GPM"
+   ],
+   [
+    "Bypass",
+    "1\" – 1¼\""
+   ],
+   [
+    "Media Tank",
+    "10\" × 54\""
+   ],
+   [
+    "Carbon Volume",
+    "1.5 cu. ft."
+   ],
+   [
+    "Salt Required",
+    "None"
+   ],
+   [
+    "Drain Line",
+    "Not needed"
+   ]
+  ]
+ },
+ "DUAL_WELL": {
+  "name": "Dual Tank Well Water Whole Home Filtration System",
+  "badge": null,
+  "priceNote": null,
+  "whatItDoes": "Treats the three biggest well-water problems — iron, sulfur odor and hardness — chemical-free. Air-oxidation technology plus Katalox Light media handle staining and rotten-egg smell while a dedicated resin tank softens your water.",
+  "howItWorks": [
+   "The MSP AIO ProValve creates a pressurized air pocket that naturally oxidizes iron, sulfur and manganese — no chemicals added.",
+   "Katalox Light media traps the oxidized particles and boosts pH for better-tasting water.",
+   "A dedicated resin tank removes calcium and magnesium hardness.",
+   "Both tanks self-clean with automatic backwashing."
+  ],
+  "leads": [
+   "Chemical-free iron, sulfur and manganese treatment",
+   "Self-cleaning Katalox Light media — low maintenance",
+   "30 GPM valve flow built for well pumps",
+   "NSF-certified media, lifetime warranty"
+  ],
+  "specs": [
+   [
+    "Valve Flow Rate",
+    "30 GPM"
+   ],
+   [
+    "System Flow Rate",
+    "27 GPM"
+   ],
+   [
+    "Softening Capacity",
+    "48,000 grains"
+   ],
+   [
+    "Resin",
+    "1.5 cu. ft."
+   ],
+   [
+    "Media Tanks",
+    "10\" × 54\""
+   ],
+   [
+    "Brine Tank",
+    "15\" × 35\""
+   ]
+  ]
+ },
+ "H2O2": {
+  "name": "Iron and Sulfur Treatment System",
+  "badge": "MAXIMUM STRENGTH",
+  "priceNote": null,
+  "whatItDoes": "Our most powerful well-water solution. Hydrogen peroxide oxidation destroys even severe iron and sulfur problems at the point of entry, then dedicated carbon filtration and softening tanks finish the job.",
+  "howItWorks": [
+   "The injection panel doses hydrogen peroxide the moment water enters your home, instantly breaking down iron and sulfur.",
+   "The oxidized particles are captured by a dedicated catalytic carbon tank — the peroxide itself is consumed and filtered out, never reaching your faucets.",
+   "A dedicated resin tank removes hardness for fully softened water.",
+   "Automatic backwashing flushes captured contaminants down the drain."
+  ],
+  "leads": [
+   "Handles the most severe iron and rotten-egg sulfur conditions",
+   "Stronger than air-oxidation — works where other systems fail",
+   "Consistent chemical feed with dedicated holding tank",
+   "Complete package: oxidation + filtration + softening"
+  ],
+  "specs": [
+   [
+    "Valve Flow Rate",
+    "30 GPM"
+   ],
+   [
+    "System Flow Rate",
+    "27 GPM"
+   ],
+   [
+    "Softening Capacity",
+    "48,000 grains"
+   ],
+   [
+    "Resin",
+    "1.5 cu. ft."
+   ],
+   [
+    "Media Tanks",
+    "10\" × 54\""
+   ],
+   [
+    "Injection",
+    "Hydrogen peroxide panel + holding tank"
+   ]
+  ]
+ },
+ "TANKLESS_RO": {
+  "name": "HW800 AlkaPro Tankless RO",
+  "badge": "TANKLESS",
+  "priceNote": "Included free with any whole-home system",
+  "whatItDoes": "Purified, alkaline drinking water on demand — straight from a dedicated faucet at your sink. No storage tank, 70% less under-sink space, and water treated the moment you ask for it.",
+  "howItWorks": [
+   "7-stage high-precision filtration with an ultra-fine 0.0001-micron spiral-flow RO membrane.",
+   "Removes heavy metals, dissolved solids, chlorine, microplastics, PFAs and other everyday contaminants.",
+   "Built-in alkaline remineralization adds beneficial minerals back for great taste and balanced pH.",
+   "Auto RO flush keeps the membrane clean automatically — filters are DIY twist-and-swap."
+  ],
+  "leads": [
+   "800 GPD capacity — beats Culligan (757) and Pentair (396)",
+   "2:1 low drain ratio — up to 3× less water waste",
+   "NSF/372 certified, lead-free water path",
+   "DIY filter changes — no service calls needed"
+  ],
+  "specs": [
+   [
+    "Filtration Stages",
+    "7-Stage"
+   ],
+   [
+    "Filtering Precision",
+    "0.0001 micron"
+   ],
+   [
+    "System Capacity",
+    "800 GPD"
+   ],
+   [
+    "Flow Rate",
+    "0.53 GPM"
+   ],
+   [
+    "Drain Ratio",
+    "2:1"
+   ],
+   [
+    "Certification",
+    "NSF/372"
+   ]
+  ]
+ },
+ "TANK_RO": {
+  "name": "Traditional Tank RO",
+  "badge": "WITH TANK",
+  "priceNote": "Included free with any whole-home system",
+  "whatItDoes": "The proven multi-stage RO setup: purified water is produced continuously, stored in a pressurized steel tank, and delivered instantly the second you open the faucet.",
+  "howItWorks": [
+   "Multi-stage filtration strips sediment, chlorine and dissolved contaminants before the RO membrane.",
+   "The RO membrane rejects 94–99% of total dissolved solids.",
+   "A food-grade butyl bladder inside the steel tank keeps purified water pressurized and fresh.",
+   "Water is stored ready-to-pour — instant flow for glasses, pots and coffee makers."
+  ],
+  "leads": [
+   "94–99% TDS rejection",
+   "Instant delivery from pressurized storage",
+   "Corrosion-resistant steel shell, heavy-duty base",
+   "Compact footprint fits under most kitchen sinks"
+  ],
+  "specs": [
+   [
+    "Production",
+    "50 GPD"
+   ],
+   [
+    "TDS Rejection",
+    "94–99%"
+   ],
+   [
+    "Recovery",
+    "25–30%"
+   ],
+   [
+    "System Size",
+    "16\" × 5.5\" × 18\""
+   ],
+   [
+    "Tank Size",
+    "11.5\" × 16\""
+   ],
+   [
+    "Faucet",
+    "Dedicated, chrome"
+   ]
+  ]
+ }
+}

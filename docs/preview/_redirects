@@ -1,0 +1,14 @@
+/iron-sulfur-removal  /well-water-filtration/  301
+/iron-sulfur-removal/  /well-water-filtration/  301
+/uv-water-purification  /well-water-filtration/#uv-purifier  301
+/uv-water-purification/  /well-water-filtration/#uv-purifier  301
+/products  /pricing/  301
+/products/  /pricing/  301
+/products/complete-home-softener-filtration-system  /city-water-filtration/#whole-home-softener  301
+/products/dual-tank-system-for-well-water  /well-water-filtration/#dual-tank-well  301
+/products/reverse-osmosis-system  /reverse-osmosis/  301
+/home  /  301
+/services  /pricing/  301
+/privacy-policy  /privacy/  301
+/tos  /terms/  301
+/*  /404.html  404

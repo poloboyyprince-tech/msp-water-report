@@ -1,0 +1,22 @@
+[
+ {"slug":"minneapolis","city":"Minneapolis","county":"Hennepin County","core":true},
+ {"slug":"st-paul","city":"St. Paul","county":"Ramsey County","core":true},
+ {"slug":"bloomington","city":"Bloomington","county":"Hennepin County"},
+ {"slug":"plymouth","city":"Plymouth","county":"Hennepin County"},
+ {"slug":"brooklyn-park","city":"Brooklyn Park","county":"Hennepin County"},
+ {"slug":"maple-grove","city":"Maple Grove","county":"Hennepin County"},
+ {"slug":"edina","city":"Edina","county":"Hennepin County"},
+ {"slug":"eden-prairie","city":"Eden Prairie","county":"Hennepin County"},
+ {"slug":"minnetonka","city":"Minnetonka","county":"Hennepin County"},
+ {"slug":"woodbury","city":"Woodbury","county":"Washington County"},
+ {"slug":"eagan","city":"Eagan","county":"Dakota County"},
+ {"slug":"burnsville","city":"Burnsville","county":"Dakota County"},
+ {"slug":"apple-valley","city":"Apple Valley","county":"Dakota County"},
+ {"slug":"lakeville","city":"Lakeville","county":"Dakota County"},
+ {"slug":"shakopee","city":"Shakopee","county":"Scott County"},
+ {"slug":"richfield","city":"Richfield","county":"Hennepin County"},
+ {"slug":"roseville","city":"Roseville","county":"Ramsey County"},
+ {"slug":"fridley","city":"Fridley","county":"Anoka County"},
+ {"slug":"coon-rapids","city":"Coon Rapids","county":"Anoka County"},
+ {"slug":"blaine","city":"Blaine","county":"Anoka County"}
+]

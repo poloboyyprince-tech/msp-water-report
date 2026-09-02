@@ -161,6 +161,26 @@
     else if (q.get("system")) { el.setAttribute("data-show", "true"); el.querySelector(".cs-line").textContent = q.get("system").replace(/-/g, " "); }
   });
 
+  /* System carousel */
+  $$("[data-carousel]").forEach(function (c) {
+    c.classList.add("js");
+    var slides = $$(".slide", c), dots = $$("[data-slide]", c), cur = $("[data-current]", c), i = 0;
+    function show(n, focus) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.setAttribute("data-active", k === i ? "true" : "false"); });
+      dots.forEach(function (d, k) { d.setAttribute("aria-selected", k === i ? "true" : "false"); });
+      if (cur) cur.textContent = i + 1;
+      if (focus) { try { slides[i].querySelector("h3").setAttribute("tabindex", "-1"); slides[i].querySelector("h3").focus({ preventScroll: true }); } catch (e) {} }
+    }
+    $("[data-prev]", c).addEventListener("click", function () { show(i - 1, true); });
+    $("[data-next]", c).addEventListener("click", function () { show(i + 1, true); });
+    dots.forEach(function (d) { d.addEventListener("click", function () { show(parseInt(d.getAttribute("data-slide"), 10), true); }); });
+    c.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") { show(i + 1, true); } else if (e.key === "ArrowLeft") { show(i - 1, true); } });
+    /* deep link: /city-water-filtration/#dual-tank-city */
+    var h = (location.hash || "").slice(1); slides.forEach(function (s, k) { if (s.id === h) show(k, false); });
+    window.addEventListener("hashchange", function () { var hh = location.hash.slice(1); slides.forEach(function (s, k) { if (s.id === hh) show(k, false); }); });
+  });
+
   /* Current year */
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();

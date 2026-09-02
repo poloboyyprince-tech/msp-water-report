@@ -132,8 +132,32 @@ def page(slug, title, desc, body, over_hero=False, schema=None, noindex=False, c
       '<script src="/assets/js/ghl.config.js"></script><script defer src="/assets/js/tracking.js"></script><script defer src="/assets/js/ghl-adapter.js"></script><script defer src="/assets/js/find-my-system.js"></script><script defer src="/assets/js/ui.js"></script>'
       '</head><body>') % (e(title), e(desc), can, '<meta name="robots" content="noindex,nofollow">' if (noindex or OPT.staging) else "", e(title), e(desc), can, BASE + SITE["og_image"],
       ('<link rel="preload" as="image" href="/assets/img/hero-poster.jpg">' if (slug == "" and HAS_POSTER) else "") + jsonld)
-    out = head + header(over_hero) + '<main id="main">' + body + "</main>" + footer() + "</body></html>"
+    out = head + header(over_hero) + '<main id="main">' + headings_title_case(body) + "</main>" + footer() + "</body></html>"
     return rebase(out)
+
+SMALL = {"a", "an", "the", "and", "or", "of", "to", "in", "on", "at", "by", "for", "with", "per", "vs", "nor", "but", "into", "from", "as"}
+KEEP = {"MSP", "RO", "GPM", "GPD", "UV", "TDS", "HW800", "AlkaPro", "FAQ", "MN", "St.", "AIO", "ProValve", "USA", "NSF"}
+def title_case(text):
+    words = text.split(" "); out = []
+    for i, w in enumerate(words):
+        if not w: out.append(w); continue
+        core = w.strip(".,:;!?()\"'“”‘’")
+        if w.startswith("&") or core in KEEP or (core.isupper() and len(core) > 1) or any(ch.isdigit() for ch in core): out.append(w); continue
+        lw = w.lower()
+        prev_end = i > 0 and words[i - 1] and words[i - 1][-1] in ".:!?"
+        if i > 0 and lw.strip(".,:;!?") in SMALL and not prev_end: out.append(lw); continue
+        # capitalize first alpha char, keep the rest (handles “quotes”, hyphens: capitalize after hyphen too)
+        chars = list(w); done = False
+        for j, ch in enumerate(chars):
+            if ch.isalpha() and not done: chars[j] = ch.upper(); done = True
+            elif ch == "-" and j + 1 < len(chars) and chars[j + 1].isalpha(): chars[j + 1] = chars[j + 1].upper()
+        out.append("".join(chars))
+    return " ".join(out)
+def headings_title_case(html_):
+    def fix(m):
+        inner = re.sub(r'>([^<]+)<', lambda n: ">" + title_case(n.group(1)) + "<", ">" + m.group(2) + "<")[1:-1]
+        return m.group(1) + inner + m.group(3)
+    return re.sub(r'(<h[1-3]\b[^>]*>)(.*?)(</h[1-3]>)', fix, html_, flags=re.S)
 
 def rebase(s):
     """Prefix root-relative URLs when the site is hosted under a subpath (staging)."""
@@ -150,6 +174,7 @@ def rating_badge(dark=True):
 def phero(kicker, h1, lead, crumbs=None, subnav=None, extra=""):
     c = '<div class="crumbs"><a href="/">Home</a> / %s</div>' % crumbs if crumbs else ""
     sn = ('<div class="subnav">' + "".join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if cur else "", l) for l, h, cur in subnav) + "</div>") if subnav else ""
+    if extra: sn += '<div class="pill-row">%s</div>' % extra; extra = ""
     media = ('<div class="phero-media" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster.jpg" tabindex="-1"><source src="/assets/video/hero-mobile.mp4" type="video/mp4"></video></div>' if HAS_VIDEO else '<div class="phero-media" aria-hidden="true"><img src="/assets/img/hero-poster.jpg" alt=""></div>')
     return '<section class="phero">%s<div class="container"><div class="grid-hero"><div>%s<p class="kicker">%s</p><h1>%s</h1><p class="lead">%s</p>%s</div><div>%s</div></div></div></section>' % (media, c, kicker, h1, lead, sn, extra)
 
@@ -221,23 +246,23 @@ def systems_home():
         e(SYS["promo"]["ro_included"]), blocks, addons, e(SYS["promo"]["financing"]), e(SYS["promo"]["travel"]))
 
 def best_price(section=True):
-    inner = ('<div class="bpg-grid"><div><p class="kicker">Best Price Guarantee</p><h2>Find a lower quote on a comparable system. We\'ll beat it.</h2><p class="lead">%s</p><div style="display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-gold btn-lg" href="/find-my-system/?inquiry=best-price" data-bpg data-intake=\'{"inquiry_type":"Best Price Guarantee Inquiry"}\' data-intake-via="bpg">Claim Your Best Price</a><a class="btn btn-outline btn-lg" href="/pricing/">See our prices</a></div></div>'
+    inner = ('<div class="bpg-grid"><div><p class="kicker">Best Price Guarantee</p><h2>Find a Lower Quote on a Comparable System. We\'ll Beat It.</h2><p class="lead">%s</p><div style="display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-gold btn-lg" href="/find-my-system/?inquiry=best-price" data-bpg data-intake=\'{"inquiry_type":"Best Price Guarantee Inquiry"}\' data-intake-via="bpg">Claim Your Best Price</a><a class="btn btn-outline btn-lg" href="/pricing/">See our prices</a></div></div>'
              '<div class="bpg-terms"><p><b>How it works</b></p><p>Send us the competing written quote. We compare equipment, capacity and installation scope. If it\'s comparable and lower, we beat it, and you get priority booking on the schedule.</p></div></div>') % e(SITE["best_price_guarantee"])
     return '<section class="section dark bpg" id="best-price"><span class="big" aria-hidden="true">BEAT IT</span><div class="container">%s</div></section>' % inner if section else inner
 
 def approach():
-    rows = [("Hard water", "Scale, spots, buildup on fixtures and appliances.", "High-capacity softening resin", "Ion exchange removes the calcium and magnesium responsible for hardness."),
-            ("Chlorine / chloramine", "Taste, odor and municipal disinfectant.", "Catalytic coconut-shell carbon", "Selected specifically because it treats chloramine as well as free chlorine."),
-            ("Well iron & sulfur", "Staining, metallic taste, rotten-egg odor.", "Oxidation + filtration", "Air or peroxide oxidation converts dissolved iron and sulfur into forms filtration can capture."),
-            ("Drinking water", "Dissolved solids and unwanted taste.", "Reverse osmosis", "A dedicated under-sink membrane system for the water you drink and cook with.")]
+    rows = [("Hard Water", "Scale, spots, buildup on fixtures and appliances.", "High-Capacity Softening Resin", "Ion exchange removes the calcium and magnesium responsible for hardness."),
+            ("Chlorine / Chloramine", "Taste, odor and municipal disinfectant.", "Catalytic Coconut-Shell Carbon", "Selected specifically because it treats chloramine as well as free chlorine."),
+            ("Well Iron & Sulfur", "Staining, metallic taste, rotten-egg odor.", "Oxidation + Filtration", "Air oxidation for iron and manganese; hydrogen peroxide injection for sulfur odor and heavy iron."),
+            ("Drinking Water", "Dissolved solids and unwanted taste.", "Reverse Osmosis", "A dedicated under-sink membrane system for the water you drink and cook with.")]
     cells = "".join('<div class="reveal"><span class="step">Problem</span><div class="prob">%s</div><p>%s</p><span class="arrow">%s</span><span class="step">Correct treatment</span><div class="sol">%s</div><p>%s</p></div>' % (a, b, ICON["down"], c, d) for a, b, c, d in rows)
     return '<section class="section"><div class="container"><p class="kicker">The MSP approach</p><div class="grid grid-2" style="align-items:end;margin-bottom:2rem"><h2>Problem. Cause. Correct treatment.</h2><p class="lead">We match equipment to the water problem you actually have. Not a generic box for every house on the street.</p></div><div class="approach">%s</div></div></section>' % cells
 
 def before_after():
-    items = [("scale", "Scale-covered faucet", "Clean fixture", "Hard water & scale", "Softened water stops new scale from forming. Fixtures stay clean between cleanings."),
-             ("dishes", "Spotty glassware", "Clear glassware", "Spots on dishes", "No hardness minerals left behind when the water dries."),
-             ("iron", "Iron-stained sink", "Stain-free sink", "Iron staining", "Oxidation and filtration remove iron before it ever reaches your fixtures."),
-             ("bottles", "Bottled-water clutter", "Dedicated RO faucet", "Drinking water", "Purified water at its own kitchen faucet. No cases to carry, no bottles to recycle.")]
+    items = [("scale", "Scale-covered faucet", "Clean fixture", "Hard Water & Scale", "Softened water stops new scale from forming. Fixtures stay clean between cleanings."),
+             ("dishes", "Spotty glassware", "Clear glassware", "Spots on Dishes", "No hardness minerals left behind when the water dries."),
+             ("iron", "Iron-stained sink", "Stain-free sink", "Iron Staining", "Oxidation and filtration remove iron before it ever reaches your fixtures."),
+             ("bottles", "Bottled-water clutter", "Dedicated RO faucet", "Drinking Water", "Purified water at its own kitchen faucet. No cases to carry, no bottles to recycle.")]
     cards = ""
     for key, b, a, t, p in items:
         bi = '<img src="/assets/img/ba-%s-before.webp" alt="%s" loading="lazy">' % (key, e(b)) if has_img("ba-%s-before.webp" % key) else ""
@@ -247,7 +272,7 @@ def before_after():
 
 def why():
     rows = [("tag", "Transparent pricing", "Every system price is published. You can budget before you book."), ("layers", "Water-specific systems", "City and well water get different equipment because they have different problems."),
-            ("cal", "Everything by phone", "Pick a time online and we call you. No in-home sales visit, no deposit to reserve."), ("wrench", "Professional installation", "Connected to your main line, configured for your water, walked through before we leave."),
+            ("cal", "Phone consultations", "Pick a time online and we call you. In-home presentations available on request. No deposit to reserve."), ("wrench", "Professional installation", "Connected to your main line, configured for your water, walked through before we leave."),
             ("pin", "Local Minnesota service", "Based in the Twin Cities and serving Greater Minnesota. You reach the person who does the work."), ("shield", "Warranty & Best Price Guarantee", "Lifetime warranty on whole-home and RO systems, and we beat any comparable lower quote.")]
     return '<section class="section dark"><div class="container"><p class="kicker">Why MSP Pure Water</p><h2 style="max-width:20ch">The modern alternative to the in-home sales pitch.</h2><div class="why" style="margin-top:2.5rem">%s</div></div></section>' % "".join(
         '<div class="reveal"><span class="ico">%s</span><h3>%s</h3><p>%s</p></div>' % (ICON[i], t, p) for i, t, p in rows)
@@ -323,9 +348,9 @@ def system_page(cat, slug, title, desc, h1, lead, concerns, extra_sections=""):
     body = phero({"city": "City water solutions", "well": "Well water solutions", "ro": "Drinking water"}[cat], h1, lead, crumbs="Systems", subnav=SYS_SUBNAV(cat),
                  extra='<div class="hero-promo"><b>Included</b> RO drinking system with every whole-home system</div>' if cat != "ro" else "")
     body += marquee()
-    body += '<section class="section-tight"><div class="container">' + "".join(sysdetail(s) for s in systems) + "</div></section>"
+    body += '<section class="section-tight"><div class="container">' + carousel(systems, {"city": "City water systems", "well": "Well water systems", "ro": "Drinking water systems"}[cat]) + "</div></section>"
     if cat == "well":
-        body += '<section class="section-tight cream" id="add-ons"><div class="container"><p class="kicker">Recommended for well water</p><h2>Protection add-ons</h2>' + "".join(sysdetail(s) for s in BY_CAT["addon"]) + "</div></section>"
+        body += '<section class="section-tight cream" id="add-ons"><div class="container"><p class="kicker">Recommended for well water</p><h2>Protection add-ons</h2><div class="grid grid-2" style="margin-top:1.5rem">' + "".join(system_card(s) for s in BY_CAT["addon"]) + "</div></div></section>"
     body += extra_sections
     body += '<section class="section"><div class="container"><p class="kicker">Common concerns</p><h2 style="max-width:22ch">%s</h2><div class="grid grid-3" style="margin-top:2rem">%s</div></div></section>' % (concerns[0], "".join('<div class="reveal"><h3 style="font-size:1.35rem">%s</h3><p class="muted">%s</p></div>' % (t, p) for t, p in concerns[1]))
     body += best_price() + faq_block([q for q in FAQ if any(k in q["q"].lower() for k in {"city": ["cost", "filtration and softening", "every faucet", "salt", "pressure"], "well": ["well", "cost", "maintenance", "tested", "warranty"], "ro": ["reverse osmosis", "tank", "every faucet", "cost"]}[cat])][:5]) + final_cta()
@@ -394,7 +419,7 @@ def problems_hub():
 def problem_page(p):
     systems = [SYSTEMS[s] for s in p["systems"]]
     others = [q for q in PROBLEMS if q.get("page") and q["id"] != p["id"]]
-    body = phero(p["tag"] + " water", p["label"] if p["id"] != "chlorine-chloramine" else "Chlorine & chloramine", p["cause"], crumbs='<a href="/water-problems/">Water Problems</a>')
+    body = phero(p["tag"] + " water", p["label"] if p["id"] != "chlorine-chloramine" else "Chlorine & Chloramine", p["cause"], crumbs='<a href="/water-problems/">Water Problems</a>')
     body += ('<section class="section"><div class="container two-col"><div><p class="kicker">How MSP approaches it</p><h2>The correct treatment, not a generic box.</h2><p class="lead">%s</p><div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-gold btn-lg" href="/find-my-system/" data-intake=\'%s\' data-intake-via="problem_page">Find my system</a><a class="btn btn-outline on-light btn-lg" href="/schedule/">Schedule online</a></div></div>'
              '<div class="founder"><p class="kicker">Which system category may apply</p>%s</div></div></section>') % (e(p["approach"]), json.dumps({"water_problems": [p["label"]], "system_interest": p["interest"]}), "".join('<a href="%s" style="color:#fff;text-decoration:none;display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line-dark)"><b>%s</b><span class="serif" style="font-size:1.3rem;color:var(--gold-300)">%s%s</span></a>' % (sys_href(s), e(s["name"]), s.get("price_prefix", ""), money(s["price"])) for s in systems))
     body += '<section class="section cream"><div class="container"><p class="kicker">Systems for this problem</p><div class="grid grid-3">%s</div></div></section>' % "".join(system_card(s) for s in systems[:3])
@@ -422,6 +447,25 @@ def configurator(s):
             '<p class="fine">%s</p></div>') % (
         json.dumps(cfg).replace("</", "<\\/"), '<span class="badge" style="position:static;display:inline-block">%s</span>' % e(s["badge"]) if s.get("badge") else "", e(s["name"]), s.get("price_prefix", ""), money(s["price"]), e(s["for"]), groups, incl, money(s["price"]), s["id"],
         ICON["check"], ICON["tag"], ICON["phone"], e(SYS["promo"]["financing"] + " " + SYS["promo"]["travel"]))
+
+def slide(s, i, n):
+    stages = ('<ol class="stages compact">%s</ol>' % "".join('<li><span class="n">%s</span><div><b>%s</b><p>%s</p></div></li>' % (st["n"], e(st["title"]), e(st["text"])) for st in s["stages"])) if s["stages"] else ""
+    specs = ('<table class="specs compact"><tbody>%s</tbody></table>' % "".join("<tr><th>%s</th><td>%s</td></tr>" % (e(k), e(v)) for k, v in s["specs"][:6])) if s["specs"] else '<p class="note">%s</p>' % e(s.get("specs_note", ""))
+    badge = '<span class="badge">%s</span>' % e(s["badge"]) if s.get("badge") else ""
+    intake = json.dumps({"system_interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")})
+    return ('<article class="slide" id="%s" data-active="%s" role="tabpanel" aria-label="%s"><div class="slide-media">%s<img src="/assets/img/%s" srcset="/assets/img/%s 640w, /assets/img/%s 1024w" sizes="(max-width:860px) 90vw, 360px" width="1024" height="1024" loading="%s" alt="%s"></div>'
+            '<div class="slide-body"><div><h3>%s</h3><div class="price">%s%s<small>installed</small></div></div><p style="margin:0;color:var(--muted)">%s</p><ul class="tags">%s</ul>'
+            '<div class="slide-cols"><div><h4>Treatment stages</h4>%s</div><div><h4>Verified specifications</h4>%s</div></div>'
+            '<div class="slide-actions"><a class="btn btn-gold" href="%s" data-intake=\'%s\'>Configure &amp; schedule</a><a class="btn btn-outline on-light" href="%s">Full details</a>%s</div></div></article>') % (
+        s["id"], "true" if i == 0 else "false", e(s["name"]), badge, s["image"], s["image"].replace(".webp", "-640.webp"), s["image"], "eager" if i == 0 else "lazy", e(s["image_alt"]),
+        e(s["name"]), s.get("price_prefix", ""), money(s["price"]), e(s["for"]), "".join("<li>%s</li>" % e(p) for p in s["problems"]), stages, specs, sys_href(s), intake, sys_href(s),
+        '<span class="promo-line">%s RO drinking system included</span>' % ICON["drop"] if s["category"] in ("city", "well") else "")
+
+def carousel(systems, label):
+    n = len(systems)
+    dots = "".join('<button type="button" role="tab" aria-selected="%s" data-slide="%d">%s</button>' % ("true" if i == 0 else "false", i, e(s["short"])) for i, s in enumerate(systems))
+    return ('<div class="carousel" data-carousel><div class="carousel-head"><div class="carousel-dots" role="tablist" aria-label="%s">%s</div><div class="carousel-nav"><button type="button" data-prev aria-label="Previous system">%s</button><span class="count"><span data-current>1</span> / %d</span><button type="button" data-next aria-label="Next system">%s</button></div></div>%s</div>') % (
+        e(label), dots, ICON["arrow"].replace('<svg', '<svg style="transform:rotate(180deg)"'), n, ICON["arrow"], "".join(slide(s, i, n) for i, s in enumerate(systems)))
 
 def product_page(s):
     cat = {"city": "City water", "well": "Well water", "ro": "Drinking water", "addon": "Well water add-on"}[s["category"]]
@@ -456,7 +500,7 @@ def areas_hub():
     regions = "".join('<div><b>%s</b><p>%s</p></div>' % (e(r["region"]), e(", ".join(r["cities"]))) for r in REGIONS["greater"])
     body = phero("Coverage", "Serving Minneapolis, St. Paul &amp; Greater Minnesota", "Whole-home filtration, softening, well-water treatment and reverse osmosis across the entire Twin Cities metro, with installs throughout Greater Minnesota. Consultations happen by phone, so distance never delays a recommendation.", crumbs="Service Areas",
                  extra='<div class="hero-promo"><b>%d</b> metro communities &middot; %d counties</div>' % (len(CITIES), len(counties)))
-    body += ('<section class="section"><div class="container"><div class="grid grid-2" style="align-items:end"><div><p class="kicker">How coverage works</p><h2>Phone first. Then one visit to install.</h2></div><p class="lead">Every consultation is a scheduled phone call, wherever you live. Installation is the only trip we make to your home, and travel fees apply only beyond 35 miles from Minneapolis.</p></div>'
+    body += ('<section class="section"><div class="container"><div class="grid grid-2" style="align-items:end"><div><p class="kicker">How coverage works</p><h2>Phone first. Then one visit to install.</h2></div><p class="lead">Every consultation starts as a scheduled phone call, wherever you live, with in-home presentations available on request. Travel fees apply only beyond 35 miles from Minneapolis.</p></div>'
              '<div class="coverage"><div><b>Twin Cities metro</b><p>Hennepin, Ramsey, Dakota, Anoka, Washington, Scott and Carver counties, plus the growing suburbs in Wright, Sherburne, Isanti and Chisago.</p></div><div><b>Greater Minnesota</b><p>Regular installs from St. Cloud to Rochester to Duluth. Travel fees may apply beyond 35 miles from Minneapolis; we quote them on the call.</p></div><div><b>City or well, anywhere</b><p>Metro homes are mostly on municipal water; outer suburbs and Greater Minnesota lean on private wells. We carry both system lines.</p></div></div></div></section>')
     body += '<section class="section cream"><div class="container"><p class="kicker">Twin Cities metro</p><h2 style="margin-bottom:2rem">Communities we serve, by county</h2>%s</div></section>' % groups
     body += ('<section class="section mn"><div class="container mn-grid"><div><p class="kicker">Greater Minnesota</p><h2>Outside the metro? We still come to you.</h2><p class="lead">These are the regions we install in most often. Not listed? Call or text and we\'ll tell you right away.</p><div class="region-list" style="margin-top:2rem">%s</div><div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem"><a class="btn btn-gold btn-lg" href="/schedule/">Schedule a phone consultation</a><a class="btn btn-outline btn-lg" href="tel:%s">%s Call or text %s</a></div></div><div class="mn-media reveal" data-parallax="24">%s</div></div></section>') % (
@@ -483,9 +527,9 @@ def about_page():
     body += ('<section class="section"><div class="container founder-grid"><div class="portrait reveal"><img src="/assets/img/founder-prince.webp" srcset="/assets/img/founder-prince-480.webp 480w, /assets/img/founder-prince.webp 960w" sizes="(max-width:860px) 90vw, 420px" width="960" height="1200" alt="Prince, founder and CEO of MSP Pure Water"><div class="cap">Founder &amp; CEO<b>Prince</b></div></div><div><p class="kicker">Meet the founder</p><h2>Prince</h2><p>Being from Minnesota himself, Prince understands how important water quality is here. From hard-water buildup to the long-term wear it puts on plumbing, fixtures and appliances, homeowners deserve solutions that prevent problems before they become expensive repairs.</p>'
              '<p>He started MSP Pure Water because he was tired of seeing overpriced water solutions, with homeowners quoted thousands more than the work was worth for the same equipment. The company exists to make water treatment affordable without cutting a corner on quality.</p>'
              '<p>When you work with MSP Pure Water, you work with Prince directly. Every recommendation and every install runs through him personally. That accountability is not a selling point. It is just how the business operates.</p></div>'
-             '<div class="founder" style="margin-top:1.5rem"><blockquote>We run the same systems we install. We\'re not selling you something we wouldn\'t put in our own house.</blockquote><div class="stat-row"><div><b>%s</b><span>Stars on Google</span></div><div><b>Phone</b><span>Consultations, no home visit</span></div><div><b>24 h</b><span>Open every day</span></div><div><b>$2,999</b><span>Whole-home from</span></div></div></div></div></div></section>') % (SITE["google_rating"])
+             '<div class="founder" style="margin-top:1.5rem"><blockquote>We run the same systems we install. We\'re not selling you something we wouldn\'t put in our own house.</blockquote><div class="stat-row"><div><b>%s</b><span>Stars on Google</span></div><div><b>Phone</b><span>Consultations, in-home on request</span></div><div><b>24 h</b><span>Open every day</span></div><div><b>$2,999</b><span>Whole-home from</span></div></div></div></div></div></section>') % (SITE["google_rating"])
     body += why()
-    std = [("Free phone assessment first", "We go over your water and your home on the phone before we recommend anything. No in-home sales visit."), ("Honest recommendation", "The right system for your home and budget, not the most expensive option on the list."), ("Clean installation", "The only visit is the install: professional work and a full walkthrough of how your system works."), ("Same-day response", "Call or text and we get back to you the same day with real answers."), ("No oversell, ever", "We recommend only what makes sense for your home and your water profile."), ("Local and personally accountable", "When you call, you reach someone who knows the job. Not a dispatcher, not a call center.")]
+    std = [("Free phone assessment first", "We go over your water and your home on the phone before we recommend anything. In-home presentations are available on request."), ("Honest recommendation", "The right system for your home and budget, not the most expensive option on the list."), ("Clean installation", "Professional work and a full walkthrough of how your system works before we leave."), ("Same-day response", "Call or text and we get back to you the same day with real answers."), ("No oversell, ever", "We recommend only what makes sense for your home and your water profile."), ("Local and personally accountable", "When you call, you reach someone who knows the job. Not a dispatcher, not a call center.")]
     body += '<section class="section cream"><div class="container"><p class="kicker">Our standards</p><h2 style="max-width:20ch">You can rely on the quality and professionalism of our work.</h2><div class="grid grid-3" style="margin-top:2rem">%s</div></div></section>' % "".join('<div class="reveal"><h3 style="font-size:1.35rem">%s</h3><p class="muted">%s</p></div>' % (t, p) for t, p in std)
     body += reviews() + process() + final_cta()
     return page("about", "About MSP Pure Water | Why Twin Cities Homeowners Choose Us", "Meet Prince, founder of MSP Pure Water, and see why Twin Cities homeowners choose transparent pricing, water-specific systems and professional installation.", body)
@@ -498,9 +542,9 @@ def faq_page():
     return page("faq", "FAQ | Water Filtration, Softening & RO Questions | MSP Pure Water", "Answers to the questions Twin Cities homeowners ask about water softening, filtration, reverse osmosis, well water, maintenance, warranty and scheduling.", body, schema=[schema])
 
 def schedule_page():
-    steps = [("01", "Choose a time", "Pick any open slot on the calendar below. No deposit to reserve."), ("02", "We call you", "At your chosen time, on the number you give us. Instant confirmation and a reminder before the call."), ("03", "The phone consultation", "We go over your water and your home, recommend the right system at its published price, and answer every question. No pressure, no home visit."), ("04", "Installation day", "We set the date on the call. Most systems are installed in a single visit, then walked through with you.")]
+    steps = [("01", "Choose a time", "Pick any open slot on the calendar below. No deposit to reserve."), ("02", "We call you", "At your chosen time, on the number you give us. Instant confirmation and a reminder before the call."), ("03", "The phone consultation", "We go over your water and your home, recommend the right system at its published price, and answer every question. Prefer to meet in person? In-home presentations are available on request."), ("04", "Installation day", "We set the date on the call. Most systems are installed in a single visit, then walked through with you.")]
     body = phero("Schedule online", "Book your phone consultation.", "Choose a time and we call you. Everything before installation happens over the phone: your water, the right system, the price, and your install date.", crumbs="Schedule",
-                 extra='<div class="hero-promo"><b>Free</b> Phone consultation &middot; no home visit</div>')
+                 extra='<div class="hero-promo"><b>Free</b> Phone consultation &middot; in-home presentations on request</div>')
     body += ('<section class="section"><div class="container"><div class="grid" style="grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr);gap:clamp(24px,4vw,56px)"><div><div class="config-summary" data-config-summary><b>You\'re scheduling</b><div class="cs-line"></div></div>%s<div data-lead-summary class="summary-box" hidden></div></div>'
              '<aside><p class="kicker">What happens</p><div class="process" style="grid-template-columns:1fr;gap:1.25rem">%s</div><div class="note" style="margin-top:1.5rem">Prefer to talk? Call or text <a href="tel:%s"><b>%s</b></a>. Open 24 hours.</div></aside></div></div></section>') % (
         ghl_calendar(), "".join('<div><div class="n" style="font-size:2rem">%s</div><h3 style="font-size:1.2rem">%s</h3><p>%s</p></div>' % (n, t, p) for n, t, p in steps), TEL, PHONE)
@@ -537,7 +581,7 @@ def bpg_page():
 
 def contact_page():
     body = phero("Contact", "Call, text or schedule. We answer 24 hours.", "The fastest ways to reach MSP Pure Water.", crumbs="Contact")
-    body += ('<section class="section"><div class="container grid grid-3"><div class="review"><h3>Call or text</h3><a class="fphone" style="font-family:var(--font-display);font-size:1.8rem;text-decoration:none" href="tel:%s">%s</a><p class="muted">Open 24 hours, every day.</p></div><div class="review"><h3>Email</h3><a class="link" href="mailto:%s">%s</a><p class="muted">Same-day response.</p></div><div class="review"><h3>Schedule online</h3><p class="muted">Pick a time and we call you. No home visit.</p><a class="btn btn-gold" href="/schedule/">Schedule Online</a></div></div></section>') % (TEL, PHONE, SITE["email"], SITE["email"])
+    body += ('<section class="section"><div class="container grid grid-3"><div class="review"><h3>Call or text</h3><a class="fphone" style="font-family:var(--font-display);font-size:1.8rem;text-decoration:none" href="tel:%s">%s</a><p class="muted">Open 24 hours, every day.</p></div><div class="review"><h3>Email</h3><a class="link" href="mailto:%s">%s</a><p class="muted">Same-day response.</p></div><div class="review"><h3>Schedule online</h3><p class="muted">Pick a time and we call you. In-home presentations on request.</p><a class="btn btn-gold" href="/schedule/">Schedule Online</a></div></div></section>') % (TEL, PHONE, SITE["email"], SITE["email"])
     body += '<section class="section cream"><div class="container"><div class="center"><p class="kicker">Or start here</p><h2>Find my system</h2></div><div class="dev-banner"></div><div data-fms style="margin-top:2rem"></div></div></section>' + final_cta()
     return page("contact", "Contact MSP Pure Water | (952) 952-6206", "Call or text MSP Pure Water at (952) 952-6206, open 24 hours, or schedule your water consultation online.", body)
 

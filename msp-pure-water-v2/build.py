@@ -68,6 +68,7 @@ NAV = [
  ("Service Areas", "/service-areas/", None),
  ("Why MSP", "/about/", None),
  ("FAQ", "/faq/", None),
+ ("Contact", "/contact/", None),
 ]
 def brand(cls=""):
     return ('<a class="brand %s" href="/" aria-label="MSP Pure Water home"><img src="/assets/img/logo.png" width="161" height="214" alt="MSP Pure Water shield logo">'
@@ -625,10 +626,19 @@ def bpg_page():
     return page("best-price-guarantee", "Best Price Guarantee | MSP Pure Water", "Find a lower quote on a comparable water treatment system and installation and MSP Pure Water will beat it, with priority booking.", body)
 
 def contact_page():
-    body = phero("Contact", "Call, text or schedule. We answer 24 hours.", "The fastest ways to reach MSP Pure Water.", crumbs="Contact")
-    body += ('<section class="section"><div class="container grid grid-3"><div class="review"><h3>Call or text</h3><a class="fphone" style="font-family:var(--font-display);font-size:1.8rem;text-decoration:none" href="tel:%s">%s</a><p class="muted">Open 24 hours, every day.</p></div><div class="review"><h3>Email</h3><a class="link" href="mailto:%s">%s</a><p class="muted">Same-day response.</p></div><div class="review"><h3>Schedule online</h3><p class="muted">Pick a time and we call you. In-home presentations on request.</p><a class="btn btn-gold" href="/schedule/">Schedule Online</a></div></div></section>') % (TEL, PHONE, SITE["email"], SITE["email"])
-    body += '<section class="section cream"><div class="container"><div class="center"><p class="kicker">Or start here</p><h2>Find my system</h2></div><div class="dev-banner"></div><div data-fms style="margin-top:2rem"></div></div></section>' + final_cta()
-    return page("contact", "Contact MSP Pure Water | (952) 952-6206", "Call or text MSP Pure Water at (952) 952-6206, open 24 hours, or schedule your water consultation online.", body)
+    body = phero("Contact", "Call, text, email or send a note.", "Tell us what's going on with your water and we'll get back to you within 24 hours. Prefer to talk now? Call or text any time.", crumbs="Contact",
+                 extra='<div class="hero-promo"><b>24 h</b> Reply within 24 hours</div>')
+    body += ('<section class="section"><div class="container"><div class="contact-grid">'
+             '<div><div class="dev-banner"></div><div class="ghl-wrap ghl-contact" data-ghl-form="contact" data-phone="%s" data-tel="%s" aria-label="Contact form"></div>'
+             '<p class="consent" style="margin-top:.9rem">By submitting, you agree MSP Pure Water may call, text or email you about your request. Message and data rates may apply; reply STOP to opt out. <a href="/privacy/">Privacy Policy</a>.</p></div>'
+             '<aside class="contact-side">'
+             '<div class="review"><p class="kicker">Call or text</p><a class="fphone" style="font-family:var(--font-display);font-size:1.9rem;text-decoration:none;color:var(--navy-900)" href="tel:%s">%s</a><p class="muted" style="margin:0">Open 24 hours, every day.</p></div>'
+             '<div class="review"><p class="kicker">Email</p><a class="link" href="mailto:%s">%s</a><p class="muted" style="margin:.5rem 0 0">Same-day response.</p></div>'
+             '<div class="review"><p class="kicker">Schedule online</p><p class="muted" style="margin:0 0 .75rem">Pick a time and we call you. In-home presentations on request.</p><a class="btn btn-gold btn-block" href="/schedule/">Schedule Online</a></div>'
+             '<div class="review"><p class="kicker">Service area</p><p class="muted" style="margin:0">Minneapolis, St. Paul, the Twin Cities metro and Greater Minnesota. <a class="link" href="/service-areas/">See every city</a></p></div>'
+             '</aside></div></div></section>') % (PHONE, TEL, TEL, PHONE, SITE["email"], SITE["email"])
+    body += faq_block(FAQ[:4]) + final_cta()
+    return page("contact", "Contact MSP Pure Water | (952) 952-6206", "Contact MSP Pure Water: call or text (952) 952-6206, email, or send a message. Whole-home water filtration, softening and reverse osmosis for the Twin Cities.", body)
 
 def legal_page(slug, title, key, fallback):
     txt = LEGAL.get(key, "")

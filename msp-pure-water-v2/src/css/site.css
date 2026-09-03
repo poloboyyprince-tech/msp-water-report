@@ -619,3 +619,11 @@ body.page-leave{opacity:0;transition:opacity .18s ease-in}
 .stages.steps-row p{font-size:.85rem;margin:.2rem 0 0}
 @media (max-width:980px){.stages.steps-row{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.stages.steps-row{grid-template-columns:1fr}}
+
+/* Contact page */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.contact-side{display:grid;gap:1rem}
+.contact-side .review{gap:.5rem}
+.ghl-contact{min-height:560px}
+.ghl-contact iframe{min-height:640px}

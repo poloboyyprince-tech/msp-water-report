@@ -204,3 +204,32 @@ Consultations are phone calls, not home visits. The calendar should be a phone-c
 calendar (GHL calendar type "Round robin" or "Personal" with location = phone),
 and every confirmation/reminder template should say "we will call you at this time".
 The only visit is installation, which the team schedules during the call.
+
+
+## 12. Contact Us form (the /contact/ page)
+
+The Contact page has a branded wrapper waiting for the official GoHighLevel form.
+
+1. In GHL: **Sites → Forms → Builder → your "Contact Us" form → Integrate → Embed**
+   and copy the code. It looks like
+   `<iframe src="https://api.leadconnectorhq.com/widget/form/XXXX" …></iframe><script src="https://link.msgsndr.com/js/form_embed.js"></script>`.
+2. Open `assets/js/ghl.config.js` → the `contact:` block. Paste the **whole** code
+   into `embedHtml: "…"` (keep it on one line, escape any double quotes as `\"`), or
+   paste just the iframe `src` URL into `formEmbedUrl`.
+3. Reload `/contact/`. The site injects the embed, runs GHL's `form_embed.js` (auto
+   height), appends the visitor's UTM/gclid/fbclid attribution to the form URL, and
+   fires the `contact_form_submitted` analytics event when the form posts.
+4. In GHL, point the form's **On submit → Redirect** at `/thank-you/` if you want the
+   branded confirmation with the calendar, or leave the inline thank-you message.
+
+Recommended GHL workflow for this form: trigger "Form submitted" (Contact Us) →
+add tag `Website Contact` → create opportunity in "New Website Lead" → internal
+notification (same template as §5) → send the customer a text/email acknowledgment.
+
+## 13. Scheduling works the same way
+
+The `/schedule/` page (and every Schedule button) uses the calendar in the
+`calendar:` block. Either paste the calendar's **Embed** code into
+`calendar.embedHtml`, or its **Link** into `calendarEmbedUrl`. Contact details the
+visitor already gave us are passed into the booking widget as query parameters, and
+the calendar's custom thank-you page should be `/booked/`.

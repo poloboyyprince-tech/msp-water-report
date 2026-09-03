@@ -35,8 +35,25 @@ window.MSP_GHL = {
     formId: "GHL_FORM_ID_HERE",
     formEmbedUrl: "GHL_FORM_EMBED_URL_HERE",      /* e.g. https://api.leadconnectorhq.com/widget/form/XXXX */
     apiProxyUrl: "",
+    /* OR paste the complete GHL embed code (the <iframe …> plus its <script>)
+       here as one string. When set, it is used as-is and formEmbedUrl is ignored. */
+    embedHtml: "",
     /* Optional bot protection. Leave empty to rely on honeypot + timing. */
     turnstileSiteKey: ""
+  },
+
+  /* -------------------------------------------------------------------
+     CONTACT US FORM — the /contact/ page.
+     GHL → Sites → Forms → (your Contact form) → Integrate → Embed.
+     EITHER paste the whole embed code into embedHtml (easiest),
+     OR copy just the iframe's src into formEmbedUrl.
+     ------------------------------------------------------------------- */
+  contact: {
+    formName: "Contact Us",
+    formId: "GHL_CONTACT_FORM_ID_HERE",
+    formEmbedUrl: "GHL_CONTACT_FORM_EMBED_URL_HERE",   /* e.g. https://api.leadconnectorhq.com/widget/form/XXXX */
+    embedHtml: "",
+    height: 640
   },
 
   /* -------------------------------------------------------------------
@@ -51,6 +68,8 @@ window.MSP_GHL = {
   calendar: {
     calendarId: "GHL_CALENDAR_ID_HERE",
     calendarEmbedUrl: "GHL_CALENDAR_EMBED_URL_HERE",
+    /* OR paste the complete calendar embed code (<iframe …> + <script>) here. */
+    embedHtml: "",
     thankYouPath: "/booked/",
     /* Query-string prefill keys the GHL booking widget understands. */
     prefill: { first_name: "first_name", last_name: "last_name", email: "email", phone: "phone" }

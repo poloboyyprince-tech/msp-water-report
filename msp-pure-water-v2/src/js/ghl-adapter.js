@@ -20,7 +20,7 @@
     var leadReady = lead.mode === "webhook" ? set(lead.webhookUrl) : lead.mode === "embed" ? set(lead.formEmbedUrl) : lead.mode === "api" ? set(lead.apiProxyUrl) : false;
     return {
       locationId: set(C.locationId), leadMode: lead.mode, leadReady: leadReady,
-      calendarReady: set(cal.calendarEmbedUrl), analytics: !!(C.analytics && (C.analytics.gtmId || C.analytics.ga4Id))
+      contactReady: set((C.contact || {}).embedHtml) || set((C.contact || {}).formEmbedUrl), calendarReady: set(cal.calendarEmbedUrl), analytics: !!(C.analytics && (C.analytics.gtmId || C.analytics.ga4Id))
     };
   }
 
@@ -94,13 +94,43 @@
   function fallback(el, kind) {
     var phone = el.getAttribute("data-phone") || "(952) 952-6206", tel = el.getAttribute("data-tel") || "+19529526206";
     el.setAttribute("data-state", "fallback");
-    el.innerHTML = '<div class="ghl-fallback"><h3>' + (kind === "calendar" ? "Online booking is opening soon." : "Online intake is opening soon.") +
+    var title = kind === "calendar" ? "Online booking is opening soon." : kind === "contact" ? "Our contact form is opening soon." : "Online intake is opening soon.";
+    el.innerHTML = '<div class="ghl-fallback"><h3>' + title +
       '</h3><p>Call or text and we’ll get you on the schedule right away. We’ll answer within 24 hours.</p>' +
       '<a class="phone" href="tel:' + tel + '">' + phone + '</a>' +
-      '<a class="btn btn-navy" href="/schedule/">Schedule page</a></div>';
+      (kind === "contact" ? '<a class="btn btn-navy" href="mailto:info@msppurewaterco.com">Email info@msppurewaterco.com</a>' : '<a class="btn btn-navy" href="/schedule/">Schedule page</a>') + '</div>';
   }
 
+  /* Inject a pasted GHL embed code verbatim (iframe + script). Scripts inserted
+     via innerHTML do not run, so they are re-created; the iframe src gets UTM
+     attribution appended so GHL records the source on the contact. */
+  function injectEmbed(el, html, kindLabel) {
+    var wrap = document.createElement("div"); wrap.innerHTML = html;
+    var f = wrap.querySelector("iframe");
+    if (f) {
+      try { var u = new URL(f.getAttribute("src"), location.href); var attr = readAttribution(); ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"].forEach(function (k) { if (attr[k] && !u.searchParams.has(k)) u.searchParams.set(k, attr[k]); }); f.setAttribute("src", u.toString()); } catch (e) {}
+      f.setAttribute("title", f.getAttribute("title") || kindLabel); f.setAttribute("loading", "lazy");
+      f.addEventListener("load", function () { el.setAttribute("data-state", "ready"); });
+    }
+    el.setAttribute("data-state", "loading");
+    el.innerHTML = '<div class="ghl-loading"><span class="spinner"></span>Loading…</div>';
+    Array.prototype.slice.call(wrap.childNodes).forEach(function (n) {
+      if (n.tagName === "SCRIPT") { var sc = document.createElement("script"); if (n.src) sc.src = n.src; else sc.textContent = n.textContent; document.body.appendChild(sc); }
+      else el.appendChild(n);
+    });
+    if (!f) el.setAttribute("data-state", "ready");
+    return f;
+  }
+
+  function readAttribution() { try { return JSON.parse(localStorage.getItem("msp_attr") || "{}"); } catch (e) { return {}; } }
+
   function renderCalendar(el, prefill) {
+    var cal = C.calendar || {};
+    if (set(cal.embedHtml) && /<iframe/i.test(cal.embedHtml)) {
+      var pf = injectEmbed(el, cal.embedHtml, "Schedule your MSP Pure Water consultation");
+      if (pf) { try { var pu = new URL(pf.getAttribute("src")); var lead = prefill || loadLead() || {}; var map = cal.prefill || {}; Object.keys(map).forEach(function (k) { if (lead[k]) pu.searchParams.set(map[k], lead[k]); }); pf.setAttribute("src", pu.toString()); } catch (e) {} pf.addEventListener("load", function () { if (window.MSPTrack) window.MSPTrack.once("calendar_viewed", { calendar: cal.calendarId }); }); }
+      loadEmbedScript(); return true;
+    }
     var url = calendarUrl(prefill);
     if (!url) { fallback(el, "calendar"); return false; }
     el.setAttribute("data-state", "loading");
@@ -124,13 +154,30 @@
   }
 
   function renderForm(el) {
-    var lead = C.lead || {};
-    if (!set(lead.formEmbedUrl)) { fallback(el, "form"); return false; }
-    el.setAttribute("data-state", "loading");
-    el.innerHTML = '<div class="ghl-loading"><span class="spinner"></span>Loading…</div>' +
-      '<iframe src="' + lead.formEmbedUrl + '" title="MSP Pure Water intake form" loading="lazy" scrolling="no" id="msp-ghl-form" style="min-height:900px"></iframe>';
-    el.querySelector("iframe").addEventListener("load", function () { el.setAttribute("data-state", "ready"); });
-    loadEmbedScript();
+    var kind = el.getAttribute("data-ghl-form") || "intake";
+    var cfg = kind === "contact" ? (C.contact || {}) : (C.lead || {});
+    var label = kind === "contact" ? "Contact MSP Pure Water" : "MSP Pure Water intake form";
+    var eventName = kind === "contact" ? "contact_form_submitted" : "lead_form_submitted";
+    var f = null;
+    if (set(cfg.embedHtml) && /<iframe/i.test(cfg.embedHtml)) {
+      f = injectEmbed(el, cfg.embedHtml, label);
+    } else if (set(cfg.formEmbedUrl)) {
+      var url = cfg.formEmbedUrl;
+      try { var u = new URL(url, location.href); var attr = readAttribution(); ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"].forEach(function (k) { if (attr[k]) u.searchParams.set(k, attr[k]); }); url = u.toString(); } catch (e) {}
+      el.setAttribute("data-state", "loading");
+      el.innerHTML = '<div class="ghl-loading"><span class="spinner"></span>Loading…</div>' +
+        '<iframe src="' + url + '" title="' + label + '" loading="lazy" scrolling="no" id="msp-ghl-' + kind + '" data-form-id="' + (cfg.formId || "") + '" style="min-height:' + (cfg.height || 640) + 'px"></iframe>';
+      f = el.querySelector("iframe");
+      f.addEventListener("load", function () { el.setAttribute("data-state", "ready"); });
+      loadEmbedScript();
+    } else { fallback(el, kind); return false; }
+    /* GHL forms post a message to the parent on submit; fire the analytics event
+       when we see it. The lead itself is already in GHL at that point. */
+    window.addEventListener("message", function (ev) {
+      if (!/leadconnectorhq|msgsndr|gohighlevel/.test(ev.origin || "")) return;
+      var d = ev.data; var str = typeof d === "string" ? d : JSON.stringify(d || {});
+      if (/form[-_ ]?submit|formSubmitted|submission/i.test(str)) { if (window.MSPTrack) window.MSPTrack.once(eventName, { form: cfg.formId || kind }); el.dispatchEvent(new CustomEvent("msp:form-submitted", { bubbles: true })); }
+    });
     return true;
   }
 

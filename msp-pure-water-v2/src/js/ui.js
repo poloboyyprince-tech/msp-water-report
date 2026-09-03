@@ -141,15 +141,18 @@
         if (g.type === "single") { var r = box.querySelector('input[name="cfg-' + g.key + '"]:checked'); if (r) { var c = g.choices[parseInt(r.value, 10)]; total += c.add; parts.push(c.label); } }
         else { var cb = box.querySelector('input[name="cfg-' + g.key + '"]'); if (cb && cb.checked) { total += g.add; parts.push(g.label); } }
       });
+      /* MSP pricing rule: every installed total ends in 99 */
+      total = Math.ceil((total + 1) / 100) * 100 - 1;
       return { total: total, parts: parts, line: cfg.name + (parts.length ? " + " + parts.join(" + ") : "") + " — " + money(total) + " installed" };
     }
     function render() {
       var s = state(); if (totalEl) totalEl.textContent = money(s.total); if (lineEl) lineEl.textContent = s.parts.length ? s.parts.join(" · ") : "Standard configuration";
       if (cta) { cta.setAttribute("href", "/schedule/?system=" + encodeURIComponent(cfg.id)); cta.textContent = "Schedule Online · " + money(s.total); }
-      if (window.MSPIntake) window.MSPIntake.setPreset({ system_interest: cfg.interest, water_source: cfg.water_source || "", system_id: cfg.id, system_config: s.line });
     }
+    function remember() { var s = state(); if (window.MSPIntake) window.MSPIntake.setPreset({ system_interest: cfg.interest, water_source: cfg.water_source || "", system_id: cfg.id, system_config: s.line }); }
     box.addEventListener("change", render);
-    if (cta) cta.addEventListener("click", function () { render(); if (window.MSPTrack) window.MSPTrack.event("schedule_click", { label: "configurator", system: cfg.id, total: state().total }); });
+    /* Only remember a configuration when the visitor actually chooses it */
+    if (cta) cta.addEventListener("click", function () { render(); remember(); if (window.MSPTrack) window.MSPTrack.event("schedule_click", { label: "configurator", system: cfg.id, total: state().total }); });
     render();
   });
   /* Inside-the-system stepper */
@@ -166,8 +169,8 @@
   /* Schedule page: show chosen configuration */
   $$("[data-config-summary]").forEach(function (el) {
     var pre = (window.MSPIntake && window.MSPIntake.preset()) || {}; var q = new URLSearchParams(location.search);
-    if (pre.system_config) { el.setAttribute("data-show", "true"); el.querySelector(".cs-line").textContent = pre.system_config; }
-    else if (q.get("system")) { el.setAttribute("data-show", "true"); el.querySelector(".cs-line").textContent = q.get("system").replace(/-/g, " "); }
+    if (pre.system_config && (!q.get("system") || q.get("system") === pre.system_id)) { el.setAttribute("data-show", "true"); el.querySelector(".cs-line").textContent = pre.system_config; }
+    var clr = el.querySelector("[data-clear-config]"); if (clr) clr.addEventListener("click", function (ev) { ev.preventDefault(); try { sessionStorage.removeItem("msp_intake"); } catch (e) {} el.setAttribute("data-show", "false"); });
   });
 
   /* System carousel */

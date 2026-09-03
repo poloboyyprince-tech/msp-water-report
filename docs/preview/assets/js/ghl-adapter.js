@@ -95,7 +95,7 @@
     var phone = el.getAttribute("data-phone") || "(952) 952-6206", tel = el.getAttribute("data-tel") || "+19529526206";
     el.setAttribute("data-state", "fallback");
     el.innerHTML = '<div class="ghl-fallback"><h3>' + (kind === "calendar" ? "Online booking is opening soon." : "Online intake is opening soon.") +
-      '</h3><p>Call or text and we’ll get you on the schedule right away. We answer 24 hours a day.</p>' +
+      '</h3><p>Call or text and we’ll get you on the schedule right away. We’ll answer within 24 hours.</p>' +
       '<a class="phone" href="tel:' + tel + '">' + phone + '</a>' +
       '<a class="btn btn-navy" href="/preview/schedule/">Schedule page</a></div>';
   }

@@ -129,8 +129,8 @@ def page(slug, title, desc, body, over_hero=False, schema=None, noindex=False, c
       '<link rel="icon" href="/assets/img/favicon.png" type="image/png"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">'
       '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
       '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap">'
-      '<link rel="stylesheet" href="/assets/css/site.css">%s'
-      '<script src="/assets/js/ghl.config.js"></script><script defer src="/assets/js/tracking.js"></script><script defer src="/assets/js/ghl-adapter.js"></script><script defer src="/assets/js/find-my-system.js"></script><script defer src="/assets/js/ui.js"></script>'
+      '<link rel="stylesheet" href="' + asset_v("css/site.css") + '">%s'
+      '<script src="' + asset_v("js/ghl.config.js") + '"></script><script defer src="' + asset_v("js/tracking.js") + '"></script><script defer src="' + asset_v("js/ghl-adapter.js") + '"></script><script defer src="' + asset_v("js/find-my-system.js") + '"></script><script defer src="' + asset_v("js/ui.js") + '"></script>'
       '</head><body>') % (e(title), e(desc), can, '<meta name="robots" content="noindex,nofollow">' if (noindex or OPT.staging) else "", e(title), e(desc), can, BASE + SITE["og_image"],
       ('<link rel="preload" as="image" href="/assets/img/hero-poster.jpg">' if (slug == "" and HAS_POSTER) else "") + jsonld)
     out = head + header(over_hero) + '<main id="main">' + headings_title_case(body) + "</main>" + footer() + "</body></html>"
@@ -159,6 +159,17 @@ def headings_title_case(html_):
         inner = re.sub(r'>([^<]+)<', lambda n: ">" + title_case(n.group(1)) + "<", ">" + m.group(2) + "<")[1:-1]
         return m.group(1) + inner + m.group(3)
     return re.sub(r'(<h[1-3]\b[^>]*>)(.*?)(</h[1-3]>)', fix, html_, flags=re.S)
+
+import hashlib
+def asset_v(rel):
+    """/assets/css/site.css -> /assets/css/site.css?v=<8-char content hash> (cache busting)."""
+    cands = [os.path.join(SRC, rel), os.path.join(SRC, "config", os.path.basename(rel))]
+    h = "0"
+    for p in cands:
+        if os.path.exists(p):
+            with open(p, "rb") as fh: h = hashlib.md5(fh.read()).hexdigest()[:8]
+            break
+    return "/assets/%s?v=%s" % (rel, h)
 
 def rebase(s):
     """Prefix root-relative URLs when the site is hosted under a subpath (staging)."""
@@ -629,7 +640,7 @@ def contact_page():
     body = phero("Contact", "Call, text, email or send a note.", "Tell us what's going on with your water and we'll get back to you within 24 hours. Prefer to talk now? Call or text any time.", crumbs="Contact",
                  extra='<div class="hero-promo"><b>24 h</b> Reply within 24 hours</div>')
     body += ('<section class="section"><div class="container"><div class="contact-grid">'
-             '<div><div class="dev-banner"></div><div class="form-card"><div class="form-logo"><img src="/assets/img/logo.png" width="161" height="214" alt="MSP Pure Water"><span>Send us a note</span></div><div class="ghl-wrap ghl-contact" data-ghl-form="contact" data-phone="%s" data-tel="%s" aria-label="Contact form"></div></div>'
+             '<div><div class="dev-banner"></div><div class="form-card"><div class="form-logo"><img src="/assets/img/logo.png" width="161" height="214" alt="MSP Pure Water"></div><div class="ghl-wrap ghl-contact" data-ghl-form="contact" data-phone="%s" data-tel="%s" aria-label="Contact form"></div></div>'
              '<p class="consent" style="margin-top:.9rem">By submitting, you agree MSP Pure Water may call, text or email you about your request. Message and data rates may apply; reply STOP to opt out. <a href="/privacy/">Privacy Policy</a>.</p></div>'
              '<aside class="contact-side">'
              '<div class="review"><p class="kicker">Call or text</p><a class="fphone" style="font-family:var(--font-display);font-size:1.9rem;text-decoration:none;color:var(--navy-900)" href="tel:%s">%s</a><p class="muted" style="margin:0">Open 24 hours, every day.</p></div>'

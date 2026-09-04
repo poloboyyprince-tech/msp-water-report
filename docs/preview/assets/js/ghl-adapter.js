@@ -83,7 +83,7 @@
     ["first_name", "last_name", "email", "phone"].forEach(function (k) { if (lead[k]) q.push(encodeURIComponent(map[k] || k) + "=" + encodeURIComponent(lead[k])); });
     /* Pass intake context along so it can be read from the appointment/contact. */
     ["water_source", "system_interest", "system_config", "water_problems", "city", "lead_source", "utm_source", "utm_medium", "utm_campaign"].forEach(function (k) { if (lead[k]) q.push(encodeURIComponent(k) + "=" + encodeURIComponent(lead[k])); });
-    return cal.calendarEmbedUrl + (cal.calendarEmbedUrl.indexOf("?") > -1 ? "&" : "?") + q.join("&");
+    var out = cal.calendarEmbedUrl + (cal.calendarEmbedUrl.indexOf("?") > -1 ? "&" : "?") + q.join("&"); return out.replace(/\?$/, "");
   }
 
   function loadEmbedScript() {

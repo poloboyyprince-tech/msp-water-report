@@ -12,7 +12,7 @@
 window.MSP_GHL = {
 
   /* Sub-account (location) ID. Found in GHL → Settings → Business Profile. */
-  locationId: "GHL_LOCATION_ID_HERE",   /* optional; found in GHL → Settings → Business Profile */
+  locationId: "6ssnuhq3IrJ6k8sAZnfh",
 
   /* -------------------------------------------------------------------
      LEAD SUBMISSION — how the native Find My System intake reaches GHL.

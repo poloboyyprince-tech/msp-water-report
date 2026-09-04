@@ -629,3 +629,5 @@ body.page-leave{opacity:0;transition:opacity .18s ease-in}
 .ghl-contact{min-height:560px;border:0;box-shadow:none;background:transparent;border-radius:0}
 .ghl-contact iframe{min-height:640px;border:0!important;outline:0}
 .ghl-contact .ghl-fallback{min-height:420px}
+.confirm .check{display:flex;margin:0 auto 1rem}
+.confirm .kicker{display:flex;justify-content:center}.confirm .kicker::before{display:none}

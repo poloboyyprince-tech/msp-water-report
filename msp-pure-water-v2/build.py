@@ -639,8 +639,8 @@ def bpg_page():
 def contact_page():
     body = phero("Contact", "Call, text, email or send a note.", "Tell us what's going on with your water and we'll get back to you within 24 hours. Prefer to talk now? Call or text any time.", crumbs="Contact",
                  extra='<div class="hero-promo"><b>24 h</b> Reply within 24 hours</div>')
-    body += ('<section class="section"><div class="container"><div class="contact-grid">'
-             '<div><div class="dev-banner"></div><div class="form-card"><div class="form-logo"><img src="/assets/img/logo.png" width="161" height="214" alt="MSP Pure Water"></div><div class="ghl-wrap ghl-contact" data-ghl-form="contact" data-phone="%s" data-tel="%s" aria-label="Contact form"></div></div>'
+    body += ('<section class="section-tight" style="padding-top:clamp(20px,3vw,36px)"><div class="container"><div class="contact-grid">'
+             '<div><div class="dev-banner"></div><div class="form-card"><div class="ghl-wrap ghl-contact" data-ghl-form="contact" data-phone="%s" data-tel="%s" aria-label="Contact form"></div></div>'
              '<p class="consent" style="margin-top:.9rem">By submitting, you agree MSP Pure Water may call, text or email you about your request. Message and data rates may apply; reply STOP to opt out. <a href="/privacy/">Privacy Policy</a>.</p></div>'
              '<aside class="contact-side">'
              '<div class="review"><p class="kicker">Call or text</p><a class="fphone" style="font-family:var(--font-display);font-size:1.9rem;text-decoration:none;color:var(--navy-900)" href="tel:%s">%s</a><p class="muted" style="margin:0">Open 24 hours, every day.</p></div>'

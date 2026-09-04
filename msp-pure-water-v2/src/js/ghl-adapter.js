@@ -13,7 +13,7 @@
   var C = window.MSP_GHL || {};
   var PH = /_HERE$|^$/;                                 /* placeholder detector */
   function set(v) { return typeof v === "string" && !PH.test(v); }
-  var GHL_EMBED_JS = "https://link.msgsndr.com/js/form_embed.js";
+  var GHL_EMBED_JS = "https://api.homeservicehub.app/js/form_embed.js";
 
   function status() {
     var lead = C.lead || {}, cal = C.calendar || {};

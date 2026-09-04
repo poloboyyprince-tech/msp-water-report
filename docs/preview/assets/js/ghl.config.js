@@ -12,7 +12,7 @@
 window.MSP_GHL = {
 
   /* Sub-account (location) ID. Found in GHL → Settings → Business Profile. */
-  locationId: "GHL_LOCATION_ID_HERE",
+  locationId: "GHL_LOCATION_ID_HERE",   /* optional; found in GHL → Settings → Business Profile */
 
   /* -------------------------------------------------------------------
      LEAD SUBMISSION — how the native Find My System intake reaches GHL.
@@ -68,8 +68,8 @@ window.MSP_GHL = {
        on the branded confirmation screen.
      ------------------------------------------------------------------- */
   calendar: {
-    calendarId: "GHL_CALENDAR_ID_HERE",
-    calendarEmbedUrl: "GHL_CALENDAR_EMBED_URL_HERE",
+    calendarId: "BNcToWKbTUgDdLhuc4cW",
+    calendarEmbedUrl: "https://api.homeservicehub.app/widget/booking/BNcToWKbTUgDdLhuc4cW",
     /* OR paste the complete calendar embed code (<iframe …> + <script>) here. */
     embedHtml: "",
     thankYouPath: "/booked/",

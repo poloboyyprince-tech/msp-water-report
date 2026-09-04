@@ -49,12 +49,14 @@ window.MSP_GHL = {
      OR copy just the iframe's src into formEmbedUrl.
      ------------------------------------------------------------------- */
   contact: {
-    formName: "Contact Us",
-    formId: "GHL_CONTACT_FORM_ID_HERE",
-    formEmbedUrl: "GHL_CONTACT_FORM_EMBED_URL_HERE",   /* e.g. https://api.leadconnectorhq.com/widget/form/XXXX */
-    embedHtml: "",
-    height: 640
+    formName: "MSP - New Contact Form",
+    formId: "V32gATfTfG9ZQh3MNXJX",
+    formEmbedUrl: "https://api.homeservicehub.app/widget/form/V32gATfTfG9ZQh3MNXJX",
+    /* Official embed code pasted from GHL (white-label domain api.homeservicehub.app). */
+    embedHtml: "<iframe src=\"https://api.homeservicehub.app/widget/form/V32gATfTfG9ZQh3MNXJX\" style=\"width:100%;height:100%;border:none;border-radius:3px\" id=\"inline-V32gATfTfG9ZQh3MNXJX\" data-layout=\"{'id':'INLINE'}\" data-trigger-type=\"alwaysShow\" data-trigger-value=\"\" data-activation-type=\"alwaysActivated\" data-activation-value=\"\" data-deactivation-type=\"neverDeactivate\" data-deactivation-value=\"\" data-form-name=\"MSP - New Contact Form\" data-height=\"1453\" data-layout-iframe-id=\"inline-V32gATfTfG9ZQh3MNXJX\" data-form-id=\"V32gATfTfG9ZQh3MNXJX\" data-cookie-consent=\"true\" data-cookie-consent-provider=\"auto\" title=\"MSP - New Contact Form\"></iframe><script src=\"https://api.homeservicehub.app/js/form_embed.js\"></script>",
+    height: 1453
   },
+
 
   /* -------------------------------------------------------------------
      SCHEDULING — the ONE MSP Pure Water consultation calendar.

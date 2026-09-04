@@ -110,6 +110,7 @@
     if (f) {
       try { var u = new URL(f.getAttribute("src"), location.href); var attr = readAttribution(); ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid"].forEach(function (k) { if (attr[k] && !u.searchParams.has(k)) u.searchParams.set(k, attr[k]); }); f.setAttribute("src", u.toString()); } catch (e) {}
       f.setAttribute("title", f.getAttribute("title") || kindLabel); f.setAttribute("loading", "lazy");
+      var dh = parseInt(f.getAttribute("data-height") || "0", 10); if (dh) f.style.minHeight = dh + "px";
       f.addEventListener("load", function () { el.setAttribute("data-state", "ready"); });
     }
     el.setAttribute("data-state", "loading");
@@ -143,7 +144,7 @@
     /* Best-effort booking detection from the widget; the reliable path is the
        calendar's custom thank-you redirect to /booked/ (see INTEGRATION.md). */
     window.addEventListener("message", function (ev) {
-      if (!/leadconnectorhq|msgsndr|gohighlevel/.test(ev.origin || "")) return;
+      if (!/leadconnectorhq|msgsndr|gohighlevel|homeservicehub/.test(ev.origin || "")) return;
       var d = ev.data; var s = typeof d === "string" ? d : JSON.stringify(d || {});
       if (/book(ed|ing)[-_ ]?(success|confirm)|appointment[-_ ]?(booked|created)/i.test(s)) {
         if (window.MSPTrack) window.MSPTrack.once("appointment_booked", { via: "widget_message" });
@@ -174,7 +175,7 @@
     /* GHL forms post a message to the parent on submit; fire the analytics event
        when we see it. The lead itself is already in GHL at that point. */
     window.addEventListener("message", function (ev) {
-      if (!/leadconnectorhq|msgsndr|gohighlevel/.test(ev.origin || "")) return;
+      if (!/leadconnectorhq|msgsndr|gohighlevel|homeservicehub/.test(ev.origin || "")) return;
       var d = ev.data; var str = typeof d === "string" ? d : JSON.stringify(d || {});
       if (/form[-_ ]?submit|formSubmitted|submission/i.test(str)) { if (window.MSPTrack) window.MSPTrack.once(eventName, { form: cfg.formId || kind }); el.dispatchEvent(new CustomEvent("msp:form-submitted", { bubbles: true })); }
     });

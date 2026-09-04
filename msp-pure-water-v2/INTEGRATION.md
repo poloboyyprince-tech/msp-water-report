@@ -219,8 +219,14 @@ The Contact page has a branded wrapper waiting for the official GoHighLevel form
 3. Reload `/contact/`. The site injects the embed, runs GHL's `form_embed.js` (auto
    height), appends the visitor's UTM/gclid/fbclid attribution to the form URL, and
    fires the `contact_form_submitted` analytics event when the form posts.
-4. In GHL, point the form's **On submit → Redirect** at `/thank-you/` if you want the
-   branded confirmation with the calendar, or leave the inline thank-you message.
+4. In GHL, open the form → **Options → On Submit** and choose **Redirect to URL**.
+   Use the branded confirmation page:
+   - staging: `https://reports.msppurewaterco.com/preview/message-received/`
+   - production: `https://msppurewaterco.com/message-received/`
+   It reads "Thank You. We got your message and will reach out within the next 24
+   hours," offers the phone number and a Schedule button, and fires the
+   `contact_form_submitted` event. (Alternative: choose **Message** and type the same
+   thank-you text to show it inline inside the form.)
 
 Recommended GHL workflow for this form: trigger "Form submitted" (Contact Us) →
 add tag `Website Contact` → create opportunity in "New Website Lead" → internal

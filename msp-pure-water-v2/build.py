@@ -651,6 +651,15 @@ def contact_page():
     body += faq_block(FAQ[:4]) + final_cta()
     return page("contact", "Contact MSP Pure Water | (952) 952-6206", "Contact MSP Pure Water: call or text (952) 952-6206, email, or send a message. Whole-home water filtration, softening and reverse osmosis for the Twin Cities.", body)
 
+def message_received_page():
+    body = ('<section class="section"><div class="container confirm"><div class="check">%s</div><p class="kicker">Message received</p><h1>Thank You.</h1>'
+            '<p class="lead">We got your message and will reach out within the next 24 hours. Prefer to talk sooner? Call or text any time, or pick a time for your phone consultation below.</p>'
+            '<p><a class="phone" style="font-family:var(--font-display);font-size:2rem;text-decoration:none;color:var(--navy-900);font-weight:600" href="tel:%s">%s</a></p>'
+            '<div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem"><a class="btn btn-gold btn-lg" href="/schedule/">Schedule a Phone Consultation</a><a class="btn btn-outline on-light btn-lg" href="/">Back to Home</a></div>'
+            '<script>try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:"contact_form_submitted",form:"contact",via:"redirect"});}catch(e){}</script></div></section>') % (ICON["check"], TEL, PHONE)
+    body += process()
+    return page("message-received", "Thank You | MSP Pure Water", "We received your message and will reach out within 24 hours.", body, noindex=True)
+
 def legal_page(slug, title, key, fallback):
     txt = LEGAL.get(key, "")
     paras = []
@@ -702,6 +711,7 @@ def main():
         if p.get("page"): pages["water-problems/" + p["id"]] = problem_page(p)
     for c in CITIES: pages["service-areas/" + c["slug"]] = city_page_for(c)
     for s in SYS["systems"]: pages["systems/" + s["id"]] = product_page(s)
+    pages["message-received"] = message_received_page()
     noindex = {"thank-you", "booked"}
     for slug, html_ in pages.items():
         write(("index.html" if slug == "" else slug + "/index.html"), html_)

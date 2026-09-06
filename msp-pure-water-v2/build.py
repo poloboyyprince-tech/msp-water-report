@@ -74,7 +74,7 @@ def brand(cls=""):
     return ('<a class="brand %s" href="/" aria-label="MSP Pure Water home"><img src="/assets/img/logo.png" width="161" height="214" alt="MSP Pure Water shield logo">'
             '<span class="brand-word">MSP Pure Water<small>Twin Cities &middot; Greater Minnesota</small></span></a>') % cls
 def announce():
-    return ('<div class="announce" role="region" aria-label="Announcement"><a href="/best-price-guarantee/" data-bpg><strong>Best Price Guarantee</strong> &nbsp;&mdash;&nbsp; comparable system, lower installed quote? We\'ll beat it.</a>'
+    return ('<div class="announce" role="region" aria-label="Announcement"><a href="/best-price-guarantee/" data-bpg><strong>Best Price Guarantee</strong><span class="dash"> &nbsp;&mdash;&nbsp; </span><span class="long">comparable system, lower installed quote? We\'ll beat it.</span><span class="short-only"> &middot; We\'ll beat any comparable quote</span></a>'
             '<button class="x" aria-label="Dismiss announcement">&times;</button></div>')
 def header(over_hero=False):
     items = []
@@ -358,7 +358,7 @@ def service_schema(name, desc, systems):
 def system_page(cat, slug, title, desc, h1, lead, concerns, extra_sections=""):
     systems = BY_CAT[cat]
     body = phero({"city": "City water solutions", "well": "Well water solutions", "ro": "Drinking water"}[cat], h1, lead, crumbs="Systems", subnav=SYS_SUBNAV(cat),
-                 extra='<div class="hero-promo"><b>Included</b> RO drinking system with every whole-home system</div>' if cat != "ro" else "")
+                 extra='<div class="hero-promo"><b>Included</b> RO drinking system<span class="long"> with every whole-home system</span></div>' if cat != "ro" else "")
     body += marquee()
     body += '<section class="section-tight"><div class="container">' + carousel(systems, {"city": "City water systems", "well": "Well water systems", "ro": "Drinking water systems"}[cat]) + "</div></section>"
     if cat == "well":

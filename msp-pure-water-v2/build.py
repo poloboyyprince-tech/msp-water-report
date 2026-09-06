@@ -199,7 +199,7 @@ def hero():
     else:
         video = '<img src="/assets/img/%s" alt="" fetchpriority="high">' % ("hero-poster.jpg" if HAS_POSTER else "system-whole-home.v5.webp")
     return ('<section class="hero" id="top"><div class="hero-media" data-parallax="30">%s</div>%s'
-      '<div class="container hero-inner"><div class="hero-promo reveal"><b>Included</b> Reverse osmosis drinking-water system with every whole-home system</div>'
+      '<div class="container hero-inner"><div class="hero-promo reveal"><b>Included</b> Reverse osmosis drinking-water system<span class="long"> with every whole-home system</span></div>'
       '<h1 class="reveal">Better water.<br><em>Throughout your entire home.</em></h1>'
       '<p class="lead reveal reveal-d1">Whole-home filtration, softening, well-water treatment and reverse osmosis for the Twin Cities. Published prices, professional installation, and a phone consultation you can book online tonight.</p>'
       '<div class="hero-actions reveal reveal-d2"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System %s</a><a class="btn btn-outline btn-lg" href="/schedule/">Schedule Online</a></div>'

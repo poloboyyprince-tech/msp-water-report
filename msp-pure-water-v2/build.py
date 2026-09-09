@@ -25,8 +25,8 @@ SYSTEMS = {s["id"]: s for s in SYS["systems"]}
 BY_CAT = {c["id"]: [s for s in SYS["systems"] if s["category"] == c["id"]] for c in SYS["categories"]}
 PHONE, TEL = SITE["phone_display"], SITE["phone_tel"]
 BASE = SITE["domain"]
-HAS_VIDEO = os.path.exists(os.path.join(SRC, "video/hero.mp4"))
-HAS_POSTER = os.path.exists(os.path.join(SRC, "img/hero-poster.jpg"))
+HAS_VIDEO = os.path.exists(os.path.join(SRC, "video/hero-1080.mp4"))
+HAS_POSTER = os.path.exists(os.path.join(SRC, "img/hero-poster-v2.jpg"))
 def has_img(n): return os.path.exists(os.path.join(SRC, "img", n))
 def e(s): return html.escape(str(s), quote=True)
 def money(n): return "${:,}".format(n)
@@ -133,7 +133,7 @@ def page(slug, title, desc, body, over_hero=False, schema=None, noindex=False, c
       '<link rel="stylesheet" href="' + asset_v("css/site.css") + '">%s'
       '<script src="' + asset_v("js/ghl.config.js") + '"></script><script defer src="' + asset_v("js/tracking.js") + '"></script><script defer src="' + asset_v("js/ghl-adapter.js") + '"></script><script defer src="' + asset_v("js/find-my-system.js") + '"></script><script defer src="' + asset_v("js/ui.js") + '"></script>'
       '</head><body>') % (e(title), e(desc), can, '<meta name="robots" content="noindex,nofollow">' if (noindex or OPT.staging) else "", e(title), e(desc), can, BASE + SITE["og_image"],
-      ('<link rel="preload" as="image" href="/assets/img/hero-poster.jpg">' if (slug == "" and HAS_POSTER) else "") + jsonld)
+      ('<link rel="preload" as="image" href="/assets/img/hero-poster-v2.jpg" media="(min-width: 769px)"><link rel="preload" as="image" href="/assets/img/hero-poster-portrait.jpg" media="(max-width: 768px)">' if (slug == "" and HAS_POSTER) else "") + jsonld)
     out = head + header(over_hero) + '<main id="main">' + headings_title_case(body) + "</main>" + footer() + "</body></html>"
     return rebase(out)
 
@@ -211,18 +211,18 @@ def phero(kicker, h1, lead, crumbs=None, subnav=None, extra=""):
     c = '<div class="crumbs"><a href="/">Home</a> / %s</div>' % crumbs if crumbs else ""
     sn = ('<div class="subnav">' + "".join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if cur else "", l) for l, h, cur in subnav) + "</div>") if subnav else ""
     if extra: sn += '<div class="pill-row">%s</div>' % extra; extra = ""
-    media = ('<div class="phero-media" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster.jpg" tabindex="-1"><source src="/assets/video/hero-mobile.mp4" type="video/mp4"></video></div>' if HAS_VIDEO else '<div class="phero-media" aria-hidden="true"><img src="/assets/img/hero-poster.jpg" alt=""></div>')
+    media = ('<div class="phero-media" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster-v2.jpg" tabindex="-1"><source src="/assets/video/hero-portrait.mp4" type="video/mp4" media="(max-width: 768px)"><source src="/assets/video/hero-1080.webm" type="video/webm"><source src="/assets/video/hero-1080.mp4" type="video/mp4"></video></div>' if HAS_VIDEO else '<div class="phero-media" aria-hidden="true"><img src="/assets/img/hero-poster.jpg" alt=""></div>')
     return ('<section class="phero">%s<div class="container"><div class="grid-hero"><div>%s<p class="kicker">%s</p><h1>%s</h1><p class="lead">%s</p>%s</div><div>%s</div></div></div></section>' % (media, c, kicker, h1, lead, sn, extra)
             + '<div class="review-bar-wrap"><div class="container">%s</div></div>' % review_bar(sum(ord(ch) for ch in h1)))
 
 def hero():
     video = ""
     if HAS_VIDEO:
-        mobile = '<source src="/assets/video/hero-mobile.mp4" type="video/mp4" media="(max-width: 768px)">' if os.path.exists(os.path.join(SRC, "video/hero-mobile.mp4")) else ""
-        webm = '<source src="/assets/video/hero.webm" type="video/webm">' if os.path.exists(os.path.join(SRC, "video/hero.webm")) else ""
-        video = ('<video autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster.jpg" aria-hidden="true" tabindex="-1">%s%s<source src="/assets/video/hero.mp4" type="video/mp4"></video>' % (mobile, webm))
+        mobile = '<source src="/assets/video/hero-portrait.mp4" type="video/mp4" media="(max-width: 768px)">' if os.path.exists(os.path.join(SRC, "video/hero-portrait.mp4")) else ""
+        webm = '<source src="/assets/video/hero-1080.webm" type="video/webm">' if os.path.exists(os.path.join(SRC, "video/hero-1080.webm")) else ""
+        video = ('<video autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster-v2.jpg" aria-hidden="true" tabindex="-1">%s%s<source src="/assets/video/hero-1080.mp4" type="video/mp4"></video>' % (mobile, webm))
     else:
-        video = '<img src="/assets/img/%s" alt="" fetchpriority="high">' % ("hero-poster.jpg" if HAS_POSTER else "system-whole-home.v5.webp")
+        video = '<img src="/assets/img/%s" alt="" fetchpriority="high">' % ("hero-poster-v2.jpg" if HAS_POSTER else "system-whole-home.v5.webp")
     return ('<section class="hero" id="top"><div class="hero-media" data-parallax="30">%s</div>%s'
       '<div class="container hero-inner"><div class="hero-promo reveal"><b>Included</b><span class="long">Reverse osmosis drinking-water system with every whole-home system</span><span class="short-only">RO drinking system included</span></div>'
       '<h1 class="reveal">Better water.<br><em>Throughout your entire home.</em></h1>'

@@ -740,7 +740,9 @@ body.page-leave{opacity:0;transition:opacity .18s ease-in}
 }
 
 /* Was / now pricing */
-.price .was{font-size:.55em;color:var(--muted);text-decoration:line-through;margin-right:.45em;font-weight:500;vertical-align:.2em}
+.price,.cprice,.hero-side .stat b,.pricing-row .price{font-variant-numeric:lining-nums tabular-nums}
+.price .was,.cprice .was,s.was{position:relative;display:inline-block;font-size:.55em;color:var(--muted);text-decoration:none;margin-right:.45em;font-weight:500;line-height:1}
+s.was::after{content:"";position:absolute;left:-.1em;right:-.1em;top:50%;height:2px;background:currentColor;opacity:.85;transform:translateY(-50%) rotate(-7deg);border-radius:1px}
 .save{display:inline-flex;align-items:center;background:var(--gold);color:var(--navy-900);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.3rem .65rem;border-radius:999px;line-height:1;margin:.25rem 0 .5rem}
 .dark .price .was{color:rgba(255,255,255,.55)}
 .compare .cprice .was{font-size:.75em;color:var(--muted);margin-right:.35em}
@@ -768,3 +770,6 @@ body.page-leave{opacity:0;transition:opacity .18s ease-in}
 .frating a{text-decoration:none}
 
 .save{width:max-content;justify-self:start;align-self:flex-start}
+
+.hero-side .stat s,.founder s{text-decoration:none!important;position:relative;display:inline-block}
+.hero-side .stat s::after,.founder s::after{content:"";position:absolute;left:-.1em;right:-.1em;top:50%;height:2px;background:currentColor;transform:translateY(-50%) rotate(-7deg)}

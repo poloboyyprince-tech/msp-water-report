@@ -1328,7 +1328,7 @@
    "name": "HW800 AlkaPro Tankless Reverse Osmosis",
    "short": "Tankless RO",
    "badge": "Included Free",
-   "price": 799,
+   "price": 999,
    "image": "system-ro-tankless.v5.webp",
    "image_alt": "HW800 AlkaPro tankless reverse osmosis unit, white with black front panel, next to a chrome drinking-water faucet",
    "for": "Kitchens where under-sink space matters and you want drinking water treated on demand, with minerals added back for taste.",
@@ -1500,7 +1500,7 @@
      "Chrome drinking-water faucet at the kitchen sink."
     ]
    ],
-   "list_price": 1299
+   "list_price": 1699
   },
   {
    "id": "ro-tank",

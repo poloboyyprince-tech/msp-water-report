@@ -12,6 +12,7 @@ ARGS = argparse.ArgumentParser(description="Build the MSP Pure Water site")
 ARGS.add_argument("--out", default="dist", help="output directory (default dist)")
 ARGS.add_argument("--base", default="", help="URL prefix when hosting under a subpath, e.g. /preview")
 ARGS.add_argument("--staging", action="store_true", help="noindex every page and disallow crawling (staging copies)")
+ARGS.add_argument("--production", action="store_true", help="GitHub Pages production build: CNAME + HTML redirect pages for legacy URLs")
 OPT = ARGS.parse_args()
 BASEPATH = OPT.base.rstrip("/")
 SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, OPT.out)
@@ -748,6 +749,18 @@ def main():
         "/products/reverse-osmosis-system  /systems/ro-tankless/  301",
         "/home  /  301", "/services  /pricing/  301", "/privacy-policy  /privacy/  301", "/tos  /terms/  301",
         "/*  /404.html  404"]) + "\n")
+    if OPT.production:
+        write("CNAME", "msppurewaterco.com\n")
+        write(".nojekyll", "")
+        # GitHub Pages cannot process _redirects: emit HTML redirect pages for each legacy URL
+        for line in open(os.path.join(DIST, "_redirects"), encoding="utf-8").read().splitlines():
+            parts = line.split()
+            if len(parts) < 3 or parts[2] != "301" or parts[0].endswith("*"): continue
+            src, dst = parts[0].strip("/"), parts[1]
+            target = BASE + dst
+            html_ = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Redirecting…</title><meta name="robots" content="noindex"><link rel="canonical" href="%s">'
+                     '<meta http-equiv="refresh" content="0; url=%s"><script>location.replace(%s)</script></head><body><p>This page has moved to <a href="%s">%s</a>.</p></body></html>') % (target, target, json.dumps(target), target, target)
+            write(src + "/index.html", html_)
     write("_headers", "/*\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: SAMEORIGIN\n  Referrer-Policy: strict-origin-when-cross-origin\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n")
     print("Built %d pages -> %s" % (len(pages) + 1, DIST))
 

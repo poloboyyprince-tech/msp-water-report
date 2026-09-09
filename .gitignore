@@ -17,3 +17,6 @@ MSP-Pure-Water-Training-Hub.html
 
 # Captured leads (runtime data — never commit)
 output/leads.json
+
+# production build lives in its own repo (msppurewaterco.com)
+msp-pure-water-v2/dist-prod/

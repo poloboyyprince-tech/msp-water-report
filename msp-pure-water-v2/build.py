@@ -101,7 +101,7 @@ def header(over_hero=False):
 def footer():
     cities = " ".join('<a href="/service-areas/%s/">Water Filtration %s</a>' % (c["slug"], e(c["city"])) for c in FOOTER_CITIES) + ' <a href="/service-areas/">+ %d more cities</a>' % (len(CITIES) - len(FOOTER_CITIES))
     return ('<footer class="footer"><div class="container"><div class="footer-grid"><div>%s<p style="margin-top:1rem;max-width:36ch">Whole-home filtration, softening, well-water treatment and reverse osmosis for the Twin Cities and Greater Minnesota.</p>'
-      '<a class="fphone" href="tel:%s" style="text-decoration:none;display:block">%s</a><p>%s &middot; Call or text<br>%s</p><p><a href="mailto:%s">%s</a></p></div>'
+      '<a class="fphone" href="tel:%s" style="text-decoration:none;display:block">%s</a><div class="frating"><span class="stars" aria-hidden="true">★★★★★</span> <a href="' + SITE["google_reviews_url"] + '" target="_blank" rel="noopener">' + SITE["rating_line"] + '</a></div><p>%s &middot; Call or text<br>%s</p><p><a href="mailto:%s">%s</a></p></div>'
       '<div><h4>Systems</h4><ul><li><a href="/city-water-filtration/">City Water Systems</a></li><li><a href="/well-water-filtration/">Well Water Systems</a></li><li><a href="/reverse-osmosis/">Reverse Osmosis</a></li><li><a href="/compare-systems/">Compare Systems</a></li><li><a href="/pricing/">Pricing</a></li></ul></div>'
       '<div><h4>Learn</h4><ul>%s<li><a href="/faq/">FAQ</a></li></ul></div>'
       '<div><h4>Company</h4><ul><li><a href="/about/">About &amp; Why MSP</a></li><li><a href="/best-price-guarantee/">Best Price Guarantee</a></li><li><a href="/service-areas/">Service Areas</a></li><li><a href="/schedule/">Schedule Online</a></li><li><a href="/find-my-system/">Find My System</a></li><li><a href="/contact/">Contact</a></li></ul></div></div>'
@@ -180,6 +180,23 @@ def rebase(s):
     return s.replace('<meta charset="utf-8">', '<meta charset="utf-8"><meta name="robots" content="noindex,nofollow">')
 
 # ---------------------------------------------------------------- components
+def price_html(s, small="installed", cls="price"):
+    """Promo price with the regular price struck through and the saving."""
+    pre = s.get("price_prefix", "")
+    was = s.get("list_price")
+    inner = ('<s class="was">%s%s</s>' % (pre, money(was)) if was else "") + pre + money(s["price"]) + ('<small>%s</small>' % small if small else "")
+    save = '<span class="save">Save %s</span>' % money(was - s["price"]) if was else ""
+    return '<div class="%s">%s</div>%s' % (cls, inner, save)
+
+def review_bar(i=0):
+    r = REVIEWS["testimonials"][i % len(REVIEWS["testimonials"])]
+    return ('<div class="review-bar"><a class="rb-rating" href="%s" target="_blank" rel="noopener"><span class="g">G</span><span class="stars" aria-hidden="true">★★★★★</span><b>%s</b></a>'
+            '<q>%s</q><span class="rb-name">%s, %s</span><a class="link rb-more" href="/#reviews">More reviews</a></div>') % (SITE["google_reviews_url"], SITE["rating_line"], e(r["quote"]), e(r["name"]), e(r["meta"]))
+
+def review_mini(i=0):
+    r = REVIEWS["testimonials"][i % len(REVIEWS["testimonials"])]
+    return '<div class="review-mini"><span class="stars" aria-hidden="true">★★★★★</span><q>%s</q><span>%s</span></div>' % (e(r["quote"]), e(r["name"]))
+
 def rating_badge(dark=True):
     return ('<a class="rating" href="%s" target="_blank" rel="noopener" style="text-decoration:none"><span class="g">G</span><span class="stars" aria-hidden="true">★★★★★</span><span>%s</span></a>') % (SITE["google_reviews_url"], SITE["rating_line"])
 
@@ -188,7 +205,8 @@ def phero(kicker, h1, lead, crumbs=None, subnav=None, extra=""):
     sn = ('<div class="subnav">' + "".join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if cur else "", l) for l, h, cur in subnav) + "</div>") if subnav else ""
     if extra: sn += '<div class="pill-row">%s</div>' % extra; extra = ""
     media = ('<div class="phero-media" aria-hidden="true"><video autoplay muted loop playsinline preload="metadata" poster="/assets/img/hero-poster.jpg" tabindex="-1"><source src="/assets/video/hero-mobile.mp4" type="video/mp4"></video></div>' if HAS_VIDEO else '<div class="phero-media" aria-hidden="true"><img src="/assets/img/hero-poster.jpg" alt=""></div>')
-    return '<section class="phero">%s<div class="container"><div class="grid-hero"><div>%s<p class="kicker">%s</p><h1>%s</h1><p class="lead">%s</p>%s</div><div>%s</div></div></div></section>' % (media, c, kicker, h1, lead, sn, extra)
+    return ('<section class="phero">%s<div class="container"><div class="grid-hero"><div>%s<p class="kicker">%s</p><h1>%s</h1><p class="lead">%s</p>%s</div><div>%s</div></div></div></section>' % (media, c, kicker, h1, lead, sn, extra)
+            + '<div class="review-bar-wrap"><div class="container">%s</div></div>' % review_bar(sum(ord(ch) for ch in h1)))
 
 def hero():
     video = ""
@@ -206,7 +224,7 @@ def hero():
       '<div class="hero-meta reveal reveal-d3">%s<a href="tel:%s">%s %s</a><span>Open 24 hours</span></div></div>'
       '<div class="hero-side reveal reveal-d2"><div class="stat"><b>%s</b><span>Whole-home systems from</span></div><div class="stat"><b>28 GPM</b><span>Whole-home flow rate</span></div><div class="stat"><b>48,000</b><span>Grain softening capacity</span></div></div></section>'
       '<div class="trust"><div class="container trust-inner"><span>%s Five-star rated on Google</span><span>%s Free phone consultation</span><span>%s Best Price Guarantee</span><span>%s Professional installation</span><span>%s Twin Cities &amp; Greater Minnesota</span></div></div>') % (
-        video, '<button class="video-toggle" type="button">Pause video</button>' if HAS_VIDEO else "", ICON["arrow"], rating_badge(), TEL, ICON["phone"], PHONE, money(2999),
+        video, '<button class="video-toggle" type="button">Pause video</button>' if HAS_VIDEO else "", ICON["arrow"], rating_badge(), TEL, ICON["phone"], PHONE, '<s style="opacity:.6;font-size:.7em;margin-right:.3em">%s</s>%s' % (money(4999), money(2999)),
         ICON["star"], ICON["phone"], ICON["tag"], ICON["wrench"], ICON["pin"])
 
 def source_cards():
@@ -240,9 +258,9 @@ def system_card(s, compact=False):
     incl = "".join("<li>%s<span>%s</span></li>" % (ICON["check"], e(i)) for i in s["included"][:3])
     promo = ('<div class="promo-line">%s RO drinking system included</div>' % ICON["drop"] if s["category"] in ("city", "well") else "") + ('<div class="promo-line nsf-line">%s Every component NSF certified</div>' % ICON["shield"] if s.get("nsf") else "")
     return ('<article class="syscard reveal" id="%s"><div class="syscard-media"><img src="/assets/img/%s" srcset="/assets/img/%s 640w, /assets/img/%s 1024w" sizes="(max-width:640px) 90vw, 400px" width="1024" height="1280" loading="lazy" alt="%s"></div>'
-            '<div class="syscard-body">%s<h3>%s</h3><div class="price">%s%s<small>installed</small></div>%s<p class="for">%s</p><ul class="tags">%s</ul><ul class="incl">%s</ul>'
+            '<div class="syscard-body">%s<h3>%s</h3>%s%s<p class="for">%s</p><ul class="tags">%s</ul><ul class="incl">%s</ul>'
             '<div class="syscard-actions"><a class="btn btn-gold" href="/schedule/?system=%s" data-intake=\'%s\' data-intake-via="system_card">Schedule</a><a class="btn btn-outline on-light" href="%s">%s</a></div></div></article>') % (
-        s["id"] + ("-card" if compact else ""), img, img640, img, e(s["image_alt"]), badge, e(s["name"]), pre, money(s["price"]), promo, e(s["for"]),
+        s["id"] + ("-card" if compact else ""), img, img640, img, e(s["image_alt"]), badge, e(s["name"]), price_html(s), promo, e(s["for"]),
         "".join("<li>%s</li>" % e(p) for p in s["problems"]), incl, s["id"], json.dumps({"system_interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")}),
         sys_href(s), "Configure")
 
@@ -252,7 +270,7 @@ def systems_home():
         if c["id"] == "addon": continue
         blocks += '<div style="margin-bottom:3rem"><div class="grid grid-2" style="align-items:end;margin-bottom:1.25rem"><h3 style="margin:0">%s</h3><p class="muted" style="margin:0">%s</p></div><div class="grid grid-3">%s</div></div>' % (
             e(c["label"]), e(c["intro"]), "".join(system_card(s, compact=True) for s in BY_CAT[c["id"]]))
-    addons = "".join('<div class="pricing-row"><div><b>%s</b><small>%s</small></div><div class="price" style="font-size:1.6rem">+%s</div><a class="btn btn-sm btn-outline on-light" href="/well-water-filtration/#%s">Details</a></div>' % (e(s["name"]), e(s["for"]), money(s["price"]), s["id"]) for s in BY_CAT["addon"])
+    addons = "".join('<div class="pricing-row"><div><b>%s</b><small>%s</small></div>%s<a class="btn btn-sm btn-outline on-light" href="/well-water-filtration/#%s">Details</a></div>' % (e(s["name"]), e(s["for"]), price_html(s, small="", cls="price price-sm"), s["id"]) for s in BY_CAT["addon"])
     return ('<section class="section" id="pricing" data-view-event="pricing_viewed"><div class="container"><div class="grid grid-2" style="align-items:end;margin-bottom:2.5rem"><div><p class="kicker">Systems &amp; transparent pricing</p><h2>Know what you\'re buying before anyone enters your home.</h2></div><p class="lead">Every price is published. No quote games, no three-hour presentation. %s</p></div>%s'
             '<div style="max-width:820px"><h3>Optional add-ons</h3>%s</div><p style="margin-top:1.5rem" class="muted">%s %s</p><div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-navy" href="/pricing/">Full pricing</a><a class="btn btn-outline on-light" href="/compare-systems/">Compare systems side by side</a></div></div></section>') % (
         e(SYS["promo"]["ro_included"]), blocks, addons, e(SYS["promo"]["financing"]), e(SYS["promo"]["travel"]))
@@ -297,7 +315,7 @@ def process():
 
 def reviews():
     cards = "".join('<article class="review reveal"><blockquote>%s</blockquote><footer><b>%s</b> &middot; %s</footer></article>' % (e(r["quote"]), e(r["name"]), e(r["meta"])) for r in REVIEWS["testimonials"])
-    return ('<section class="section cream" id="reviews"><div class="container"><p class="kicker">What homeowners say</p><div class="grid grid-2" style="align-items:end;margin-bottom:2rem"><h2>Twin Cities homeowners agree.</h2><div class="rating-card"><div class="big">%s</div><div class="stars" aria-hidden="true">★★★★★</div><small>Five stars on Google &middot; <a href="%s" target="_blank" rel="noopener" style="color:#fff">Read our reviews</a></small></div></div><div class="reviews">%s</div></div></section>') % (
+    return ('<section id="reviews" class="section cream"><div class="container"><p class="kicker">What homeowners say</p><div class="grid grid-2" style="align-items:end;margin-bottom:2rem"><h2>Twin Cities homeowners agree.</h2><div class="rating-card"><div class="big">%s</div><div class="stars" aria-hidden="true">★★★★★</div><small>Five stars on Google &middot; <a href="%s" target="_blank" rel="noopener" style="color:#fff">Read our reviews</a></small></div></div><div class="reviews">%s</div></div></section>') % (
         SITE["google_rating"], SITE["google_reviews_url"], cards)
 
 def minnesota():
@@ -331,7 +349,7 @@ def marquee():
 
 # ---------------------------------------------------------------- pages
 def home():
-    body = hero() + source_cards() + explorer() + systems_home() + best_price() + approach() + before_after() + why() + process() + reviews() + minnesota() + service_area_block() + faq_block(FAQ[:6]) + final_cta()
+    body = hero() + reviews() + source_cards() + explorer() + systems_home() + best_price() + approach() + before_after() + why() + process() + minnesota() + service_area_block() + faq_block(FAQ[:6]) + final_cta()
     return page("", "Water Filtration, Softening & Reverse Osmosis | Twin Cities | MSP Pure Water", SITE["description"], body, over_hero=True)
 
 def sysdetail(s):
@@ -347,7 +365,7 @@ def sysdetail(s):
             '%s<h2 style="font-size:clamp(1.9rem,3.4vw,2.8rem)">%s</h2><div class="price" style="margin-bottom:1rem">%s%s<small>installed</small></div><p class="lead">%s</p><ul class="tags" style="margin-bottom:1.5rem">%s</ul>%s%s'
             '<div class="detail-block"><h4>Verified specifications</h4>%s</div><div class="detail-block"><h4>What\'s included</h4><ul class="incl">%s</ul>%s</div>'
             '<div class="detail-block" style="display:flex;gap:.75rem;flex-wrap:wrap"><a class="btn btn-gold btn-lg" href="%s" data-intake=\'%s\'>Configure &amp; schedule</a><a class="btn btn-outline on-light btn-lg" href="/compare-systems/">Compare</a><a class="btn btn-outline on-light btn-lg" href="/find-my-system/">Not sure? Find my system</a></div></div></article>') % (
-        s["id"], img, e(s["image_alt"]), badge, e(s["name"]), s.get("price_prefix", ""), money(s["price"]), e(s["for"]), "".join("<li>%s</li>" % e(p) for p in s["problems"]), note, stages, specs, incl, warranty, sys_href(s), intake)
+        s["id"], img, e(s["image_alt"]), badge, e(s["name"]), price_html(s), e(s["for"]), "".join("<li>%s</li>" % e(p) for p in s["problems"]), note, stages, specs, incl, warranty, sys_href(s), intake)
 
 SYS_SUBNAV = lambda cur: [("City Water", "/city-water-filtration/", cur == "city"), ("Well Water", "/well-water-filtration/", cur == "well"), ("Drinking Water / RO", "/reverse-osmosis/", cur == "ro"), ("Compare", "/compare-systems/", cur == "compare"), ("Pricing", "/pricing/", cur == "pricing")]
 
@@ -394,7 +412,7 @@ def compare_page():
     yes = '<span class="yes">%s Yes</span>' % ICON["check"]; no = '<span class="no">—</span>'
     tbl = ('<table class="compare"><thead><tr><th>Compare</th>%s</tr></thead><tbody>' % "".join("<th>%s</th>" % e(s["short"]) for s in cols) +
         row("Water source", lambda s: "City water" if s["category"] == "city" else "Well water") +
-        row("Installed price", lambda s: '<span class="cprice">%s</span>' % money(s["price"])) +
+        row("Installed price", lambda s: '<span class="cprice"><s class="was">%s</s> %s</span>' % (money(s["list_price"]), money(s["price"]))) +
         row("Softens (ion exchange)", lambda s: yes if s["id"] != "salt-free" else '<span class="no">Salt-free conditioning only</span>') +
         row("Chlorine / chloramine", lambda s: yes if s["category"] == "city" else '<span class="no">Not typical on wells</span>') +
         row("Iron, sulfur, manganese", lambda s: yes if s["category"] == "well" else no) +
@@ -415,8 +433,8 @@ def pricing_page():
     body = phero("No mystery pricing", "See every price before you schedule.", "No in-home presentation required to find out what the equipment costs. " + SYS["promo"]["ro_included"], crumbs="Pricing", subnav=SYS_SUBNAV("pricing"))
     body += '<section class="section" data-view-event="pricing_viewed"><div class="container">'
     for c in SYS["categories"]:
-        rows = "".join('<div class="pricing-row"><div><b>%s</b>%s<small>%s</small></div><div class="price">%s%s</div><a class="btn btn-sm btn-navy" href="/schedule/?system=%s">Schedule</a></div>' % (
-            e(s["name"]), ' <span class="badge" style="position:static;display:inline-block;margin-left:.5rem">%s</span>' % e(s["badge"]) if s.get("badge") and c["id"] != "ro" else "", e(s["for"]), s.get("price_prefix", ""), money(s["price"]), s["id"]) for s in BY_CAT[c["id"]]).replace('href="/schedule/?system=', 'href="/systems/').replace('">Schedule</a>', '/">Configure</a>')
+        rows = "".join('<div class="pricing-row"><div><b>%s</b>%s<small>%s</small></div>%s<a class="btn btn-sm btn-navy" href="/schedule/?system=%s">Schedule</a></div>' % (
+            e(s["name"]), ' <span class="badge" style="position:static;display:inline-block;margin-left:.5rem">%s</span>' % e(s["badge"]) if s.get("badge") and c["id"] != "ro" else "", e(s["for"]), price_html(s, small=""), s["id"]) for s in BY_CAT[c["id"]]).replace('href="/schedule/?system=', 'href="/systems/').replace('">Schedule</a>', '/">Configure</a>')
         body += '<div class="pricing-cat"><header><h2 style="margin:0">%s</h2><p>%s</p></header>%s<p style="margin-top:1rem"><a class="link" href="%s">Explore %s</a></p></div>' % (e(c["label"]), e(c["intro"]), rows, {"city": "/city-water-filtration/", "well": "/well-water-filtration/", "ro": "/reverse-osmosis/", "addon": "/well-water-filtration/#add-ons"}[c["id"]], e(c["label"].lower()))
     body += '<p class="note">%s %s</p></div></section>' % (e(SYS["promo"]["financing"]), e(SYS["promo"]["travel"]))
     body += best_price() + faq_block([q for q in FAQ if "cost" in q["q"].lower() or "guarantee" in q["q"].lower() or "warranty" in q["q"].lower()]) + final_cta()
@@ -433,7 +451,7 @@ def problem_page(p):
     others = [q for q in PROBLEMS if q.get("page") and q["id"] != p["id"]]
     body = phero(p["tag"] + " water", p["label"] if p["id"] != "chlorine-chloramine" else "Chlorine & Chloramine", p["cause"], crumbs='<a href="/water-problems/">Water Problems</a>')
     body += ('<section class="section"><div class="container two-col"><div><p class="kicker">How MSP approaches it</p><h2>The correct treatment, not a generic box.</h2><p class="lead">%s</p><div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-gold btn-lg" href="/find-my-system/" data-intake=\'%s\' data-intake-via="problem_page">Find my system</a><a class="btn btn-outline on-light btn-lg" href="/schedule/">Schedule online</a></div></div>'
-             '<div class="founder"><p class="kicker">Which system category may apply</p>%s</div></div></section>') % (e(p["approach"]), json.dumps({"water_problems": [p["label"]], "system_interest": p["interest"]}), "".join('<a href="%s" style="color:#fff;text-decoration:none;display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line-dark)"><b>%s</b><span class="serif" style="font-size:1.3rem;color:var(--gold-300)">%s%s</span></a>' % (sys_href(s), e(s["name"]), s.get("price_prefix", ""), money(s["price"])) for s in systems))
+             '<div class="founder"><p class="kicker">Which system category may apply</p>%s</div></div></section>') % (e(p["approach"]), json.dumps({"water_problems": [p["label"]], "system_interest": p["interest"]}), "".join('<a href="%s" style="color:#fff;text-decoration:none;display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line-dark)"><b>%s</b><span class="serif" style="font-size:1.3rem;color:var(--gold-300)"><s style="opacity:.55;font-size:.9rem;margin-right:.4rem">%s</s>%s%s</span></a>' % (sys_href(s), e(s["name"]), money(s["list_price"]), s.get("price_prefix", ""), money(s["price"])) for s in systems))
     body += '<section class="section cream"><div class="container"><p class="kicker">Systems for this problem</p><div class="grid grid-3">%s</div></div></section>' % "".join(system_card(s) for s in systems[:3])
     body += '<section class="section"><div class="container"><p class="kicker">Other problems</p><ul class="chips">%s</ul></div></section>' % "".join('<li><a class="chip" href="/water-problems/%s/" style="text-decoration:none;display:inline-block">%s</a></li>' % (q["id"], e(q["nav"])) for q in others)
     body += final_cta()
@@ -450,14 +468,14 @@ def configurator(s):
         else:
             groups += '<div class="cfg-group"><label class="opt"><span class="lab"><input type="checkbox" name="cfg-%s"%s> %s%s</span><span class="add">+%s</span></label></div>' % (
                 g["key"], " checked" if g.get("rec") else "", e(g["label"]), ' <span class="rec">Recommended</span>' if g.get("rec") else "", money(g["add"]))
-    cfg = {"id": s["id"], "name": s["short"], "price": s["price"], "options": s.get("options", []), "interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")}
+    cfg = {"id": s["id"], "name": s["short"], "price": s["price"], "list": s.get("list_price", 0), "options": s.get("options", []), "interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")}
     incl = "".join("<li>%s<span>%s</span></li>" % (ICON["check"], e(i)) for i in s["included"])
-    return ('<div class="buybox" data-configurator><script type="application/json">%s</script>%s<h1>%s</h1><div class="price">%s%s<small>installed</small></div>%s<p class="fine">%s</p>%s'
+    return ('<div class="buybox" data-configurator><script type="application/json">%s</script>%s<h1>%s</h1>%s%s<p class="fine">%s</p>%s'
             '<ul class="incl">%s</ul><div class="total"><div><b data-total>%s</b><div style="font-size:.8rem;color:var(--muted)" data-config-line></div></div><span>installed price</span></div>'
             '<div class="cta"><a class="btn btn-gold btn-lg btn-block" href="/schedule/?system=%s" data-cta>Schedule installation</a><a class="btn btn-outline on-light btn-block" href="/find-my-system/">Not sure? Find my system</a></div>'
             '<div class="trust-mini"><span>%s No deposit</span><span>%s Best Price Guarantee</span><span>%s Phone consultation first</span></div>'
             '<p class="fine">%s</p></div>') % (
-        json.dumps(cfg).replace("</", "<\\/"), '<span class="badge" style="position:static;display:inline-block">%s</span>' % e(s["badge"]) if s.get("badge") else "", e(s["name"]), s.get("price_prefix", ""), money(s["price"]), nsf_badge(True) if s.get("nsf") else "", e(s["for"]), groups, incl, money(s["price"]), s["id"],
+        json.dumps(cfg).replace("</", "<\\/"), '<span class="badge" style="position:static;display:inline-block">%s</span>' % e(s["badge"]) if s.get("badge") else "", e(s["name"]), price_html(s), nsf_badge(True) if s.get("nsf") else "", e(s["for"]), groups, incl, money(s["price"]), s["id"],
         ICON["check"], ICON["tag"], ICON["phone"], e(SYS["promo"]["financing"] + " " + SYS["promo"]["travel"]))
 
 def slide(s, i, n):
@@ -466,12 +484,12 @@ def slide(s, i, n):
     badge = '<span class="badge">%s</span>' % e(s["badge"]) if s.get("badge") else ""
     intake = json.dumps({"system_interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")})
     return ('<article class="slide" id="%s" data-active="%s" role="tabpanel" aria-label="%s"><div class="slide-media"><img src="/assets/img/%s" srcset="/assets/img/%s 640w, /assets/img/%s 1024w" sizes="(max-width:860px) 90vw, 560px" width="1024" height="1280" loading="%s" alt="%s"></div>'
-            '<div class="slide-body"><div>%s<h3>%s</h3><div class="price">%s%s<small>installed</small></div><div class="pills">%s</div></div><p style="margin:0;color:var(--muted)">%s</p><ul class="tags">%s</ul>'
+            '<div class="slide-body"><div>%s<h3>%s</h3>%s<div class="pills">%s</div></div><p style="margin:0;color:var(--muted)">%s</p><ul class="tags">%s</ul>'
             '<div class="slide-cols"><div><h4>Why it leads the industry</h4>%s</div><div><h4>Verified specifications</h4>%s</div></div>'
             '<div class="slide-actions"><a class="btn btn-gold" href="%s" data-intake=\'%s\'>Configure &amp; schedule</a><a class="btn btn-outline on-light" href="%s">Full details</a>%s</div></div>'
             '<div class="slide-steps"><h4>How it works</h4>%s</div></article>') % (
         s["id"], "true" if i == 0 else "false", e(s["name"]), s["image"], s["image"].replace(".webp", "-640.webp"), s["image"], "eager" if i == 0 else "lazy", e(s["image_alt"]),
-        badge, e(s["name"]), s.get("price_prefix", ""), money(s["price"]), nsf_badge(True) if s.get("nsf") else "", e(s.get("what_it_does") or s["for"]), "".join("<li>%s</li>" % e(p) for p in s["problems"]), leads_list(s), specs, sys_href(s), intake, sys_href(s),
+        badge, e(s["name"]), price_html(s), nsf_badge(True) if s.get("nsf") else "", e(s.get("what_it_does") or s["for"]), "".join("<li>%s</li>" % e(p) for p in s["problems"]), leads_list(s), specs, sys_href(s), intake, sys_href(s),
         '<span class="promo-line">%s RO drinking system included</span>' % ICON["drop"] if s["category"] in ("city", "well") else "", stages)
 
 def carousel(systems, label):
@@ -511,7 +529,7 @@ def product_page(s):
         else:
             groups += '<div class="cfg-group" data-group><span>%s <em data-choice>— %s</em></span><div class="chips"><label class="chipopt"><input type="checkbox" name="cfg-%s"%s><span>%s +%s</span></label></div></div>' % (
                 e(g["label"]), "Yes" if g.get("rec") else "No", g["key"], " checked" if g.get("rec") else "", "Add" if not g.get("rec") else "Included in quote", money(g["add"]))
-    cfg = {"id": s["id"], "name": s["short"], "price": s["price"], "options": s.get("options", []), "interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")}
+    cfg = {"id": s["id"], "name": s["short"], "price": s["price"], "list": s.get("list_price", 0), "options": s.get("options", []), "interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")}
     trust = '<ul class="trust-row"><li>%s<span>Best Price Guarantee</span></li><li>%s<span>Professional install</span></li><li>%s<span>NSF certified components</span></li><li>%s<span>Lifetime warranty</span></li></ul>' % (ICON["tag"], ICON["wrench"], NSF_ICON, ICON["shield"])
     desc_lines = "".join("<p><b>%s:</b> %s</p>" % (e(a), e(b)) for a, b in s.get("description_lines", []))
     spec_line = " | ".join("%s %s" % (v, k.lower()) for k, v in s["specs"][:5]) if s["specs"] else ""
@@ -519,9 +537,9 @@ def product_page(s):
                   '<details><summary>Installation &amp; Scheduling %s</summary><div class="acc-body"><p>Pick a time online and we call you for a free phone consultation. We confirm your selections, your water and every detail, then set an installation date. Most whole-home systems are installed in a single visit, connected to your main water line, configured for your water and walked through with you before we leave. In-home presentations are available on request. %s</p></div></details>'
                   '<details><summary>Warranty &amp; Guarantee %s</summary><div class="acc-body"><p>%s We go through the exact terms with you on the phone before anything is installed. Best Price Guarantee: find a lower quote on comparable equipment and installation and we\'ll beat it, with priority booking.</p></div></details></div>') % (
         ICON["chev"], e(s.get("what_it_does") or s["for"]), desc_lines, ('<p class="spec-line"><b>Specs:</b> %s</p>' % e(spec_line)) if spec_line else "", ICON["chev"], e(SYS["promo"]["travel"]), ICON["chev"], ("Lifetime warranty on the system." if s.get("warranty") else "Warranty details reviewed at your consultation."))
-    buy = ('<div class="buy" data-configurator><script type="application/json">%s</script><h1>%s</h1><div class="pills">%s</div><div class="price">%s%s</div><div class="price-note">Professional installation included</div>%s'
-           '<a class="btn btn-gold btn-lg btn-block" href="/schedule/?system=%s" data-cta>Schedule Online</a><p class="or">or call or text <a href="tel:%s">%s</a></p><p class="fine center">We\'ll confirm your selections and every detail before your install date.</p>%s%s</div>') % (
-        json.dumps(cfg).replace("</", "<\\/"), e(s["name"]), pills, s.get("price_prefix", ""), money(s["price"]), groups, s["id"], TEL, PHONE, trust, accordions)
+    buy = ('<div class="buy" data-configurator><script type="application/json">%s</script><h1>%s</h1><div class="pills">%s</div>%s<div class="price-note">Professional installation included</div>%s'
+           '<a class="btn btn-gold btn-lg btn-block" href="/schedule/?system=%s" data-cta>Schedule Online</a><p class="or">or call or text <a href="tel:%s">%s</a></p><p class="fine center">We\'ll confirm your selections and every detail before your install date.</p>' + review_mini(2) + '%s%s</div>') % (
+        json.dumps(cfg).replace("</", "<\\/"), e(s["name"]), pills, price_html(s, small="installed", cls="price price-cfg"), groups, s["id"], TEL, PHONE, trust, accordions)
     hero = ('<section class="section-tight"><div class="container"><div class="crumbs" style="font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem"><a href="/">Home</a> / <a href="%s">%s systems</a> / %s</div>'
             '<div class="pdp"><div class="pdp-media"><img src="/assets/img/%s" width="1024" height="1024" alt="%s" fetchpriority="high"></div>%s</div></div></section>') % (cat_link, cat, e(s["short"]), s["image"], e(s["image_alt"]), buy)
     # Inside the system stepper
@@ -572,7 +590,7 @@ def city_page_for(c):
     body += ('<section class="section"><div class="container two-col"><div><p class="kicker">Local, transparent, professional</p><h2>Systems for %s homes, priced up front.</h2><p>Whether your %s home is on municipal water or a private well, we start with the water problem and match the equipment to it. Every system price is published, the reverse osmosis drinking-water system is included, and you can book an appointment online.</p>'
              '<p>Want to know exactly what\'s in your water? City customers can request the annual Consumer Confidence Report from their water utility; well owners should have a current water test. We go over either one with you on the phone.</p>'
              '<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System</a><a class="btn btn-outline on-light btn-lg" href="/schedule/">Schedule Online</a></div></div>'
-             '<div class="founder"><p class="kicker">Popular in %s</p>%s</div></div></section>') % (e(name), e(name), e(name), "".join('<a href="%s" style="color:#fff;text-decoration:none;display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line-dark)"><b>%s</b><span class="serif" style="font-size:1.3rem;color:var(--gold-300)">%s</span></a>' % (sys_href(s), e(s["short"]), money(s["price"])) for s in [SYSTEMS["whole-home-softener"], SYSTEMS["dual-tank-well"], SYSTEMS["ro-tankless"]]))
+             '<div class="founder"><p class="kicker">Popular in %s</p>%s</div></div></section>') % (e(name), e(name), e(name), "".join('<a href="%s" style="color:#fff;text-decoration:none;display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line-dark)"><b>%s</b><span class="serif" style="font-size:1.3rem;color:var(--gold-300)"><s style="opacity:.55;font-size:.9rem;margin-right:.4rem">%s</s>%s</span></a>' % (sys_href(s), e(s["short"]), money(s["list_price"]), money(s["price"])) for s in [SYSTEMS["whole-home-softener"], SYSTEMS["dual-tank-well"], SYSTEMS["ro-tankless"]]))
     body += '<section class="section cream"><div class="container"><div class="grid grid-3">%s</div></div></section>' % "".join(system_card(SYSTEMS[i]) for i in ["whole-home-softener", "dual-tank-well", "ro-tankless"])
     if nearby: body += '<section class="section"><div class="container"><p class="kicker">Nearby</p><ul class="chips">%s</ul></div></section>' % "".join('<li><a class="chip" style="text-decoration:none;display:inline-block" href="/service-areas/%s/">%s</a></li>' % (x["slug"], e(x["city"])) for x in nearby)
     body += final_cta()

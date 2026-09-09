@@ -738,3 +738,33 @@ body.page-leave{opacity:0;transition:opacity .18s ease-in}
   .buy .btn-block,.slide-actions .btn,.hero-actions .btn,.final-actions .btn{white-space:normal}
   .cfg-group .opt{flex-wrap:wrap}
 }
+
+/* Was / now pricing */
+.price .was{font-size:.55em;color:var(--muted);text-decoration:line-through;margin-right:.45em;font-weight:500;vertical-align:.2em}
+.save{display:inline-flex;align-items:center;background:var(--gold);color:var(--navy-900);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.3rem .65rem;border-radius:999px;line-height:1;margin:.25rem 0 .5rem}
+.dark .price .was{color:rgba(255,255,255,.55)}
+.compare .cprice .was{font-size:.75em;color:var(--muted);margin-right:.35em}
+.price-sm{font-size:1.6rem}
+.pricing-row .save{margin:0}
+.pricing-row>div:nth-child(2){display:grid;justify-items:end;gap:.2rem}
+/* Reviews everywhere */
+.review-bar-wrap{background:var(--cream);border-bottom:1px solid var(--line)}
+.review-bar{display:flex;align-items:center;gap:1.25rem;padding:.8rem 0;font-size:.92rem;flex-wrap:wrap}
+.review-bar .rb-rating{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;color:var(--ink);font-weight:700;white-space:nowrap}
+.review-bar .rb-rating .g{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--navy-900);color:#fff;font-weight:800;font-size:.72rem;font-family:Arial,sans-serif}
+.review-bar .stars{color:var(--gold-600);font-size:.85rem}
+.review-bar q{font-family:var(--font-display);font-size:1.05rem;font-weight:500;color:var(--ink);flex:1;min-width:0}
+.review-bar q::before,.review-bar q::after{color:var(--gold-600)}
+.review-bar .rb-name{color:var(--muted);font-size:.85rem;white-space:nowrap}
+.review-bar .rb-more{font-size:.85rem;white-space:nowrap}
+@media (max-width:640px){.review-bar{gap:.5rem .9rem}.review-bar q{flex-basis:100%;font-size:1rem}.review-bar .rb-more{margin-left:auto}}
+.review-mini{display:grid;gap:.25rem;border-top:1px solid var(--line);padding-top:.8rem;margin-top:.6rem;font-size:.88rem}
+.review-mini .stars{color:var(--gold-600);font-size:.8rem;letter-spacing:.06em}
+.review-mini q{font-family:var(--font-display);font-size:1.02rem;color:var(--ink)}
+.review-mini span:last-child{color:var(--muted);font-size:.8rem}
+.frating{margin-top:.35rem;font-size:.9rem}.frating .stars{color:var(--gold-300);letter-spacing:.06em}
+
+.hero-meta svg,.hero-meta a svg{width:16px;height:16px;flex:none}
+.frating a{text-decoration:none}
+
+.save{width:max-content;justify-self:start;align-self:flex-start}

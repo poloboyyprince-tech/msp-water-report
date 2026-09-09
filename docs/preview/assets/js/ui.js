@@ -136,17 +136,20 @@
     var totalEl = box.querySelector("[data-total]"), cta = box.querySelector("[data-cta]"), lineEl = box.querySelector("[data-config-line]");
     function money(n) { return "$" + n.toLocaleString("en-US"); }
     function state() {
-      var total = cfg.price, parts = [];
+      var total = cfg.price, list = cfg.list || 0, parts = [];
       cfg.options.forEach(function (g) {
-        if (g.type === "single") { var r = box.querySelector('input[name="cfg-' + g.key + '"]:checked'); if (r) { var c = g.choices[parseInt(r.value, 10)]; total += c.add; parts.push(c.label); } }
-        else { var cb = box.querySelector('input[name="cfg-' + g.key + '"]'); if (cb && cb.checked) { total += g.add; parts.push(g.label); } }
+        if (g.type === "single") { var r = box.querySelector('input[name="cfg-' + g.key + '"]:checked'); if (r) { var c = g.choices[parseInt(r.value, 10)]; total += c.add; list += (c.list_add || 0); parts.push(c.label); } }
+        else { var cb = box.querySelector('input[name="cfg-' + g.key + '"]'); if (cb && cb.checked) { total += g.add; list += (g.list_add || 0); parts.push(g.label); } }
       });
       /* MSP pricing rule: every installed total ends in 99 */
       total = Math.ceil((total + 1) / 100) * 100 - 1;
-      return { total: total, parts: parts, line: cfg.name + (parts.length ? " + " + parts.join(" + ") : "") + " — " + money(total) + " installed" };
+      if (list) list = Math.ceil((list + 1) / 100) * 100 - 1;
+      return { total: total, list: list, parts: parts, line: cfg.name + (parts.length ? " + " + parts.join(" + ") : "") + " — " + money(total) + " installed" };
     }
     function render() {
       var s = state(); if (totalEl) totalEl.textContent = money(s.total); if (lineEl) lineEl.textContent = s.parts.length ? s.parts.join(" · ") : "Standard configuration";
+      var was = box.querySelector(".price .was"), save = box.querySelector(".save"), cur = box.querySelector(".price");
+      if (cur && s.list) { var pre = cur.querySelector(".pre"); var smallEl = cur.querySelector("small"); cur.innerHTML = '<s class="was">' + money(s.list) + '</s>' + money(s.total) + (smallEl ? smallEl.outerHTML : ""); if (save) save.textContent = "Save " + money(s.list - s.total); }
       if (cta) { cta.setAttribute("href", "/preview/schedule/?system=" + encodeURIComponent(cfg.id)); cta.textContent = "Schedule Online · " + money(s.total); }
     }
     function remember() { var s = state(); if (window.MSPIntake) window.MSPIntake.setPreset({ system_interest: cfg.interest, water_source: cfg.water_source || "", system_id: cfg.id, system_config: s.line }); }

@@ -99,15 +99,16 @@ p{margin:0 0 1em} .lead{font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--muted
 @media (max-width:1120px){.nav{display:none}.burger{display:inline-flex}}
 @media (max-width:640px){.header-cta .btn{display:none}.brand img{height:44px}.brand-word{font-size:1.1rem}}
 /* Mobile menu */
-.mnav{position:fixed;top:0;left:0;width:100%;height:100vh;height:100dvh;z-index:80;background:var(--navy-900);color:#fff;padding:1.25rem var(--gutter) 6rem;overflow:auto;-webkit-overflow-scrolling:touch;display:none}
+.mnav{position:fixed;top:0;left:0;width:100%;height:100vh;height:100dvh;z-index:80;background:var(--navy-900);color:#fff;padding:0 var(--gutter) 6rem;overflow:auto;-webkit-overflow-scrolling:touch;display:none}
 .mnav[data-open="true"]{display:block}
-.mnav-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;position:sticky;top:-1.25rem;background:var(--navy-900);padding:.5rem 0;z-index:1}
+.mnav-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;position:sticky;top:0;background:var(--navy-900);padding:0;height:var(--header-h);z-index:1;border-bottom:1px solid var(--line-dark)}
 .mnav .x{padding:.6rem .8rem;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 .mnav a{display:block;padding:.85rem 0;text-decoration:none;font-size:1.25rem;font-family:var(--font-display);font-weight:600;border-bottom:1px solid var(--line-dark)}
 .mnav .mgroup{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-300);margin:1.5rem 0 .25rem;font-weight:700}
 .mnav .mgroup+a,.mnav .sublist a{font-family:var(--font-body);font-size:1rem;font-weight:500;padding:.65rem 0 .65rem .75rem;border-bottom:0}
 .mnav .mnav-actions{display:grid;gap:.75rem;margin-top:2rem}
-.mnav .x{background:none;border:1.5px solid currentColor;color:inherit;border-radius:var(--radius);padding:.5rem .7rem;cursor:pointer}
+.mnav .x{background:none;border:1.5px solid currentColor;color:#fff;border-radius:var(--radius);padding:.5rem .6rem;cursor:pointer;min-width:0;min-height:0}
+.mnav .x svg{width:22px;height:22px;display:block;stroke:#fff}
 
 /* Sticky mobile bar */
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:55;display:none;grid-template-columns:1fr 1fr;gap:1px;background:var(--navy-950);padding-bottom:env(safe-area-inset-bottom)}
@@ -775,3 +776,5 @@ s.was::after{content:"";position:absolute;left:-.1em;right:-.1em;top:50%;height:
 .hero-side .stat s::after,.founder s::after{content:"";position:absolute;left:-.1em;right:-.1em;top:50%;height:2px;background:currentColor;transform:translateY(-50%) rotate(-7deg)}
 
 @media (max-width:1120px){.header-inner{justify-content:space-between}.header-cta{margin-left:auto}.burger{margin-left:auto}}
+
+.mnav .brand{flex:none;flex-direction:row;align-items:center;gap:.8rem}.mnav .brand img{height:44px}.mnav .brand-word{white-space:nowrap;font-size:1.1rem}.mnav .brand-word small{display:none}

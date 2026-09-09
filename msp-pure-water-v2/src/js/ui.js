@@ -29,7 +29,7 @@
   var mnav = $(".mnav"), burger = $(".burger");
   if (mnav && burger) {
     var last;
-    function toggle(v) { mnav.setAttribute("data-open", v); burger.setAttribute("aria-expanded", v); document.body.style.overflow = v === "true" ? "hidden" : ""; if (v === "true") { last = document.activeElement; $(".mnav .x").focus(); } else if (last) last.focus(); }
+    function toggle(v) { if (v === "true") { var hd = $(".header"); var top = hd ? Math.max(0, Math.round(hd.getBoundingClientRect().top)) : 0; mnav.style.top = top + "px"; mnav.style.height = "calc(100dvh - " + top + "px)"; } mnav.setAttribute("data-open", v); burger.setAttribute("aria-expanded", v); document.documentElement.classList.toggle("menu-open", v === "true"); document.body.style.overflow = v === "true" ? "hidden" : ""; if (v === "true") { last = document.activeElement; $(".mnav .x").focus(); } else if (last) last.focus(); }
     burger.addEventListener("click", function () { toggle("true"); });
     $(".mnav .x").addEventListener("click", function () { toggle("false"); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && mnav.getAttribute("data-open") === "true") toggle("false"); });

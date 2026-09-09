@@ -248,3 +248,12 @@ flag is `false`, so `/schedule/` and `/thank-you/` show a "Call or text to sched
 prompt instead of the GHL booking widget. The calendar ID (`BNcToWKbTUgDdLhuc4cW`)
 and embed URL stay in the config; set `enabled: true` and rebuild to bring the
 booking widget back on every Schedule button.
+
+
+## 15. Chat widget / Conversation AI
+
+GHL → Sites → Chat Widget → your widget → **Get Code**. Paste the entire `<script>`
+snippet into `chat.embedHtml` in `ghl.config.js` (one line, quotes escaped) and rebuild.
+The widget loads about 1.5 s after the page finishes loading so it never affects the
+hero or Core Web Vitals. Conversation AI settings (the bot's knowledge, tone, when it
+hands off to you) live inside GHL and need no site changes.

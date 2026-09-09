@@ -81,6 +81,16 @@ window.MSP_GHL = {
   },
 
   /* -------------------------------------------------------------------
+     CHAT WIDGET / CONVERSATION AI (optional, site-wide)
+     GHL → Sites → Chat Widget → (widget) → Get Code. Paste the whole
+     <script …> snippet here. It loads after the page is interactive so it
+     never slows the first paint. Leave empty to show no chat bubble.
+     ------------------------------------------------------------------- */
+  chat: {
+    embedHtml: ""
+  },
+
+  /* -------------------------------------------------------------------
      CUSTOM FIELD MAPPING — payload key → GHL custom field key.
      Create these fields in GHL → Settings → Custom Fields (Contact).
      Keys are the GHL "unique key" (fieldKey). Adjust if you name them

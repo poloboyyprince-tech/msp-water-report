@@ -183,6 +183,17 @@
     return true;
   }
 
+  /* Site-wide chat widget (Conversation AI): injected after load, not on first paint */
+  function loadChat() {
+    var ch = (C.chat || {}); if (!set(ch.embedHtml)) return;
+    var wrap = document.createElement("div"); wrap.innerHTML = ch.embedHtml;
+    Array.prototype.slice.call(wrap.childNodes).forEach(function (n) {
+      if (n.tagName === "SCRIPT") { var sc = document.createElement("script"); Array.prototype.forEach.call(n.attributes, function (a) { sc.setAttribute(a.name, a.value); }); if (!n.src) sc.textContent = n.textContent; document.body.appendChild(sc); }
+      else document.body.appendChild(n);
+    });
+  }
+  if (document.readyState === "complete") setTimeout(loadChat, 1500); else window.addEventListener("load", function () { setTimeout(loadChat, 1500); });
+
   /* Developer readiness banner: only on localhost or with ?msp-debug=1 */
   function devBanner() {
     var show = /localhost|127\.0\.0\.1/.test(location.hostname) || (window.MSPTrack && window.MSPTrack.debug);

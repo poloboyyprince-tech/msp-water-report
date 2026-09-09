@@ -200,7 +200,7 @@
       if (cw && cw.shadowRoot) {
         if (!cw.shadowRoot.querySelector("#msp-chat-offset")) {
           var st = document.createElement("style"); st.id = "msp-chat-offset";
-          st.textContent = "@media (max-width:900px){#lc_text-widget,#lc_text-widget--btn,.lc_text-widget,.lc_text-widget--bubble,[class^=\"lc_text-widget\"][style*=\"position: fixed\"]{bottom:72px!important}}";
+          st.textContent = "@media (max-width:900px){#lc_text-widget,#lc_text-widget--btn,.lc_text-widget,.lc_text-widget--bubble,[class^=\"lc_text-widget\"][style*=\"position: fixed\"]{bottom:72px!important}} :host-context(html.menu-open) #lc_text-widget,:host-context(html.menu-open) #lc_text-widget--btn,:host-context(html.menu-open) .lc_text-widget{display:none!important}";
           cw.shadowRoot.appendChild(st);
         }
         clearInterval(timer);

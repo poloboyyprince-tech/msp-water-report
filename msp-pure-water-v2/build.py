@@ -125,7 +125,7 @@ def page(slug, title, desc, body, over_hero=False, schema=None, noindex=False, c
     jsonld = "".join('<script type="application/ld+json">%s</script>' % json.dumps(s, ensure_ascii=False) for s in ld)
     head = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
       '<title>%s</title><meta name="description" content="%s"><link rel="canonical" href="%s">%s'
-      '<meta property="og:type" content="website"><meta property="og:site_name" content="MSP Pure Water"><meta property="og:title" content="%s"><meta property="og:description" content="%s"><meta property="og:url" content="%s"><meta property="og:image" content="%s">'
+      '<meta property="og:type" content="website"><meta property="og:site_name" content="MSP Pure Water"><meta property="og:title" content="%s"><meta property="og:description" content="%s"><meta property="og:url" content="%s"><meta property="og:image" content="%s"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="MSP Pure Water">'
       '<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0B1426">'
       '<link rel="icon" href="/assets/img/favicon.png" type="image/png"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">'
       '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'

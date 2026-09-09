@@ -439,7 +439,7 @@ def pricing_page():
         body += '<div class="pricing-cat"><header><h2 style="margin:0">%s</h2><p>%s</p></header>%s<p style="margin-top:1rem"><a class="link" href="%s">Explore %s</a></p></div>' % (e(c["label"]), e(c["intro"]), rows, {"city": "/city-water-filtration/", "well": "/well-water-filtration/", "ro": "/reverse-osmosis/", "addon": "/well-water-filtration/#add-ons"}[c["id"]], e(c["label"].lower()))
     body += '<p class="note">%s %s</p></div></section>' % (e(SYS["promo"]["financing"]), e(SYS["promo"]["travel"]))
     body += best_price() + faq_block([q for q in FAQ if "cost" in q["q"].lower() or "guarantee" in q["q"].lower() or "warranty" in q["q"].lower()]) + final_cta()
-    return page("pricing", "Transparent Pricing for Water Filtration Systems | MSP Pure Water", "Every MSP Pure Water system price published: whole-home from $2,999, well systems from $4,499, reverse osmosis $799. RO included with every whole-home system.", body)
+    return page("pricing", "Transparent Pricing for Water Filtration Systems | MSP Pure Water", "Every MSP Pure Water system price published: whole-home from $2,999, well systems from $4,499, reverse osmosis from $799. RO included with every whole-home system.", body)
 
 def problems_hub():
     cards = "".join('<a class="source reveal" href="%s" data-intake=\'%s\' data-intake-via="problems_hub"><span class="num">%s</span><h3 style="font-size:1.5rem">%s</h3><p class="muted" style="margin:0">%s</p><span class="go">%s %s</span></a>' % (

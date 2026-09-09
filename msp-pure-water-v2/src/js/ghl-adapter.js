@@ -192,7 +192,23 @@
       else document.body.appendChild(n);
     });
   }
-  if (document.readyState === "complete") setTimeout(loadChat, 1500); else window.addEventListener("load", function () { setTimeout(loadChat, 1500); });
+  /* On phones the sticky Call/Schedule bar owns the bottom 56px; lift the GHL chat bubble above it.
+     The widget renders inside a shadow root, so the rule is injected there once it hydrates. */
+  function liftChatAboveBar() {
+    var tries = 0, timer = setInterval(function () {
+      tries++; var cw = document.querySelector("chat-widget");
+      if (cw && cw.shadowRoot) {
+        if (!cw.shadowRoot.querySelector("#msp-chat-offset")) {
+          var st = document.createElement("style"); st.id = "msp-chat-offset";
+          st.textContent = "@media (max-width:900px){#lc_text-widget,#lc_text-widget--btn,.lc_text-widget,.lc_text-widget--bubble,[class^=\"lc_text-widget\"][style*=\"position: fixed\"]{bottom:72px!important}}";
+          cw.shadowRoot.appendChild(st);
+        }
+        clearInterval(timer);
+      }
+      if (tries > 60) clearInterval(timer);
+    }, 500);
+  }
+  if (document.readyState === "complete") setTimeout(function () { loadChat(); liftChatAboveBar(); }, 1500); else window.addEventListener("load", function () { setTimeout(function () { loadChat(); liftChatAboveBar(); }, 1500); });
 
   /* Developer readiness banner: only on localhost or with ?msp-debug=1 */
   function devBanner() {

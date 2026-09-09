@@ -92,10 +92,10 @@ def header(over_hero=False):
             m.append('<a href="%s">%s</a>' % (href, label))
     return ('<a class="skip" href="#main">Skip to content</a>' + announce() +
       '<header class="header %s"><div class="container header-inner">%s<ul class="nav" aria-label="Primary">%s</ul>'
-      '<div class="header-cta"><a class="header-phone" href="tel:%s">%s %s</a><a class="btn btn-gold" href="/schedule/">Schedule Online</a>'
+      '<div class="header-cta"><a class="header-phone" href="tel:%s">%s %s</a><a class="btn btn-gold" href="/schedule/">Schedule Now</a>'
       '<button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">%s</button></div></div></header>'
       '<nav class="mnav" id="mnav" data-open="false" aria-label="Mobile"><div class="mnav-top">%s<button class="x" aria-label="Close menu">%s</button></div>%s'
-      '<div class="mnav-actions"><a class="btn btn-gold btn-lg" href="/schedule/">Schedule Online</a><a class="btn btn-outline btn-lg" href="/find-my-system/">Find My System</a><a class="btn btn-outline btn-lg" href="tel:%s">%s Call %s</a></div></nav>'
+      '<div class="mnav-actions"><a class="btn btn-gold btn-lg" href="/schedule/">Schedule Now</a><a class="btn btn-outline btn-lg" href="/find-my-system/">Find My System</a><a class="btn btn-outline btn-lg" href="tel:%s">%s Call %s</a></div></nav>'
       '<div class="mbar" aria-label="Quick actions"><a class="call" href="tel:%s">%s Call</a><a class="sched" href="/schedule/">%s Schedule</a></div>') % (
         "over-hero" if over_hero else "", brand(), "".join(items), TEL, ICON["phone"], PHONE, ICON["menu"], brand(), ICON["x"], "".join(m), TEL, ICON["phone"], PHONE, TEL, ICON["phone"], ICON["cal"])
 def footer():
@@ -104,7 +104,7 @@ def footer():
       '<a class="fphone" href="tel:%s" style="text-decoration:none;display:block">%s</a><div class="frating"><span class="stars" aria-hidden="true">★★★★★</span> <a href="' + SITE["google_reviews_url"] + '" target="_blank" rel="noopener">' + SITE["rating_line"] + '</a></div><p>%s &middot; Call or text<br>%s</p><p><a href="mailto:%s">%s</a></p></div>'
       '<div><h4>Systems</h4><ul><li><a href="/city-water-filtration/">City Water Systems</a></li><li><a href="/well-water-filtration/">Well Water Systems</a></li><li><a href="/reverse-osmosis/">Reverse Osmosis</a></li><li><a href="/compare-systems/">Compare Systems</a></li><li><a href="/pricing/">Pricing</a></li></ul></div>'
       '<div><h4>Learn</h4><ul>%s<li><a href="/faq/">FAQ</a></li></ul></div>'
-      '<div><h4>Company</h4><ul><li><a href="/about/">About &amp; Why MSP</a></li><li><a href="/best-price-guarantee/">Best Price Guarantee</a></li><li><a href="/service-areas/">Service Areas</a></li><li><a href="/schedule/">Schedule Online</a></li><li><a href="/find-my-system/">Find My System</a></li><li><a href="/contact/">Contact</a></li></ul></div></div>'
+      '<div><h4>Company</h4><ul><li><a href="/about/">About &amp; Why MSP</a></li><li><a href="/best-price-guarantee/">Best Price Guarantee</a></li><li><a href="/service-areas/">Service Areas</a></li><li><a href="/schedule/">Schedule Now</a></li><li><a href="/find-my-system/">Find My System</a></li><li><a href="/contact/">Contact</a></li></ul></div></div>'
       '<div class="footer-cities">Serving %s</div>'
       '<div class="footer-bottom"><span>&copy; <span data-year></span> MSP Pure Water. All rights reserved. Serving Minneapolis, St. Paul &amp; Greater Minnesota.</span><ul><li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/accessibility/">Accessibility</a></li></ul></div></div></footer>') % (
         brand(), TEL, PHONE, SITE["hours"], SITE["service_area"], SITE["email"], SITE["email"],
@@ -220,7 +220,7 @@ def hero():
       '<div class="container hero-inner"><div class="hero-promo reveal"><b>Included</b><span class="long">Reverse osmosis drinking-water system with every whole-home system</span><span class="short-only">RO drinking system included</span></div>'
       '<h1 class="reveal">Better water.<br><em>Throughout your entire home.</em></h1>'
       '<p class="lead reveal reveal-d1">Whole-home filtration, softening, well-water treatment and reverse osmosis for the Twin Cities. Published prices, professional installation, and a phone consultation you can book online tonight.</p>'
-      '<div class="hero-actions reveal reveal-d2"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System %s</a><a class="btn btn-outline btn-lg" href="/schedule/">Schedule Online</a></div>'
+      '<div class="hero-actions reveal reveal-d2"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System %s</a><a class="btn btn-outline btn-lg" href="/schedule/">Schedule Now</a></div>'
       '<div class="hero-meta reveal reveal-d3">%s<a href="tel:%s">%s %s</a><span>Open 24 hours</span></div></div>'
       '<div class="hero-side reveal reveal-d2"><div class="stat"><b>%s</b><span>Whole-home systems from</span></div><div class="stat"><b>28 GPM</b><span>Whole-home flow rate</span></div><div class="stat"><b>48,000</b><span>Grain softening capacity</span></div></div></section>'
       '<div class="trust"><div class="container trust-inner"><span>%s Five-star rated on Google</span><span>%s Free phone consultation</span><span>%s Best Price Guarantee</span><span>%s Professional installation</span><span>%s Twin Cities &amp; Greater Minnesota</span></div></div>') % (
@@ -337,13 +337,13 @@ def faq_block(items, heading="Questions homeowners ask", kicker="FAQ", more=True
     return '<section class="section cream"><div class="container"><div class="center"><p class="kicker">%s</p><h2>%s</h2></div><div class="faq" style="margin-top:2rem">%s</div>%s</div></section>' % (kicker, heading, d, '<p class="center" style="margin-top:2rem"><a class="btn btn-outline on-light" href="/faq/">All questions</a></p>' if more else "")
 
 def final_cta():
-    return ('<section class="section dark final"><div class="container"><h2><span>Your water.</span><span>Your system.</span><span class="g">Your schedule.</span></h2><div class="final-actions"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System</a><a class="btn btn-outline btn-lg" href="/schedule/">Schedule Online</a><a class="phone" href="tel:%s">%s</a></div></div></section>') % (TEL, PHONE)
+    return ('<section class="section dark final"><div class="container"><h2><span>Your water.</span><span>Your system.</span><span class="g">Your schedule.</span></h2><div class="final-actions"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System</a><a class="btn btn-outline btn-lg" href="/schedule/">Schedule Now</a><a class="phone" href="tel:%s">%s</a></div></div></section>') % (TEL, PHONE)
 
 def ghl_calendar(title="Choose your appointment time"):
     return ('<div class="dev-banner"></div><div class="ghl-wrap" data-ghl-calendar data-phone="%s" data-tel="%s" aria-label="%s"></div>') % (PHONE, TEL, title)
 
 def marquee():
-    items = ["Best Price Guarantee", "Reverse osmosis included", "Transparent pricing", "Online scheduling", "Iron & sulfur treatment", "Professional installation", "Twin Cities & Greater Minnesota"]
+    items = ["Best Price Guarantee", "Reverse osmosis included", "Transparent pricing", "Call or text to schedule", "Iron & sulfur treatment", "Professional installation", "Twin Cities & Greater Minnesota"]
     track = "".join("<span>%s</span>" % i for i in items)
     return '<div class="marquee" aria-hidden="true"><div class="marquee-track">%s%s</div></div>' % (track, track)
 
@@ -538,7 +538,7 @@ def product_page(s):
                   '<details><summary>Warranty &amp; Guarantee %s</summary><div class="acc-body"><p>%s We go through the exact terms with you on the phone before anything is installed. Best Price Guarantee: find a lower quote on comparable equipment and installation and we\'ll beat it, with priority booking.</p></div></details></div>') % (
         ICON["chev"], e(s.get("what_it_does") or s["for"]), desc_lines, ('<p class="spec-line"><b>Specs:</b> %s</p>' % e(spec_line)) if spec_line else "", ICON["chev"], e(SYS["promo"]["travel"]), ICON["chev"], ("Lifetime warranty on the system." if s.get("warranty") else "Warranty details reviewed at your consultation."))
     buy = ('<div class="buy" data-configurator><script type="application/json">%s</script><h1>%s</h1><div class="pills">%s</div>%s<div class="price-note">Professional installation included</div>%s'
-           '<a class="btn btn-gold btn-lg btn-block" href="/schedule/?system=%s" data-cta>Schedule Online</a><p class="or">or call or text <a href="tel:%s">%s</a></p><p class="fine center">We\'ll confirm your selections and every detail before your install date.</p>' + review_mini(2) + '%s%s</div>') % (
+           '<a class="btn btn-gold btn-lg btn-block" href="/schedule/?system=%s" data-cta>Schedule Now</a><p class="or">or call or text <a href="tel:%s">%s</a></p><p class="fine center">We\'ll confirm your selections and every detail before your install date.</p>' + review_mini(2) + '%s%s</div>') % (
         json.dumps(cfg).replace("</", "<\\/"), e(s["name"]), pills, price_html(s, small="installed", cls="price price-cfg"), groups, s["id"], TEL, PHONE, trust, accordions)
     hero = ('<section class="section-tight"><div class="container"><div class="crumbs" style="font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem"><a href="/">Home</a> / <a href="%s">%s systems</a> / %s</div>'
             '<div class="pdp"><div class="pdp-media"><img src="/assets/img/%s" width="1024" height="1024" alt="%s" fetchpriority="high"></div>%s</div></div></section>') % (cat_link, cat, e(s["short"]), s["image"], e(s["image_alt"]), buy)
@@ -589,7 +589,7 @@ def city_page_for(c):
     body = phero(c["county"] + " &middot; Minnesota", "Water filtration in %s" % e(name), "Whole-home filtration, water softening, well-water treatment and reverse osmosis for %s homeowners, with published prices and online scheduling." % e(name), crumbs='<a href="/service-areas/">Service Areas</a>')
     body += ('<section class="section"><div class="container two-col"><div><p class="kicker">Local, transparent, professional</p><h2>Systems for %s homes, priced up front.</h2><p>Whether your %s home is on municipal water or a private well, we start with the water problem and match the equipment to it. Every system price is published, the reverse osmosis drinking-water system is included, and you can book an appointment online.</p>'
              '<p>Want to know exactly what\'s in your water? City customers can request the annual Consumer Confidence Report from their water utility; well owners should have a current water test. We go over either one with you on the phone.</p>'
-             '<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System</a><a class="btn btn-outline on-light btn-lg" href="/schedule/">Schedule Online</a></div></div>'
+             '<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System</a><a class="btn btn-outline on-light btn-lg" href="/schedule/">Schedule Now</a></div></div>'
              '<div class="founder"><p class="kicker">Popular in %s</p>%s</div></div></section>') % (e(name), e(name), e(name), "".join('<a href="%s" style="color:#fff;text-decoration:none;display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line-dark)"><b>%s</b><span class="serif" style="font-size:1.3rem;color:var(--gold-300)"><s style="opacity:.55;font-size:.9rem;margin-right:.4rem">%s</s>%s</span></a>' % (sys_href(s), e(s["short"]), money(s["list_price"]), money(s["price"])) for s in [SYSTEMS["whole-home-softener"], SYSTEMS["dual-tank-well"], SYSTEMS["ro-tankless"]]))
     body += '<section class="section cream"><div class="container"><div class="grid grid-3">%s</div></div></section>' % "".join(system_card(SYSTEMS[i]) for i in ["whole-home-softener", "dual-tank-well", "ro-tankless"])
     if nearby: body += '<section class="section"><div class="container"><p class="kicker">Nearby</p><ul class="chips">%s</ul></div></section>' % "".join('<li><a class="chip" style="text-decoration:none;display:inline-block" href="/service-areas/%s/">%s</a></li>' % (x["slug"], e(x["city"])) for x in nearby)
@@ -613,19 +613,19 @@ def faq_page():
     schema = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q["q"], "acceptedAnswer": {"@type": "Answer", "text": q["a"]}} for q in FAQ]}
     body = phero("Questions", "Frequently asked questions", "Straight answers about softening, filtration, reverse osmosis and well-water treatment.", crumbs="FAQ")
     body += faq_block(FAQ, heading="Everything homeowners ask us", more=False).replace('class="section cream"', 'class="section"')
-    body += '<section class="section cream"><div class="container center"><h2>Still have a question?</h2><p class="lead">Call or text any time. We answer 24 hours a day.</p><div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap"><a class="btn btn-navy btn-lg" href="tel:%s">%s %s</a><a class="btn btn-gold btn-lg" href="/schedule/">Schedule Online</a></div></div></section>' % (TEL, ICON["phone"], PHONE)
+    body += '<section class="section cream"><div class="container center"><h2>Still have a question?</h2><p class="lead">Call or text any time. We answer 24 hours a day.</p><div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap"><a class="btn btn-navy btn-lg" href="tel:%s">%s %s</a><a class="btn btn-gold btn-lg" href="/schedule/">Schedule Now</a></div></div></section>' % (TEL, ICON["phone"], PHONE)
     return page("faq", "FAQ | Water Filtration, Softening & RO Questions | MSP Pure Water", "Answers to the questions Twin Cities homeowners ask about water softening, filtration, reverse osmosis, well water, maintenance, warranty and scheduling.", body, schema=[schema])
 
 def schedule_page():
-    steps = [("01", "Choose a time", "Pick any open slot on the calendar below. No deposit to reserve."), ("02", "We call you", "At your chosen time, on the number you give us. Instant confirmation and a reminder before the call."), ("03", "The phone consultation", "We go over your water and your home, recommend the right system at its published price, and answer every question. Prefer to meet in person? In-home presentations are available on request."), ("04", "Installation day", "We set the date on the call. Most systems are installed in a single visit, then walked through with you.")]
-    body = phero("Schedule online", "Schedule Online, or Call Us to Schedule.", "Pick a time below and we call you, or call or text %s and we'll get you on the schedule. Everything before installation happens over the phone: your water, the right system, the price, and your install date." % PHONE, crumbs="Schedule",
+    steps = [("01", "Call or text us", "%s, any time. We answer within 24 hours and set a time that works for you. No deposit." % PHONE), ("02", "We call you", "At the time we set, on the number you give us. You get a confirmation and a reminder before the call."), ("03", "The phone consultation", "We go over your water and your home, recommend the right system at its published price, and answer every question. Prefer to meet in person? In-home presentations are available on request."), ("04", "Installation day", "We set the date on the call. Most systems are installed in a single visit, then walked through with you.")]
+    body = phero("Schedule", "Call or Text Us to Schedule.", "Call or text %s and we'll set a time for your free phone consultation. Everything before installation happens over the phone: your water, the right system, the price, and your install date." % PHONE, crumbs="Schedule",
                  extra='<div class="hero-promo"><b>Free</b> Phone consultation &middot; in-home presentations on request</div>')
     body += ('<section class="section"><div class="container"><div class="grid" style="grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr);gap:clamp(24px,4vw,56px)"><div><div class="config-summary" data-config-summary><b>You\'re scheduling</b><div class="cs-line"></div><button type="button" class="link" data-clear-config style="font-size:.8rem;background:none;border:0;border-bottom:1px solid currentColor;padding:0;cursor:pointer;font:inherit;font-size:.8rem;color:var(--gold-600)">Not this system? Clear it</button></div>%s<div data-lead-summary class="summary-box" hidden></div></div>'
              '<aside><p class="kicker">What happens</p><div class="process" style="grid-template-columns:1fr;gap:1.25rem">%s</div><div class="note" style="margin-top:1.5rem">Prefer to talk? Call or text <a href="tel:%s"><b>%s</b></a>. Open 24 hours.</div></aside></div></div></section>') % (
         ghl_calendar(), "".join('<div><div class="n" style="font-size:2rem">%s</div><h3 style="font-size:1.2rem">%s</h3><p>%s</p></div>' % (n, t, p) for n, t, p in steps), TEL, PHONE)
     body += '<div data-booked-inline hidden class="container"><div class="confirm section-tight"><div class="check">%s</div><h2>You\'re scheduled.</h2><p class="lead">Check your email or phone for the confirmation. We\'ll call you at your chosen time.</p></div></div>' % ICON["check"]
     body += faq_block([q for q in FAQ if any(k in q["q"].lower() for k in ["schedule", "long does", "tested", "cost"])][:4]) + final_cta()
-    return page("schedule", "Schedule Online or Call to Schedule | MSP Pure Water", "Book your free MSP Pure Water phone consultation online. Pick a time, we call you, no home visit. Twin Cities and Greater Minnesota.", body)
+    return page("schedule", "Schedule Your Free Phone Consultation | Call or Text MSP Pure Water", "Book your free MSP Pure Water phone consultation online. Pick a time, we call you, no home visit. Twin Cities and Greater Minnesota.", body)
 
 def fms_page():
     body = phero("Find my system", "Tell us about your water. We'll match the system.", "Five quick steps. Your answers go straight to our team, then you can pick an appointment time.", crumbs="Find My System")
@@ -635,7 +635,7 @@ def fms_page():
 
 def thank_you_page():
     body = ('<section class="phero"><div class="container confirm"><div class="check">%s</div><h1>We received your information.</h1><p class="lead">Thanks, <span data-lead-name>there</span>. Our team has your details. Pick a time for your phone consultation now and skip the phone tag.</p></div></section>'
-            '<section class="section"><div class="container"><div class="center"><p class="kicker">Next step</p><h2>Choose a time for your call</h2></div><div data-lead-summary class="summary-box" style="max-width:720px;margin:1rem auto 1.5rem" hidden></div>%s'
+            '<section class="section"><div class="container"><div class="center"><p class="kicker">Next step</p><h2>Next step: set a time for your call</h2></div><div data-lead-summary class="summary-box" style="max-width:720px;margin:1rem auto 1.5rem" hidden></div>%s'
             '<p class="center muted" style="margin-top:1.5rem">Or call or text <a href="tel:%s"><b>%s</b></a>. Open 24 hours.</p></div></section>') % (ICON["check"], ghl_calendar(), TEL, PHONE)
     return page("thank-you", "We Received Your Information | MSP Pure Water", "Your Find My System request has been received. Choose your consultation time.", body, noindex=True)
 
@@ -663,7 +663,7 @@ def contact_page():
              '<aside class="contact-side">'
              '<div class="review"><p class="kicker">Call or text</p><a class="fphone" style="font-family:var(--font-display);font-size:1.9rem;text-decoration:none;color:var(--navy-900)" href="tel:%s">%s</a><p class="muted" style="margin:0">Open 24 hours, every day.</p></div>'
              '<div class="review"><p class="kicker">Email</p><a class="link" href="mailto:%s">%s</a><p class="muted" style="margin:.5rem 0 0">Same-day response.</p></div>'
-             '<div class="review"><p class="kicker">Schedule online</p><p class="muted" style="margin:0 0 .75rem">Pick a time and we call you. In-home presentations on request.</p><a class="btn btn-gold btn-block" href="/schedule/">Schedule Online</a></div>'
+             '<div class="review"><p class="kicker">Schedule</p><p class="muted" style="margin:0 0 .75rem">Call or text and we set a time for your phone consultation. In-home presentations on request.</p><a class="btn btn-gold btn-block" href="/schedule/">Schedule Now</a></div>'
              '<div class="review"><p class="kicker">Service area</p><p class="muted" style="margin:0">Minneapolis, St. Paul, the Twin Cities metro and Greater Minnesota. <a class="link" href="/service-areas/">See every city</a></p></div>'
              '</aside></div></div></section>') % (PHONE, TEL, TEL, PHONE, SITE["email"], SITE["email"])
     body += faq_block(FAQ[:4]) + final_cta()
@@ -698,7 +698,7 @@ def accessibility_page():
     return page("accessibility", "Accessibility | MSP Pure Water", "MSP Pure Water accessibility statement and how to get help using this website.", body)
 
 def notfound_page():
-    body = '<section class="section notfound"><div class="container"><p class="kicker">404</p><h1>That page isn\'t here.</h1><p class="lead">Try one of these instead.</p><div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1rem"><a class="btn btn-gold" href="/find-my-system/">Find My System</a><a class="btn btn-navy" href="/pricing/">Pricing</a><a class="btn btn-outline on-light" href="/schedule/">Schedule Online</a></div></div></section>'
+    body = '<section class="section notfound"><div class="container"><p class="kicker">404</p><h1>That page isn\'t here.</h1><p class="lead">Try one of these instead.</p><div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1rem"><a class="btn btn-gold" href="/find-my-system/">Find My System</a><a class="btn btn-navy" href="/pricing/">Pricing</a><a class="btn btn-outline on-light" href="/schedule/">Schedule Now</a></div></div></section>'
     return page("404", "Page Not Found | MSP Pure Water", "Page not found.", body, noindex=True)
 
 # ---------------------------------------------------------------- build

@@ -68,6 +68,9 @@ window.MSP_GHL = {
        on the branded confirmation screen.
      ------------------------------------------------------------------- */
   calendar: {
+    /* Set to true to show the GHL booking calendar on /schedule/ and /thank-you/.
+       While false, those pages prompt visitors to call or text to schedule. */
+    enabled: false,
     calendarId: "BNcToWKbTUgDdLhuc4cW",
     calendarEmbedUrl: "https://api.homeservicehub.app/widget/booking/BNcToWKbTUgDdLhuc4cW",
     /* OR paste the complete calendar embed code (<iframe …> + <script>) here. */

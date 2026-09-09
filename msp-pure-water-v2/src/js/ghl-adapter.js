@@ -94,11 +94,11 @@
   function fallback(el, kind) {
     var phone = el.getAttribute("data-phone") || "(952) 952-6206", tel = el.getAttribute("data-tel") || "+19529526206";
     el.setAttribute("data-state", "fallback");
-    var title = kind === "calendar" ? "Online booking is opening soon." : kind === "contact" ? "Our contact form is opening soon." : "Online intake is opening soon.";
-    el.innerHTML = '<div class="ghl-fallback"><h3>' + title +
-      '</h3><p>Call or text and we’ll get you on the schedule right away. We’ll answer within 24 hours.</p>' +
+    var title = kind === "call" ? "Call or text to schedule." : kind === "calendar" ? "Online booking is opening soon." : kind === "contact" ? "Our contact form is opening soon." : "Online intake is opening soon.";
+    var body = kind === "call" ? "Call or text and we’ll set a time for your free phone consultation. We answer within 24 hours, and there’s no deposit." : "Call or text and we’ll get you on the schedule right away. We’ll answer within 24 hours.";
+    el.innerHTML = '<div class="ghl-fallback"><h3>' + title + '</h3><p>' + body + '</p>' +
       '<a class="phone" href="tel:' + tel + '">' + phone + '</a>' +
-      (kind === "contact" ? '<a class="btn btn-navy" href="mailto:info@msppurewaterco.com">Email info@msppurewaterco.com</a>' : '<a class="btn btn-navy" href="/schedule/">Schedule page</a>') + '</div>';
+      (kind === "contact" ? '<a class="btn btn-navy" href="mailto:info@msppurewaterco.com">Email info@msppurewaterco.com</a>' : kind === "call" ? '<a class="btn btn-navy" href="sms:' + tel + '">Text us</a>' : '<a class="btn btn-navy" href="/schedule/">Schedule page</a>') + '</div>';
   }
 
   /* Inject a pasted GHL embed code verbatim (iframe + script). Scripts inserted
@@ -127,6 +127,7 @@
 
   function renderCalendar(el, prefill) {
     var cal = C.calendar || {};
+    if (cal.enabled === false) { fallback(el, "call"); return false; }
     if (set(cal.embedHtml) && /<iframe/i.test(cal.embedHtml)) {
       var pf = injectEmbed(el, cal.embedHtml, "Schedule your MSP Pure Water consultation");
       if (pf) { try { var pu = new URL(pf.getAttribute("src")); var lead = prefill || loadLead() || {}; var map = cal.prefill || {}; Object.keys(map).forEach(function (k) { if (lead[k]) pu.searchParams.set(map[k], lead[k]); }); pf.setAttribute("src", pu.toString()); } catch (e) {} pf.addEventListener("load", function () { if (window.MSPTrack) window.MSPTrack.once("calendar_viewed", { calendar: cal.calendarId }); }); }

@@ -239,3 +239,12 @@ The `/schedule/` page (and every Schedule button) uses the calendar in the
 `calendar.embedHtml`, or its **Link** into `calendarEmbedUrl`. Contact details the
 visitor already gave us are passed into the booking widget as query parameters, and
 the calendar's custom thank-you page should be `/booked/`.
+
+
+## 14. Calendar switch (current state: OFF)
+
+MSP chose to schedule by phone for now. In `ghl.config.js` the `calendar.enabled`
+flag is `false`, so `/schedule/` and `/thank-you/` show a "Call or text to schedule"
+prompt instead of the GHL booking widget. The calendar ID (`BNcToWKbTUgDdLhuc4cW`)
+and embed URL stay in the config; set `enabled: true` and rebuild to bring the
+booking widget back on every Schedule button.

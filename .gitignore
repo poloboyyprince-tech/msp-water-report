@@ -20,3 +20,4 @@ output/leads.json
 
 # production build lives in its own repo (msppurewaterco.com)
 msp-pure-water-v2/dist-prod/
+msp-pure-water-v2/prod-repo/

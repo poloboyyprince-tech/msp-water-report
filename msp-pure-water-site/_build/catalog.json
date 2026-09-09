@@ -1,0 +1,169 @@
+{
+ "complete-home-softener-filtration-system": {
+  "title": "Whole Home Water Filtration and Softening System",
+  "subtitle": null,
+  "description": "$273",
+  "variants": [
+   {
+    "title": "None",
+    "amount": 299900,
+    "price": "$2,999"
+   },
+   {
+    "title": "Tank RO",
+    "amount": 299900,
+    "price": "$2,999"
+   },
+   {
+    "title": "Tankless RO",
+    "amount": 299900,
+    "price": "$2,999"
+   }
+  ],
+  "options": [
+   {
+    "title": "Reverse Osmosis Add-On",
+    "values": [
+     "None",
+     "Tank RO",
+     "Tankless RO"
+    ]
+   }
+  ],
+  "price": "$2,999"
+ },
+ "reverse-osmosis-system": {
+  "title": "Reverse Osmosis System",
+  "subtitle": null,
+  "description": "<p>Add pure, great-tasting drinking water at your tap with our Reverse Osmosis System. Available in Tank or Tankless configurations to fit your kitchen setup. High-precision multi-stage RO filtration reduces TDS, heavy metals, microplastics, PFAs, bacteria, and viruses for clean drinking water on demand.</p><ul><li><strong>Tank RO:</strong> Traditional under-sink RO with pressurized storage tank \u2014 reliable, proven performance</li><li><strong>Tankless RO:</strong> Compact, space-saving design with no storage tank \u2014 delivers filtered water on demand with no waste</li></ul><p>NSF Certified | Lifetime Warranty | Made in Texas</p>",
+  "variants": [
+   {
+    "title": "Tank RO",
+    "amount": 79900,
+    "price": "$799"
+   },
+   {
+    "title": "Tankless RO",
+    "amount": 79900,
+    "price": "$799"
+   }
+  ],
+  "options": [
+   {
+    "title": "Type",
+    "values": [
+     "Tank RO",
+     "Tankless RO"
+    ]
+   }
+  ],
+  "price": "$799"
+ },
+ "dual-tank-system-for-well-water": {
+  "title": "Dual Tank Well Water Whole Home Filtration System",
+  "subtitle": null,
+  "description": "$26a",
+  "variants": [
+   {
+    "title": "None / No / No",
+    "amount": 449900,
+    "price": "$4,499"
+   },
+   {
+    "title": "None / Yes / No",
+    "amount": 489900,
+    "price": "$4,899"
+   },
+   {
+    "title": "None / No / Yes",
+    "amount": 539900,
+    "price": "$5,399"
+   },
+   {
+    "title": "None / Yes / Yes",
+    "amount": 579900,
+    "price": "$5,799"
+   },
+   {
+    "title": "Tank RO / No / No",
+    "amount": 449900,
+    "price": "$4,499"
+   },
+   {
+    "title": "Tank RO / Yes / No",
+    "amount": 489900,
+    "price": "$4,899"
+   },
+   {
+    "title": "Tank RO / No / Yes",
+    "amount": 539900,
+    "price": "$5,399"
+   },
+   {
+    "title": "Tank RO / Yes / Yes",
+    "amount": 579900,
+    "price": "$5,799"
+   },
+   {
+    "title": "Tankless RO / No / No",
+    "amount": 449900,
+    "price": "$4,499"
+   },
+   {
+    "title": "Tankless RO / Yes / No",
+    "amount": 489900,
+    "price": "$4,899"
+   },
+   {
+    "title": "Tankless RO / No / Yes",
+    "amount": 539900,
+    "price": "$5,399"
+   },
+   {
+    "title": "Tankless RO / Yes / Yes",
+    "amount": 579900,
+    "price": "$5,799"
+   },
+   {
+    "title": "None",
+    "amount": 449900,
+    "price": "$4,499"
+   },
+   {
+    "title": "Tank RO",
+    "amount": 449900,
+    "price": "$4,499"
+   },
+   {
+    "title": "Tankless RO",
+    "amount": 449900,
+    "price": "$4,499"
+   }
+  ],
+  "options": [
+   {
+    "title": "Reverse Osmosis Add-On",
+    "values": [
+     "None",
+     "Tank RO",
+     "Tankless RO"
+    ]
+   },
+   {
+    "title": "Pre-Sediment Filter",
+    "values": [
+     "No",
+     "Yes (+$399)"
+    ]
+   },
+   {
+    "title": "UV Light",
+    "values": [
+     "No",
+     "Yes (+$899)"
+    ]
+   }
+  ],
+  "price": "$4,499"
+ }
+}

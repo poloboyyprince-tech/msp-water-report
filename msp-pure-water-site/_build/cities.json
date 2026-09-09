@@ -1,0 +1,82 @@
+{
+ "minneapolis": {
+  "city": "Minneapolis",
+  "desc": "Whole-home filtration and softening for Minneapolis homes with city water."
+ },
+ "st-paul": {
+  "city": "St. Paul",
+  "desc": "Water filtration, softening, and RO installation in St. Paul."
+ },
+ "bloomington": {
+  "city": "Bloomington",
+  "desc": "Water softening and filtration for Bloomington city water."
+ },
+ "plymouth": {
+  "city": "Plymouth",
+  "desc": "Whole-home water treatment systems for Plymouth homeowners."
+ },
+ "brooklyn-park": {
+  "city": "Brooklyn Park",
+  "desc": "Water filtration and softening in Brooklyn Park."
+ },
+ "maple-grove": {
+  "city": "Maple Grove",
+  "desc": "Whole-home softening and carbon filtration for Maple Grove."
+ },
+ "edina": {
+  "city": "Edina",
+  "desc": "Premium water filtration installation in Edina."
+ },
+ "eden-prairie": {
+  "city": "Eden Prairie",
+  "desc": "Water softening and filtration systems for Eden Prairie homes."
+ },
+ "minnetonka": {
+  "city": "Minnetonka",
+  "desc": "Whole-home water treatment in Minnetonka."
+ },
+ "woodbury": {
+  "city": "Woodbury",
+  "desc": "Water filtration and softening for Woodbury city water."
+ },
+ "eagan": {
+  "city": "Eagan",
+  "desc": "Water filtration installation in Eagan."
+ },
+ "burnsville": {
+  "city": "Burnsville",
+  "desc": "Whole-home water treatment for Burnsville homeowners."
+ },
+ "apple-valley": {
+  "city": "Apple Valley",
+  "desc": "Water softening and filtration in Apple Valley."
+ },
+ "lakeville": {
+  "city": "Lakeville",
+  "desc": "Water filtration systems for Lakeville homes."
+ },
+ "shakopee": {
+  "city": "Shakopee",
+  "desc": "Whole-home water treatment in Shakopee."
+ },
+ "richfield": {
+  "city": "Richfield",
+  "desc": "Water filtration installation in Richfield."
+ },
+ "roseville": {
+  "city": "Roseville",
+  "desc": "Water softening and filtration for Roseville homeowners."
+ },
+ "fridley": {
+  "city": "Fridley",
+  "desc": "Whole-home water treatment in Fridley."
+ },
+ "coon-rapids": {
+  "city": "Coon Rapids",
+  "desc": "Water filtration systems for Coon Rapids homes."
+ },
+ "blaine": {
+  "city": "Blaine",
+  "desc": "Water softening and filtration installation in Blaine."
+ }
+}

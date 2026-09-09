@@ -87,8 +87,9 @@ window.MSP_GHL = {
      never slows the first paint. Leave empty to show no chat bubble.
      ------------------------------------------------------------------- */
   chat: {
-    embedHtml: ""
+    embedHtml: "<script src=\"https://widgets.leadconnectorhq.com/loader.js\" data-resources-url=\"https://widgets.leadconnectorhq.com/chat-widget/loader.js\" data-widget-id=\"6a2f21cb95a221ced5a07874\"></script>"
   },
+
 
   /* -------------------------------------------------------------------
      CUSTOM FIELD MAPPING — payload key → GHL custom field key.

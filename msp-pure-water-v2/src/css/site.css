@@ -780,3 +780,6 @@ s.was::after{content:"";position:absolute;left:-.1em;right:-.1em;top:50%;height:
 .mnav .brand{flex:none;flex-direction:row;align-items:center;gap:.8rem}.mnav .brand img{height:44px}.mnav .brand-word{white-space:nowrap;font-size:1.1rem}.mnav .brand-word small{display:none}
 
 .mnav a.brand{display:flex!important;padding:0!important;border-bottom:0!important;font-size:inherit;font-family:inherit}
+
+.sched-grid{grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr);gap:clamp(24px,4vw,56px)}
+@media (max-width:900px){.sched-grid{grid-template-columns:1fr}}

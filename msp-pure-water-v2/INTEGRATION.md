@@ -257,3 +257,16 @@ snippet into `chat.embedHtml` in `ghl.config.js` (one line, quotes escaped) and 
 The widget loads about 1.5 s after the page finishes loading so it never affects the
 hero or Core Web Vitals. Conversation AI settings (the bot's knowledge, tone, when it
 hands off to you) live inside GHL and need no site changes.
+
+
+## 16. Find My System → GHL inbound webhook (LIVE 2026-09-10)
+
+Workflow "Website – Find My System" (trigger: Inbound Webhook
+`.../hooks/6ssnuhq3IrJ6k8sAZnfh/webhook-trigger/4fa7f66c-1254-4f58-ae4c-7c7ca7e50266`).
+CORS verified open; the site POSTs JSON directly from the browser. Payload keys:
+first_name, last_name, phone, email, city, state, postal_code, country, water_source,
+water_problems (comma-joined), system_interest, system_id, system_config, bathrooms,
+household_size, existing_equipment, customer_notes, inquiry_type, sms_consent, tags,
+lead_source, website_entry_page, landing_page, page, referrer, utm_source, utm_medium,
+utm_campaign, utm_content, utm_term, gclid, fbclid, submission_id, submitted_at.
+Two labeled TEST submissions were sent to seed the trigger's field list.

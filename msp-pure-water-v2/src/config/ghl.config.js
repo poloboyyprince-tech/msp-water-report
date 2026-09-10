@@ -31,7 +31,7 @@ window.MSP_GHL = {
      ------------------------------------------------------------------- */
   lead: {
     mode: "webhook",
-    webhookUrl: "GHL_INBOUND_WEBHOOK_URL_HERE",
+    webhookUrl: "https://services.leadconnectorhq.com/hooks/6ssnuhq3IrJ6k8sAZnfh/webhook-trigger/4fa7f66c-1254-4f58-ae4c-7c7ca7e50266",
     formId: "GHL_FORM_ID_HERE",
     formEmbedUrl: "GHL_FORM_EMBED_URL_HERE",      /* e.g. https://api.leadconnectorhq.com/widget/form/XXXX */
     apiProxyUrl: "",

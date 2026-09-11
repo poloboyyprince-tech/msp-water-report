@@ -141,7 +141,12 @@ window.MSP_GHL = {
      ------------------------------------------------------------------- */
   analytics: {
     gtmId: "",
-    ga4Id: ""
+    ga4Id: "",
+    /* Meta (Facebook) Pixel ID. The site loads the official pixel, fires PageView
+       on every page, and maps site events to standard Meta events:
+       lead_form_submitted → Lead, appointment_booked → Schedule,
+       contact_form_submitted / phone_click → Contact. */
+    metaPixelId: "1791077468735241"
   },
 
   /* Consent copy shown under every phone/email field. Edit to match the

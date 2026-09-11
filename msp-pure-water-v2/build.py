@@ -127,6 +127,7 @@ def page(slug, title, desc, body, over_hero=False, schema=None, noindex=False, c
       '<title>%s</title><meta name="description" content="%s"><link rel="canonical" href="%s">%s'
       '<meta property="og:type" content="website"><meta property="og:site_name" content="MSP Pure Water"><meta property="og:title" content="%s"><meta property="og:description" content="%s"><meta property="og:url" content="%s"><meta property="og:image" content="%s"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="MSP Pure Water">'
       '<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0B1426">'
+      '<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1791077468735241&ev=PageView&noscript=1"></noscript>'
       '<link rel="icon" href="/assets/img/favicon.png" type="image/png"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">'
       '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
       '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap">'

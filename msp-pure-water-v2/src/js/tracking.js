@@ -47,13 +47,23 @@
     var payload = Object.assign({ event: name, page_path: location.pathname }, props || {});
     dl.push(payload);
     try { if (typeof window.gtag === "function" && cfg.ga4Id) window.gtag("event", name, props || {}); } catch (e) {}
-    try { if (typeof window.fbq === "function") window.fbq("trackCustom", name, props || {}); } catch (e) {}
+    try {
+      if (typeof window.fbq === "function") {
+        var std = { lead_form_submitted: "Lead", appointment_booked: "Schedule", contact_form_submitted: "Contact", phone_click: "Contact", find_my_system_started: "InitiateCheckout" }[name];
+        if (std) window.fbq("track", std, props || {}); else window.fbq("trackCustom", name, props || {});
+      }
+    } catch (e) {}
     if (DEBUG) console.log("[MSP track]", name, props || {});
   }
   var fired = {};
   function once(name, props) { if (fired[name]) return; fired[name] = true; event(name, props); }
 
   /* Optional GTM loader (only when an ID is configured). */
+  /* Meta Pixel (official loader) */
+  if (cfg.metaPixelId && !window.fbq) {
+    (function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    window.fbq("init", cfg.metaPixelId); window.fbq("track", "PageView");
+  }
   if (cfg.gtmId) {
     dl.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
     var s = document.createElement("script"); s.async = true;

@@ -11,7 +11,7 @@
     { key: "system_interest", title: "What are you interested in?", hint: "Not sure? Pick the last option and we’ll recommend.", type: "single", cls: "",
       options: ["Whole Home Filtration", "Water Softening", "Well Water Treatment", "Reverse Osmosis", "Complete System", "Not Sure / Recommend Something"] },
     { key: "contact", title: "Where should we send your recommendation?", hint: "We’ll match your answers to the right system and reach out the same day.", type: "contact" },
-    { key: "details", title: "Anything that helps us size it right?", hint: "Optional. Skip if you’d rather cover it on the call.", type: "details" }
+    { key: "details", title: "A few details so we size it right.", hint: "These let us recommend the right system before we call.", type: "details" }
   ];
   var PRESET_KEY = "msp_intake";
   function preset() { try { return JSON.parse(sessionStorage.getItem(PRESET_KEY) || "{}"); } catch (e) { return {}; } }
@@ -53,11 +53,11 @@
         esc(consent.text || "") + ' <a href="/privacy/" class="link">Privacy Policy</a></div>';
     }
     function detailsHtml() {
-      var sel = function (id, label, opts) { return '<div class="field"><label for="fms-' + id + '">' + label + ' <span class="muted">(optional)</span></label><select id="fms-' + id + '" name="' + id + '"><option value="">Select</option>' + opts.map(function (o) { return '<option' + (state.data[id] === o ? " selected" : "") + ">" + esc(o) + "</option>"; }).join("") + "</select></div>"; };
+      var sel = function (id, label, opts) { return '<div class="field" data-field="' + id + '"><label for="fms-' + id + '">' + label + '</label><select id="fms-' + id + '" name="' + id + '" required><option value="">Select</option>' + opts.map(function (o) { return '<option' + (state.data[id] === o ? " selected" : "") + ">" + esc(o) + "</option>"; }).join("") + '</select><span class="err">Please choose an option.</span></div>'; };
       return '<div class="fields-2">' + sel("bathrooms", "Bathrooms", ["1", "1.5", "2", "2.5", "3", "3.5", "4+"]) + sel("household_size", "People in household", ["1", "2", "3", "4", "5", "6+"]) + "</div>" +
         sel("existing_equipment", "Existing water treatment equipment", ["None", "Water softener", "Iron filter", "Reverse osmosis", "Whole-home filter", "Not sure"]) +
         '<div class="fields-2">' + sel("homeowner", "Are you the homeowner?", ["Yes", "No"]) + sel("timeline", "How soon are you looking to get installed?", ["ASAP!", "Within the week", "Within 2 weeks", "Over a month out"]) + "</div>" +
-        '<div class="field"><label for="fms-notes">Anything else? <span class="muted">(optional)</span></label><textarea id="fms-notes" name="notes" rows="3" maxlength="1000">' + esc(state.data.notes || "") + "</textarea></div>";
+        '<div class="field" data-field="notes"><label for="fms-notes">Anything else we should know about your water?</label><textarea id="fms-notes" name="notes" rows="3" maxlength="1000" required placeholder="Even a sentence helps: what you notice, when it started, what you\'ve tried.">' + esc(state.data.notes || "") + '</textarea><span class="err">Please add a quick note.</span></div>';
     }
     function summary() {
       var d = state.data;
@@ -96,6 +96,13 @@
           f.classList.toggle("invalid", bad); if (bad) ok = false;
         });
         if (!ok) { status.textContent = "Please check the highlighted fields."; status.setAttribute("data-kind", "error"); }
+      }
+      if (st.type === "details") {
+        form.querySelectorAll(".field[data-field]").forEach(function (f) {
+          var i = f.querySelector("select,textarea,input"), v = (i.value || "").trim(), bad = !!(i.required && !v);
+          f.classList.toggle("invalid", bad); if (bad) ok = false;
+        });
+        if (!ok) { status.textContent = "Please answer every question so we can size your system."; status.setAttribute("data-kind", "error"); }
       }
       return ok;
     }

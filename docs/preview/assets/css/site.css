@@ -378,7 +378,7 @@ p{margin:0 0 1em} .lead{font-size:clamp(1.05rem,1.4vw,1.25rem);color:var(--muted
 .field{display:grid;gap:.35rem;margin-bottom:.9rem} .field label{font-size:.85rem;font-weight:600}
 .field input,.field select,.field textarea{font:inherit;padding:.8rem .9rem;border:1.5px solid var(--line);border-radius:var(--radius);background:#fff;width:100%}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy-900);box-shadow:0 0 0 3px rgba(201,168,76,.35)}
-.field .err{color:#B42318;font-size:.82rem;display:none} .field.invalid .err{display:block} .field.invalid input{border-color:#B42318}
+.field .err{color:#B42318;font-size:.82rem;display:none} .field.invalid .err{display:block} .field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#B42318}
 .fields-2{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem} @media (max-width:560px){.fields-2{grid-template-columns:1fr}}
 .fms-nav{display:flex;justify-content:space-between;gap:.75rem;margin-top:1.5rem;align-items:center}
 .consent{font-size:.78rem;color:var(--muted);margin-top:1rem;line-height:1.5}

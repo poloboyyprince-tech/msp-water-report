@@ -783,3 +783,15 @@ s.was::after{content:"";position:absolute;left:-.1em;right:-.1em;top:50%;height:
 
 .sched-grid{grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr);gap:clamp(24px,4vw,56px)}
 @media (max-width:900px){.sched-grid{grid-template-columns:1fr}}
+
+/* --- Alignment fixes (mobile pills + menu buttons) --- */
+.hero-promo{flex-wrap:nowrap;align-items:flex-start}
+.hero-promo b{flex:none;margin-top:.05em}
+.hero-promo>span{min-width:0;white-space:normal;line-height:1.35}
+@media (max-width:640px){
+  .hero-promo,.pill-row .hero-promo{display:inline-flex;flex-wrap:nowrap;align-items:flex-start;border-radius:14px;padding:.45rem .85rem .45rem .45rem;max-width:100%;box-sizing:border-box;overflow:hidden}
+  .hero-promo b{white-space:nowrap}
+}
+.mnav .mnav-actions{display:grid;gap:.6rem;margin-top:1.5rem}
+.mnav .mnav-actions a{display:flex;align-items:center;justify-content:center;gap:.55rem;padding:.95rem 1.1rem;border-bottom:0;font-family:var(--font-body);font-size:1rem;font-weight:600;text-align:center;border-radius:var(--radius);line-height:1.2;white-space:nowrap}
+.mnav .mnav-actions a svg{width:18px;height:18px;flex:none}

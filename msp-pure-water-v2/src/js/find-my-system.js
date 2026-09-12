@@ -56,6 +56,7 @@
       var sel = function (id, label, opts) { return '<div class="field"><label for="fms-' + id + '">' + label + ' <span class="muted">(optional)</span></label><select id="fms-' + id + '" name="' + id + '"><option value="">Select</option>' + opts.map(function (o) { return '<option' + (state.data[id] === o ? " selected" : "") + ">" + esc(o) + "</option>"; }).join("") + "</select></div>"; };
       return '<div class="fields-2">' + sel("bathrooms", "Bathrooms", ["1", "1.5", "2", "2.5", "3", "3.5", "4+"]) + sel("household_size", "People in household", ["1", "2", "3", "4", "5", "6+"]) + "</div>" +
         sel("existing_equipment", "Existing water treatment equipment", ["None", "Water softener", "Iron filter", "Reverse osmosis", "Whole-home filter", "Not sure"]) +
+        '<div class="fields-2">' + sel("homeowner", "Are you the homeowner?", ["Yes", "No"]) + sel("timeline", "How soon are you looking to get installed?", ["ASAP!", "Within the week", "Within 2 weeks", "Over a month out"]) + "</div>" +
         '<div class="field"><label for="fms-notes">Anything else? <span class="muted">(optional)</span></label><textarea id="fms-notes" name="notes" rows="3" maxlength="1000">' + esc(state.data.notes || "") + "</textarea></div>";
     }
     function summary() {

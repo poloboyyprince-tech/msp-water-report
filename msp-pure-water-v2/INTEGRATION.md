@@ -266,7 +266,8 @@ Workflow "Website – Find My System" (trigger: Inbound Webhook
 CORS verified open; the site POSTs JSON directly from the browser. Payload keys:
 first_name, last_name, phone, email, city, state, postal_code, country, water_source,
 water_problems (comma-joined), system_interest, system_id, system_config, bathrooms,
-household_size, existing_equipment, customer_notes, inquiry_type, sms_consent, tags,
+household_size, existing_equipment, homeowner (Yes/No), timeline (ASAP! / Within the week /
+Within 2 weeks / Over a month out — matches the GHL radio field), customer_notes, inquiry_type, sms_consent, tags,
 lead_source, website_entry_page, landing_page, page, referrer, utm_source, utm_medium,
 utm_campaign, utm_content, utm_term, gclid, fbclid, submission_id, submitted_at.
 Two labeled TEST submissions were sent to seed the trigger's field list.

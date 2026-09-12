@@ -38,6 +38,7 @@
       water_source: data.water_source || "", water_problems: (data.water_problems || []).join(", "),
       system_interest: data.system_interest || "", bathrooms: data.bathrooms || "", household_size: data.household_size || "",
       existing_equipment: data.existing_equipment || "", customer_notes: data.notes || "",
+      homeowner: data.homeowner || "", timeline: data.timeline || "",
       sms_consent: data.sms_consent ? "Yes" : "No",
       system_id: data.system_id || "", system_config: data.system_config || "",
       lead_source: data.lead_source || attr.lead_source || "Direct", inquiry_type: data.inquiry_type || "Find My System",

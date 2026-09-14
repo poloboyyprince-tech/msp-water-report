@@ -358,7 +358,7 @@ def marquee():
 # ---------------------------------------------------------------- pages
 def home():
     body = hero() + reviews() + source_cards() + explorer() + systems_home() + best_price() + approach() + before_after() + why() + process() + minnesota() + service_area_block() + faq_block(FAQ[:6]) + final_cta()
-    return page("", "Water Filtration, Softening & Reverse Osmosis | Twin Cities | MSP Pure Water", SITE["description"], body, over_hero=True)
+    return page("", "Water Filtration & Softening | Twin Cities | MSP Pure Water", SITE["description"], body, over_hero=True)
 
 def sysdetail(s):
     img = s["image"]
@@ -395,13 +395,13 @@ def system_page(cat, slug, title, desc, h1, lead, concerns, extra_sections=""):
     return page(slug, title, desc, body, schema=[service_schema(h1, desc, systems)])
 
 def city_page():
-    return system_page("city", "city-water-filtration", "City Water Filtration & Softening Systems | Twin Cities | MSP Pure Water",
+    return system_page("city", "city-water-filtration", "City Water Systems | Minneapolis & St. Paul | MSP Pure Water",
         "Whole-home water filtration and softening for Minneapolis, St. Paul and Twin Cities homes on municipal water. Published prices from $2,999, RO included.",
         "City water filtration systems for Twin Cities homes", "Municipal water is treated and safe, but it typically arrives hard and disinfected with chlorine or chloramine. These systems soften and filter every tap in the house.",
         ("What's in Twin Cities city water", [("Hardness", "Minnesota groundwater is generally hard. Calcium and magnesium cause scale on fixtures, water heaters and appliances."), ("Chlorine and chloramine", "Twin Cities utilities use disinfectants including chloramine. They affect taste and odor and call for catalytic carbon."), ("Dissolved solids", "Minerals that affect drinking-water taste. Point-of-use reverse osmosis handles them at the kitchen sink.")]))
 
 def well_page():
-    return system_page("well", "well-water-filtration", "Well Water Filtration, Iron & Sulfur Treatment | Minnesota | MSP Pure Water",
+    return system_page("well", "well-water-filtration", "Well Water Filtration & Iron Treatment | MN | MSP Pure Water",
         "Chemical-free well water treatment for iron, sulfur odor, manganese and hardness in Minnesota. Dual tank systems from $4,499 with RO included.",
         "Well water filtration systems for Minnesota homes", "Private wells in Minnesota commonly carry iron, manganese and hardness, and in some areas hydrogen sulfide. Final configuration is confirmed from your water test.",
         ("What's in Minnesota well water", [("Iron and manganese", "Both occur naturally in Minnesota groundwater. They stain fixtures and laundry and need oxidation plus filtration."), ("Hydrogen sulfide", "The rotten-egg smell. Oxidation converts it into a filterable form."), ("Sediment and microorganisms", "A pre-system sediment filter protects your equipment; a UV purifier adds a disinfection barrier after filtration.")]))
@@ -409,8 +409,8 @@ def well_page():
 def ro_page():
     extra = ('<section class="section cream"><div class="container two-col"><div><p class="kicker">What reverse osmosis does</p><h2>A finer barrier for the water you drink.</h2><p>Reverse osmosis pushes water through a semipermeable membrane under pressure. Water molecules pass; a broad range of dissolved solids is rejected and sent to drain. The treated water goes to its own faucet at the kitchen sink.</p><p>RO is a point-of-use method. It treats one location for drinking and cooking, not the whole house, which is why we pair it with whole-home filtration or softening and include it free with every whole-home system.</p></div>'
              '<div class="founder"><blockquote>Tank or tankless, the RO faucet is the one your family will use fifty times a day.</blockquote><p class="muted" style="color:rgba(255,255,255,.7)">Tank RO is $799 and the tankless HW800 AlkaPro is $999 on their own, and either is included free with any whole-home system.</p></div></div></section>')
-    return system_page("ro", "reverse-osmosis", "Reverse Osmosis Drinking Water Systems | Twin Cities | MSP Pure Water",
-        "Tank or tankless reverse osmosis installed at your kitchen sink in the Twin Cities. $799 tank or $999 tankless, or included free with any MSP Pure Water whole-home system.",
+    return system_page("ro", "reverse-osmosis", "Reverse Osmosis Systems | Twin Cities | MSP Pure Water",
+        "Tank or tankless reverse osmosis installed at your kitchen sink in the Twin Cities. $799 tank, $999 tankless, or free with any whole-home system.",
         "Reverse osmosis systems for Twin Cities homes", "Point-of-use reverse osmosis produces a treated drinking-water stream at a dedicated kitchen faucet. Tank or tankless, professionally installed, and included free with any whole-home system.",
         ("Drinking-water questions we hear most", [("Taste", "Residual chlorine, hardness and dissolved solids all affect taste. RO plus remineralization is the fix most homeowners notice first."), ("Bottled water", "A dedicated faucet replaces the cases, the clutter and the recycling."), ("Well water", "On a well, RO adds a second barrier for drinking water after whole-home treatment handles iron and hardness.")]), extra)
 
@@ -570,7 +570,9 @@ def product_page(s):
     body += faq_block([q for q in FAQ if any(k in q["q"].lower() for k in {"city": ["come to my home", "cost", "filtration and softening", "salt", "pressure"], "well": ["come to my home", "well", "tested", "maintenance", "warranty"], "ro": ["come to my home", "reverse osmosis", "tank", "every faucet"], "addon": ["come to my home", "sediment", "uv", "well"]}[s["category"]])][:4]) + final_cta()
     schema = {"@context": "https://schema.org", "@type": "Product", "name": s["name"], "description": s.get("what_it_does") or s["for"], "image": BASE + "/assets/img/" + s["image"], "brand": {"@type": "Brand", "name": "MSP Pure Water"},
               "offers": {"@type": "Offer", "price": s["price"], "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": BASE + sys_href(s), "seller": {"@id": BASE + "/#business"}}}
-    return page("systems/" + s["id"], "%s | %s%s Installed | MSP Pure Water" % (s["name"], s.get("price_prefix", ""), money(s["price"])), "%s %s installed in the Twin Cities. %s Configure your options, then call or text to schedule." % (s["name"], money(s["price"]), s["for"]), body, schema=[schema])
+    desc = "%s, %s%s installed in the Twin Cities. %s" % (s["short"], s.get("price_prefix", ""), money(s["price"]), s["for"])
+    if len(desc) > 158: desc = desc[:155].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+    return page("systems/" + s["id"], "%s | %s%s Installed | MSP Pure Water" % (s["short"], s.get("price_prefix", ""), money(s["price"])), desc, body, schema=[schema])
 
 def areas_hub():
     counties = []
@@ -589,7 +591,7 @@ def areas_hub():
     body += ('<section class="section mn"><div class="container mn-grid"><div><p class="kicker">Greater Minnesota</p><h2>Outside the metro? We still come to you.</h2><p class="lead">These are the regions we install in most often. Not listed? Call or text and we\'ll tell you right away.</p><div class="region-list" style="margin-top:2rem">%s</div><div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem"><a class="btn btn-gold btn-lg" href="/schedule/">Schedule a phone consultation</a><a class="btn btn-outline btn-lg" href="tel:%s">%s Call or text %s</a></div></div><div class="mn-media reveal" data-parallax="24">%s</div></div></section>') % (
         regions, TEL, ICON["phone"], PHONE, '<img src="/assets/img/mn-home.webp" alt="A Minnesota home in winter at dusk" loading="lazy" width="1024" height="1280">' if has_img("mn-home.webp") else "")
     body += process() + final_cta()
-    return page("service-areas", "Service Areas | Water Filtration Across the Twin Cities & Minnesota | MSP Pure Water", "MSP Pure Water serves %d Twin Cities communities across %d counties plus Greater Minnesota with water filtration, softening, well treatment and RO installation." % (len(CITIES), len(counties)), body)
+    return page("service-areas", "Service Areas | Twin Cities & Minnesota | MSP Pure Water", "MSP Pure Water serves %d Twin Cities communities across %d counties plus Greater Minnesota with water filtration, softening, well treatment and RO installation." % (len(CITIES), len(counties)), body)
 
 def city_page_for(c):
     name = c["city"]
@@ -603,7 +605,7 @@ def city_page_for(c):
     if nearby: body += '<section class="section"><div class="container"><p class="kicker">Nearby</p><ul class="chips">%s</ul></div></section>' % "".join('<li><a class="chip" style="text-decoration:none;display:inline-block" href="/service-areas/%s/">%s</a></li>' % (x["slug"], e(x["city"])) for x in nearby)
     body += final_cta()
     schema = {"@context": "https://schema.org", "@type": "Service", "name": "Water filtration in %s, MN" % name, "provider": {"@id": BASE + "/#business"}, "areaServed": {"@type": "City", "name": name + ", MN"}, "serviceType": "Water filtration, water softening, well water treatment, reverse osmosis installation"}
-    return page("service-areas/" + c["slug"], "Water Filtration %s MN | Softening, Well & RO | MSP Pure Water" % name, "Whole-home water filtration, softening, well-water treatment and reverse osmosis in %s, Minnesota. Published prices from $2,999, RO included, schedule online." % name, body, schema=[schema])
+    return page("service-areas/" + c["slug"], "Water Filtration in %s, MN | MSP Pure Water" % name, "Whole-home filtration, softening, well treatment and reverse osmosis in %s, Minnesota. Prices from $2,999, RO included." % name, body, schema=[schema])
 
 def about_page():
     body = phero("Minneapolis, St. Paul & Greater Minnesota", "Why MSP Pure Water", "Better water for Minnesota homes: honestly assessed, fairly priced, installed cleanly, and backed personally.", crumbs="Why MSP")
@@ -612,7 +614,7 @@ def about_page():
              '<p>When you work with MSP Pure Water, you work with Prince directly. Every recommendation and every install runs through him personally. That accountability is not a selling point. It is just how the business operates.</p></div>'
              '<div class="founder" style="margin-top:1.5rem"><blockquote>We run the same systems we install. We\'re not selling you something we wouldn\'t put in our own house.</blockquote><div class="stat-row"><div><b>%s</b><span>Stars on Google</span></div><div><b>Phone</b><span>Consultations, in-home on request</span></div><div><b>24 h</b><span>Open every day</span></div><div><b>$2,999</b><span>Whole-home from</span></div></div></div></div></div></section>') % (SITE["google_rating"])
     body += why()
-    std = [("Free phone assessment first", "We go over your water and your home on the phone before we recommend anything. In-home presentations are available on request."), ("Honest recommendation", "The right system for your home and budget, not the most expensive option on the list."), ("Clean installation", "Professional work and a full walkthrough of how your system works before we leave."), ("Same-day response", "Call or text and we get back to you the same day with real answers."), ("No oversell, ever", "We recommend only what makes sense for your home and your water profile."), ("Local and personally accountable", "When you call, you reach someone who knows the job. Not a dispatcher, not a call center.")]
+    std = [("Free phone assessment first", "We go over your water and your home on the phone before we recommend anything. In-home presentations are available on request."), ("Honest recommendation", "The right system for your home and budget, not the most expensive option on the list."), ("Clean installation", "Professional work and a full walkthrough of how your system works before we leave."), ("Fast, real answers", "Call or text and we get back to you within 24 hours with real answers, not a runaround."), ("No oversell, ever", "We recommend only what makes sense for your home and your water profile."), ("Local and personally accountable", "When you call, you reach someone who knows the job. Not a dispatcher, not a call center.")]
     body += '<section class="section cream"><div class="container"><p class="kicker">Our standards</p><h2 style="max-width:20ch">You can rely on the quality and professionalism of our work.</h2><div class="grid grid-3" style="margin-top:2rem">%s</div></div></section>' % "".join('<div class="reveal"><h3 style="font-size:1.35rem">%s</h3><p class="muted">%s</p></div>' % (t, p) for t, p in std)
     body += reviews() + process() + final_cta()
     return page("about", "About MSP Pure Water | Why Twin Cities Homeowners Choose Us", "Meet Prince, founder of MSP Pure Water, and see why Twin Cities homeowners choose transparent pricing, water-specific systems and professional installation.", body)
@@ -627,19 +629,19 @@ def faq_page():
 def schedule_page():
     steps = [("01", "Call or text us", "%s, any time. We answer within 24 hours and set a time that works for you. No deposit." % PHONE), ("02", "We call you", "At the time we set, on the number you give us. You get a confirmation and a reminder before the call."), ("03", "The phone consultation", "We go over your water and your home, recommend the right system at its published price, and answer every question. Prefer to meet in person? In-home presentations are available on request."), ("04", "Installation day", "We set the date on the call. Most systems are installed in a single visit, then walked through with you.")]
     body = phero("Schedule", "Call or Text Us to Schedule.", "Call or text %s and we'll set a time for your free phone consultation. Everything before installation happens over the phone: your water, the right system, the price, and your install date." % PHONE, crumbs="Schedule",
-                 extra='<div class="hero-promo"><b>Free</b> Phone consultation &middot; in-home presentations on request</div>')
+                 extra='<div class="hero-promo"><b>Free</b><span class="long">Phone consultation &middot; in-home presentations on request</span><span class="short-only">Phone consultation</span></div>')
     body += ('<section class="section"><div class="container"><div class="grid sched-grid"><div><div class="config-summary" data-config-summary><b>You\'re scheduling</b><div class="cs-line"></div><button type="button" class="link" data-clear-config style="font-size:.8rem;background:none;border:0;border-bottom:1px solid currentColor;padding:0;cursor:pointer;font:inherit;font-size:.8rem;color:var(--gold-600)">Not this system? Clear it</button></div>%s<div data-lead-summary class="summary-box" hidden></div></div>'
              '<aside><p class="kicker">What happens</p><div class="process" style="grid-template-columns:1fr;gap:1.25rem">%s</div><div class="note" style="margin-top:1.5rem">Prefer to talk? Call or text <a href="tel:%s"><b>%s</b></a>. Open 24 hours.</div></aside></div></div></section>') % (
         ghl_calendar(), "".join('<div><div class="n" style="font-size:2rem">%s</div><h3 style="font-size:1.2rem">%s</h3><p>%s</p></div>' % (n, t, p) for n, t, p in steps), TEL, PHONE)
     body += '<div data-booked-inline hidden class="container"><div class="confirm section-tight"><div class="check">%s</div><h2>You\'re scheduled.</h2><p class="lead">Check your email or phone for the confirmation. We\'ll call you at your chosen time.</p></div></div>' % ICON["check"]
     body += faq_block([q for q in FAQ if any(k in q["q"].lower() for k in ["schedule", "long does", "tested", "cost"])][:4]) + final_cta()
-    return page("schedule", "Schedule Your Free Phone Consultation | Call or Text MSP Pure Water", "Call or text (952) 952-6206 to schedule your free MSP Pure Water phone consultation. In-home presentations on request. Twin Cities and Greater Minnesota.", body)
+    return page("schedule", "Schedule a Free Phone Consultation | MSP Pure Water", "Call or text (952) 952-6206 to schedule your free MSP Pure Water phone consultation. In-home presentations on request. Twin Cities and Greater Minnesota.", body)
 
 def fms_page():
     body = phero("Find my system", "Tell us about your water. We'll match the system.", "Five quick steps. Your answers go straight to our team, then we call you to set a time.", crumbs="Find My System")
     body += '<section class="section-tight"><div class="container"><div class="dev-banner"></div><div data-fms aria-live="polite"></div><p class="center muted" style="margin-top:1.5rem;font-size:.9rem">Rather talk? Call or text <a href="tel:%s"><b>%s</b></a>.</p></div></section>' % (TEL, PHONE)
     body += process()
-    return page("find-my-system", "Find My System | Match Your Water to the Right Treatment | MSP Pure Water", "Answer five quick questions about your water and MSP Pure Water will recommend the right whole-home, well or reverse osmosis system.", body)
+    return page("find-my-system", "Find My System | Water Treatment Quiz | MSP Pure Water", "Answer five quick questions about your water and MSP Pure Water will recommend the right whole-home, well or reverse osmosis system.", body)
 
 def thank_you_page():
     body = ('<section class="phero"><div class="container confirm"><div class="check">%s</div><h1>We received your information.</h1><p class="lead">Thanks, <span data-lead-name>there</span>. Our team has your details. Call or text now to set your time and skip the wait.</p></div></section>'
@@ -670,7 +672,7 @@ def contact_page():
              '<p class="consent" style="margin-top:.9rem">By submitting, you agree MSP Pure Water may call, text or email you about your request. Message and data rates may apply; reply STOP to opt out. <a href="/privacy/">Privacy Policy</a>.</p></div>'
              '<aside class="contact-side">'
              '<div class="review"><p class="kicker">Call or text</p><a class="fphone" style="font-family:var(--font-display);font-size:1.9rem;text-decoration:none;color:var(--navy-900)" href="tel:%s">%s</a><p class="muted" style="margin:0">Open 24 hours, every day.</p></div>'
-             '<div class="review"><p class="kicker">Email</p><a class="link" href="mailto:%s">%s</a><p class="muted" style="margin:.5rem 0 0">Same-day response.</p></div>'
+             '<div class="review"><p class="kicker">Email</p><a class="link" href="mailto:%s">%s</a><p class="muted" style="margin:.5rem 0 0">We reply within 24 hours.</p></div>'
              '<div class="review"><p class="kicker">Schedule</p><p class="muted" style="margin:0 0 .75rem">Call or text and we set a time for your phone consultation. In-home presentations on request.</p><a class="btn btn-gold btn-block" href="/schedule/">Schedule Now</a></div>'
              '<div class="review"><p class="kicker">Service area</p><p class="muted" style="margin:0">Minneapolis, St. Paul, the Twin Cities metro and Greater Minnesota. <a class="link" href="/service-areas/">See every city</a></p></div>'
              '</aside></div></div></section>') % (PHONE, TEL, TEL, PHONE, SITE["email"], SITE["email"])

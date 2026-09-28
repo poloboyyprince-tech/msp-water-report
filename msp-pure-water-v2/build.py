@@ -17,6 +17,8 @@ OPT = ARGS.parse_args()
 BASEPATH = OPT.base.rstrip("/")
 SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, OPT.out)
 def J(p): return json.load(open(os.path.join(SRC, p), encoding="utf-8"))
+BUILD_DATE = datetime.date.today().isoformat()
+BUILD_MONTH = datetime.date.today().strftime("%B %Y")
 SITE = J("config/site.json"); SYS = J("data/systems.json"); PROBLEMS = J("data/problems.json")
 FAQ = J("data/faq.json"); CITIES = J("data/cities.json"); REVIEWS = J("data/reviews.json"); REGIONS = J("data/regions.json"); COMPONENTS = J("data/components.json")
 FOOTER_CITIES = CITIES[:20]
@@ -111,17 +113,53 @@ def footer():
         brand(), TEL, PHONE, SITE["hours"], SITE["service_area"], SITE["email"], SITE["email"],
         "".join('<li><a href="/water-problems/%s/">%s</a></li>' % (p["id"], e(p["nav"])) for p in PROBLEMS if p.get("page")), cities)
 
-def local_business():
-    return {"@context": "https://schema.org", "@type": "LocalBusiness", "@id": BASE + "/#business", "name": SITE["name"], "url": BASE + "/", "telephone": TEL, "email": SITE["email"],
+KNOWS_ABOUT = ["Whole-home water filtration", "Water softening", "Well water treatment", "Iron removal", "Manganese removal", "Hydrogen sulfide (sulfur odor) treatment",
+               "Chlorine and chloramine removal", "Reverse osmosis drinking water", "Salt-free scale conditioning", "UV water disinfection", "Hard water in Minnesota"]
+_QA = []  # question/answer pairs visibly rendered on the page currently being built (feeds FAQPage schema)
+def _qa(q, a):
+    if not any(x[0] == q for x in _QA): _QA.append((q, a))
+
+def answer_box(q, a, kicker="Quick answer"):
+    """Visible, self-contained answer near the top of a page. Answer engines quote blocks like this."""
+    _qa(q, a)
+    return '<section class="section-tight answer"><div class="container"><div class="answer-box"><p class="kicker">%s</p><h2>%s</h2><p>%s</p></div></div></section>' % (kicker, e(q), e(a))
+
+def offer_catalog():
+    return {"@type": "OfferCatalog", "name": "MSP Pure Water systems, installed prices", "itemListElement": [
+        {"@type": "Offer", "name": s["name"], "price": s["price"], "priceCurrency": "USD", "url": BASE + sys_href(s), "category": {"city": "City water", "well": "Well water", "ro": "Reverse osmosis drinking water", "addon": "Well water add-on"}[s["category"]]} for s in SYS["systems"]]}
+
+def breadcrumbs(slug, title):
+    if not slug: return None
+    names = {"service-areas": "Service Areas", "systems": "Systems", "water-problems": "Water Problems"}
+    parts = slug.split("/"); items = [{"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"}]
+    if len(parts) > 1: items.append({"@type": "ListItem", "position": 2, "name": names.get(parts[0], parts[0].replace("-", " ").title()), "item": BASE + ("/pricing/" if parts[0] == "systems" else "/%s/" % parts[0])})
+    items.append({"@type": "ListItem", "position": len(items) + 1, "name": title.split(" | ")[0], "item": BASE + "/%s/" % slug})
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}
+
+def local_business(full=False):
+    extra = {"hasOfferCatalog": offer_catalog()} if full else {}
+    return dict({"@context": "https://schema.org", "@type": ["LocalBusiness", "HomeAndConstructionBusiness"], "@id": BASE + "/#business", "name": SITE["name"], "url": BASE + "/", "telephone": TEL, "email": SITE["email"],
+            "slogan": SITE["tagline"], "founder": {"@type": "Person", "name": SITE["founder"], "jobTitle": "Founder & CEO"}, "knowsAbout": KNOWS_ABOUT,
+            "address": {"@type": "PostalAddress", "addressRegion": "MN", "addressCountry": "US"},
+            "contactPoint": {"@type": "ContactPoint", "telephone": TEL, "contactType": "sales", "areaServed": "US-MN", "availableLanguage": "English"},
             "image": BASE + SITE["og_image"], "logo": BASE + "/assets/img/logo.png", "description": SITE["description"], "priceRange": "$799 - $5,999",
             "areaServed": [{"@type": "City", "name": c["city"] + ", MN"} for c in CITIES] + [{"@type": "State", "name": "Minnesota"}],
             "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}],
-            "sameAs": [SITE["google_reviews_url"]]}
+            "sameAs": [SITE["google_reviews_url"]]}, **extra)
 
 def page(slug, title, desc, body, over_hero=False, schema=None, noindex=False, canonical=None):
     path = "/" if slug == "" else "/%s/" % slug
     can = canonical or (BASE + path)
-    ld = [local_business()] + (schema or [])
+    schema = list(schema or [])
+    qa = list(_QA); del _QA[:]
+    if qa and not noindex and not any(s.get("@type") == "FAQPage" for s in schema):
+        schema.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]})
+    bc = breadcrumbs(slug, title)
+    if bc and not noindex: schema.append(bc)
+    if slug == "":
+        schema.append({"@context": "https://schema.org", "@type": "WebSite", "@id": BASE + "/#website", "url": BASE + "/", "name": SITE["name"], "description": SITE["description"], "publisher": {"@id": BASE + "/#business"}, "inLanguage": "en-US"})
+    schema.append({"@context": "https://schema.org", "@type": "WebPage", "@id": can + "#webpage", "url": can, "name": title, "description": desc, "isPartOf": {"@id": BASE + "/#website"}, "about": {"@id": BASE + "/#business"}, "dateModified": BUILD_DATE, "inLanguage": "en-US"})
+    ld = [local_business(full=(slug in ("", "pricing", "about")))] + schema
     jsonld = "".join('<script type="application/ld+json">%s</script>' % json.dumps(s, ensure_ascii=False) for s in ld)
     head = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
       '<title>%s</title><meta name="description" content="%s"><link rel="canonical" href="%s">%s'
@@ -133,7 +171,7 @@ def page(slug, title, desc, body, over_hero=False, schema=None, noindex=False, c
       '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap">'
       '<link rel="stylesheet" href="' + asset_v("css/site.css") + '">%s'
       '<script src="' + asset_v("js/ghl.config.js") + '"></script><script defer src="' + asset_v("js/tracking.js") + '"></script><script defer src="' + asset_v("js/ghl-adapter.js") + '"></script><script defer src="' + asset_v("js/find-my-system.js") + '"></script><script defer src="' + asset_v("js/ui.js") + '"></script>'
-      '</head><body>') % (e(title), e(desc), can, '<meta name="robots" content="noindex,nofollow">' if (noindex or OPT.staging) else "", e(title), e(desc), can, BASE + SITE["og_image"],
+      '</head><body>') % (e(title), e(desc), can, '<meta name="robots" content="noindex,nofollow">' if (noindex or OPT.staging) else '<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">', e(title), e(desc), can, BASE + SITE["og_image"],
       ('<link rel="preload" as="image" href="/assets/img/hero-poster-v2.jpg" media="(min-width: 769px)"><link rel="preload" as="image" href="/assets/img/hero-poster-portrait.jpg" media="(max-width: 768px)">' if (slug == "" and HAS_POSTER) else "") + jsonld)
     out = head + header(over_hero) + '<main id="main">' + headings_title_case(body) + "</main>" + footer() + "</body></html>"
     return rebase(out)
@@ -341,6 +379,7 @@ def service_area_block():
     return '<section class="section"><div class="container"><p class="kicker">Service area</p><div class="grid grid-2" style="align-items:end;margin-bottom:2rem"><h2>Minneapolis, St. Paul and the whole metro.</h2><p class="lead">Twenty of the %d Twin Cities communities we serve, plus Greater Minnesota. <a class="link" href="/service-areas/">See every city and region</a></p></div><ul class="areas">%s</ul></div></section>' % (len(CITIES), lis)
 
 def faq_block(items, heading="Questions homeowners ask", kicker="FAQ", more=True):
+    for q in items: _qa(q["q"], q["a"])
     d = "".join('<details><summary>%s %s</summary><div class="a">%s</div></details>' % (e(q["q"]), ICON["plus"], e(q["a"])) for q in items)
     return '<section class="section cream"><div class="container"><div class="center"><p class="kicker">%s</p><h2>%s</h2></div><div class="faq" style="margin-top:2rem">%s</div>%s</div></section>' % (kicker, heading, d, '<p class="center" style="margin-top:2rem"><a class="btn btn-outline on-light" href="/faq/">All questions</a></p>' if more else "")
 
@@ -386,6 +425,11 @@ def system_page(cat, slug, title, desc, h1, lead, concerns, extra_sections=""):
     body = phero({"city": "City water solutions", "well": "Well water solutions", "ro": "Drinking water"}[cat], h1, lead, crumbs="Systems", subnav=SYS_SUBNAV(cat),
                  extra='<div class="hero-promo"><b>Included</b> RO drinking system<span class="long"> with every whole-home system</span></div>' if cat != "ro" else "")
     body += marquee()
+    lo, hi = min(s["price"] for s in systems), max(s["price"] for s in systems)
+    body += answer_box(*{
+        "city": ("What does Twin Cities city water need, and what does a system cost?", "Municipal water in the Twin Cities is treated and safe, but it typically arrives hard and disinfected with chlorine or chloramine. A whole-home system that pairs catalytic carbon filtration with ion-exchange softening treats both at every tap. MSP Pure Water installs city-water systems for %s to %s, with a reverse osmosis drinking-water system, professional installation and a lifetime warranty included." % (money(lo), money(hi))),
+        "well": ("How is iron, manganese and sulfur treated in Minnesota well water?", "Iron and manganese are treated with chemical-free air oxidation and Katalox Light filtration (Dual Tank Well Water Filtration, %s installed). Rotten-egg sulfur odor and heavy iron need hydrogen peroxide injection followed by catalytic carbon (Iron & Sulfur Treatment, %s installed). Both include a softening tank and a reverse osmosis drinking-water system, and the final configuration is set from your water test." % (money(SYSTEMS["dual-tank-well"]["price"]), money(SYSTEMS["iron-sulfur"]["price"]))),
+        "ro": ("How much does a reverse osmosis system cost installed?", "MSP Pure Water installs under-sink reverse osmosis drinking-water systems in the Twin Cities for %s (tank) or %s (tankless HW800 AlkaPro), including a dedicated faucet and professional installation. Either one is included free with any whole-home filtration system." % (money(SYSTEMS["ro-tank"]["price"]), money(SYSTEMS["ro-tankless"]["price"])))}[cat])
     body += '<section class="section-tight"><div class="container">' + carousel(systems, {"city": "City water systems", "well": "Well water systems", "ro": "Drinking water systems"}[cat]) + "</div></section>"
     if cat == "well":
         body += '<section class="section-tight cream" id="add-ons"><div class="container"><p class="kicker">Recommended for well water</p><h2>Protection add-ons</h2><div class="grid grid-2" style="margin-top:1.5rem">' + "".join(system_card(s) for s in BY_CAT["addon"]) + "</div></div></section>"
@@ -439,7 +483,10 @@ def compare_page():
 
 def pricing_page():
     body = phero("No mystery pricing", "See every price before you schedule.", "No in-home presentation required to find out what the equipment costs. " + SYS["promo"]["ro_included"], crumbs="Pricing", subnav=SYS_SUBNAV("pricing"))
-    body += '<section class="section" data-view-event="pricing_viewed"><div class="container">'
+    cp = [s["price"] for s in BY_CAT["city"]]; wp = [s["price"] for s in BY_CAT["well"]]
+    body += answer_box("How much does a whole-home water filtration system cost in Minnesota?", "At MSP Pure Water, whole-home filtration and softening systems for city water cost %s to %s installed, and well-water systems cost %s to %s installed. Every whole-home system includes a reverse osmosis drinking-water system, professional installation and a lifetime warranty. Reverse osmosis on its own is %s (tank) or %s (tankless). Prices are published and the same for every customer." % (
+        money(min(cp)), money(max(cp)), money(min(wp)), money(max(wp)), money(SYSTEMS["ro-tank"]["price"]), money(SYSTEMS["ro-tankless"]["price"])))
+    body += '<section class="section" data-view-event="pricing_viewed"><div class="container"><p class="muted" style="font-size:.85rem;margin-bottom:1.5rem">Prices last updated %s.</p>' % BUILD_MONTH
     for c in SYS["categories"]:
         rows = "".join('<div class="pricing-row"><div><b>%s</b>%s<small>%s</small></div>%s<a class="btn btn-sm btn-navy" href="/schedule/?system=%s">Schedule</a></div>' % (
             e(s["name"]), ' <span class="badge" style="position:static;display:inline-block;margin-left:.5rem">%s</span>' % e(s["badge"]) if s.get("badge") and c["id"] != "ro" else "", e(s["for"]), price_html(s, small=""), s["id"]) for s in BY_CAT[c["id"]]).replace('href="/schedule/?system=', 'href="/systems/').replace('">Schedule</a>', '/">Configure</a>')
@@ -458,6 +505,11 @@ def problem_page(p):
     systems = [SYSTEMS[s] for s in p["systems"]]
     others = [q for q in PROBLEMS if q.get("page") and q["id"] != p["id"]]
     body = phero(p["tag"] + " water", p["label"] if p["id"] != "chlorine-chloramine" else "Chlorine & Chloramine", p["cause"], crumbs='<a href="/water-problems/">Water Problems</a>')
+    PQ = {"hard-water": "How do you fix hard water in Minnesota?", "chlorine-chloramine": "How do you remove chlorine and chloramine from city water?", "iron": "How do you remove iron from well water?",
+          "sulfur-odor": "Why does my well water smell like rotten eggs, and how is it fixed?", "manganese": "How do you remove manganese from well water?", "drinking-water": "How do I get purified drinking water at my kitchen sink?"}
+    s0 = systems[0]
+    body += answer_box(PQ.get(p["id"], "How is %s treated?" % p["label"].lower()), "%s MSP Pure Water installs the %s for %s in the Twin Cities and Greater Minnesota%s." % (
+        p["approach"], s0["name"], money(s0["price"]), ", with a reverse osmosis drinking-water system included" if s0["category"] in ("city", "well") else ""))
     body += ('<section class="section"><div class="container two-col"><div><p class="kicker">How MSP approaches it</p><h2>The correct treatment, not a generic box.</h2><p class="lead">%s</p><div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-gold btn-lg" href="/find-my-system/" data-intake=\'%s\' data-intake-via="problem_page">Find my system</a><a class="btn btn-outline on-light btn-lg" href="/schedule/">Schedule Now</a></div></div>'
              '<div class="founder"><p class="kicker">Which system category may apply</p>%s</div></div></section>') % (e(p["approach"]), json.dumps({"water_problems": [p["label"]], "system_interest": p["interest"]}), "".join('<a href="%s" style="color:#fff;text-decoration:none;display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line-dark)"><b>%s</b><span class="serif" style="font-size:1.3rem;color:var(--gold-300)"><s style="opacity:.55;font-size:.9rem;margin-right:.4rem">%s</s>%s%s</span></a>' % (sys_href(s), e(s["name"]), money(s["list_price"]), s.get("price_prefix", ""), money(s["price"])) for s in systems))
     body += '<section class="section cream"><div class="container"><p class="kicker">Systems for this problem</p><div class="grid grid-3">%s</div></div></section>' % "".join(system_card(s) for s in systems[:3])
@@ -566,10 +618,17 @@ def product_page(s):
             nsf_badge() if s.get("nsf") else "", steps, ICON["arrow"].replace('<svg', '<svg style="transform:rotate(180deg)"'), n, ICON["arrow"], s["id"], TEL, PHONE, s["image"], e(s["image_alt"]), callouts, ('<span class="callout-nsf">%s</span>' % NSF_ICON) if s.get("nsf") else "")
     related = [x for x in SYS["systems"] if x["category"] == s["category"] and x["id"] != s["id"]][:3] or [SYSTEMS["ro-tankless"]]
     body = hero + inside
+    if s["category"] == "addon":
+        body += answer_box("How much does the %s cost?" % s["name"], "The %s adds %s to an MSP Pure Water whole-home system, installed. %s" % (s["name"], money(s["price"]), s["for"]))
+    else:
+        body += answer_box("How much does the %s cost installed?" % s["name"], "The %s is %s installed by MSP Pure Water in the Twin Cities and Greater Minnesota. %s The price includes: %s." % (
+            s["name"], money(s["price"]), s.get("what_it_does") or s["for"], ", ".join(i[0].lower() + i[1:] for i in s["included"])))
     body += '<section class="section cream"><div class="container"><p class="kicker">Compare</p><h2>Other %s options</h2><div class="grid grid-3" style="margin-top:1.5rem">%s</div><p style="margin-top:1.5rem"><a class="link" href="/compare-systems/">Full side-by-side comparison</a></p></div></section>' % (cat.lower(), "".join(system_card(x) for x in related))
     body += faq_block([q for q in FAQ if any(k in q["q"].lower() for k in {"city": ["come to my home", "cost", "filtration and softening", "salt", "pressure"], "well": ["come to my home", "well", "tested", "maintenance", "warranty"], "ro": ["come to my home", "reverse osmosis", "tank", "every faucet"], "addon": ["come to my home", "sediment", "uv", "well"]}[s["category"]])][:4]) + final_cta()
     schema = {"@context": "https://schema.org", "@type": "Product", "name": s["name"], "description": s.get("what_it_does") or s["for"], "image": BASE + "/assets/img/" + s["image"], "brand": {"@type": "Brand", "name": "MSP Pure Water"},
               "offers": {"@type": "Offer", "price": s["price"], "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": BASE + sys_href(s), "seller": {"@id": BASE + "/#business"}}}
+    if s.get("specs"): schema["additionalProperty"] = [{"@type": "PropertyValue", "name": k, "value": v} for k, v in s["specs"]]
+    schema["sku"] = s["id"]; schema["category"] = cat + " treatment"
     desc = "%s, %s%s installed in the Twin Cities. %s" % (s["short"], s.get("price_prefix", ""), money(s["price"]), s["for"])
     if len(desc) > 158: desc = desc[:155].rsplit(" ", 1)[0].rstrip(",;:") + "…"
     return page("systems/" + s["id"], "%s | %s%s Installed | MSP Pure Water" % (s["short"], s.get("price_prefix", ""), money(s["price"])), desc, body, schema=[schema])
@@ -602,6 +661,11 @@ def city_page_for(c):
              '<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System</a><a class="btn btn-outline on-light btn-lg" href="/schedule/">Schedule Now</a></div></div>'
              '<div class="founder"><p class="kicker">Popular in %s</p>%s</div></div></section>') % (e(name), e(name), e(name), "".join('<a href="%s" style="color:#fff;text-decoration:none;display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--line-dark)"><b>%s</b><span class="serif" style="font-size:1.3rem;color:var(--gold-300)"><s style="opacity:.55;font-size:.9rem;margin-right:.4rem">%s</s>%s</span></a>' % (sys_href(s), e(s["short"]), money(s["list_price"]), money(s["price"])) for s in [SYSTEMS["whole-home-softener"], SYSTEMS["dual-tank-well"], SYSTEMS["ro-tankless"]]))
     body += '<section class="section cream"><div class="container"><div class="grid grid-3">%s</div></div></section>' % "".join(system_card(SYSTEMS[i]) for i in ["whole-home-softener", "dual-tank-well", "ro-tankless"])
+    body += faq_block([
+        {"q": "Who installs water softeners and whole-home water filtration in %s, MN?" % name, "a": "MSP Pure Water installs whole-home water filtration, water softeners, well-water treatment and reverse osmosis systems in %s and throughout %s. Prices are published, consultations happen by phone with in-home presentations on request, and you can call or text %s any time." % (name, c["county"], PHONE)},
+        {"q": "How much does a whole-home water filtration system cost in %s?" % name, "a": "In %s, MSP Pure Water's whole-home filtration and softening system is %s installed, including a reverse osmosis drinking-water system, professional installation and a lifetime warranty. Well-water systems start at %s installed." % (name, money(SYSTEMS["whole-home-softener"]["price"]), money(SYSTEMS["dual-tank-well"]["price"]))},
+        {"q": "Do you come to my home in %s for a consultation?" % name, "a": FAQ[0]["a"]}],
+        heading="Water treatment in %s: quick answers" % name, kicker="Quick answers", more=False)
     if nearby: body += '<section class="section"><div class="container"><p class="kicker">Nearby</p><ul class="chips">%s</ul></div></section>' % "".join('<li><a class="chip" style="text-decoration:none;display:inline-block" href="/service-areas/%s/">%s</a></li>' % (x["slug"], e(x["city"])) for x in nearby)
     body += final_cta()
     schema = {"@context": "https://schema.org", "@type": "Service", "name": "Water filtration in %s, MN" % name, "provider": {"@id": BASE + "/#business"}, "areaServed": {"@type": "City", "name": name + ", MN"}, "serviceType": "Water filtration, water softening, well water treatment, reverse osmosis installation"}
@@ -613,6 +677,12 @@ def about_page():
              '<p>He started MSP Pure Water because he was tired of seeing overpriced water solutions, with homeowners quoted thousands more than the work was worth for the same equipment. The company exists to make water treatment affordable without cutting a corner on quality.</p>'
              '<p>When you work with MSP Pure Water, you work with Prince directly. Every recommendation and every install runs through him personally. That accountability is not a selling point. It is just how the business operates.</p></div>'
              '<div class="founder" style="margin-top:1.5rem"><blockquote>We run the same systems we install. We\'re not selling you something we wouldn\'t put in our own house.</blockquote><div class="stat-row"><div><b>%s</b><span>Stars on Google</span></div><div><b>Phone</b><span>Consultations, in-home on request</span></div><div><b>24 h</b><span>Open every day</span></div><div><b>$2,999</b><span>Whole-home from</span></div></div></div></div></div></section>') % (SITE["google_rating"])
+    facts = [("Business", "MSP Pure Water"), ("What we do", "Whole-home water filtration, water softening, well-water treatment and reverse osmosis drinking-water systems, professionally installed"),
+             ("Service area", "Minneapolis, St. Paul, the Twin Cities metro (%d communities) and Greater Minnesota" % len(CITIES)), ("Founder", "Prince, Founder & CEO"),
+             ("Phone", PHONE + " (call or text)"), ("Hours", "Open 24 hours, every day"), ("Consultations", "By phone, with in-home presentations on request"),
+             ("Pricing", "Published. Whole-home systems from %s installed; well-water systems from %s; reverse osmosis from %s" % (money(SYSTEMS["whole-home-softener"]["price"]), money(SYSTEMS["dual-tank-well"]["price"]), money(SYSTEMS["ro-tank"]["price"]))),
+             ("Included", "Reverse osmosis drinking-water system with every whole-home system, professional installation, lifetime warranty"), ("Guarantee", "Best Price Guarantee: we beat any comparable installed quote"), ("Google rating", SITE["rating_line"])]
+    body += '<section class="section"><div class="container"><p class="kicker">At a glance</p><h2>MSP Pure Water facts</h2><dl class="facts">%s</dl></div></section>' % "".join("<div><dt>%s</dt><dd>%s</dd></div>" % (e(k), e(v)) for k, v in facts)
     body += why()
     std = [("Free phone assessment first", "We go over your water and your home on the phone before we recommend anything. In-home presentations are available on request."), ("Honest recommendation", "The right system for your home and budget, not the most expensive option on the list."), ("Clean installation", "Professional work and a full walkthrough of how your system works before we leave."), ("Fast, real answers", "Call or text and we get back to you within 24 hours with real answers, not a runaround."), ("No oversell, ever", "We recommend only what makes sense for your home and your water profile."), ("Local and personally accountable", "When you call, you reach someone who knows the job. Not a dispatcher, not a call center.")]
     body += '<section class="section cream"><div class="container"><p class="kicker">Our standards</p><h2 style="max-width:20ch">You can rely on the quality and professionalism of our work.</h2><div class="grid grid-3" style="margin-top:2rem">%s</div></div></section>' % "".join('<div class="reveal"><h3 style="font-size:1.35rem">%s</h3><p class="muted">%s</p></div>' % (t, p) for t, p in std)
@@ -712,6 +782,31 @@ def notfound_page():
     return page("404", "Page Not Found | MSP Pure Water", "Page not found.", body, noindex=True)
 
 # ---------------------------------------------------------------- build
+def llms_txt(full):
+    L = ["# MSP Pure Water", "", "> %s Serving Minneapolis, St. Paul, the Twin Cities metro and Greater Minnesota. Phone %s (call or text), open 24 hours." % (SITE["description"], PHONE), "",
+         "MSP Pure Water publishes every price, recommends equipment for the actual water problem, and handles consultations by phone (in-home presentations on request). Founder: %s." % SITE["founder"], "",
+         "## Key facts", "", "- Business: MSP Pure Water (service-area business, Minnesota)", "- Website: %s/" % BASE, "- Phone: %s" % PHONE, "- Email: %s" % SITE["email"], "- Hours: open 24 hours, every day",
+         "- Service area: %d Twin Cities communities plus Greater Minnesota" % len(CITIES), "- Included with every whole-home system: reverse osmosis drinking-water system, professional installation, lifetime warranty",
+         "- Best Price Guarantee: a lower comparable installed quote will be beaten", "- Google rating: %s" % SITE["rating_line"], "", "## Systems and installed prices (as of %s)" % BUILD_MONTH, ""]
+    for c in SYS["categories"]:
+        L.append("### " + c["label"])
+        for s in BY_CAT[c["id"]]:
+            L.append("- [%s](%s%s): %s%s installed. %s" % (s["name"], BASE, sys_href(s), s.get("price_prefix", ""), money(s["price"]), s.get("what_it_does") or s["for"]))
+            if full and s.get("specs"): L.append("  - Specs: " + "; ".join("%s %s" % (k, v) for k, v in s["specs"]))
+        L.append("")
+    L += ["## Main pages", "", "- [Pricing](%s/pricing/): every system price" % BASE, "- [City water systems](%s/city-water-filtration/)" % BASE, "- [Well water systems](%s/well-water-filtration/)" % BASE,
+          "- [Reverse osmosis](%s/reverse-osmosis/)" % BASE, "- [Compare systems](%s/compare-systems/)" % BASE, "- [Water problems](%s/water-problems/): hard water, chlorine, iron, sulfur, manganese" % BASE,
+          "- [Service areas](%s/service-areas/)" % BASE, "- [About](%s/about/)" % BASE, "- [FAQ](%s/faq/)" % BASE, "- [Schedule](%s/schedule/): call or text to schedule a free phone consultation" % BASE, ""]
+    if full:
+        L += ["## Water problems and how they are treated", ""]
+        for p in PROBLEMS: L += ["### " + p["label"], "Cause: " + p["cause"], "Treatment: " + p["approach"], ""]
+        L += ["## Frequently asked questions", ""]
+        for q in FAQ: L += ["### " + q["q"], q["a"], ""]
+        L += ["## Communities served", "", ", ".join(c["city"] for c in CITIES) + ", and Greater Minnesota.", ""]
+    else:
+        L += ["## Optional", "", "- [Full detail for language models](%s/llms-full.txt)" % BASE, ""]
+    return "\n".join(L)
+
 def write(path, content):
     full = os.path.join(DIST, path); os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as f: f.write(content)
@@ -747,7 +842,14 @@ def main():
     today = datetime.date.today().isoformat()
     urls = "".join("<url><loc>%s/%s</loc><lastmod>%s</lastmod><changefreq>%s</changefreq><priority>%s</priority></url>" % (BASE, (slug + "/") if slug else "", today, "weekly" if slug in ("", "pricing") else "monthly", "1.0" if slug == "" else "0.8" if "/" not in slug else "0.6") for slug in pages if slug not in noindex)
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>' % urls)
-    write("robots.txt", ("User-agent: *\nDisallow: /\n" if OPT.staging else "User-agent: *\nAllow: /\nDisallow: /thank-you/\nDisallow: /booked/\nSitemap: %s/sitemap.xml\n" % BASE))
+    AI_AGENTS = ["Googlebot", "Google-Extended", "Bingbot", "OAI-SearchBot", "ChatGPT-User", "GPTBot", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Perplexity-User",
+                 "Applebot", "Applebot-Extended", "Amazonbot", "DuckAssistBot", "meta-externalagent", "CCBot"]
+    rules = "Allow: /\nDisallow: /thank-you/\nDisallow: /booked/\nDisallow: /message-received/\n"
+    write("robots.txt", ("User-agent: *\nDisallow: /\n" if OPT.staging else
+        "# MSP Pure Water welcomes search and AI answer engines.\n" + "".join("User-agent: %s\n%s\n" % (a, rules) for a in AI_AGENTS) + "User-agent: *\n" + rules + "\nSitemap: %s/sitemap.xml\n" % BASE))
+    if not OPT.staging:
+        write("llms.txt", llms_txt(False)); write("llms-full.txt", llms_txt(True))
+        if SITE.get("indexnow_key"): write(SITE["indexnow_key"] + ".txt", SITE["indexnow_key"])
     # Redirects for legacy Amboras routes (Netlify/Cloudflare _redirects syntax; mirror in host config if different)
     write("_redirects", "\n".join([
         "/iron-sulfur-removal  /well-water-filtration/  301", "/iron-sulfur-removal/  /well-water-filtration/  301",

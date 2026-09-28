@@ -795,3 +795,15 @@ s.was::after{content:"";position:absolute;left:-.1em;right:-.1em;top:50%;height:
 .mnav .mnav-actions{display:grid;gap:.6rem;margin-top:1.5rem}
 .mnav .mnav-actions a{display:flex;align-items:center;justify-content:center;gap:.55rem;padding:.95rem 1.1rem;border-bottom:0;font-family:var(--font-body);font-size:1rem;font-weight:600;text-align:center;border-radius:var(--radius);line-height:1.2;white-space:nowrap}
 .mnav .mnav-actions a svg{width:18px;height:18px;flex:none}
+
+/* Answer boxes + facts (answer-engine friendly, visible content) */
+.answer{padding-block:clamp(24px,4vw,44px)}
+.answer-box{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--radius-lg);padding:clamp(1.25rem,2.6vw,2rem);max-width:900px}
+.answer-box .kicker{margin-bottom:.5rem}
+.answer-box h2{font-size:clamp(1.4rem,2.4vw,1.9rem);margin:0 0 .6rem;max-width:none}
+.answer-box p{margin:0;font-size:1.02rem;line-height:1.65;color:var(--text)}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(24px,4vw,56px);margin:1.5rem 0 0}
+@media (max-width:760px){.facts{grid-template-columns:1fr}}
+.facts>div{display:grid;grid-template-columns:minmax(110px,.4fr) 1fr;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.facts dt{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-top:.2rem}
+.facts dd{margin:0}

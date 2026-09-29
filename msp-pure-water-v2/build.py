@@ -145,7 +145,7 @@ def local_business(full=False):
             "image": BASE + SITE["og_image"], "logo": BASE + "/assets/img/logo.png", "description": SITE["description"], "priceRange": "$799 - $5,999",
             "areaServed": [{"@type": "City", "name": c["city"] + ", MN"} for c in CITIES] + [{"@type": "State", "name": "Minnesota"}],
             "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}],
-            "sameAs": [SITE["google_reviews_url"]]}, **extra)
+            "sameAs": [u for u in [SITE.get("google_profile_url"), SITE["google_reviews_url"]] + SITE.get("social_profiles", []) if u]}, **extra)
 
 def page(slug, title, desc, body, over_hero=False, schema=None, noindex=False, canonical=None):
     path = "/" if slug == "" else "/%s/" % slug
@@ -850,6 +850,8 @@ def main():
     if not OPT.staging:
         write("llms.txt", llms_txt(False)); write("llms-full.txt", llms_txt(True))
         if SITE.get("indexnow_key"): write(SITE["indexnow_key"] + ".txt", SITE["indexnow_key"])
+        if SITE.get("google_verification_file"): write(SITE["google_verification_file"], "google-site-verification: " + SITE["google_verification_file"])
+        if SITE.get("bing_verification"): write("BingSiteAuth.xml", '<?xml version="1.0"?><users><user>%s</user></users>' % SITE["bing_verification"])
     # Redirects for legacy Amboras routes (Netlify/Cloudflare _redirects syntax; mirror in host config if different)
     write("_redirects", "\n".join([
         "/iron-sulfur-removal  /well-water-filtration/  301", "/iron-sulfur-removal/  /well-water-filtration/  301",

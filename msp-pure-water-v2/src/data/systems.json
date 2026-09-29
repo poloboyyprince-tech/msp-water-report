@@ -1,6 +1,6 @@
 {
  "promo": {
-  "ro_included": "Reverse osmosis drinking-water system included with every whole-home system — tank or tankless, your choice.",
+  "ro_included": "Reverse osmosis drinking-water system included with every whole-home system. Upgrade to the tankless HW800 AlkaPro for $200.",
   "financing": "Financing options available — ask during your consultation.",
   "travel": "Travel fees may apply for installations beyond 35 miles from Minneapolis."
  },
@@ -100,7 +100,7 @@
     ]
    ],
    "included": [
-    "Reverse osmosis drinking-water system (tank or tankless)",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
     "Professional installation",
     "System walkthrough at install",
     "Lifetime warranty"
@@ -113,16 +113,16 @@
      "type": "single",
      "choices": [
       {
-       "label": "Tankless RO (HW800 AlkaPro)",
+       "label": "Tank RO",
        "add": 0,
        "inc": true,
        "list_add": 0
       },
       {
-       "label": "Tank RO",
-       "add": 0,
-       "inc": true,
-       "list_add": 0
+       "label": "Tankless RO (HW800 AlkaPro)",
+       "add": 200,
+       "inc": false,
+       "list_add": 300
       }
      ]
     }
@@ -287,7 +287,7 @@
     ],
     [
      "Free Reverse Osmosis Add-On",
-     "Your choice of tank or tankless drinking-water system, included with installation."
+     "Tank reverse osmosis drinking-water system included with installation. Tankless HW800 AlkaPro upgrade, $200."
     ]
    ],
    "list_price": 4999
@@ -356,7 +356,7 @@
     ]
    ],
    "included": [
-    "Reverse osmosis drinking-water system (tank or tankless)",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
     "Professional installation",
     "System walkthrough at install",
     "Lifetime warranty"
@@ -369,16 +369,16 @@
      "type": "single",
      "choices": [
       {
-       "label": "Tankless RO (HW800 AlkaPro)",
+       "label": "Tank RO",
        "add": 0,
        "inc": true,
        "list_add": 0
       },
       {
-       "label": "Tank RO",
-       "add": 0,
-       "inc": true,
-       "list_add": 0
+       "label": "Tankless RO (HW800 AlkaPro)",
+       "add": 200,
+       "inc": false,
+       "list_add": 300
       }
      ]
     }
@@ -535,7 +535,7 @@
     ],
     [
      "Free Reverse Osmosis Add-On",
-     "Your choice of tank or tankless drinking-water system, included with installation."
+     "Tank reverse osmosis drinking-water system included with installation. Tankless HW800 AlkaPro upgrade, $200."
     ]
    ],
    "list_price": 6699
@@ -608,7 +608,7 @@
     ]
    ],
    "included": [
-    "Tankless reverse osmosis drinking-water system",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
     "Professional installation",
     "System walkthrough at install",
     "Lifetime warranty"
@@ -621,10 +621,16 @@
      "type": "single",
      "choices": [
       {
-       "label": "Tankless RO (HW800 AlkaPro)",
+       "label": "Tank RO",
        "add": 0,
        "inc": true,
        "list_add": 0
+      },
+      {
+       "label": "Tankless RO (HW800 AlkaPro)",
+       "add": 200,
+       "inc": false,
+       "list_add": 300
       }
      ]
     }
@@ -713,7 +719,7 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "The simplest system to own.",
-     "body": "Zero electricity, zero drain line, zero salt. 28 GPM valve flow, NSF-certified media, lifetime warranty, and a free tankless reverse osmosis drinking-water system included.",
+     "body": "Zero electricity, zero drain line, zero salt. 28 GPM valve flow, NSF-certified media, lifetime warranty, and a free reverse osmosis drinking-water system included.",
      "stats": [
       [
        "Valve flow",
@@ -769,8 +775,8 @@
      "Supports even water distribution through the media."
     ],
     [
-     "Free Tankless Reverse Osmosis",
-     "HW800 AlkaPro tankless drinking-water system, included with installation."
+     "Free Reverse Osmosis",
+     "Tank reverse osmosis drinking-water system included with installation. Tankless HW800 AlkaPro upgrade, $200."
     ]
    ],
    "list_price": 7499
@@ -840,7 +846,7 @@
     ]
    ],
    "included": [
-    "Reverse osmosis drinking-water system (tank or tankless)",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
     "Professional installation",
     "System walkthrough at install",
     "Lifetime warranty"
@@ -854,16 +860,16 @@
      "type": "single",
      "choices": [
       {
-       "label": "Tankless RO (HW800 AlkaPro)",
+       "label": "Tank RO",
        "add": 0,
        "inc": true,
        "list_add": 0
       },
       {
-       "label": "Tank RO",
-       "add": 0,
-       "inc": true,
-       "list_add": 0
+       "label": "Tankless RO (HW800 AlkaPro)",
+       "add": 200,
+       "inc": false,
+       "list_add": 300
       }
      ]
     },
@@ -1045,7 +1051,7 @@
     ],
     [
      "Free Reverse Osmosis Add-On",
-     "Your choice of tank or tankless drinking-water system, included with installation."
+     "Tank reverse osmosis drinking-water system included with installation. Tankless HW800 AlkaPro upgrade, $200."
     ]
    ],
    "list_price": 7499
@@ -1115,7 +1121,7 @@
     ]
    ],
    "included": [
-    "Reverse osmosis drinking-water system (tank or tankless)",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
     "Professional installation",
     "System walkthrough at install",
     "Lifetime warranty"
@@ -1129,16 +1135,16 @@
      "type": "single",
      "choices": [
       {
-       "label": "Tankless RO (HW800 AlkaPro)",
+       "label": "Tank RO",
        "add": 0,
        "inc": true,
        "list_add": 0
       },
       {
-       "label": "Tank RO",
-       "add": 0,
-       "inc": true,
-       "list_add": 0
+       "label": "Tankless RO (HW800 AlkaPro)",
+       "add": 200,
+       "inc": false,
+       "list_add": 300
       }
      ]
     },
@@ -1317,7 +1323,7 @@
     ],
     [
      "Free Reverse Osmosis Add-On",
-     "Your choice of tank or tankless drinking-water system, included with installation."
+     "Tank reverse osmosis drinking-water system included with installation. Tankless HW800 AlkaPro upgrade, $200."
     ]
    ],
    "list_price": 9999
@@ -1327,7 +1333,7 @@
    "category": "ro",
    "name": "HW800 AlkaPro Tankless Reverse Osmosis",
    "short": "Tankless RO",
-   "badge": "Included Free",
+   "badge": "$200 Upgrade With Any Whole-Home System",
    "price": 999,
    "image": "system-ro-tankless.v5.webp",
    "image_alt": "HW800 AlkaPro tankless reverse osmosis unit, white with black front panel, next to a chrome drinking-water faucet",

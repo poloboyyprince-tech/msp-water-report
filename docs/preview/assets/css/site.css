@@ -809,3 +809,11 @@ s.was::after{content:"";position:absolute;left:-.1em;right:-.1em;top:50%;height:
 .facts dd{margin:0}
 
 .fsocial a{text-decoration:underline;text-underline-offset:3px}
+
+/* Real install gallery */
+.installs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.6vw,20px)}
+@media (max-width:980px){.installs{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:640px){.installs{grid-template-columns:repeat(2,1fr)}}
+.install{margin:0;border-radius:var(--radius-lg);overflow:hidden;background:#fff;border:1px solid var(--line)}
+.install img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block}
+.install figcaption{padding:.65rem .8rem;font-size:.85rem;font-weight:600;color:var(--ink);line-height:1.3}

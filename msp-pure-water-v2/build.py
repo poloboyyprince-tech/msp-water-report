@@ -334,6 +334,29 @@ def approach():
     cells = "".join('<div class="reveal"><span class="step">Problem</span><div class="prob">%s</div><p>%s</p><span class="arrow">%s</span><span class="step">Correct treatment</span><div class="sol">%s</div><p>%s</p></div>' % (a, b, ICON["down"], c, d) for a, b, c, d in rows)
     return '<section class="section"><div class="container"><p class="kicker">The MSP approach</p><div class="grid grid-2" style="align-items:end;margin-bottom:2rem"><h2>Problem. Cause. Correct treatment.</h2><p class="lead">We match equipment to the water problem you actually have. Not a generic box for every house on the street.</p></div><div class="approach">%s</div></div></section>' % cells
 
+INSTALLS = {
+    "softener-single-tank-1": ("Whole-home softener and brine tank", "Whole-home water softener with brine tank installed by MSP Pure Water in a Minnesota mechanical room"),
+    "softener-single-tank-2": ("Softener beside the main line", "Whole-home water softener and brine tank installed by MSP Pure Water next to the home's main water line"),
+    "softener-single-tank-3": ("Single tank in a utility room", "Whole-home filtration tank installed by MSP Pure Water on a level pad beside the plumbing manifold"),
+    "dual-tank-1": ("Dual tank system with brine tank", "Dual tank whole-home filtration and softening system with brine tank installed by MSP Pure Water"),
+    "dual-tank-2": ("Dual tanks beside the water heater", "Dual tank whole-home system installed by MSP Pure Water beside a water heater"),
+    "ro-tankless-1": ("Tankless RO under the sink", "MSP Pure Water tankless reverse osmosis unit installed under a kitchen sink"),
+    "ro-faucet-1": ("Dedicated RO drinking faucet", "Dedicated reverse osmosis drinking-water faucet installed beside the kitchen faucet"),
+    "ro-tank-1": ("Tank RO under the sink", "Tank reverse osmosis system with storage tank installed under a kitchen sink by MSP Pure Water"),
+    "ro-tank-3": ("Tank RO filter bank", "Tank reverse osmosis filter bank and storage tank installed under a kitchen sink by MSP Pure Water"),
+}
+INSTALL_SETS = {"home": ["softener-single-tank-1", "dual-tank-1", "ro-tankless-1", "ro-faucet-1", "softener-single-tank-2", "dual-tank-2", "softener-single-tank-3", "ro-tank-1"],
+                "city": ["softener-single-tank-1", "dual-tank-1", "softener-single-tank-2", "dual-tank-2"], "well": ["dual-tank-1", "dual-tank-2", "softener-single-tank-1", "softener-single-tank-3"],
+                "ro": ["ro-tankless-1", "ro-faucet-1", "ro-tank-1", "ro-tank-3"], "addon": ["dual-tank-1", "softener-single-tank-1", "dual-tank-2", "softener-single-tank-3"]}
+PRODUCT_INSTALLS = {"whole-home-softener": ["softener-single-tank-1", "softener-single-tank-2", "softener-single-tank-3", "ro-faucet-1"], "dual-tank-city": ["dual-tank-1", "dual-tank-2", "ro-tankless-1", "ro-faucet-1"],
+                    "ro-tankless": ["ro-tankless-1", "ro-faucet-1"], "ro-tank": ["ro-tank-1", "ro-tank-3", "ro-faucet-1"]}
+
+def installs(ids, heading="Real installs in Minnesota homes", lead="No stock photos. These are MSP Pure Water systems in customers' homes, installed and running.", kicker="Our work", cream=False):
+    ids = [i for i in ids if has_img("installs/%s.webp" % i)]
+    if not ids: return ""
+    figs = "".join('<figure class="install reveal"><img src="/assets/img/installs/%s.webp" srcset="/assets/img/installs/%s-480.webp 480w, /assets/img/installs/%s.webp 960w" sizes="(max-width:640px) 46vw, (max-width:980px) 30vw, 280px" width="960" height="1200" loading="lazy" alt="%s"><figcaption>%s</figcaption></figure>' % (i, i, i, e(INSTALLS[i][1]), e(INSTALLS[i][0])) for i in ids)
+    return '<section class="section%s"><div class="container"><div class="grid grid-2" style="align-items:end;margin-bottom:1.75rem"><div><p class="kicker">%s</p><h2>%s</h2></div><p class="lead">%s</p></div><div class="installs">%s</div></div></section>' % (" cream" if cream else "", kicker, heading, lead, figs)
+
 def before_after():
     items = [("scale", "Scale-covered faucet", "Clean fixture", "Hard Water & Scale", "Softened water stops new scale from forming. Fixtures stay clean between cleanings."),
              ("dishes", "Spotty glassware", "Clear glassware", "Spots on Dishes", "No hardness minerals left behind when the water dries."),
@@ -396,7 +419,7 @@ def marquee():
 
 # ---------------------------------------------------------------- pages
 def home():
-    body = hero() + reviews() + source_cards() + explorer() + systems_home() + best_price() + approach() + before_after() + why() + process() + minnesota() + service_area_block() + faq_block(FAQ[:6]) + final_cta()
+    body = hero() + reviews() + source_cards() + explorer() + systems_home() + installs(INSTALL_SETS["home"], cream=True) + best_price() + approach() + before_after() + why() + process() + minnesota() + service_area_block() + faq_block(FAQ[:6]) + final_cta()
     return page("", "Water Filtration & Softening | Twin Cities | MSP Pure Water", SITE["description"], body, over_hero=True)
 
 def sysdetail(s):
@@ -434,6 +457,7 @@ def system_page(cat, slug, title, desc, h1, lead, concerns, extra_sections=""):
     if cat == "well":
         body += '<section class="section-tight cream" id="add-ons"><div class="container"><p class="kicker">Recommended for well water</p><h2>Protection add-ons</h2><div class="grid grid-2" style="margin-top:1.5rem">' + "".join(system_card(s) for s in BY_CAT["addon"]) + "</div></div></section>"
     body += extra_sections
+    body += installs(INSTALL_SETS[cat], heading="Installed in Minnesota homes", lead="Real MSP Pure Water installations, not renderings.", cream=True)
     body += '<section class="section"><div class="container"><p class="kicker">Common concerns</p><h2 style="max-width:22ch">%s</h2><div class="grid grid-3" style="margin-top:2rem">%s</div></div></section>' % (concerns[0], "".join('<div class="reveal"><h3 style="font-size:1.35rem">%s</h3><p class="muted">%s</p></div>' % (t, p) for t, p in concerns[1]))
     body += best_price() + faq_block([q for q in FAQ if any(k in q["q"].lower() for k in {"city": ["cost", "filtration and softening", "every faucet", "salt", "pressure"], "well": ["well", "cost", "maintenance", "tested", "warranty"], "ro": ["reverse osmosis", "tank", "every faucet", "cost"]}[cat])][:5]) + final_cta()
     return page(slug, title, desc, body, schema=[service_schema(h1, desc, systems)])
@@ -623,6 +647,7 @@ def product_page(s):
     else:
         body += answer_box("How much does the %s cost installed?" % s["name"], "The %s is %s installed by MSP Pure Water in the Twin Cities and Greater Minnesota. %s The price includes: %s." % (
             s["name"], money(s["price"]), s.get("what_it_does") or s["for"], ", ".join(i[0].lower() + i[1:] for i in s["included"])))
+    body += installs(PRODUCT_INSTALLS.get(s["id"], INSTALL_SETS[s["category"]]), heading="What it looks like installed", lead="Real MSP Pure Water installations in Minnesota homes.")
     body += '<section class="section cream"><div class="container"><p class="kicker">Compare</p><h2>Other %s options</h2><div class="grid grid-3" style="margin-top:1.5rem">%s</div><p style="margin-top:1.5rem"><a class="link" href="/compare-systems/">Full side-by-side comparison</a></p></div></section>' % (cat.lower(), "".join(system_card(x) for x in related))
     body += faq_block([q for q in FAQ if any(k in q["q"].lower() for k in {"city": ["come to my home", "cost", "filtration and softening", "salt", "pressure"], "well": ["come to my home", "well", "tested", "maintenance", "warranty"], "ro": ["come to my home", "reverse osmosis", "tank", "every faucet"], "addon": ["come to my home", "sediment", "uv", "well"]}[s["category"]])][:4]) + final_cta()
     schema = {"@context": "https://schema.org", "@type": "Product", "name": s["name"], "description": s.get("what_it_does") or s["for"], "image": BASE + "/assets/img/" + s["image"], "brand": {"@type": "Brand", "name": "MSP Pure Water"},
@@ -683,6 +708,7 @@ def about_page():
              ("Pricing", "Published. Whole-home systems from %s installed; well-water systems from %s; reverse osmosis from %s" % (money(SYSTEMS["whole-home-softener"]["price"]), money(SYSTEMS["dual-tank-well"]["price"]), money(SYSTEMS["ro-tank"]["price"]))),
              ("Included", "Reverse osmosis drinking-water system with every whole-home system, professional installation, lifetime warranty"), ("Guarantee", "Best Price Guarantee: we beat any comparable installed quote"), ("Google rating", SITE["rating_line"])]
     body += '<section class="section"><div class="container"><p class="kicker">At a glance</p><h2>MSP Pure Water facts</h2><dl class="facts">%s</dl></div></section>' % "".join("<div><dt>%s</dt><dd>%s</dd></div>" % (e(k), e(v)) for k, v in facts)
+    body += installs(INSTALL_SETS["home"], cream=True)
     body += why()
     std = [("Free phone assessment first", "We go over your water and your home on the phone before we recommend anything. In-home presentations are available on request."), ("Honest recommendation", "The right system for your home and budget, not the most expensive option on the list."), ("Clean installation", "Professional work and a full walkthrough of how your system works before we leave."), ("Fast, real answers", "Call or text and we get back to you within 24 hours with real answers, not a runaround."), ("No oversell, ever", "We recommend only what makes sense for your home and your water profile."), ("Local and personally accountable", "When you call, you reach someone who knows the job. Not a dispatcher, not a call center.")]
     body += '<section class="section cream"><div class="container"><p class="kicker">Our standards</p><h2 style="max-width:20ch">You can rely on the quality and professionalism of our work.</h2><div class="grid grid-3" style="margin-top:2rem">%s</div></div></section>' % "".join('<div class="reveal"><h3 style="font-size:1.35rem">%s</h3><p class="muted">%s</p></div>' % (t, p) for t, p in std)

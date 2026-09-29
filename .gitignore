@@ -21,3 +21,6 @@ output/leads.json
 # production build lives in its own repo (msppurewaterco.com)
 msp-pure-water-v2/dist-prod/
 msp-pure-water-v2/prod-repo/
+
+# ready-to-upload photo set for Google Business Profile (not part of the site)
+msp-pure-water-v2/google-profile-photos/

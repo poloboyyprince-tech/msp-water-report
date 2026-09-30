@@ -316,7 +316,7 @@ def systems_home():
         if c["id"] == "addon": continue
         blocks += '<div style="margin-bottom:3rem"><div class="grid grid-2" style="align-items:end;margin-bottom:1.25rem"><h3 style="margin:0">%s</h3><p class="muted" style="margin:0">%s</p></div><div class="grid grid-3">%s</div></div>' % (
             e(c["label"]), e(c["intro"]), "".join(system_card(s, compact=True) for s in BY_CAT[c["id"]]))
-    addons = "".join('<div class="pricing-row"><div><b>%s</b><small>%s</small></div>%s<a class="btn btn-sm btn-outline on-light" href="/well-water-filtration/#%s">Details</a></div>' % (e(s["name"]), e(s["for"]), price_html(s, small="", cls="price price-sm"), s["id"]) for s in BY_CAT["addon"])
+    addons = "".join('<div class="pricing-row has-thumb">%s<div><b>%s</b><small>%s</small></div>%s<a class="btn btn-sm btn-outline on-light" href="%s">Details</a></div>' % (thumb(s), e(s["name"]), e(s["for"]), price_html(s, small="", cls="price price-sm"), sys_href(s)) for s in BY_CAT["addon"])
     return ('<section class="section" id="pricing" data-view-event="pricing_viewed"><div class="container"><div class="grid grid-2" style="align-items:end;margin-bottom:2.5rem"><div><p class="kicker">Systems &amp; transparent pricing</p><h2>Know what you\'re buying before anyone enters your home.</h2></div><p class="lead">Every price is published. No quote games, no three-hour presentation. %s</p></div>%s'
             '<div style="max-width:820px"><h3>Optional add-ons</h3>%s</div><p style="margin-top:1.5rem" class="muted">%s %s</p><div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-navy" href="/pricing/">Full pricing</a><a class="btn btn-outline on-light" href="/compare-systems/">Compare systems side by side</a></div></div></section>') % (
         e(SYS["promo"]["ro_included"]), blocks, addons, e(SYS["promo"]["financing"]), e(SYS["promo"]["travel"]))
@@ -356,6 +356,17 @@ def installs(ids, heading="Real installs in Minnesota homes", lead="No stock pho
     if not ids: return ""
     figs = "".join('<figure class="install reveal"><img src="/assets/img/installs/%s.webp" srcset="/assets/img/installs/%s-480.webp 480w, /assets/img/installs/%s.webp 960w" sizes="(max-width:640px) 46vw, (max-width:980px) 30vw, 280px" width="960" height="1200" loading="lazy" alt="%s"><figcaption>%s</figcaption></figure>' % (i, i, i, e(INSTALLS[i][1]), e(INSTALLS[i][0])) for i in ids)
     return '<section class="section%s"><div class="container"><div class="grid grid-2" style="align-items:end;margin-bottom:1.75rem"><div><p class="kicker">%s</p><h2>%s</h2></div><p class="lead">%s</p></div><div class="installs">%s</div></div></section>' % (" cream" if cream else "", kicker, heading, lead, figs)
+
+def thumb(s, size=72):
+    """Small product image linking to the system page, so every price line shows what it is."""
+    return '<a class="rthumb" href="%s" aria-label="%s"><img src="/assets/img/%s" width="%d" height="%d" loading="lazy" alt="%s"></a>' % (sys_href(s), e(s["name"]), s["image"].replace(".webp", "-640.webp") if has_img(s["image"].replace(".webp", "-640.webp")) else s["image"], size, size, e(s["image_alt"]))
+
+OPTION_IMG = {"sediment": "sediment-filter", "uv": "uv-purifier"}
+def option_thumb(key, label=""):
+    sid = OPTION_IMG.get(key) or ("ro-tankless" if "tankless" in label.lower() else "ro-tank" if key == "ro" else None)
+    if not sid or sid not in SYSTEMS: return ""
+    s = SYSTEMS[sid]; img = s["image"].replace(".webp", "-640.webp") if has_img(s["image"].replace(".webp", "-640.webp")) else s["image"]
+    return '<img src="/assets/img/%s" width="40" height="40" loading="lazy" alt="">' % img
 
 def before_after():
     items = [("scale", "Scale-covered faucet", "Clean fixture", "Hard Water & Scale", "Softened water stops new scale from forming. Fixtures stay clean between cleanings."),
@@ -486,7 +497,7 @@ def compare_page():
     cols = [SYSTEMS[i] for i in ["whole-home-softener", "dual-tank-city", "salt-free", "dual-tank-well", "iron-sulfur"]]
     def row(label, fn): return "<tr><th>%s</th>%s</tr>" % (label, "".join("<td>%s</td>" % fn(s) for s in cols))
     yes = '<span class="yes">%s Yes</span>' % ICON["check"]; no = '<span class="no">—</span>'
-    tbl = ('<table class="compare"><thead><tr><th>Compare</th>%s</tr></thead><tbody>' % "".join("<th>%s</th>" % e(s["short"]) for s in cols) +
+    tbl = ('<table class="compare"><thead><tr><th>Compare</th>%s</tr></thead><tbody>' % "".join('<th><img src="/assets/img/%s" width="56" height="56" loading="lazy" alt="%s" class="cthumb"><br>%s</th>' % (s["image"].replace(".webp", "-640.webp") if has_img(s["image"].replace(".webp", "-640.webp")) else s["image"], e(s["image_alt"]), e(s["short"])) for s in cols) +
         row("Water source", lambda s: "City water" if s["category"] == "city" else "Well water") +
         row("Installed price", lambda s: '<span class="cprice"><s class="was">%s</s> %s</span>' % (money(s["list_price"]), money(s["price"]))) +
         row("Softens (ion exchange)", lambda s: yes if s["id"] != "salt-free" else '<span class="no">Salt-free conditioning only</span>') +
@@ -512,7 +523,7 @@ def pricing_page():
         money(min(cp)), money(max(cp)), money(min(wp)), money(max(wp)), money(SYSTEMS["ro-tank"]["price"]), money(SYSTEMS["ro-tankless"]["price"])))
     body += '<section class="section" data-view-event="pricing_viewed"><div class="container"><p class="muted" style="font-size:.85rem;margin-bottom:1.5rem">Prices last updated %s.</p>' % BUILD_MONTH
     for c in SYS["categories"]:
-        rows = "".join('<div class="pricing-row"><div><b>%s</b>%s<small>%s</small></div>%s<a class="btn btn-sm btn-navy" href="/schedule/?system=%s">Schedule</a></div>' % (
+        rows = "".join('<div class="pricing-row has-thumb">' + thumb(s) + '<div><b>%s</b>%s<small>%s</small></div>%s<a class="btn btn-sm btn-navy" href="/schedule/?system=%s">Schedule</a></div>' % (
             e(s["name"]), ' <span class="badge" style="position:static;display:inline-block;margin-left:.5rem">%s</span>' % e(s["badge"]) if s.get("badge") and c["id"] != "ro" else "", e(s["for"]), price_html(s, small=""), s["id"]) for s in BY_CAT[c["id"]]).replace('href="/schedule/?system=', 'href="/systems/').replace('">Schedule</a>', '/">Configure</a>')
         body += '<div class="pricing-cat"><header><h2 style="margin:0">%s</h2><p>%s</p></header>%s<p style="margin-top:1rem"><a class="link" href="%s">Explore %s</a></p></div>' % (e(c["label"]), e(c["intro"]), rows, {"city": "/city-water-filtration/", "well": "/well-water-filtration/", "ro": "/reverse-osmosis/", "addon": "/well-water-filtration/#add-ons"}[c["id"]], e(c["label"].lower()))
     body += '<p class="note">%s %s</p></div></section>' % (e(SYS["promo"]["financing"]), e(SYS["promo"]["travel"]))
@@ -609,10 +620,12 @@ def product_page(s):
     for g in s.get("options", []):
         if g["type"] == "single":
             groups += '<div class="cfg-group" data-group><span>%s <em data-choice>— %s</em></span><div class="chips">%s</div></div>' % (e(g["label"]), e(g["choices"][0]["label"]), "".join(
-                '<label class="chipopt"><input type="radio" name="cfg-%s" value="%d"%s><span>%s</span></label>' % (g["key"], i, " checked" if i == 0 else "", e(c["label"]) + ("" if c.get("inc") else " +" + money(c["add"]))) for i, c in enumerate(g["choices"])))
+                '<label class="chipopt has-img"><input type="radio" name="cfg-%s" value="%d"%s><span>%s%s</span></label>' % (g["key"], i, " checked" if i == 0 else "", option_thumb(g["key"], c["label"]), e(c["label"]) + ("" if c.get("inc") else " +" + money(c["add"]))) for i, c in enumerate(g["choices"])))
+            if g["key"] == "ro": groups += '<p class="cfg-help">See the <a href="/systems/ro-tank/">tank RO</a> and <a href="/systems/ro-tankless/">tankless RO</a>.</p>'
         else:
-            groups += '<div class="cfg-group" data-group><span>%s <em data-choice>— %s</em></span><div class="chips"><label class="chipopt"><input type="checkbox" name="cfg-%s"%s><span>%s +%s</span></label></div></div>' % (
-                e(g["label"]), "Yes" if g.get("rec") else "No", g["key"], " checked" if g.get("rec") else "", "Add" if not g.get("rec") else "Included in quote", money(g["add"]))
+            groups += '<div class="cfg-group" data-group><span>%s <em data-choice>— %s</em></span><div class="chips"><label class="chipopt has-img"><input type="checkbox" name="cfg-%s"%s><span>%s%s +%s</span></label></div>%s</div>' % (
+                e(g["label"]), "Yes" if g.get("rec") else "No", g["key"], " checked" if g.get("rec") else "", option_thumb(g["key"]), "Add" if not g.get("rec") else "Included in quote", money(g["add"]),
+                '<p class="cfg-help">%s <a href="%s">See the %s</a></p>' % (e(g.get("note", "")), sys_href(SYSTEMS[OPTION_IMG[g["key"]]]), e(SYSTEMS[OPTION_IMG[g["key"]]]["short"])) if g["key"] in OPTION_IMG else "")
     cfg = {"id": s["id"], "name": s["short"], "price": s["price"], "list": s.get("list_price", 0), "options": s.get("options", []), "interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")}
     trust = '<ul class="trust-row"><li>%s<span>Best Price Guarantee</span></li><li>%s<span>Professional install</span></li><li>%s<span>NSF certified components</span></li><li>%s<span>Lifetime warranty</span></li></ul>' % (ICON["tag"], ICON["wrench"], NSF_ICON, ICON["shield"])
     desc_lines = "".join("<p><b>%s:</b> %s</p>" % (e(a), e(b)) for a, b in s.get("description_lines", []))

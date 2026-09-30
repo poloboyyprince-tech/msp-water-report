@@ -817,3 +817,13 @@ s.was::after{content:"";position:absolute;left:-.1em;right:-.1em;top:50%;height:
 .install{margin:0;border-radius:var(--radius-lg);overflow:hidden;background:#fff;border:1px solid var(--line)}
 .install img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block}
 .install figcaption{padding:.65rem .8rem;font-size:.85rem;font-weight:600;color:var(--ink);line-height:1.3}
+
+/* Product thumbnails wherever a product is named with a price */
+.rthumb{display:block;width:72px;height:72px;border-radius:10px;overflow:hidden;background:#0c2452;flex:none;border:1px solid var(--line)}
+.rthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pricing-row.has-thumb{grid-template-columns:auto 1fr auto auto}
+@media (max-width:640px){.pricing-row.has-thumb{grid-template-columns:auto 1fr auto}.pricing-row.has-thumb .btn{grid-column:1/-1}.rthumb{width:60px;height:60px}}
+.chipopt.has-img span{padding:.3rem .75rem .3rem .3rem;gap:.5rem}
+.chipopt img{width:40px;height:40px;border-radius:6px;object-fit:cover;background:#0c2452;flex:none}
+.cfg-help{margin:.35rem 0 0;font-size:.8rem;color:var(--muted)}.cfg-help a{color:var(--gold-600);font-weight:600}
+.compare thead th{vertical-align:bottom}.cthumb{width:56px;height:56px;border-radius:8px;object-fit:cover;display:inline-block;margin-bottom:.35rem;background:#0c2452}

@@ -2,7 +2,8 @@
  "promo": {
   "ro_included": "Reverse osmosis drinking-water system included with every whole-home system. Upgrade to the tankless HW800 AlkaPro for $200.",
   "financing": "Financing options available — ask during your consultation.",
-  "travel": "Travel fees may apply for installations beyond 35 miles from Minneapolis."
+  "travel": "Travel fees may apply for installations beyond 35 miles from Minneapolis.",
+  "basement_ro": "Basement RO installation available for an additional $500."
  },
  "categories": [
   {
@@ -125,6 +126,14 @@
        "list_add": 300
       }
      ]
+    },
+    {
+     "key": "basement",
+     "label": "Basement RO installation",
+     "type": "toggle",
+     "add": 500,
+     "list_add": 500,
+     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
     }
    ],
    "components": [
@@ -381,6 +390,14 @@
        "list_add": 300
       }
      ]
+    },
+    {
+     "key": "basement",
+     "label": "Basement RO installation",
+     "type": "toggle",
+     "add": 500,
+     "list_add": 500,
+     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
     }
    ],
    "components": [
@@ -633,6 +650,14 @@
        "list_add": 300
       }
      ]
+    },
+    {
+     "key": "basement",
+     "label": "Basement RO installation",
+     "type": "toggle",
+     "add": 500,
+     "list_add": 500,
+     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
     }
    ],
    "components": [
@@ -889,6 +914,14 @@
      "add": 899,
      "note": "Disinfection barrier after filtration",
      "list_add": 1499
+    },
+    {
+     "key": "basement",
+     "label": "Basement RO installation",
+     "type": "toggle",
+     "add": 500,
+     "list_add": 500,
+     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
     }
    ],
    "components": [
@@ -1164,6 +1197,14 @@
      "add": 899,
      "note": "Disinfection barrier after filtration",
      "list_add": 1499
+    },
+    {
+     "key": "basement",
+     "label": "Basement RO installation",
+     "type": "toggle",
+     "add": 500,
+     "list_add": 500,
+     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
     }
    ],
    "components": [
@@ -1397,7 +1438,16 @@
     "Lifetime warranty"
    ],
    "warranty": "Lifetime warranty",
-   "options": [],
+   "options": [
+    {
+     "key": "basement",
+     "label": "Basement RO installation",
+     "type": "toggle",
+     "add": 500,
+     "list_add": 500,
+     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
+    }
+   ],
    "what_it_does": "Purified, alkaline drinking water on demand, straight from a dedicated faucet at your sink. No storage tank, 70% less under-sink space, and water treated the moment you ask for it.",
    "leads": [
     "800 GPD capacity",
@@ -1577,7 +1627,16 @@
     "Lifetime warranty"
    ],
    "warranty": "Lifetime warranty",
-   "options": [],
+   "options": [
+    {
+     "key": "basement",
+     "label": "Basement RO installation",
+     "type": "toggle",
+     "add": 500,
+     "list_add": 500,
+     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
+    }
+   ],
    "what_it_does": "The proven multi-stage RO setup: purified water is produced continuously, stored in a pressurized steel tank, and delivered instantly the second you open the faucet.",
    "leads": [
     "94–99% TDS rejection",

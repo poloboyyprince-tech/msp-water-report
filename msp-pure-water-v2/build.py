@@ -526,8 +526,8 @@ def pricing_page():
         rows = "".join('<div class="pricing-row has-thumb">' + thumb(s) + '<div><b>%s</b>%s<small>%s</small></div>%s<a class="btn btn-sm btn-navy" href="/schedule/?system=%s">Schedule</a></div>' % (
             e(s["name"]), ' <span class="badge" style="position:static;display:inline-block;margin-left:.5rem">%s</span>' % e(s["badge"]) if s.get("badge") and c["id"] != "ro" else "", e(s["for"]), price_html(s, small=""), s["id"]) for s in BY_CAT[c["id"]]).replace('href="/schedule/?system=', 'href="/systems/').replace('">Schedule</a>', '/">Configure</a>')
         body += '<div class="pricing-cat"><header><h2 style="margin:0">%s</h2><p>%s</p></header>%s<p style="margin-top:1rem"><a class="link" href="%s">Explore %s</a></p></div>' % (e(c["label"]), e(c["intro"]), rows, {"city": "/city-water-filtration/", "well": "/well-water-filtration/", "ro": "/reverse-osmosis/", "addon": "/well-water-filtration/#add-ons"}[c["id"]], e(c["label"].lower()))
-    body += '<p class="note">%s %s</p></div></section>' % (e(SYS["promo"]["financing"]), e(SYS["promo"]["travel"]))
-    body += best_price() + faq_block([q for q in FAQ if "cost" in q["q"].lower() or "guarantee" in q["q"].lower() or "warranty" in q["q"].lower()]) + final_cta()
+    body += '<p class="note">%s %s %s</p></div></section>' % (e(SYS["promo"]["basement_ro"]), e(SYS["promo"]["financing"]), e(SYS["promo"]["travel"]))
+    body += best_price() + faq_block([q for q in FAQ if "cost" in q["q"].lower() or "guarantee" in q["q"].lower() or "warranty" in q["q"].lower() or "basement" in q["q"].lower()]) + final_cta()
     return page("pricing", "Transparent Pricing for Water Filtration Systems | MSP Pure Water", "Every MSP Pure Water system price published: whole-home from $2,999, well systems from $4,499, reverse osmosis from $799. RO included with every whole-home system.", body)
 
 def problems_hub():
@@ -625,7 +625,7 @@ def product_page(s):
         else:
             groups += '<div class="cfg-group" data-group><span>%s <em data-choice>— %s</em></span><div class="chips"><label class="chipopt has-img"><input type="checkbox" name="cfg-%s"%s><span>%s%s +%s</span></label></div>%s</div>' % (
                 e(g["label"]), "Yes" if g.get("rec") else "No", g["key"], " checked" if g.get("rec") else "", option_thumb(g["key"]), "Add" if not g.get("rec") else "Included in quote", money(g["add"]),
-                '<p class="cfg-help">%s <a href="%s">See the %s</a></p>' % (e(g.get("note", "")), sys_href(SYSTEMS[OPTION_IMG[g["key"]]]), e(SYSTEMS[OPTION_IMG[g["key"]]]["short"])) if g["key"] in OPTION_IMG else "")
+                '<p class="cfg-help">%s <a href="%s">See the %s</a></p>' % (e(g.get("note", "")), sys_href(SYSTEMS[OPTION_IMG[g["key"]]]), e(SYSTEMS[OPTION_IMG[g["key"]]]["short"])) if g["key"] in OPTION_IMG else ('<p class="cfg-help">%s</p>' % e(g["note"]) if g.get("note") else ""))
     cfg = {"id": s["id"], "name": s["short"], "price": s["price"], "list": s.get("list_price", 0), "options": s.get("options", []), "interest": {"city": "Whole Home Filtration", "well": "Well Water Treatment", "ro": "Reverse Osmosis", "addon": "Well Water Treatment"}[s["category"]], "water_source": {"city": "City Water", "well": "Well Water"}.get(s["category"], "")}
     trust = '<ul class="trust-row"><li>%s<span>Best Price Guarantee</span></li><li>%s<span>Professional install</span></li><li>%s<span>NSF certified components</span></li><li>%s<span>Lifetime warranty</span></li></ul>' % (ICON["tag"], ICON["wrench"], NSF_ICON, ICON["shield"])
     desc_lines = "".join("<p><b>%s:</b> %s</p>" % (e(a), e(b)) for a, b in s.get("description_lines", []))
@@ -662,7 +662,7 @@ def product_page(s):
             s["name"], money(s["price"]), s.get("what_it_does") or s["for"], ", ".join(i[0].lower() + i[1:] for i in s["included"])))
     body += installs(PRODUCT_INSTALLS.get(s["id"], INSTALL_SETS[s["category"]]), heading="What it looks like installed", lead="Real MSP Pure Water installations in Minnesota homes.")
     body += '<section class="section cream"><div class="container"><p class="kicker">Compare</p><h2>Other %s options</h2><div class="grid grid-3" style="margin-top:1.5rem">%s</div><p style="margin-top:1.5rem"><a class="link" href="/compare-systems/">Full side-by-side comparison</a></p></div></section>' % (cat.lower(), "".join(system_card(x) for x in related))
-    body += faq_block([q for q in FAQ if any(k in q["q"].lower() for k in {"city": ["come to my home", "cost", "filtration and softening", "salt", "pressure"], "well": ["come to my home", "well", "tested", "maintenance", "warranty"], "ro": ["come to my home", "reverse osmosis", "tank", "every faucet"], "addon": ["come to my home", "sediment", "uv", "well"]}[s["category"]])][:4]) + final_cta()
+    body += faq_block([q for q in FAQ if any(k in q["q"].lower() for k in {"city": ["come to my home", "cost", "filtration and softening", "salt", "pressure"], "well": ["come to my home", "well", "tested", "maintenance", "warranty"], "ro": ["come to my home", "reverse osmosis", "basement", "tank", "every faucet"], "addon": ["come to my home", "sediment", "uv", "well"]}[s["category"]])][:4]) + final_cta()
     schema = {"@context": "https://schema.org", "@type": "Product", "name": s["name"], "description": s.get("what_it_does") or s["for"], "image": BASE + "/assets/img/" + s["image"], "brand": {"@type": "Brand", "name": "MSP Pure Water"},
               "offers": {"@type": "Offer", "price": s["price"], "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": BASE + sys_href(s), "seller": {"@id": BASE + "/#business"}}}
     if s.get("specs"): schema["additionalProperty"] = [{"@type": "PropertyValue", "name": k, "value": v} for k, v in s["specs"]]

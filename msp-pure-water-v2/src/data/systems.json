@@ -299,7 +299,8 @@
      "Tank reverse osmosis drinking-water system included with installation. Tankless HW800 AlkaPro upgrade, $200."
     ]
    ],
-   "list_price": 4999
+   "list_price": 4999,
+   "seo_short": "Whole Home Water Softener & Filter"
   },
   {
    "id": "dual-tank-city",
@@ -555,7 +556,8 @@
      "Tank reverse osmosis drinking-water system included with installation. Tankless HW800 AlkaPro upgrade, $200."
     ]
    ],
-   "list_price": 6699
+   "list_price": 6699,
+   "seo_short": "Dual Tank Water Softener & Filter"
   },
   {
    "id": "salt-free",
@@ -1087,7 +1089,8 @@
      "Tank reverse osmosis drinking-water system included with installation. Tankless HW800 AlkaPro upgrade, $200."
     ]
    ],
-   "list_price": 7499
+   "list_price": 7499,
+   "seo_short": "Well Water Softener & Iron Filter"
   },
   {
    "id": "iron-sulfur",
@@ -1556,7 +1559,8 @@
      "Chrome drinking-water faucet at the kitchen sink."
     ]
    ],
-   "list_price": 1699
+   "list_price": 1699,
+   "seo_short": "Tankless Reverse Osmosis System"
   },
   {
    "id": "ro-tank",
@@ -1730,7 +1734,8 @@
      "Chrome drinking-water faucet at the kitchen sink."
     ]
    ],
-   "list_price": 1299
+   "list_price": 1299,
+   "seo_short": "Reverse Osmosis System"
   },
   {
    "id": "sediment-filter",

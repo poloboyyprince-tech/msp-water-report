@@ -102,8 +102,8 @@ def header(over_hero=False):
       '<div class="mbar" aria-label="Quick actions"><a class="call" href="tel:%s">%s Call</a><a class="sched" href="/schedule/">%s Schedule</a></div>') % (
         "over-hero" if over_hero else "", brand(), "".join(items), TEL, ICON["phone"], PHONE, ICON["menu"], brand(), ICON["x"], "".join(m), TEL, ICON["phone"], PHONE, TEL, ICON["phone"], ICON["cal"])
 def footer():
-    cities = " ".join('<a href="/service-areas/%s/">Water Filtration %s</a>' % (c["slug"], e(c["city"])) for c in FOOTER_CITIES) + ' <a href="/service-areas/">+ %d more cities</a>' % (len(CITIES) - len(FOOTER_CITIES))
-    return ('<footer class="footer"><div class="container"><div class="footer-grid"><div>%s<p style="margin-top:1rem;max-width:36ch">Whole-home filtration, softening, well-water treatment and reverse osmosis for the Twin Cities and Greater Minnesota.</p>'
+    cities = " ".join('<a href="/service-areas/%s/">Water Softeners %s</a>' % (c["slug"], e(c["city"])) for c in FOOTER_CITIES) + ' <a href="/service-areas/">+ %d more cities</a>' % (len(CITIES) - len(FOOTER_CITIES))
+    return ('<footer class="footer"><div class="container"><div class="footer-grid"><div>%s<p style="margin-top:1rem;max-width:36ch">Water softeners, whole-home water filtration, well-water treatment and reverse osmosis for the Twin Cities and Greater Minnesota.</p>'
       '<a class="fphone" href="tel:%s" style="text-decoration:none;display:block">%s</a><div class="frating"><span class="stars" aria-hidden="true">★★★★★</span> <a href="' + SITE["google_reviews_url"] + '" target="_blank" rel="noopener">' + SITE["rating_line"] + '</a></div><p>%s &middot; Call or text<br>%s</p><p><a href="mailto:%s">%s</a></p>' + ('<p class="fsocial">' + " &middot; ".join('<a href="%s" target="_blank" rel="noopener me">%s</a>' % (u, "Facebook" if "facebook" in u else "Instagram" if "instagram" in u else "TikTok" if "tiktok" in u else "Social") for u in SITE.get("social_profiles", [])) + "</p>" if SITE.get("social_profiles") else "") + '</div>'
       '<div><h4>Systems</h4><ul><li><a href="/city-water-filtration/">City Water Systems</a></li><li><a href="/well-water-filtration/">Well Water Systems</a></li><li><a href="/reverse-osmosis/">Reverse Osmosis</a></li><li><a href="/compare-systems/">Compare Systems</a></li><li><a href="/pricing/">Pricing</a></li></ul></div>'
       '<div><h4>Learn</h4><ul>%s<li><a href="/faq/">FAQ</a></li></ul></div>'
@@ -211,6 +211,12 @@ def asset_v(rel):
             break
     return "/assets/%s?v=%s" % (rel, h)
 
+def fit_title(base, limit=65):
+    """Append the brand only as far as it fits, so Google does not truncate the keyword part."""
+    for suffix in (" | MSP Pure Water", " | MSP", ""):
+        if len(base + suffix) <= limit: return base + suffix
+    return base
+
 def trunc(s, n):
     """Cut at a word boundary and add an ellipsis."""
     if len(s) <= n: return s
@@ -265,7 +271,7 @@ def hero():
     return ('<section class="hero" id="top"><div class="hero-media" data-parallax="30">%s</div>%s'
       '<div class="container hero-inner"><div class="hero-promo reveal"><b>Included</b><span class="long">Reverse osmosis drinking-water system with every whole-home system</span><span class="short-only">RO drinking system included</span></div>'
       '<h1 class="reveal">Better water.<br><em>Throughout your entire home.</em></h1>'
-      '<p class="lead reveal reveal-d1">Whole-home filtration, softening, well-water treatment and reverse osmosis for the Twin Cities. Published prices, professional installation, and a free phone consultation that is one call or text away.</p>'
+      '<p class="lead reveal reveal-d1">Water softeners, whole-home water filtration, well-water treatment and reverse osmosis for the Twin Cities. Published prices, professional installation, and a free phone consultation that is one call or text away.</p>'
       '<div class="hero-actions reveal reveal-d2"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System %s</a><a class="btn btn-outline btn-lg" href="/schedule/">Schedule Now</a></div>'
       '<div class="hero-meta reveal reveal-d3">%s<a href="tel:%s">%s %s</a><span>Open 24 hours</span></div></div>'
       '<div class="hero-side reveal reveal-d2"><div class="stat"><b>%s</b><span>Whole-home systems from</span></div><div class="stat"><b>28 GPM</b><span>Whole-home flow rate</span></div><div class="stat"><b>48,000</b><span>Grain softening capacity</span></div></div></section>'
@@ -431,7 +437,7 @@ def marquee():
 # ---------------------------------------------------------------- pages
 def home():
     body = hero() + reviews() + source_cards() + explorer() + systems_home() + installs(INSTALL_SETS["home"], cream=True) + best_price() + approach() + before_after() + why() + process() + minnesota() + service_area_block() + faq_block(FAQ[:6]) + final_cta()
-    return page("", "Water Filtration & Softening | Twin Cities | MSP Pure Water", SITE["description"], body, over_hero=True)
+    return page("", "Water Softeners & Water Filtration | Twin Cities | MSP Pure Water", SITE["description"], body, over_hero=True)
 
 def sysdetail(s):
     img = s["image"]
@@ -474,9 +480,9 @@ def system_page(cat, slug, title, desc, h1, lead, concerns, extra_sections=""):
     return page(slug, title, desc, body, schema=[service_schema(h1, desc, systems)])
 
 def city_page():
-    return system_page("city", "city-water-filtration", "City Water Systems | Minneapolis & St. Paul | MSP Pure Water",
+    return system_page("city", "city-water-filtration", "Water Softener Systems | Minneapolis & St. Paul | MSP Pure Water",
         "Whole-home water filtration and softening for Minneapolis, St. Paul and Twin Cities homes on municipal water. Published prices from $2,999, RO included.",
-        "City water filtration systems for Twin Cities homes", "Municipal water is treated and safe, but it typically arrives hard and disinfected with chlorine or chloramine. These systems soften and filter every tap in the house.",
+        "Water softener and filtration systems for Twin Cities homes", "Municipal water is treated and safe, but it typically arrives hard and disinfected with chlorine or chloramine. These systems soften and filter every tap in the house.",
         ("What's in Twin Cities city water", [("Hardness", "Minnesota groundwater is generally hard. Calcium and magnesium cause scale on fixtures, water heaters and appliances."), ("Chlorine and chloramine", "Twin Cities utilities use disinfectants including chloramine. They affect taste and odor and call for catalytic carbon."), ("Dissolved solids", "Minerals that affect drinking-water taste. Point-of-use reverse osmosis handles them at the kitchen sink.")]))
 
 def well_page():
@@ -514,7 +520,7 @@ def compare_page():
     body += '<section class="section" data-view-event="system_comparison_used"><div class="container"><div class="tablewrap">%s</div><p class="muted" style="margin-top:1rem;font-size:.9rem">Well-water configuration is confirmed from your water test during the phone consultation. %s</p></div></section>' % (tbl, e(SYS["promo"]["travel"]))
     body += '<section class="section cream"><div class="container"><h2>Drinking water &amp; add-ons</h2><div class="grid grid-4" style="margin-top:1.5rem">%s</div></div></section>' % "".join(system_card(s) for s in BY_CAT["ro"] + BY_CAT["addon"])
     body += best_price() + final_cta()
-    return page("compare-systems", "Compare Water Filtration Systems & Prices | MSP Pure Water", "Side-by-side comparison of MSP Pure Water whole-home city and well systems: treatment, capacity, flow, price and what's included.", body)
+    return page("compare-systems", "Compare Water Softeners & Filtration Systems | MSP Pure Water", "Side-by-side comparison of MSP Pure Water whole-home city and well systems: treatment, capacity, flow, price and what's included.", body)
 
 def pricing_page():
     body = phero("No mystery pricing", "See every price before you schedule.", "No in-home presentation required to find out what the equipment costs. " + SYS["promo"]["ro_included"], crumbs="Pricing", subnav=SYS_SUBNAV("pricing"))
@@ -528,7 +534,7 @@ def pricing_page():
         body += '<div class="pricing-cat"><header><h2 style="margin:0">%s</h2><p>%s</p></header>%s<p style="margin-top:1rem"><a class="link" href="%s">Explore %s</a></p></div>' % (e(c["label"]), e(c["intro"]), rows, {"city": "/city-water-filtration/", "well": "/well-water-filtration/", "ro": "/reverse-osmosis/", "addon": "/well-water-filtration/#add-ons"}[c["id"]], e(c["label"].lower()))
     body += '<p class="note">%s %s %s</p></div></section>' % (e(SYS["promo"]["basement_ro"]), e(SYS["promo"]["financing"]), e(SYS["promo"]["travel"]))
     body += best_price() + faq_block([q for q in FAQ if "cost" in q["q"].lower() or "guarantee" in q["q"].lower() or "warranty" in q["q"].lower() or "basement" in q["q"].lower()]) + final_cta()
-    return page("pricing", "Transparent Pricing for Water Filtration Systems | MSP Pure Water", "Every MSP Pure Water system price published: whole-home from $2,999, well systems from $4,499, reverse osmosis from $799. RO included with every whole-home system.", body)
+    return page("pricing", "Water Softener & Filtration System Cost in MN | MSP Pure Water", "Every MSP Pure Water system price published: whole-home from $2,999, well systems from $4,499, reverse osmosis from $799. RO included with every whole-home system.", body)
 
 def problems_hub():
     cards = "".join('<a class="source reveal" href="%s" data-intake=\'%s\' data-intake-via="problems_hub"><span class="num">%s</span><h3 style="font-size:1.5rem">%s</h3><p class="muted" style="margin:0">%s</p><span class="go">%s %s</span></a>' % (
@@ -669,7 +675,7 @@ def product_page(s):
     schema["sku"] = s["id"]; schema["category"] = cat + " treatment"
     desc = "%s, %s%s installed in the Twin Cities. %s" % (s["short"], s.get("price_prefix", ""), money(s["price"]), s["for"])
     if len(desc) > 158: desc = desc[:155].rsplit(" ", 1)[0].rstrip(",;:") + "…"
-    return page("systems/" + s["id"], "%s | %s%s Installed | MSP Pure Water" % (s["short"], s.get("price_prefix", ""), money(s["price"])), desc, body, schema=[schema])
+    return page("systems/" + s["id"], fit_title("%s | %s%s Installed" % (s.get("seo_short") or s["short"], s.get("price_prefix", ""), money(s["price"]))), desc, body, schema=[schema])
 
 def areas_hub():
     counties = []
@@ -688,12 +694,12 @@ def areas_hub():
     body += ('<section class="section mn"><div class="container mn-grid"><div><p class="kicker">Greater Minnesota</p><h2>Outside the metro? We still come to you.</h2><p class="lead">These are the regions we install in most often. Not listed? Call or text and we\'ll tell you right away.</p><div class="region-list" style="margin-top:2rem">%s</div><div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem"><a class="btn btn-gold btn-lg" href="/schedule/">Schedule a phone consultation</a><a class="btn btn-outline btn-lg" href="tel:%s">%s Call or text %s</a></div></div><div class="mn-media reveal" data-parallax="24">%s</div></div></section>') % (
         regions, TEL, ICON["phone"], PHONE, '<img src="/assets/img/mn-home.webp" alt="A Minnesota home in winter at dusk" loading="lazy" width="1024" height="1280">' if has_img("mn-home.webp") else "")
     body += process() + final_cta()
-    return page("service-areas", "Service Areas | Twin Cities & Minnesota | MSP Pure Water", "MSP Pure Water serves %d Twin Cities communities across %d counties plus Greater Minnesota with water filtration, softening, well treatment and RO installation." % (len(CITIES), len(counties)), body)
+    return page("service-areas", "Water Softener & Water Treatment Service Areas | MSP Pure Water", "MSP Pure Water serves %d Twin Cities communities across %d counties plus Greater Minnesota with water filtration, softening, well treatment and RO installation." % (len(CITIES), len(counties)), body)
 
 def city_page_for(c):
     name = c["city"]
     nearby = [x for x in CITIES if x["county"] == c["county"] and x["slug"] != c["slug"]][:6]
-    body = phero(c["county"] + " &middot; Minnesota", "Water filtration in %s" % e(name), "Whole-home filtration, water softening, well-water treatment and reverse osmosis for %s homeowners, with published prices and no-pressure phone consultations." % e(name), crumbs='<a href="/service-areas/">Service Areas</a>')
+    body = phero(c["county"] + " &middot; Minnesota", "Water softeners and water treatment in %s" % e(name), "Water softener installation, whole-home filtration, well-water treatment and reverse osmosis for %s homeowners, with published prices and no-pressure phone consultations." % e(name), crumbs='<a href="/service-areas/">Service Areas</a>')
     body += ('<section class="section"><div class="container two-col"><div><p class="kicker">Local, transparent, professional</p><h2>Systems for %s homes, priced up front.</h2><p>Whether your %s home is on municipal water or a private well, we start with the water problem and match the equipment to it. Every system price is published, the reverse osmosis drinking-water system is included, and you can call or text to schedule.</p>'
              '<p>Want to know exactly what\'s in your water? City customers can request the annual Consumer Confidence Report from their water utility; well owners should have a current water test. We go over either one with you on the phone.</p>'
              '<div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System</a><a class="btn btn-outline on-light btn-lg" href="/schedule/">Schedule Now</a></div></div>'
@@ -706,8 +712,8 @@ def city_page_for(c):
         heading="Water treatment in %s: quick answers" % name, kicker="Quick answers", more=False)
     if nearby: body += '<section class="section"><div class="container"><p class="kicker">Nearby</p><ul class="chips">%s</ul></div></section>' % "".join('<li><a class="chip" style="text-decoration:none;display:inline-block" href="/service-areas/%s/">%s</a></li>' % (x["slug"], e(x["city"])) for x in nearby)
     body += final_cta()
-    schema = {"@context": "https://schema.org", "@type": "Service", "name": "Water filtration in %s, MN" % name, "provider": {"@id": BASE + "/#business"}, "areaServed": {"@type": "City", "name": name + ", MN"}, "serviceType": "Water filtration, water softening, well water treatment, reverse osmosis installation"}
-    return page("service-areas/" + c["slug"], "Water Filtration in %s, MN | MSP Pure Water" % name, "Whole-home filtration, softening, well treatment and reverse osmosis in %s, Minnesota. Prices from $2,999, RO included." % name, body, schema=[schema])
+    schema = {"@context": "https://schema.org", "@type": "Service", "name": "Water softener installation and water treatment in %s, MN" % name, "provider": {"@id": BASE + "/#business"}, "areaServed": {"@type": "City", "name": name + ", MN"}, "serviceType": "Water filtration, water softening, well water treatment, reverse osmosis installation"}
+    return page("service-areas/" + c["slug"], fit_title("Water Softener & Water Treatment in %s, MN" % name), "Water softener installation, whole-home filtration, well water treatment and reverse osmosis in %s, MN. Prices from $2,999, RO included." % name, body, schema=[schema])
 
 def about_page():
     body = phero("Minneapolis, St. Paul & Greater Minnesota", "Why MSP Pure Water", "Better water for Minnesota homes: honestly assessed, fairly priced, installed cleanly, and backed personally.", crumbs="Why MSP")

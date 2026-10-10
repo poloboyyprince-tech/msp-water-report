@@ -146,7 +146,16 @@
       if (list) list = Math.ceil((list + 1) / 100) * 100 - 1;
       return { total: total, list: list, parts: parts, line: cfg.name + (parts.length ? " + " + parts.join(" + ") : "") + " — " + money(total) + " installed" };
     }
+    function applyRequires() {
+      box.querySelectorAll("input[data-requires]").forEach(function (cb) {
+        var req = JSON.parse(cb.getAttribute("data-requires")), ok = true;
+        Object.keys(req).forEach(function (k) { var r = box.querySelector('input[name="cfg-' + k + '"]:checked'); if (!r || parseInt(r.value, 10) !== req[k]) ok = false; });
+        cb.disabled = !ok; if (!ok) cb.checked = false;
+        var wrap = cb.closest(".chipopt"); if (wrap) wrap.classList.toggle("is-disabled", !ok);
+      });
+    }
     function render() {
+      applyRequires();
       var s = state(); if (totalEl) totalEl.textContent = money(s.total); if (lineEl) lineEl.textContent = s.parts.length ? s.parts.join(" · ") : "Standard configuration";
       var was = box.querySelector(".price .was"), save = box.querySelector(".save"), cur = box.querySelector(".price");
       if (cur && s.list) { var pre = cur.querySelector(".pre"); var smallEl = cur.querySelector("small"); cur.innerHTML = '<s class="was">' + money(s.list) + '</s>' + money(s.total) + (smallEl ? smallEl.outerHTML : ""); if (save) save.textContent = "Save " + money(s.list - s.total); }

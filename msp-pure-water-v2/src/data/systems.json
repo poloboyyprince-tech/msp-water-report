@@ -3,7 +3,7 @@
   "ro_included": "Reverse osmosis drinking-water system included with every whole-home system. Upgrade to the tankless HW800 AlkaPro for $200.",
   "financing": "Financing options available — ask during your consultation.",
   "travel": "Travel fees may apply for installations beyond 35 miles from Minneapolis.",
-  "basement_ro": "Basement RO installation available for an additional $500."
+  "basement_ro": "Basement installation is available for the tank reverse osmosis system (the pressurized one) for an additional $500. Tankless units install under the kitchen sink."
  },
  "categories": [
   {
@@ -129,11 +129,14 @@
     },
     {
      "key": "basement",
-     "label": "Basement RO installation",
+     "label": "Basement RO installation (tank RO only)",
      "type": "toggle",
      "add": 500,
      "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink.",
+     "requires": {
+      "ro": 0
+     }
     }
    ],
    "components": [
@@ -394,11 +397,14 @@
     },
     {
      "key": "basement",
-     "label": "Basement RO installation",
+     "label": "Basement RO installation (tank RO only)",
      "type": "toggle",
      "add": 500,
      "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink.",
+     "requires": {
+      "ro": 0
+     }
     }
    ],
    "components": [
@@ -655,11 +661,14 @@
     },
     {
      "key": "basement",
-     "label": "Basement RO installation",
+     "label": "Basement RO installation (tank RO only)",
      "type": "toggle",
      "add": 500,
      "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink.",
+     "requires": {
+      "ro": 0
+     }
     }
    ],
    "components": [
@@ -919,11 +928,14 @@
     },
     {
      "key": "basement",
-     "label": "Basement RO installation",
+     "label": "Basement RO installation (tank RO only)",
      "type": "toggle",
      "add": 500,
      "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink.",
+     "requires": {
+      "ro": 0
+     }
     }
    ],
    "components": [
@@ -1203,11 +1215,14 @@
     },
     {
      "key": "basement",
-     "label": "Basement RO installation",
+     "label": "Basement RO installation (tank RO only)",
      "type": "toggle",
      "add": 500,
      "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink.",
+     "requires": {
+      "ro": 0
+     }
     }
    ],
    "components": [
@@ -1441,16 +1456,7 @@
     "Lifetime warranty"
    ],
    "warranty": "Lifetime warranty",
-   "options": [
-    {
-     "key": "basement",
-     "label": "Basement RO installation",
-     "type": "toggle",
-     "add": 500,
-     "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
-    }
-   ],
+   "options": [],
    "what_it_does": "Purified, alkaline drinking water on demand, straight from a dedicated faucet at your sink. No storage tank, 70% less under-sink space, and water treated the moment you ask for it.",
    "leads": [
     "800 GPD capacity",
@@ -1634,11 +1640,11 @@
    "options": [
     {
      "key": "basement",
-     "label": "Basement RO installation",
+     "label": "Basement RO installation (tank RO only)",
      "type": "toggle",
      "add": 500,
      "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. Choose this to have the RO unit installed in the basement instead."
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink."
     }
    ],
    "what_it_does": "The proven multi-stage RO setup: purified water is produced continuously, stored in a pressurized steel tank, and delivered instantly the second you open the faucet.",

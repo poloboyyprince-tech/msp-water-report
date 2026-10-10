@@ -271,3 +271,13 @@ Within 2 weeks / Over a month out — matches the GHL radio field), customer_not
 lead_source, website_entry_page, landing_page, page, referrer, utm_source, utm_medium,
 utm_campaign, utm_content, utm_term, gclid, fbclid, submission_id, submitted_at.
 Two labeled TEST submissions were sent to seed the trigger's field list.
+
+
+## 17. Heatmaps and session recordings (Microsoft Clarity)
+
+Free, unlimited, and shows click heatmaps, scroll depth and recordings of real
+visits. Set `analytics.clarityId` in `ghl.config.js` and rebuild. The site loads the
+tag after the page finishes loading, forwards every conversion event (so you can
+filter recordings to "lead_form_submitted" or "phone_click"), and tags each session
+with the visitor's water source once they pick one. Clarity masks typed text by
+default, so form entries are not recorded.

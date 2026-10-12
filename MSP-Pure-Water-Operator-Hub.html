@@ -413,6 +413,42 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
 .scr-qlist li::before{content:"›";position:absolute;left:4px;top:5px;color:var(--teal);font-style:normal;font-weight:700}
 .scr-qlist li.sub{padding-left:36px;color:var(--muted);font-size:13.3px}
 .scr-qlist li.sub::before{content:"↳";left:20px;color:var(--border2)}
+
+/* ---- Know Your Product (flashcard trainer) ---- */
+.pk-cats{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 18px}
+.pk-chip{font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;border:1px solid var(--border2);background:var(--panel);color:var(--muted);border-radius:20px;padding:6px 13px;transition:.15s}
+.pk-chip:hover{border-color:var(--teal);color:var(--teal)}
+.pk-chip.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.pk-stage{perspective:1600px;margin:0 0 14px}
+.pk-card{position:relative;width:100%;min-height:290px;cursor:pointer;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,.2,.2,1)}
+.pk-card.flipped{transform:rotateY(180deg)}
+.pk-face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:18px;padding:30px 34px 44px;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow);border:1px solid var(--border)}
+.pk-front{background:linear-gradient(150deg,var(--panel),var(--bg2))}
+.pk-back{background:linear-gradient(150deg,#0e2e46,#0b3b4d);transform:rotateY(180deg);border-color:#1b4a66}
+.pk-cat{font-size:10.5px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.pk-back .pk-cat{color:#7fd3da}
+.pk-q{font-family:'Fraunces',serif;font-size:23px;font-weight:600;line-height:1.28;color:var(--ink)}
+.pk-a{font-size:15.5px;line-height:1.62;color:#eaf6f8;overflow-y:auto;max-height:230px}
+.pk-a b{color:#fff}
+.pk-hint{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:10.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--faint)}
+.pk-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0 6px}
+.pk-controls2{display:flex;flex-wrap:wrap;gap:9px;margin:4px 0}
+.pk-btn{font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;border:1px solid var(--border2);background:var(--panel);color:var(--ink);border-radius:10px;padding:9px 15px;transition:.15s}
+.pk-btn:hover{border-color:var(--teal);color:var(--teal)}
+.pk-known{border-color:#bfe3c4;color:#2e7d43}
+.pk-known:hover{background:#2e7d43;border-color:#2e7d43;color:#fff}
+.pk-review{border-color:#f0d7a6;color:var(--gold-d)}
+.pk-review:hover{background:var(--gold-d);border-color:var(--gold-d);color:#fff}
+.pk-count{font-size:13px;color:var(--muted);font-weight:700;white-space:nowrap}
+.pk-card.known-tag .pk-front{border-color:#9ddbab;box-shadow:0 0 0 1px #9ddbab,var(--shadow)}
+.pk-card.review-tag .pk-front{border-color:#eccb86;box-shadow:0 0 0 1px #eccb86,var(--shadow)}
+.pk-progress{display:flex;gap:5px;flex-wrap:wrap;margin-top:16px}
+.pk-dot{width:12px;height:12px;border-radius:50%;background:var(--border2);cursor:pointer;transition:.15s}
+.pk-dot.known{background:#4bbf6b}
+.pk-dot.review{background:var(--gold)}
+.pk-dot.cur{box-shadow:0 0 0 3px rgba(10,147,150,.32);transform:scale(1.18)}
+.pk-tally{font-size:12.5px;color:var(--muted);margin-top:12px}
+.pk-tally b{color:var(--ink2)}
 </style>
 </head>
 <body>
@@ -461,6 +497,7 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
       </div>
       <div class="nav-group">
         <div class="nav-group-label">Train</div>
+        <button class="nav-link" data-view="pk"><span class="nav-ico">🧠</span> Know Your Product</button>
         <button class="nav-link" data-view="quiz"><span class="nav-ico">✅</span> Knowledge Test</button>
         <button class="nav-link" data-view="roleplay"><span class="nav-ico">🎭</span> AI Role-Play</button>
         <button class="nav-link" data-view="trackers"><span class="nav-ico">🗂️</span> Referral &amp; RO Trackers</button>
@@ -532,6 +569,7 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
         <button class="jump" data-view="lineup"><div class="j-ico">🧱</div><div class="j-t">Know the Product</div><div class="j-d">Every system and the honest story behind it — your back-pocket knowledge.</div></button>
         <button class="jump" data-view="prescribe"><div class="j-ico">🩺</div><div class="j-t">Diagnose &amp; Prescribe</div><div class="j-d">Match the complaint to the right solution, every time.</div></button>
         <button class="jump" data-view="objections"><div class="j-ico">🛡️</div><div class="j-t">Objection Handler</div><div class="j-d">What they really mean, and how to respond like an advisor.</div></button>
+        <button class="jump" data-view="pk"><div class="j-ico">🧠</div><div class="j-t">Know Your Product</div><div class="j-d">Flip-card trainer for every core talking point.</div></button>
         <button class="jump" data-view="quiz"><div class="j-ico">✅</div><div class="j-t">Knowledge Test</div><div class="j-d">Drill the product knowledge until it's automatic.</div></button>
         <button class="jump" data-view="roleplay"><div class="j-ico">🎭</div><div class="j-t">AI Role-Play</div><div class="j-d">Practice a live call against a realistic customer.</div></button>
       </div>
@@ -759,6 +797,10 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
       <p class="lede">Keep this open and <strong>search it live mid-call.</strong> Proven customer-facing language for the technical questions you'll actually get. Use the search box in the sidebar, or click to expand.</p>
 
       <div data-search-group="FAQ">
+        <details class="acc" data-q="chemical free system air injection aio no salt iron well hydrogen peroxide why maintenance expensive leave you without water reliable difference salt free">
+          <summary class="acc-q"><span class="qn">?</span> Isn&rsquo;t there a chemical-free well system — why hydrogen peroxide?<span class="chev">▶</span></summary>
+          <div class="acc-a">Great question — and here’s the honest answer. For <strong>lighter iron</strong> (and no sulfur smell), a chemical-free air-injection system works great and that’s exactly what we’d put in. But when the iron is heavier or there’s a <strong>sulfur / rotten-egg smell</strong>, a chemical-free setup becomes <strong>high-maintenance and expensive to keep running</strong> — and worst case, if it goes down it can leave you <strong>without water</strong>. For those homes we use a <strong>hydrogen-peroxide system</strong>: it reliably oxidizes the iron, sulfur and manganese, filters it out, then softens — more dependable and far less headache. We’ll always tell you straight which one your water actually needs.</div>
+        </details>
         <details class="acc" data-q="will this take care of all the water throughout my whole house home every tap shower appliance main water line filters softens everything">
           <summary class="acc-q"><span class="qn">?</span> Will this take care of all the water throughout my house?<span class="chev">▶</span></summary>
           <div class="acc-a"><strong>Yes.</strong> We attach it right to your home's main water line, so it <strong>filters and softens all the water before it ever reaches your plumbing</strong> — every tap, every shower, every appliance in the house. (The under-sink RO is the one add-on that polishes your <em>drinking</em> water at the kitchen even further.)</div>
@@ -984,6 +1026,7 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
         </table>
       </div>
 
+      <div class="callout c-blue"><span class="ct">Peroxide vs. chemical-free — a real selling point</span>For lighter iron (≤7 ppm, no sulfur) a <strong>chemical-free air-injection</strong> system is the right call. But for <strong>iron &gt;7 ppm or any sulfur smell</strong>, lean on <strong>hydrogen peroxide</strong>: a chemical-free setup pushed that hard is high-maintenance, gets expensive, and can leave the customer <strong>without water</strong> if it fails. Peroxide reliably oxidizes iron, sulfur and manganese, then softens — more dependable, less headache. Frame it honestly as doing right by them, not as an upsell.</div>
       <div class="callout c-red"><span class="ct">⚠ Never guarantee 100% removal of anything</span>Set expectations — well customers are pickier and the problems are real. When unsure, post the customer's stated issues / lab results to the community and get a system prescribed <strong>before</strong> ordering.</div>
       <div class="callout c-amber"><span class="ct">Why well jobs price higher</span>Wells need more service and carry higher go-back risk — that's priced into the $4,499 / $5,999 menu, above city jobs.</div>
     </section>
@@ -1405,6 +1448,33 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
     </section>
 
     <!-- ============ KNOWLEDGE TEST ============ -->
+    <!-- ============ KNOW YOUR PRODUCT (flashcards) ============ -->
+    <section class="view" id="view-pk">
+      <span class="module-tag mt-grow">Train</span>
+      <h1 class="view-title">Know Your Product</h1>
+      <p class="lede">The knowledge that makes you the advisor in the room. Flip through the core talking points until they're automatic — tap a card to reveal the answer, mark what you’ve got down, and drill what you haven’t. Your progress saves in this browser.</p>
+      <div class="pk-cats" id="pkCats"></div>
+      <div class="pk-stage">
+        <div class="pk-card" id="pkCard">
+          <div class="pk-face pk-front"><div class="pk-cat" id="pkFaceCat"></div><div class="pk-q" id="pkQ"></div><div class="pk-hint">tap to reveal</div></div>
+          <div class="pk-face pk-back"><div class="pk-cat">The answer</div><div class="pk-a" id="pkA"></div><div class="pk-hint">tap to flip back</div></div>
+        </div>
+      </div>
+      <div class="pk-controls">
+        <button class="pk-btn" id="pkPrev">← Prev</button>
+        <div class="pk-count"><span id="pkIdx">1</span> / <span id="pkTotal">0</span></div>
+        <button class="pk-btn" id="pkNext">Next →</button>
+      </div>
+      <div class="pk-controls2">
+        <button class="pk-btn pk-known" id="pkKnown">✓ Got it</button>
+        <button class="pk-btn pk-review" id="pkReview">↻ Needs work</button>
+        <button class="pk-btn" id="pkShuffle">🔀 Shuffle</button>
+        <button class="pk-btn" id="pkReset">Reset progress</button>
+      </div>
+      <div class="pk-tally" id="pkTally"></div>
+      <div class="pk-progress" id="pkProgress"></div>
+    </section>
+
     <section class="view" id="view-quiz">
       <span class="module-tag mt-grow">Train</span>
       <h1 class="view-title">Knowledge Test</h1>
@@ -2454,243 +2524,79 @@ const DRILLS={
   });
 })();
 </script>
-<!--OPWIZARD-->
 <script>
+/* ===== Know Your Product flashcard trainer ===== */
 (function(){
-  "use strict";
-  var LS="ophub-config-v1";
-  var DEF={
-    brand:{company:"MSP Pure Water",phone:"952-952-6206",email:"info@msppurewaterco.com",area:"Minneapolis–Saint Paul Metro"},
-    prices:{large:2999,xl:3399,dualCity:3999,carbon:2199,saltFree:2999,saltFreePaired:4499,dualWell:4499,ironSulfur:5999,preSediment:399,uv:699,roTankless:699,roTank:599,roService:199},
-    costs:{large:700,xl:850,dualCity:1000,carbon:300,saltFree:900,saltFreePaired:1200,dualWell:1500,ironSulfur:3150,roTankless:200,roTank:200},
-    econ:{installerPay:400,cac:250,floor:1000},
-    goals:{revenue:"",installs:"",team:"",channel:"Meta"}
-  };
-  function clone(o){return JSON.parse(JSON.stringify(o));}
-  function merge(base,ov){var r=clone(base);if(!ov)return r;["brand","prices","costs","econ","goals"].forEach(function(g){if(ov[g])for(var k in ov[g])if(ov[g][k]!==""&&ov[g][k]!=null)r[g][k]=ov[g][k];});return r;}
-  function loadCfg(){
-    var saved=null;try{saved=JSON.parse(localStorage.getItem(LS)||"null");}catch(e){}
-    if(!saved&&window.__PRESET_CONFIG__)saved=window.__PRESET_CONFIG__;
-    return {cfg:merge(DEF,saved),isSet:!!saved};
-  }
-  function saveCfg(cfg){try{localStorage.setItem(LS,JSON.stringify(cfg));}catch(e){}}
-  function fmt(n){n=Number(n)||0;return "$"+n.toLocaleString("en-US");}
-  function numify(v,dflt){var n=parseInt(String(v).replace(/[^0-9]/g,""),10);return (isFinite(n)&&n>0)?n:dflt;}
-
-  /* ---------- apply config to the live Hub ---------- */
-  function apply(cfg){
-    document.querySelectorAll("[data-bk]").forEach(function(el){
-      var k=el.getAttribute("data-bk");if(cfg.brand[k])el.textContent=cfg.brand[k];
-    });
-    document.querySelectorAll("[data-pk]").forEach(function(el){
-      var k=el.getAttribute("data-pk");
-      if(el.tagName==="OPTION"){
-        var p=cfg.prices[k];if(p){el.setAttribute("data-sell",p);}
-        if(cfg.costs[k])el.setAttribute("data-cost",cfg.costs[k]);
-        el.textContent=el.textContent.replace(/\(\$[\d,]+\)/,"("+fmt(p)+")");
-        return;
-      }
-      if(k==="roRange"){el.textContent=fmt(cfg.prices.roTank)+"–"+fmt(cfg.prices.roTankless);return;}
-      var pr=cfg.prices[k];if(pr==null)return;
-      el.innerHTML=el.innerHTML.replace(/\$[\d,]+/,fmt(pr));
-    });
-    // calculator defaults + recompute
-    function setv(id,val){var e=document.getElementById(id);if(e){e.value=val;e.dispatchEvent(new Event("input"));}}
-    setv("d-labor",cfg.econ.installerPay);setv("d-cac",cfg.econ.cac);
-    setv("s-cac",cfg.econ.cac);setv("s-profit",cfg.econ.floor);
-    var sys=document.getElementById("d-system");if(sys)sys.dispatchEvent(new Event("change"));
-    // goals note on overview
-    var host=document.querySelector("#view-overview .hero-stats");
-    if(host){
-      var g=document.getElementById("cfg-goals");
-      var parts=[];
-      if(cfg.goals.revenue)parts.push("<b>"+cfg.goals.revenue+"</b> revenue goal");
-      if(cfg.goals.installs)parts.push("<b>"+cfg.goals.installs+"</b> installs/mo");
-      if(cfg.goals.channel)parts.push("lead channel: <b>"+cfg.goals.channel+"</b>");
-      if(parts.length){
-        if(!g){g=document.createElement("div");g.id="cfg-goals";g.className="cfg-goals";host.parentNode.insertBefore(g,host.nextSibling);}
-        g.innerHTML="<span class='cg-label'>Your targets</span> "+parts.join(" &middot; ");
-      } else if(g){g.remove();}
-    }
-    // reflect company in the doc title + topbar
-    if(cfg.brand.company){
-      document.title=cfg.brand.company+" — Sales Guide";
-      var tb=document.querySelector(".topbar .tb-name");if(tb)tb.textContent="Sales Guide";
-    }
-  }
-
-  /* ---------- styles ---------- */
-  var css=document.createElement("style");
-  css.textContent=[
-    ".setup-btn{display:flex;align-items:center;gap:8px;width:calc(100% - 28px);margin:0 14px 8px;padding:9px 12px;border-radius:10px;border:1px solid rgba(127,211,218,.35);background:rgba(39,179,196,.14);color:#eaf6f8;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s}",
-    ".setup-btn:hover{background:rgba(39,179,196,.24)}",
-    ".setup-btn .g{font-size:15px}",
-    ".cfg-goals{grid-column:1/-1;margin-top:2px;font-size:13px;color:var(--muted)}",
-    ".cfg-goals .cg-label{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--teal);margin-right:6px}",
-    ".wz-scrim{position:fixed;inset:0;background:rgba(8,20,32,.55);backdrop-filter:blur(3px);z-index:500;display:flex;align-items:center;justify-content:center;padding:18px;opacity:0;transition:opacity .2s}",
-    ".wz-scrim.show{opacity:1}",
-    ".wz{background:var(--panel);color:var(--ink);width:100%;max-width:560px;max-height:92vh;border-radius:18px;box-shadow:0 24px 70px rgba(8,20,32,.45);display:flex;flex-direction:column;overflow:hidden;transform:translateY(10px);transition:transform .2s}",
-    ".wz-scrim.show .wz{transform:none}",
-    ".wz-top{padding:20px 24px 14px;border-bottom:1px solid var(--border)}",
-    ".wz-steps{display:flex;gap:5px;margin-bottom:14px}",
-    ".wz-steps i{height:4px;flex:1;border-radius:3px;background:var(--border2)}",
-    ".wz-steps i.on{background:var(--teal)}",
-    ".wz-eyebrow{font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--teal)}",
-    ".wz-h{font-family:'Fraunces',serif;font-size:24px;font-weight:600;margin:4px 0 3px;letter-spacing:-.4px}",
-    ".wz-sub{font-size:13.5px;color:var(--muted);line-height:1.5}",
-    ".wz-body{padding:18px 24px;overflow-y:auto}",
-    ".wz-field{margin-bottom:14px}",
-    ".wz-field label{display:block;font-size:12.5px;font-weight:700;color:var(--ink2);margin-bottom:5px}",
-    ".wz-field .hint{font-weight:400;color:var(--muted)}",
-    ".wz-inwrap{position:relative;display:flex;align-items:center}",
-    ".wz-in{width:100%;font-family:inherit;font-size:15px;color:var(--ink);background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:11px 44px 11px 13px}",
-    ".wz-in:focus{outline:none;border-color:var(--teal);background:var(--panel);box-shadow:0 0 0 3px rgba(10,147,150,.15)}",
-    ".wz-mic{position:absolute;right:6px;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--faint);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}",
-    ".wz-mic:hover{background:var(--bg3);color:var(--teal)}",
-    ".wz-mic.live{color:#fff;background:var(--red);animation:wzpulse 1s infinite}",
-    "@keyframes wzpulse{0%,100%{opacity:1}50%{opacity:.55}}",
-    ".wz-note{font-size:12.5px;color:var(--muted);background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:10px 13px;margin-top:2px}",
-    ".wz-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:center}",
-    ".wz-foot .sp{flex:1}",
-    ".wz-b{font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;border-radius:10px;padding:10px 18px;border:1px solid var(--border2);background:var(--panel);color:var(--ink)}",
-    ".wz-b:hover{border-color:var(--teal);color:var(--teal)}",
-    ".wz-b.primary{background:var(--teal);border-color:var(--teal);color:#fff}",
-    ".wz-b.primary:hover{background:var(--navy);border-color:var(--navy);color:#fff}",
-    ".wz-b.ghost{border-color:transparent;color:var(--muted)}",
-    ".wz-done-ico{font-size:40px;text-align:center;margin:6px 0 10px}",
-    ".wz-mic-note{font-size:11.5px;color:var(--faint);margin-top:10px;text-align:center}"
-  ].join("\n");
-  document.head.appendChild(css);
-
-  /* ---------- wizard ---------- */
-  var STEPS=[
-    {intro:true},
-    {eyebrow:"Your business",h:"Company & contact",sub:"This shows up on every screen, script, and the footer.",
-      rows:[["brand.company","Company name","text"],["brand.phone","Phone (customer-facing)","text"],["brand.email","Email","text"],["brand.area","Service-area name","text"]]},
-    {eyebrow:"Pricing · 1 of 3",h:"City systems",sub:"Your all-in prices. These flow into the menu, cards, and the Deal calculator.",
-      rows:[["prices.large","Entry softener (the workhorse)","price"],["prices.xl","Extra Large","price"],["prices.dualCity","Dual-Tank City","price"],["prices.carbon","Carbon-Only Filter","price"],["prices.saltFree","Salt-Free Conditioner","price"],["prices.saltFreePaired","Salt-Free + Carbon (paired)","price"]]},
-    {eyebrow:"Pricing · 2 of 3",h:"Well & specialty",sub:"Priced above city jobs.",
-      rows:[["prices.dualWell","Dual-Tank Well (AIO)","price"],["prices.ironSulfur","Iron & Sulfur (peroxide)","price"],["prices.preSediment","Pre-Sediment Filter","price"],["prices.uv","UV Light Purifier","price"]]},
-    {eyebrow:"Pricing · 3 of 3",h:"Drinking water",sub:"Under-sink RO and the annual filter service.",
-      rows:[["prices.roTankless","Tankless RO","price"],["prices.roTank","Tank RO","price"],["prices.roService","RO annual filter service","price"]]},
-    {eyebrow:"The numbers",h:"Margins & pay",sub:"Powers the live Deal & CAC calculators.",
-      rows:[["econ.installerPay","Installer pay per job","price"],["econ.cac","Target CAC (ad spend ÷ installs)","price"],["econ.floor","Gross-profit floor per job","price"]],
-      note:"Leave the profit floor at $1,000 unless you know your number — it's the anchor the whole pricing model builds up from."},
-    {eyebrow:"Where you're headed",h:"Goals",sub:"So your targets show on the dashboard.",
-      rows:[["goals.revenue","Revenue goal","text"],["goals.installs","Installs per month target","text"],["goals.team","Team size (now → target)","text"],["goals.channel","Primary lead channel","text"]]},
-    {done:true}
+  var CARDS=[
+    {c:"Filtration & Carbon",q:"What carbon do we use — and why that one?",a:"<b>Jacobi catalytic carbon</b>, in every system. It’s the most sustainably sourced carbon in the industry, and instead of just trapping chemicals on its surface like plain activated carbon, it <b>chemically breaks down</b> chloramine, sulfur and organics. That’s the deepest filtration you can put in a tank."},
+    {c:"Filtration & Carbon",q:"Why does the softener need carbon filtration in front of it?",a:"City water carries chlorine/chloramine. Over time that chlorine <b>eats away at the softening resin</b> and deteriorates its ability to soften. Our catalytic carbon removes the chlorine first — so the softener is protected and lasts far longer."},
+    {c:"Filtration & Carbon",q:"Catalytic vs. plain activated carbon — the real difference?",a:"Activated carbon only <b>adsorbs</b> — it traps chemicals on its surface and needs long contact time. Catalytic carbon <b>chemically splits the chloramine bond apart</b>. It does everything activated does, plus neutralizes the tough stuff. That’s why we run catalytic across the board."},
+    {c:"Softening",q:"Why is a dual-tank the better long-term option?",a:"Two tanks = <b>more contact time</b>. The water spends longer against the media, so you get deeper filtration and more thorough softening — a more complete job. It also self-cleans the carbon so it lasts 10–20+ years. Recommend it to families who tell you they want the <b>highest-quality, longest-term</b> solution."},
+    {c:"Softening",q:"What is “contact time” and why does it matter?",a:"Contact time is how long the water is actually touching the media. <b>More contact time = more filtration and more softening</b> actually happening. A dual-tank gives more of it, which is why it does a more thorough job."},
+    {c:"Softening",q:"What does the 10% cross-linked resin do?",a:"It’s the <b>highest-quality softening resin</b> on the market (vs. cheap 4% that wears out fast on chloramine). It removes the hardness minerals — protecting plumbing, appliances and fixtures from scale, and giving soft water on skin and hair."},
+    {c:"Drinking Water (RO)",q:"What kind of water does the reverse osmosis give them?",a:"Purified, <b>alkaline</b> drinking water — the same quality as Evian, that “bougie” bottled water. The RO strips ~99% of everything, then we remineralize: electrolytes back in and pH raised. Clean <b>and</b> alkaline, right at the sink, unlimited."},
+    {c:"Drinking Water (RO)",q:"Why remineralize after the RO?",a:"RO makes water ~99% pure — so pure it’s “hungry” and grabs onto things (part of what makes water hard in the first place). The remineralization filter <b>adds electrolytes back and raises the pH</b>, giving pure, alkaline water instead of flat, aggressive water."},
+    {c:"Drinking Water (RO)",q:"Tap vs. bottled vs. our RO — how do you frame it?",a:"Unfiltered tap carries the contaminants; bottled water carries <b>microplastics</b> and costs forever. Our RO gives purified, alkaline water on demand at the sink — the best option, and no more buying bottled."},
+    {c:"Well Water",q:"Why does every well system include a pre-sediment filter?",a:"Wells are inconsistent — some are 100 ft down, some 600–700 ft — and the water can change at any time: clean one day, <b>straight sand</b> the next. The pre-sediment filter is a first level of filtration that protects the home’s water source and everything downstream. It’s <b>included, not an upsell</b>."},
+    {c:"Well Water",q:"Peroxide vs. chemical-free — why is this a selling point?",a:"A <b>chemical-free (air-injection) system is high-maintenance and can get expensive</b> — and worst case, if it fails it can leave the customer <b>without water</b>. For heavier problems we use <b>hydrogen peroxide</b>: it reliably oxidizes iron, sulfur and manganese, filters it out, then softens. More reliable, less headache — that’s the honest advantage to point out."},
+    {c:"Well Water",q:"When do we use AIO vs. hydrogen peroxide?",a:"<b>AIO (air-injection)</b> for lighter wells — iron ≤7 ppm and no sulfur smell. <b>Hydrogen peroxide</b> for iron >7 ppm <b>or any sulfur smell</b> (add UV if there’s a slimy film — that’s bacteria). <b>Pre-sediment filter on every well</b> either way."},
+    {c:"Why Us / Framing",q:"The tires analogy — how do you explain system differences?",a:"These systems are like tires. Continental, Michelin, Firestone, Bridgestone — four brand-new tires all get you where you’re going; the core job is the same. So <b>there’s no justifiable reason</b> the industry charges the crazy prices it does — that’s just how it’s always been. We’re here to give families high-quality water at a fair price to protect their home and family."},
+    {c:"Why Us / Framing",q:"What’s the ceramic-disc valve story?",a:"The valve is the <b>brain</b> of the system. We use a ceramic-disc valve that essentially never wears out — competitors use plastic/Teflon valves that fail and need service every few years. That’s why ours carries a <b>lifetime warranty</b>, and we’re one of the only companies using it."},
+    {c:"Why Us / Framing",q:"How can we price below the big dealers — honestly?",a:"We’re not building a huge sales markup or a 2-hour in-home hard-sell into the price. We keep it lean and do volume, so a family gets a strong system <b>without paying for all that overhead</b>. Same core components as everyone — we just don’t overcharge."},
+    {c:"Maintenance & Warranty",q:"What’s the maintenance on the system?",a:"Easy — add softener salt as needed (a bag is ~$6–10 at Home Depot/Walmart/Target, lasts ~1–2 months; just don’t let it run all the way out). The RO filters get serviced once a year — we swap filters, test the water, and reprogram the valve — for <b>$199/yr</b>."},
+    {c:"Maintenance & Warranty",q:"What’s the warranty?",a:"<b>Lifetime</b> on the tank and valve, <b>5 years</b> on the media, and <b>1 year</b> on the RO and any labor. Strong coverage — part of why the ceramic valve matters."}
   ];
-
-  var W, step=0, scrim, SR=(window.SpeechRecognition||window.webkitSpeechRecognition);
-
-  function getP(path){var a=path.split(".");return W[a[0]][a[1]];}
-  function setP(path,v){var a=path.split(".");W[a[0]][a[1]]=v;}
-
+  var card=document.getElementById("pkCard"); if(!card) return;
+  var elQ=document.getElementById("pkQ"),elA=document.getElementById("pkA"),elFC=document.getElementById("pkFaceCat");
+  var elIdx=document.getElementById("pkIdx"),elTot=document.getElementById("pkTotal"),elTally=document.getElementById("pkTally");
+  var prog=document.getElementById("pkProgress"),catsEl=document.getElementById("pkCats");
+  var LS="pk-progress-v1";
+  var marks=(function(){try{return JSON.parse(localStorage.getItem(LS)||"{}");}catch(e){return {};}})();
+  function save(){try{localStorage.setItem(LS,JSON.stringify(marks));}catch(e){}}
+  var cats=["All"]; CARDS.forEach(function(c){if(cats.indexOf(c.c)<0)cats.push(c.c);});
+  var filter="All", order=[], pos=0;
   function build(){
-    scrim=document.createElement("div");scrim.className="wz-scrim";
-    scrim.innerHTML='<div class="wz" role="dialog" aria-modal="true"><div class="wz-top"><div class="wz-steps" id="wzSteps"></div><div id="wzHead"></div></div><div class="wz-body" id="wzBody"></div><div class="wz-foot" id="wzFoot"></div></div>';
-    document.body.appendChild(scrim);
-    scrim.addEventListener("click",function(e){if(e.target===scrim)close();});
-  }
-  function dots(){
-    var d=scrim.querySelector("#wzSteps");d.innerHTML="";
-    for(var i=1;i<STEPS.length-1;i++){var b=document.createElement("i");if(i<=step)b.className="on";d.appendChild(b);}
-  }
-  function micBtn(input,path,kind){
-    if(!SR)return null;
-    var m=document.createElement("button");m.className="wz-mic";m.type="button";m.textContent="🎤";m.title="Speak your answer";
-    m.addEventListener("click",function(){
-      try{
-        var r=new SR();r.lang="en-US";r.interimResults=false;r.maxAlternatives=1;
-        m.classList.add("live");
-        r.onresult=function(ev){
-          var t=ev.results[0][0].transcript.trim();
-          input.value=(kind==="price")?String(numify(t,getP(path))):t;
-          input.dispatchEvent(new Event("input"));
-        };
-        r.onerror=function(){m.classList.remove("live");};
-        r.onend=function(){m.classList.remove("live");};
-        r.start();
-      }catch(e){m.classList.remove("live");}
-    });
-    return m;
+    order=[]; CARDS.forEach(function(c,i){ if(filter==="All"||c.c===filter) order.push(i); });
+    if(!order.length) order=[0];
+    if(pos>=order.length) pos=0;
   }
   function render(){
-    dots();
-    var S=STEPS[step], head=scrim.querySelector("#wzHead"), body=scrim.querySelector("#wzBody"), foot=scrim.querySelector("#wzFoot");
-    head.innerHTML="";body.innerHTML="";foot.innerHTML="";
-
-    if(S.intro){
-      head.innerHTML='<div class="wz-eyebrow">Welcome</div><div class="wz-h">Set up your Sales Guide</div>';
-      body.innerHTML='<div class="wz-sub" style="font-size:14.5px">Everything that helps you sell — the phone script, objection closes, FAQ bank, product knowledge, KPIs and install SOPs — is already built and ready.<br><br>This quick setup just makes the <b>specifics</b> yours: your company name, your prices, your margins, and your goals. Takes about 3 minutes. You can change any of it later.</div>'+(SR?'<div class="wz-mic-note">🎤 Tip: tap the mic on any field to just say your answer.</div>':'');
-      var use=document.createElement("button");use.className="wz-b";use.textContent="Use MSP defaults";
-      use.onclick=function(){saveCfg(clone(W));apply(W);close();};
-      var go=document.createElement("button");go.className="wz-b primary";go.textContent="Customize →";go.onclick=next;
-      foot.appendChild(use);var sp=document.createElement("div");sp.className="sp";foot.appendChild(sp);foot.appendChild(go);
-      return;
-    }
-    if(S.done){
-      head.innerHTML='<div class="wz-eyebrow">All set</div><div class="wz-h">Your Hub is ready</div>';
-      body.innerHTML='<div class="wz-done-ico">💧</div><div class="wz-sub" style="text-align:center;font-size:14.5px">Your prices, brand, and goals are live across the whole dashboard. Everything saves in this browser.<br><br>Want your own hosted copy? <b>Download my Hub</b> gives you a single file you can put on your own domain.</div>';
-      var dl=document.createElement("button");dl.className="wz-b";dl.textContent="⬇ Download my Hub";dl.onclick=downloadHub;
-      var fin=document.createElement("button");fin.className="wz-b primary";fin.textContent="Finish";fin.onclick=function(){saveCfg(clone(W));apply(W);close();};
-      foot.appendChild(dl);var sp=document.createElement("div");sp.className="sp";foot.appendChild(sp);foot.appendChild(fin);
-      return;
-    }
-    head.innerHTML='<div class="wz-eyebrow">'+S.eyebrow+'</div><div class="wz-h">'+S.h+'</div><div class="wz-sub">'+S.sub+'</div>';
-    S.rows.forEach(function(row){
-      var path=row[0],label=row[1],kind=row[2];
-      var f=document.createElement("div");f.className="wz-field";
-      var lab=document.createElement("label");lab.textContent=label;f.appendChild(lab);
-      var wrap=document.createElement("div");wrap.className="wz-inwrap";
-      var inp=document.createElement("input");inp.className="wz-in";inp.type="text";
-      inp.value=(kind==="price")?(getP(path)?fmt(getP(path)):""):getP(path);
-      if(kind==="price")inp.setAttribute("inputmode","numeric");
-      inp.placeholder=(kind==="price")?"$ your price":"your answer";
-      inp.addEventListener("input",function(){
-        setP(path, kind==="price"?numify(inp.value,DEF[path.split(".")[0]][path.split(".")[1]]):inp.value);
-      });
-      wrap.appendChild(inp);
-      var m=micBtn(inp,path,kind);if(m)wrap.appendChild(m);
-      f.appendChild(wrap);body.appendChild(f);
+    var gi=order[pos], c=CARDS[gi];
+    card.classList.remove("flipped");
+    elFC.textContent=c.c; elQ.textContent=c.q; elA.innerHTML=c.a;
+    elIdx.textContent=(pos+1); elTot.textContent=order.length;
+    card.classList.toggle("known-tag",marks[gi]==="known");
+    card.classList.toggle("review-tag",marks[gi]==="review");
+    // dots
+    prog.innerHTML="";
+    order.forEach(function(gidx,p){
+      var d=document.createElement("span"); d.className="pk-dot"+(marks[gidx]==="known"?" known":marks[gidx]==="review"?" review":"")+(p===pos?" cur":"");
+      d.title=(p+1)+". "+CARDS[gidx].c; d.onclick=function(){pos=p;render();};
+      prog.appendChild(d);
     });
-    if(S.note){var n=document.createElement("div");n.className="wz-note";n.textContent=S.note;body.appendChild(n);}
-    var back=document.createElement("button");back.className="wz-b";back.textContent="← Back";back.onclick=prev;
-    foot.appendChild(back);var sp=document.createElement("div");sp.className="sp";foot.appendChild(sp);
-    var nx=document.createElement("button");nx.className="wz-b primary";nx.textContent=(step===STEPS.length-2)?"Done →":"Next →";nx.onclick=next;
-    foot.appendChild(nx);
+    var k=0,r=0; CARDS.forEach(function(_,i){if(marks[i]==="known")k++;else if(marks[i]==="review")r++;});
+    elTally.innerHTML="<b>"+k+"</b> got it · <b>"+r+"</b> need work · "+CARDS.length+" total";
   }
-  function next(){ if(step<STEPS.length-1){step++; if(STEPS[step].done){saveCfg(clone(W));apply(W);} render();} }
-  function prev(){ if(step>0){step--;render();} }
-  function open(){ W=loadCfg().cfg; step=0; if(!scrim)build(); render(); setTimeout(function(){if(scrim)scrim.classList.add("show");},10); }
-  function close(){ if(scrim){scrim.classList.remove("show");setTimeout(function(){if(scrim){scrim.remove();scrim=null;}},200);} }
-
-  /* ---------- download standalone ---------- */
-  function downloadHub(){
-    saveCfg(clone(W));apply(W);
-    var html="<!DOCTYPE html>\n"+document.documentElement.outerHTML;
-    html=html.replace(/<div class="wz-scrim[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/,"");
-    html=html.replace("<!--OPWIZARD-->","<!--OPWIZARD--><script>window.__PRESET_CONFIG__="+JSON.stringify(W)+";<\/script>");
-    var blob=new Blob([html],{type:"text/html"});
-    var a=document.createElement("a");a.href=URL.createObjectURL(blob);
-    a.download=(W.brand.company||"Operator")+"-Hub.html";document.body.appendChild(a);a.click();
-    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1200);
+  function renderCats(){
+    catsEl.innerHTML="";
+    cats.forEach(function(cat){
+      var b=document.createElement("button"); b.className="pk-chip"+(cat===filter?" on":""); b.textContent=cat;
+      b.onclick=function(){filter=cat;pos=0;build();renderCats();render();};
+      catsEl.appendChild(b);
+    });
   }
-
-  /* ---------- boot ---------- */
-  function boot(){
-    var st=loadCfg();
-    apply(st.cfg);
-    var sb=document.querySelector(".search-wrap");
-    if(sb){
-      var b=document.createElement("button");b.className="setup-btn";b.innerHTML='<span class="g">⚙</span> '+(st.isSet?"Edit my Hub":"Set up my Hub");
-      b.onclick=open; sb.parentNode.insertBefore(b,sb);
-    }
-    if(!st.isSet) setTimeout(open,450);
-  }
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot();
+  function next(){ pos=(pos+1)%order.length; render(); }
+  function prev(){ pos=(pos-1+order.length)%order.length; render(); }
+  function mark(v){ var gi=order[pos]; marks[gi]=(marks[gi]===v?null:v); if(marks[gi]==null)delete marks[gi]; save(); render(); setTimeout(next,180); }
+  card.onclick=function(){ card.classList.toggle("flipped"); };
+  document.getElementById("pkNext").onclick=next;
+  document.getElementById("pkPrev").onclick=prev;
+  document.getElementById("pkKnown").onclick=function(){mark("known");};
+  document.getElementById("pkReview").onclick=function(){mark("review");};
+  document.getElementById("pkShuffle").onclick=function(){ for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t;} pos=0; render(); };
+  document.getElementById("pkReset").onclick=function(){ if(window.confirm("Reset your got-it / needs-work progress?")){ marks={}; save(); render(); } };
+  renderCats(); build(); render();
 })();
 </script>
-
 </body>
 </html>

@@ -797,6 +797,22 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
       <p class="lede">Keep this open and <strong>search it live mid-call.</strong> Proven customer-facing language for the technical questions you'll actually get. Use the search box in the sidebar, or click to expand.</p>
 
       <div data-search-group="FAQ">
+        <details class="acc" data-q="buy ro filters cheaper amazon elsewhere third party quality guarantee lock in proprietary tankless tank last a year 199 annual service">
+          <summary class="acc-q"><span class="qn">?</span> Can I buy the RO filters cheaper somewhere else?<span class="chev">▶</span></summary>
+          <div class="acc-a">On the <strong>tankless RO</strong>, the filters are proprietary — they come through us, so you’re always getting the right part. On the <strong>tank-style RO</strong>, you <em>could</em> find filters elsewhere like Amazon — but we can’t guarantee the quality or that they’ll actually last. <strong>Our filters are the highest quality and are built to last the full year.</strong> Your annual service ($199/yr for all three) includes swapping them, testing your water, and reprogramming the system so it’s running right. The cheap third-party stuff is a gamble on quality.</div>
+        </details>
+        <details class="acc" data-q="pfas forever chemicals remove 99 percent tap reverse osmosis special resin whole home custom 500 add on">
+          <summary class="acc-q"><span class="qn">?</span> Does this remove PFAS / forever chemicals?<span class="chev">▶</span></summary>
+          <div class="acc-a">Yes — the <strong>reverse osmosis removes about 99% of PFAS right at the tap</strong>, so your drinking water is covered. If you want PFAS handled <strong>throughout the whole home</strong>, we can custom-build the system with a <strong>special PFAS-removing resin for an additional $500</strong>.</div>
+        </details>
+        <details class="acc" data-q="fridge refrigerator ice maker hookup ro line water connect 500 labor materials setup configuration">
+          <summary class="acc-q"><span class="qn">?</span> Can you hook the RO up to my fridge / ice maker?<span class="chev">▶</span></summary>
+          <div class="acc-a">Yes, we can run RO water to your <strong>fridge and ice maker</strong>. Whether we can and how involved it is depends on the home — where your fridge water line is and how everything’s configured. Because it’s additional labor and materials, it’s an <strong>extra $500</strong>.</div>
+        </details>
+        <details class="acc" data-q="drain backwash water where go sewer septic drain line discharge regeneration waste">
+          <summary class="acc-q"><span class="qn">?</span> Where does the drain / backwash water go?<span class="chev">▶</span></summary>
+          <div class="acc-a">It just goes to your <strong>existing drain line</strong> — wherever that already runs, whether that’s a sewer or a septic system. Nothing new or special needed.</div>
+        </details>
         <details class="acc" data-q="chemical free system air injection aio no salt iron well hydrogen peroxide why maintenance expensive leave you without water reliable difference salt free">
           <summary class="acc-q"><span class="qn">?</span> Isn&rsquo;t there a chemical-free well system — why hydrogen peroxide?<span class="chev">▶</span></summary>
           <div class="acc-a">Great question — and here’s the honest answer. For <strong>lighter iron</strong> (and no sulfur smell), a chemical-free air-injection system works great and that’s exactly what we’d put in. But when the iron is heavier or there’s a <strong>sulfur / rotten-egg smell</strong>, a chemical-free setup becomes <strong>high-maintenance and expensive to keep running</strong> — and worst case, if it goes down it can leave you <strong>without water</strong>. For those homes we use a <strong>hydrogen-peroxide system</strong>: it reliably oxidizes the iron, sulfur and manganese, filters it out, then softens — more dependable and far less headache. We’ll always tell you straight which one your water actually needs.</div>
@@ -952,6 +968,8 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
           <tr><th>System</th><th>Starting Price</th><th>Typical Retail</th><th>Notes</th></tr>
           <tr data-q="tankless under sink ro preferred diy filters lock-in supplier only"><td><strong>Tankless Under-Sink RO</strong></td><td class="num" data-pk="roTankless">$999</td><td>$1,500+</td><td>Preferred; DIY-friendly filters; recurring lock-in (supplier-only filters)</td></tr>
           <tr data-q="tank under sink ro remineralization alkaline better well higher tds"><td><strong>Tank Under-Sink RO</strong></td><td class="num" data-pk="roTank">$799</td><td>$1,200+</td><td>Add remineralization filter; better for well (higher TDS / lower pressure)</td></tr>
+          <tr data-q="pfas removing resin whole home custom add on 500 forever chemicals"><td><strong>PFAS-Removal Resin</strong> (whole-home add-on)</td><td class="num">+$500</td><td>—</td><td>Custom build. The RO already removes ~99% PFAS at the tap; this adds whole-home PFAS reduction</td></tr>
+          <tr data-q="fridge ice maker ro hookup add on 500 labor materials line"><td><strong>Fridge / Ice-Maker Hookup</strong></td><td class="num">+$500</td><td>—</td><td>Runs RO water to the fridge/ice maker; depends on fridge-line location &amp; setup (extra labor + materials)</td></tr>
         </table>
       </div>
 
@@ -2547,7 +2565,11 @@ const DRILLS={
     {c:"Why Us / Framing",q:"What’s the ceramic-disc valve story?",a:"The valve is the <b>brain</b> of the system. We use a ceramic-disc valve that essentially never wears out — competitors use plastic/Teflon valves that fail and need service every few years. That’s why ours carries a <b>lifetime warranty</b>, and we’re one of the only companies using it."},
     {c:"Why Us / Framing",q:"How can we price below the big dealers — honestly?",a:"We’re not building a huge sales markup or a 2-hour in-home hard-sell into the price. We keep it lean and do volume, so a family gets a strong system <b>without paying for all that overhead</b>. Same core components as everyone — we just don’t overcharge."},
     {c:"Maintenance & Warranty",q:"What’s the maintenance on the system?",a:"Easy — add softener salt as needed (a bag is ~$6–10 at Home Depot/Walmart/Target, lasts ~1–2 months; just don’t let it run all the way out). The RO filters get serviced once a year — we swap filters, test the water, and reprogram the valve — for <b>$199/yr</b>."},
-    {c:"Maintenance & Warranty",q:"What’s the warranty?",a:"<b>Lifetime</b> on the tank and valve, <b>5 years</b> on the media, and <b>1 year</b> on the RO and any labor. Strong coverage — part of why the ceramic valve matters."}
+    {c:"Maintenance & Warranty",q:"What’s the warranty?",a:"<b>Lifetime</b> on the tank and valve, <b>5 years</b> on the media, and <b>1 year</b> on the RO and any labor. Strong coverage — part of why the ceramic valve matters."},
+    {c:"Drinking Water (RO)",q:"Does our system remove PFAS?",a:"Yes — the <b>RO removes about 99% of PFAS right at the tap</b>. If they want PFAS handled <b>whole-home</b>, we can custom-build the system with a <b>special PFAS-removing resin for +$500</b>."},
+    {c:"Drinking Water (RO)",q:"Can the customer buy RO filters cheaper on Amazon?",a:"Tankless filters are <b>proprietary</b> — they come through us. Tank-style filters <em>can</em> be bought elsewhere, but there’s <b>no guarantee of quality or that they’ll last</b>. <b>Ours are the highest quality and last the full year</b>; the $199/yr service swaps them, tests the water, and reprograms the system."},
+    {c:"Install & Add-ons",q:"Can we hook the RO to the fridge / ice maker?",a:"Yes — we can run RO water to the <b>fridge and ice maker</b>. It depends on where the fridge line is and the setup, and because it’s extra labor and materials it’s an <b>additional $500</b>."},
+    {c:"Install & Add-ons",q:"Where does the backwash / drain water go?",a:"Straight to the <b>existing drain line</b> — wherever that already runs, whether sewer or septic. Nothing new needed."}
   ];
   var card=document.getElementById("pkCard"); if(!card) return;
   var elQ=document.getElementById("pkQ"),elA=document.getElementById("pkA"),elFC=document.getElementById("pkFaceCat");

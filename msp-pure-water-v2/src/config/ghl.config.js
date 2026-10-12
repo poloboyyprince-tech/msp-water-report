@@ -150,7 +150,7 @@ window.MSP_GHL = {
     /* Microsoft Clarity project ID (free heatmaps, scroll maps, session
        recordings). clarity.microsoft.com → New project → Settings → Setup →
        the ID in the snippet, e.g. "abcd1234ef". Leave empty to disable. */
-    clarityId: ""
+    clarityId: "ywbizo4oz3"
   },
 
   /* Consent copy shown under every phone/email field. Edit to match the

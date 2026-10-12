@@ -146,7 +146,11 @@ window.MSP_GHL = {
        on every page, and maps site events to standard Meta events:
        lead_form_submitted → Lead, appointment_booked → Schedule,
        contact_form_submitted / phone_click → Contact. */
-    metaPixelId: "1791077468735241"
+    metaPixelId: "1791077468735241",
+    /* Microsoft Clarity project ID (free heatmaps, scroll maps, session
+       recordings). clarity.microsoft.com → New project → Settings → Setup →
+       the ID in the snippet, e.g. "abcd1234ef". Leave empty to disable. */
+    clarityId: "ywbizo4oz3"
   },
 
   /* Consent copy shown under every phone/email field. Edit to match the

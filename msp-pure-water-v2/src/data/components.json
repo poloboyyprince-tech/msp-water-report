@@ -217,5 +217,47 @@
     "Polyethylene"
    ]
   ]
+ },
+ "pfas-resin": {
+  "kicker": "PFAS media",
+  "name": "ResinTech SIR-110-HP PFAS-Selective Anion Resin",
+  "what": "A chloride-form strong base anion resin made by ResinTech, with a functional group chosen for very high selectivity. It is certified to NSF/ANSI 61 for drinking-water contact and shipped as spherical beads, 20 to 50 mesh.",
+  "does": "As water passes through the bed, PFAS compounds (including PFOA and PFOS) are pulled onto the resin beads and held there, along with nitrate and perchlorate if present. Treated water continues on to the house.",
+  "value": "Ion exchange needs far less contact time than carbon for PFAS, so a single 1.5 cu. ft. tank can treat the whole home at household flow. Because PFAS binds so tightly, the resin is not regenerated with salt like a softener; it is replaced on schedule, which keeps the captured chemicals out of your drain. The manufacturer rates it for 1 to 3 gallons per minute per cubic foot of resin, a pH of 4 to 10 and a maximum 20 psi pressure loss.",
+  "stats": [
+   [
+    "Resin",
+    "SIR-110-HP, 1.5 cu. ft."
+   ],
+   [
+    "Certified",
+    "NSF/ANSI 61"
+   ],
+   [
+    "Service",
+    "Replaced, not regenerated"
+   ]
+  ]
+ },
+ "passthrough-head": {
+  "kicker": "Tank heads",
+  "name": "Pass-Through Heads (Carbon and PFAS Tanks)",
+  "what": "A simple in/out head on each of the two filtration tanks, with a riser tube and distributor inside the tank.",
+  "does": "Sends water down through the full depth of the media and back up the riser to the next tank. There is no regeneration cycle, so there is nothing to program.",
+  "value": "Fewer moving parts than a control valve and no drain line or electricity needed on those two tanks. Each head has a bypass so a tank can be serviced without shutting off the house.",
+  "stats": [
+   [
+    "Heads",
+    "2"
+   ],
+   [
+    "Regeneration",
+    "None"
+   ],
+   [
+    "Bypass",
+    "Yes"
+   ]
+  ]
  }
 }

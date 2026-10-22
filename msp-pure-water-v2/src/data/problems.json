@@ -70,11 +70,28 @@
   "systems": [
    "whole-home-softener",
    "dual-tank-city",
-   "salt-free"
+   "salt-free",
+   "pfas-three-tank"
   ],
   "interest": "Whole Home Filtration",
   "seo_title": "Chlorine & Chloramine Removal | Twin Cities | MSP Pure Water",
   "seo_desc": "Why your city water smells like a pool and how catalytic carbon filtration removes chlorine and chloramine from every tap in your home."
+ },
+ {
+  "id": "pfas",
+  "label": "PFAS / Forever Chemicals",
+  "page": true,
+  "nav": "PFAS / Forever Chemicals",
+  "tag": "City & Well",
+  "cause": "PFAS are man-made chemicals used for decades in nonstick coatings, firefighting foam and stain repellents. They do not break down, which is why they are called forever chemicals. Minnesota has well-documented PFAS contamination, especially in the east metro, and in 2024 the EPA set the first national drinking-water limits for PFOA and PFOS.",
+  "approach": "Standard carbon and softeners are not designed for PFAS. Our PFAS Reduction Whole Home System adds a dedicated tank of ResinTech PFAS-selective anion resin after the carbon and softening tanks, so PFAS is captured at every tap. For drinking water on its own, a reverse osmosis system at the kitchen sink adds a second barrier.",
+  "systems": [
+   "pfas-three-tank",
+   "ro-tankless"
+  ],
+  "interest": "Whole Home Filtration",
+  "seo_title": "PFAS Water Filter for Minnesota Homes | MSP Pure Water",
+  "seo_desc": "Forever chemicals in Twin Cities water: what PFAS are, why Minnesota is affected, and the whole-home PFAS resin system MSP Pure Water installs for $4,999."
  },
  {
   "id": "iron",

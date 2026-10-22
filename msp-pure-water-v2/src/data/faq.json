@@ -16,6 +16,10 @@
   "a": "Usually, yes. City-water treatment focuses on hardness and municipal disinfectants. Private wells often also carry iron, sulfur, manganese and sediment, which need oxidation and filtration that a softener alone cannot handle. We keep the two system lines separate so you never pay for equipment your water does not need."
  },
  {
+  "q": "Do you have a system for PFAS (forever chemicals)?",
+  "a": "Yes. The PFAS Reduction Whole Home System is a three-tank city-water system: a Jacobi catalytic carbon tank, a 48,000-grain softening tank, and a dedicated tank of ResinTech PFAS-selective anion resin certified to NSF/ANSI 61. It's $4,999 installed with a reverse osmosis drinking-water system included. PFAS levels vary by city, so we review your utility's water report or a PFAS test with you on the call."
+ },
+ {
   "q": "What does reverse osmosis do?",
   "a": "Reverse osmosis pushes water through a semipermeable membrane that rejects a broad range of dissolved solids, then delivers the treated water to a dedicated faucet at your kitchen sink. It is a point-of-use system for drinking and cooking water, not a whole-home system, which is why we pair it with whole-home treatment."
  },
@@ -57,7 +61,7 @@
  },
  {
   "q": "What warranty is included?",
-  "a": "Whole-home and reverse osmosis systems carry a lifetime warranty on the system. We go through the exact terms with you on the phone before anything is installed."
+  "a": "Whole-home and reverse osmosis systems carry a lifetime warranty on the system and a 10-year warranty on the media (the carbon, resin and other consumable parts inside the tanks). We go through the exact terms with you on the phone before anything is installed."
  },
  {
   "q": "How do I schedule?",

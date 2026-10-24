@@ -69,11 +69,7 @@
    "specs": [
     [
      "Valve flow rate",
-     "28 GPM"
-    ],
-    [
-     "System flow rate",
-     "28 GPM"
+     "25.5 GPM"
     ],
     [
      "Softening capacity",
@@ -81,23 +77,35 @@
     ],
     [
      "Softening resin",
-     "75 lbs"
+     "1.5 cu. ft., 10% crosslinked (CG10)"
     ],
     [
      "Carbon",
-     "15 lbs"
+     "Jacobi catalytic coconut-shell carbon"
     ],
     [
      "Media tank",
-     "12\" × 52\""
+     "12\" × 58\""
     ],
     [
      "Brine tank",
-     "15\" × 35\""
+     "15\" × 17\" × 36\", holds 150 lbs of salt"
     ],
     [
-     "Memory backup",
-     "72 hours"
+     "Salt per regeneration",
+     "9 lbs"
+    ],
+    [
+     "Water per regeneration",
+     "45–60 gallons"
+    ],
+    [
+     "Electrical",
+     "110 V outlet"
+    ],
+    [
+     "Control valve",
+     "MSP ceramic disc valve, 72-hour memory backup"
     ]
    ],
    "included": [
@@ -150,7 +158,7 @@
    "what_it_does": "Softens and filters every drop of water entering your home. One high-capacity media tank handles hardness, chlorine, chloramine, taste and odor, so every faucet, shower and appliance gets treated water.",
    "leads": [
     "48,000-grain softening capacity",
-    "28 GPM system flow, no pressure loss",
+    "25.5 GPM valve flow, no pressure loss",
     "MSP ceramic disc valve with 72-hour memory backup",
     "NSF-certified media, lifetime tank and valve warranty, 10-year media warranty"
    ],
@@ -164,7 +172,7 @@
      "stats": [
       [
        "Valve flow",
-       "28 GPM"
+       "25.5 GPM"
       ],
       [
        "Memory backup",
@@ -184,7 +192,7 @@
      "stats": [
       [
        "Carbon",
-       "15 lbs"
+       "Catalytic coconut shell"
       ],
       [
        "Source",
@@ -208,7 +216,7 @@
       ],
       [
        "Resin",
-       "75 lbs, 10% crosslinked"
+       "1.5 cu. ft., 10% crosslinked"
       ]
      ]
     },
@@ -235,16 +243,16 @@
      "body": "Everything is sized for a real household: high flow so showers, laundry and sprinklers can all run at once with no pressure loss. NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
      "stats": [
       [
-       "System flow",
-       "28 GPM"
+       "Valve flow",
+       "25.5 GPM"
       ],
       [
        "Media tank",
-       "12\" × 52\""
+       "12\" × 58\""
       ],
       [
        "Brine tank",
-       "15\" × 35\""
+       "15\" × 17\" × 36\""
       ],
       [
        "Warranty",
@@ -286,12 +294,12 @@
      "Automatically backwashes and regenerates the system. Ceramic discs for long life, highly configurable, 72-hour memory backup."
     ],
     [
-     "Jacobi Catalytic Carbon Tank (15 lbs)",
-     "Treats chlorine, chloramine, organic chemicals, taste and odor."
+     "Jacobi Catalytic Carbon Tank",
+     "Catalytic coconut-shell carbon treats chlorine, chloramine, organic chemicals, taste and odor."
     ],
     [
-     "10% Crosslinked Resin (75 lbs)",
-     "USA-made, 10% crosslinked for superior durability. Removes hardness with no pressure loss."
+     "10% Crosslinked Resin (1.5 cu. ft., 48,000 grains)",
+     "USA-made CG10 resin, 10% crosslinked for superior durability. Removes hardness with no pressure loss."
     ],
     [
      "Polishing Gravel",
@@ -345,27 +353,43 @@
    "specs": [
     [
      "Valve flow rate",
-     "30 GPM"
-    ],
-    [
-     "System flow rate",
-     "28 GPM"
+     "25.5 GPM"
     ],
     [
      "Softening capacity",
-     "48,000 grains per tank"
+     "48,000 grains (dedicated resin tank)"
     ],
     [
      "Softening resin",
-     "1.5 cu. ft."
+     "1.5 cu. ft., 10% crosslinked (CG10)"
+    ],
+    [
+     "Carbon",
+     "1.5 cu. ft. Jacobi catalytic coconut-shell carbon (dedicated tank)"
     ],
     [
      "Media tanks",
-     "10\" × 54\""
+     "Two, 10\" × 60\" each"
     ],
     [
      "Brine tank",
-     "15\" × 35\""
+     "15\" × 17\" × 36\", holds 150 lbs of salt"
+    ],
+    [
+     "Salt per regeneration",
+     "9 lbs"
+    ],
+    [
+     "Water per regeneration",
+     "45–60 gallons"
+    ],
+    [
+     "Electrical",
+     "110 V outlet"
+    ],
+    [
+     "Control valve",
+     "MSP ceramic disc valve, 72-hour memory backup"
     ]
    ],
    "included": [
@@ -418,7 +442,7 @@
    "what_it_does": "Gives the Jacobi catalytic carbon tank and the 10% crosslinked resin tank their own dedicated high-capacity vessels. Each media bed works at full strength, ideal for larger households and heavy water use.",
    "leads": [
     "The only dual-tank system designed to self-clean the carbon tank",
-    "30 GPM valve flow for high-demand homes",
+    "25.5 GPM valve flow for high-demand homes",
     "Dedicated media beds last longer and filter deeper",
     "NSF-certified media, lifetime tank and valve warranty, 10-year media warranty"
    ],
@@ -448,7 +472,7 @@
      "stats": [
       [
        "Capacity",
-       "48,000 grains per tank"
+       "48,000 grains"
       ],
       [
        "Resin",
@@ -464,7 +488,7 @@
      "stats": [
       [
        "Valve flow",
-       "30 GPM"
+       "25.5 GPM"
       ],
       [
        "Sealing",
@@ -492,19 +516,19 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "Built for demand.",
-     "body": "Sized for larger homes: 30 GPM valve flow, 28 GPM system flow, dedicated media beds that last longer and filter deeper. NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
+     "body": "Sized for larger homes: 25.5 GPM valve flow, dedicated media beds that last longer and filter deeper. NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
      "stats": [
       [
-       "System flow",
-       "28 GPM"
+       "Valve flow",
+       "25.5 GPM"
       ],
       [
        "Media tanks",
-       "10\" × 54\""
+       "10\" × 60\""
       ],
       [
        "Brine tank",
-       "15\" × 35\""
+       "15\" × 17\" × 36\""
       ],
       [
        "Warranty",
@@ -604,24 +628,24 @@
    ],
    "specs": [
     [
-     "Control valve",
-     "Clack valve, 3/4\" distributor"
-    ],
-    [
      "Valve flow rate",
-     "28 GPM"
+     "25.5 GPM"
     ],
     [
      "Softening capacity",
      "Not applicable (salt-free conditioning)"
     ],
     [
-     "Media tank",
-     "10\" × 54\""
+     "Conditioning media",
+     "10 liters, salt-free"
     ],
     [
-     "Carbon volume",
-     "1.5 cu. ft."
+     "Conditioning tank",
+     "10\" × 58\""
+    ],
+    [
+     "Carbon",
+     "1.5 cu. ft. Jacobi catalytic carbon, 10\" × 60\" tank"
     ],
     [
      "Salt required",
@@ -630,6 +654,14 @@
     [
      "Drain line",
      "Not needed"
+    ],
+    [
+     "Electricity",
+     "None"
+    ],
+    [
+     "Control head",
+     "Clack in/out head, 3/4\" distributor"
     ]
    ],
    "included": [
@@ -714,8 +746,8 @@
        "None"
       ],
       [
-       "Drain line",
-       "Not needed"
+       "Media",
+       "10 liters"
       ]
      ]
     },
@@ -755,15 +787,15 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "The simplest system to own.",
-     "body": "Zero electricity, zero drain line, zero salt. 28 GPM valve flow, NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
+     "body": "Zero electricity, zero drain line, zero salt. 25.5 GPM valve flow, NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
      "stats": [
       [
        "Valve flow",
-       "28 GPM"
+       "25.5 GPM"
       ],
       [
-       "Media tank",
-       "10\" × 54\""
+       "Conditioning tank",
+       "10\" × 58\""
       ],
       [
        "Softening",
@@ -799,7 +831,7 @@
      "Removes chlorine, chloramine, chemicals and odors from all your water."
     ],
     [
-     "Salt-Free Conditioning Tank",
+     "Salt-Free Conditioning Tank (10\" × 58\", 10 liters of media)",
      "Transforms hardness minerals so they cannot form scale. Does not soften."
     ],
     [
@@ -841,8 +873,8 @@
     },
     {
      "n": "02",
-     "title": "Katalox Light media",
-     "text": "Katalox Light media traps the oxidized particles and boosts pH for better-tasting water."
+     "title": "Catalytic carbon + Katalox Light iron-breaker tank",
+     "text": "The iron-breaker tank pairs catalytic carbon with Katalox Light media (1 cu. ft.) to trap the oxidized particles and boost pH for better-tasting water."
     },
     {
      "n": "03",
@@ -858,27 +890,47 @@
    "specs": [
     [
      "Valve flow rate",
-     "30 GPM"
+     "25.5 GPM"
     ],
     [
-     "System flow rate",
-     "27 GPM"
+     "Oxidation",
+     "Air injection (AIO), chemical-free"
+    ],
+    [
+     "Iron-breaker tank",
+     "Catalytic carbon + Katalox Light, 1 cu. ft."
     ],
     [
      "Softening capacity",
-     "48,000 grains"
+     "48,000 grains (dedicated resin tank)"
     ],
     [
      "Softening resin",
-     "1.5 cu. ft."
+     "1.5 cu. ft., 10% crosslinked (CG10)"
     ],
     [
      "Media tanks",
-     "10\" × 54\""
+     "Two, 10\" × 60\" each"
     ],
     [
      "Brine tank",
-     "15\" × 35\""
+     "15\" × 17\" × 36\", holds 150 lbs of salt"
+    ],
+    [
+     "Salt per regeneration",
+     "9 lbs"
+    ],
+    [
+     "Water per regeneration",
+     "45–60 gallons"
+    ],
+    [
+     "Electrical",
+     "110 V outlet"
+    ],
+    [
+     "Control valve",
+     "MSP AIO ceramic disc valve, 72-hour memory backup"
     ]
    ],
    "included": [
@@ -950,7 +1002,7 @@
    "leads": [
     "Chemical-free iron and manganese treatment",
     "Self-cleaning Katalox Light media, low maintenance",
-    "30 GPM valve flow built for well pumps",
+    "25.5 GPM valve flow built for well pumps",
     "NSF-certified media, lifetime tank and valve warranty, 10-year media warranty"
    ],
    "nsf": true,
@@ -971,19 +1023,19 @@
       ],
       [
        "Valve flow",
-       "30 GPM"
+       "25.5 GPM"
       ]
      ]
     },
     {
-     "kicker": "Katalox Light Media",
+     "kicker": "Catalytic Carbon + Katalox Light",
      "crossed": "Orange staining",
      "headline": "Iron, trapped.",
-     "body": "Once the air pocket turns iron and manganese into solid bits, the Katalox Light media bed traps them like a net, down to about 3 microns, and even nudges your water's pH up for better taste. It cleans itself with automatic backwashing, so maintenance stays close to zero.",
+     "body": "Once the air pocket turns iron and manganese into solid bits, the iron-breaker tank catches them. Catalytic carbon and Katalox Light media work together in one bed, trapping particles down to about 3 microns and even nudging your water's pH up for better taste. It cleans itself with automatic backwashing, so maintenance stays close to zero.",
      "stats": [
       [
        "Media",
-       "Katalox Light"
+       "Catalytic carbon + Katalox Light (1 cu. ft.)"
       ],
       [
        "Filtration",
@@ -1031,19 +1083,19 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "Built for well pumps.",
-     "body": "30 GPM valve flow built to keep up with well pumps, NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included. Add the pre-sediment filter and UV purifier for complete well protection.",
+     "body": "25.5 GPM valve flow built to keep up with well pumps, NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included. Add the pre-sediment filter and UV purifier for complete well protection.",
      "stats": [
       [
        "Valve flow",
-       "30 GPM"
+       "25.5 GPM"
       ],
       [
-       "System flow",
-       "27 GPM"
+       "Oxidation",
+       "Air, chemical-free"
       ],
       [
        "Media tanks",
-       "10\" × 54\""
+       "10\" × 60\""
       ],
       [
        "Warranty",
@@ -1085,8 +1137,8 @@
      "Creates a pressurized air pocket that oxidizes iron and manganese with no chemicals."
     ],
     [
-     "Katalox Light Media",
-     "Traps the oxidized particles and boosts pH. Self-cleaning with automatic backwash."
+     "Catalytic Carbon + Katalox Light Iron-Breaker Tank (1 cu. ft.)",
+     "Traps the oxidized iron and manganese and boosts pH. Self-cleaning with automatic backwash."
     ],
     [
      "10% Crosslinked Resin Tank (1.5 cu. ft.)",
@@ -1145,27 +1197,51 @@
    "specs": [
     [
      "Valve flow rate",
-     "30 GPM"
+     "25.5 GPM"
     ],
     [
-     "System flow rate",
-     "28 GPM"
+     "Oxidation",
+     "Hydrogen peroxide injection pump + holding tank"
+    ],
+    [
+     "Carbon",
+     "1.5 cu. ft. Jacobi catalytic coconut-shell carbon (dedicated tank)"
     ],
     [
      "Softening capacity",
-     "48,000 grains per tank"
+     "48,000 grains (dedicated resin tank)"
     ],
     [
      "Softening resin",
-     "1.5 cu. ft."
+     "1.5 cu. ft., 10% crosslinked (CG10)"
     ],
     [
      "Media tanks",
-     "10\" × 54\""
+     "Two, 10\" × 60\" each"
     ],
     [
-     "Injection",
-     "Hydrogen peroxide panel + holding tank"
+     "Brine tank",
+     "15\" × 17\" × 36\", holds 150 lbs of salt"
+    ],
+    [
+     "Salt per regeneration",
+     "9 lbs"
+    ],
+    [
+     "Water per regeneration",
+     "45–60 gallons"
+    ],
+    [
+     "Electrical",
+     "110 V outlet"
+    ],
+    [
+     "Targets",
+     "Iron, sulfur, bacteria, hardness"
+    ],
+    [
+     "Control valve",
+     "MSP ceramic disc valve, 72-hour memory backup"
     ]
    ],
    "included": [
@@ -1282,7 +1358,7 @@
      "stats": [
       [
        "Capacity",
-       "48,000 grains per tank"
+       "48,000 grains"
       ],
       [
        "Resin",
@@ -1298,7 +1374,7 @@
      "stats": [
       [
        "Valve flow",
-       "30 GPM"
+       "25.5 GPM"
       ],
       [
        "Sealing",
@@ -1310,15 +1386,15 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "Maximum strength.",
-     "body": "Our most powerful well-water solution: oxidation, filtration and softening in one complete package, 28 GPM system flow, NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
+     "body": "Our most powerful well-water solution: oxidation, filtration and softening in one complete package, 25.5 GPM valve flow, NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
      "stats": [
       [
-       "System flow",
-       "28 GPM"
+       "Valve flow",
+       "25.5 GPM"
       ],
       [
        "Media tanks",
-       "10\" × 54\""
+       "10\" × 60\""
       ],
       [
        "Injection",
@@ -1405,23 +1481,23 @@
    "stages": [
     {
      "n": "01",
-     "title": "7-stage high-precision filtration",
-     "text": "An ultra-fine 0.0001-micron spiral-flow RO membrane with pre- and post-filtration."
+     "title": "Sediment and carbon block pre-filtration",
+     "text": "A 5-micron polypropylene pre-filter, then double NSF carbon block filters remove chlorine, chloramine, THMs and organic matter before the membrane (stages 1–3)."
     },
     {
      "n": "02",
-     "title": "Dissolved solids, chlorine and organics reduced",
-     "text": "Reduces total dissolved solids, chlorine and everyday organic contaminants for clean-tasting water."
+     "title": "800 GPD RO membrane",
+     "text": "A high-rejection (95–99%) NSF thin-film composite membrane, 0.0001 micron, reduces dissolved solids, heavy metals, microplastics, bacteria and viruses (stage 4)."
     },
     {
      "n": "03",
      "title": "Alkaline remineralization",
-     "text": "Built-in remineralization adds beneficial minerals back for great taste and balanced pH."
+     "text": "An in-line coconut-shell carbon filter and an internal alkaline remineralizer add beneficial minerals back and balance pH (stages 5–6)."
     },
     {
      "n": "04",
-     "title": "Auto flush, DIY filters",
-     "text": "Auto RO flush keeps the membrane clean automatically; filters twist out and twist in."
+     "title": "Final polish, auto flush, DIY filters",
+     "text": "A second coconut-shell carbon filter polishes taste and odor (stage 7). Auto flush keeps the membrane clean; filters twist out by hand."
     }
    ],
    "specs": [
@@ -1434,6 +1510,10 @@
      "0.0001 micron"
     ],
     [
+     "Membrane",
+     "NSF thin-film composite, 95–99% rejection"
+    ],
+    [
      "Capacity",
      "800 GPD"
     ],
@@ -1443,11 +1523,35 @@
     ],
     [
      "Drain ratio",
-     "2:1"
+     "2:1 (pure : drain)"
+    ],
+    [
+     "Remineralization",
+     "Integrated alkaline technology"
+    ],
+    [
+     "Certification",
+     "NSF/ANSI 58 (TDS reduction, materials and structural integrity); NSF/ANSI 372 lead-free waterpath"
+    ],
+    [
+     "Electrical",
+     "110 V outlet"
+    ],
+    [
+     "Filter life",
+     "Sediment/carbon 12 months, alkaline carbon 6–12 months, membrane 12 months"
+    ],
+    [
+     "Faucet",
+     "Dedicated; chrome, brushed nickel, brushed gold or matte black"
     ],
     [
      "Under-sink footprint",
-     "No storage tank"
+     "No storage tank, up to 70% less cabinet space"
+    ],
+    [
+     "Model",
+     "HW800 AlkaPro"
     ]
    ],
    "included": [
@@ -1459,10 +1563,10 @@
    "options": [],
    "what_it_does": "Purified, alkaline drinking water on demand, straight from a dedicated faucet at your sink. No storage tank, 70% less under-sink space, and water treated the moment you ask for it.",
    "leads": [
-    "800 GPD capacity",
-    "2:1 low drain ratio, less water to drain",
-    "Alkaline remineralization for taste",
-    "DIY filter changes, no service calls needed"
+    "800 GPD capacity, 0.53 GPM on demand",
+    "Tested and certified by NSF International to NSF/ANSI 58",
+    "2:1 low drain ratio, up to 6× less water waste",
+    "Alkaline remineralization for taste"
    ],
    "nsf": true,
    "aspects": [
@@ -1479,6 +1583,10 @@
       [
        "Precision",
        "0.0001 micron"
+      ],
+      [
+       "Rejection",
+       "95–99%"
       ]
      ]
     },
@@ -1526,7 +1634,7 @@
      "stats": [
       [
        "Filter change",
-       "DIY"
+       "DIY, 6–12 months"
       ],
       [
        "Auto flush",
@@ -1550,11 +1658,15 @@
    "description_lines": [
     [
      "7-Stage Filtration",
-     "0.0001-micron spiral-flow RO membrane with pre- and post-filtration."
+     "5-micron sediment pre-filter, double carbon block, 0.0001-micron thin-film composite RO membrane (95–99% rejection), two coconut-shell carbon polishers."
     ],
     [
      "Alkaline Remineralization",
-     "Adds beneficial minerals back for taste and balanced pH."
+     "Internal alkaline remineralizer adds beneficial minerals back for taste and balanced pH."
+    ],
+    [
+     "NSF Certified",
+     "Tested and certified by NSF International against NSF/ANSI 58; lead-free waterpath built to NSF/ANSI 372."
     ],
     [
      "Auto Flush & DIY Filters",
@@ -1562,7 +1674,7 @@
     ],
     [
      "Dedicated Faucet",
-     "Chrome drinking-water faucet at the kitchen sink."
+     "Chrome drinking-water faucet at the kitchen sink. Brushed nickel, brushed gold and matte black available."
     ]
    ],
    "list_price": 1699,
@@ -1586,49 +1698,61 @@
    "stages": [
     {
      "n": "01",
-     "title": "Multi-stage prefiltration",
-     "text": "Strips sediment, chlorine and dissolved contaminants before the RO membrane."
+     "title": "Sediment pre-filter (stage 1)",
+     "text": "A polypropylene sediment filter removes dirt, sand, rust and suspended particles to protect the system."
     },
     {
      "n": "02",
-     "title": "RO membrane",
-     "text": "The RO membrane rejects 94–99% of total dissolved solids."
+     "title": "Double carbon filtration (stages 2–3)",
+     "text": "Granular activated carbon and a carbon block reduce chlorine, odors and organic compounds while protecting the RO membrane."
     },
     {
      "n": "03",
-     "title": "Pressurized steel tank",
-     "text": "A food-grade butyl bladder inside the steel tank keeps purified water pressurized and fresh."
+     "title": "RO membrane (stage 4)",
+     "text": "A 100 GPD membrane reduces dissolved solids, salts, heavy metals and other contaminants."
     },
     {
      "n": "04",
-     "title": "Instant delivery",
-     "text": "Water is stored ready to pour: instant flow for glasses, pots and coffee makers."
+     "title": "Post-carbon polish and pressurized tank (stage 5)",
+     "text": "A post-carbon filter polishes taste and odor; a pressurized storage tank keeps purified water ready the second you open the faucet."
     }
    ],
    "specs": [
     [
+     "Filtration stages",
+     "5"
+    ],
+    [
      "Production",
-     "50 GPD"
+     "100 GPD"
     ],
     [
      "TDS rejection",
      "94–99%"
     ],
     [
-     "Recovery",
-     "25–30%"
+     "Storage",
+     "Pressurized tank, 11.5\" × 16\""
     ],
     [
      "System size",
      "16\" × 5.5\" × 18\""
     ],
     [
-     "Tank size",
-     "11.5\" × 16\""
+     "Electrical",
+     "None required"
+    ],
+    [
+     "Replacement filters",
+     "Sediment, granular carbon, carbon block, post-carbon, 100 GPD membrane"
     ],
     [
      "Faucet",
-     "Dedicated, chrome"
+     "Dedicated; chrome, brushed nickel, brushed gold or matte black"
+    ],
+    [
+     "Model",
+     "PurePro 5-stage"
     ]
    ],
    "included": [
@@ -1647,9 +1771,9 @@
      "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink."
     }
    ],
-   "what_it_does": "The proven multi-stage RO setup: purified water is produced continuously, stored in a pressurized steel tank, and delivered instantly the second you open the faucet.",
+   "what_it_does": "The proven PurePro 5-stage RO setup: purified water is produced continuously, stored in a pressurized steel tank, and delivered instantly the second you open the faucet.",
    "leads": [
-    "94–99% TDS rejection",
+    "5-stage filtration, 94–99% TDS rejection",
     "Instant delivery from pressurized storage",
     "Corrosion-resistant steel shell, heavy-duty base",
     "Compact footprint fits under most kitchen sinks"
@@ -1657,18 +1781,18 @@
    "nsf": true,
    "aspects": [
     {
-     "kicker": "Multi-Stage Prefiltration",
+     "kicker": "5-Stage Filtration",
      "crossed": "Chlorine & sediment",
      "headline": "Protected before the membrane.",
-     "body": "Sediment and carbon stages strip chlorine and particles before water reaches the RO membrane, so the membrane lasts longer and the water tastes cleaner.",
+     "body": "A sediment filter, granular activated carbon and a carbon block strip particles and chlorine before water reaches the RO membrane, and a post-carbon filter polishes the taste on the way to the faucet. Five stages, no electricity needed.",
      "stats": [
       [
        "Stages",
-       "Multi-stage"
+       "5"
       ],
       [
-       "Faucet",
-       "Dedicated, chrome"
+       "Electrical",
+       "None"
       ]
      ]
     },
@@ -1684,7 +1808,7 @@
       ],
       [
        "Production",
-       "50 GPD"
+       "100 GPD"
       ]
      ]
     },
@@ -1724,12 +1848,12 @@
    ],
    "description_lines": [
     [
-     "Multi-Stage Prefiltration",
-     "Sediment and carbon stages protect the membrane."
+     "5-Stage Filtration",
+     "Sediment, granular carbon and carbon block pre-filters protect the membrane; post-carbon polish."
     ],
     [
      "RO Membrane",
-     "94–99% TDS rejection, 50 GPD."
+     "94–99% TDS rejection, 100 GPD."
     ],
     [
      "Pressurized Steel Tank",
@@ -1737,7 +1861,7 @@
     ],
     [
      "Dedicated Faucet",
-     "Chrome drinking-water faucet at the kitchen sink."
+     "Chrome drinking-water faucet at the kitchen sink. Brushed nickel, brushed gold and matte black available."
     ]
    ],
    "list_price": 1299,
@@ -1766,12 +1890,20 @@
      "20\" × 4.5\""
     ],
     [
+     "Filtration",
+     "5 micron"
+    ],
+    [
      "Flow rate",
-     "15 GPM"
+     "Up to 5 GPM, low pressure drop"
     ],
     [
      "Filter life",
      "~10,000 gal."
+    ],
+    [
+     "Includes",
+     "Housing, mounting bracket, housing wrench"
     ]
    ],
    "included": [
@@ -1782,12 +1914,12 @@
    "nsf": false,
    "description_lines": [
     [
-     "20\" × 4.5\" Housing",
+     "20\" × 4.5\" Housing, 5-Micron Filter",
      "Captures sand, silt, dirt and rust ahead of your system."
     ],
     [
-     "15 GPM Flow",
-     "Sized for well pumps, ~10,000 gallon filter life."
+     "Quick-Change Housing",
+     "Rated up to 5 GPM with low pressure drop; ~10,000 gallon filter life. Mounting bracket and wrench included."
     ]
    ],
    "list_price": 699,

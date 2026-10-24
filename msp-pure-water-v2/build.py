@@ -274,7 +274,7 @@ def hero():
       '<p class="lead reveal reveal-d1">Water softeners, whole-home water filtration, well-water treatment and reverse osmosis for the Twin Cities. Published prices, professional installation, and a free phone consultation that is one call or text away.</p>'
       '<div class="hero-actions reveal reveal-d2"><a class="btn btn-gold btn-lg" href="/find-my-system/">Find My System %s</a><a class="btn btn-outline btn-lg" href="/schedule/">Schedule Now</a></div>'
       '<div class="hero-meta reveal reveal-d3">%s<a href="tel:%s">%s %s</a><span>Open 24 hours</span></div></div>'
-      '<div class="hero-side reveal reveal-d2"><div class="stat"><b>%s</b><span>Whole-home systems from</span></div><div class="stat"><b>28 GPM</b><span>Whole-home flow rate</span></div><div class="stat"><b>48,000</b><span>Grain softening capacity</span></div></div></section>'
+      '<div class="hero-side reveal reveal-d2"><div class="stat"><b>%s</b><span>Whole-home systems from</span></div><div class="stat"><b>25.5 GPM</b><span>Whole-home valve flow</span></div><div class="stat"><b>48,000</b><span>Grain softening capacity</span></div></div></section>'
       '<div class="trust"><div class="container trust-inner"><span>%s Five-star rated on Google</span><span>%s Free phone consultation</span><span>%s Best Price Guarantee</span><span>%s Professional installation</span><span>%s Twin Cities &amp; Greater Minnesota</span></div></div>') % (
         video, '<button class="video-toggle" type="button">Pause video</button>' if HAS_VIDEO else "", ICON["arrow"], rating_badge(), TEL, ICON["phone"], PHONE, '<s style="opacity:.6;font-size:.7em;margin-right:.3em">%s</s>%s' % (money(4999), money(2999)),
         ICON["star"], ICON["phone"], ICON["tag"], ICON["wrench"], ICON["pin"])
@@ -511,7 +511,7 @@ def compare_page():
         row("Iron, sulfur, manganese", lambda s: yes if s["category"] == "well" else no) +
         row("Treatment", lambda s: "Air oxidation (chemical-free)" if s["id"] == "dual-tank-well" else "Peroxide injection + carbon" if s["id"] == "iron-sulfur" else "Carbon + salt-free conditioner" if s["id"] == "salt-free" else "Carbon + softening, two tanks" if s["id"] == "dual-tank-city" else "Carbon + softening, one tank") +
         row("Softening capacity", lambda s: dict(s["specs"]).get("Softening capacity", "Sized at consultation")) +
-        row("System flow", lambda s: dict(s["specs"]).get("System flow rate", "Sized at consultation")) +
+        row("Valve flow", lambda s: dict(s["specs"]).get("Valve flow rate", "Sized at consultation")) +
         row("RO drinking system", lambda s: '<span class="yes">Included free</span>') +
         row("Warranty", lambda s: s.get("warranty", "—")) +
         row("Best for", lambda s: e(s["for"])) +

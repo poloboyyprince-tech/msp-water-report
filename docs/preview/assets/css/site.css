@@ -553,11 +553,11 @@ body.page-leave{opacity:0;transition:opacity .18s ease-in}
 .nsf-line{color:#0A5AA8}.nsf-line svg{color:#0A5AA8}
 
 /* Product page (reference structure) */
-.pdp{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:stretch}
+.pdp{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);align-items:start}
 @media (max-width:900px){.pdp{grid-template-columns:1fr}}
-.pdp-media{border-radius:var(--radius-lg);overflow:hidden;background:radial-gradient(90% 70% at 50% 50%,#173a6e 0%,#0c2452 55%,#081a3c 100%);min-height:520px}
+.pdp-media{border-radius:var(--radius-lg);overflow:hidden;background:#0c2452;aspect-ratio:4/5;position:sticky;top:calc(var(--header-h) + 16px)}
 .pdp-media img{width:100%;height:100%;object-fit:cover}
-@media (max-width:900px){.pdp-media{aspect-ratio:1;min-height:0}}
+@media (max-width:900px){.pdp-media{aspect-ratio:4/5;position:static}}
 .buy{display:flex;flex-direction:column;justify-content:space-between}
 .buy h1{font-size:clamp(1.4rem,2.2vw,1.75rem);margin:0;line-height:1.1}
 .buy .pills{margin:.5rem 0 .6rem}

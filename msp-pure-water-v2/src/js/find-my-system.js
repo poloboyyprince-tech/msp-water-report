@@ -7,7 +7,7 @@
     { key: "water_source", title: "What type of water does your home use?", hint: "Most Twin Cities homes are on city water. If you pay a water bill, it’s city water.", type: "single", cls: "three",
       options: ["City Water", "Well Water", "Not Sure"] },
     { key: "water_problems", title: "What are you experiencing?", hint: "Choose everything that applies.", type: "multi", cls: "",
-      options: ["Hard Water", "White Scale", "Spots on Dishes", "Dry Skin / Hair", "Chlorine Taste / Smell", "Iron Staining", "Metallic Taste", "Rotten Egg / Sulfur Odor", "Manganese", "Sediment", "PFAS / Forever Chemicals", "Drinking Water Concerns", "Other", "Not Sure"] },
+      options: ["Hard Water", "White Scale", "Spots on Dishes", "Dry Skin / Hair", "Chlorine Taste / Smell", "Iron Staining", "Metallic Taste", "Rotten Egg / Sulfur Odor", "Manganese", "Sediment", "Drinking Water Concerns", "Other", "Not Sure"] },
     { key: "system_interest", title: "What are you interested in?", hint: "Not sure? Pick the last option and we’ll recommend.", type: "single", cls: "",
       options: ["Whole Home Filtration", "Water Softening", "Well Water Treatment", "Reverse Osmosis", "Complete System", "Not Sure / Recommend Something"] },
     { key: "contact", title: "Where should we send your recommendation?", hint: "We’ll match your answers to the right system and reach out the same day.", type: "contact" },

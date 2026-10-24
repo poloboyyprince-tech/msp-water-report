@@ -483,7 +483,7 @@ def city_page():
     return system_page("city", "city-water-filtration", "Water Softener Systems | Minneapolis & St. Paul | MSP Pure Water",
         "Whole-home water filtration and softening for Minneapolis, St. Paul and Twin Cities homes on municipal water. Published prices from $2,999, RO included.",
         "Water softener and filtration systems for Twin Cities homes", "Municipal water is treated and safe, but it typically arrives hard and disinfected with chlorine or chloramine. These systems soften and filter every tap in the house.",
-        ("What's in Twin Cities city water", [("Hardness", "Minnesota groundwater is generally hard. Calcium and magnesium cause scale on fixtures, water heaters and appliances."), ("Chlorine and chloramine", "Twin Cities utilities use disinfectants including chloramine. They affect taste and odor and call for catalytic carbon."), ("PFAS (forever chemicals)", "Minnesota has well-known PFAS contamination, especially in the east metro. A dedicated PFAS-selective resin tank captures them at every tap."), ("Dissolved solids", "Minerals that affect drinking-water taste. Point-of-use reverse osmosis handles them at the kitchen sink.")]))
+        ("What's in Twin Cities city water", [("Hardness", "Minnesota groundwater is generally hard. Calcium and magnesium cause scale on fixtures, water heaters and appliances."), ("Chlorine and chloramine", "Twin Cities utilities use disinfectants including chloramine. They affect taste and odor and call for catalytic carbon."), ("Dissolved solids", "Minerals that affect drinking-water taste. Point-of-use reverse osmosis handles them at the kitchen sink.")]))
 
 def well_page():
     return system_page("well", "well-water-filtration", "Well Water Filtration & Iron Treatment | MN | MSP Pure Water",
@@ -500,7 +500,7 @@ def ro_page():
         ("Drinking-water questions we hear most", [("Taste", "Residual chlorine, hardness and dissolved solids all affect taste. RO plus remineralization is the fix most homeowners notice first."), ("Bottled water", "A dedicated faucet replaces the cases, the clutter and the recycling."), ("Well water", "On a well, RO adds a second barrier for drinking water after whole-home treatment handles iron and hardness.")]), extra)
 
 def compare_page():
-    cols = [SYSTEMS[i] for i in ["whole-home-softener", "dual-tank-city", "salt-free", "pfas-three-tank", "dual-tank-well", "iron-sulfur"]]
+    cols = [SYSTEMS[i] for i in ["whole-home-softener", "dual-tank-city", "salt-free", "dual-tank-well", "iron-sulfur"]]
     def row(label, fn): return "<tr><th>%s</th>%s</tr>" % (label, "".join("<td>%s</td>" % fn(s) for s in cols))
     yes = '<span class="yes">%s Yes</span>' % ICON["check"]; no = '<span class="no">—</span>'
     tbl = ('<table class="compare"><thead><tr><th>Compare</th>%s</tr></thead><tbody>' % "".join('<th><img src="/assets/img/%s" width="56" height="56" loading="lazy" alt="%s" class="cthumb"><br>%s</th>' % (s["image"].replace(".webp", "-640.webp") if has_img(s["image"].replace(".webp", "-640.webp")) else s["image"], e(s["image_alt"]), e(s["short"])) for s in cols) +
@@ -509,8 +509,7 @@ def compare_page():
         row("Softens (ion exchange)", lambda s: yes if s["id"] != "salt-free" else '<span class="no">Salt-free conditioning only</span>') +
         row("Chlorine / chloramine", lambda s: yes if s["category"] == "city" else '<span class="no">Not typical on wells</span>') +
         row("Iron, sulfur, manganese", lambda s: yes if s["category"] == "well" else no) +
-        row("PFAS (forever chemicals)", lambda s: yes if s["id"] == "pfas-three-tank" else no) +
-        row("Treatment", lambda s: "Air oxidation (chemical-free)" if s["id"] == "dual-tank-well" else "Peroxide injection + carbon" if s["id"] == "iron-sulfur" else "Carbon + salt-free conditioner" if s["id"] == "salt-free" else "Carbon + softening + PFAS resin, three tanks" if s["id"] == "pfas-three-tank" else "Carbon + softening, two tanks" if s["id"] == "dual-tank-city" else "Carbon + softening, one tank") +
+        row("Treatment", lambda s: "Air oxidation (chemical-free)" if s["id"] == "dual-tank-well" else "Peroxide injection + carbon" if s["id"] == "iron-sulfur" else "Carbon + salt-free conditioner" if s["id"] == "salt-free" else "Carbon + softening, two tanks" if s["id"] == "dual-tank-city" else "Carbon + softening, one tank") +
         row("Softening capacity", lambda s: dict(s["specs"]).get("Softening capacity", "Sized at consultation")) +
         row("System flow", lambda s: dict(s["specs"]).get("System flow rate", "Sized at consultation")) +
         row("RO drinking system", lambda s: '<span class="yes">Included free</span>') +
@@ -906,6 +905,8 @@ def main():
         "/products/complete-home-softener-filtration-system  /systems/whole-home-softener/  301",
         "/products/dual-tank-system-for-well-water  /systems/dual-tank-well/  301",
         "/products/reverse-osmosis-system  /systems/ro-tankless/  301",
+        "/systems/pfas-three-tank  /city-water-filtration/  301", "/systems/pfas-three-tank/  /city-water-filtration/  301",
+        "/water-problems/pfas  /water-problems/  301", "/water-problems/pfas/  /water-problems/  301",
         "/home  /  301", "/services  /pricing/  301", "/privacy-policy  /privacy/  301", "/tos  /terms/  301",
         "/*  /404.html  404"]) + "\n")
     if OPT.production:

@@ -101,12 +101,12 @@
     ]
    ],
    "included": [
-    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200; 1-year RO warranty)",
     "Professional installation",
     "System walkthrough at install",
-    "Lifetime system warranty, 10-year media warranty"
+    "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty"
    ],
-   "warranty": "Lifetime system warranty, 10-year media warranty",
+   "warranty": "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty",
    "options": [
     {
      "key": "ro",
@@ -152,7 +152,7 @@
     "48,000-grain softening capacity",
     "28 GPM system flow, no pressure loss",
     "MSP ceramic disc valve with 72-hour memory backup",
-    "NSF-certified media, lifetime system warranty, 10-year media warranty"
+    "NSF-certified media, lifetime tank and valve warranty, 10-year media warranty"
    ],
    "nsf": true,
    "aspects": [
@@ -232,7 +232,7 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "Built to spec.",
-     "body": "Everything is sized for a real household: high flow so showers, laundry and sprinklers can all run at once with no pressure loss. NSF-certified media, lifetime system warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
+     "body": "Everything is sized for a real household: high flow so showers, laundry and sprinklers can all run at once with no pressure loss. NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
      "stats": [
       [
        "System flow",
@@ -248,7 +248,7 @@
       ],
       [
        "Warranty",
-       "Lifetime / 10-yr media"
+       "Lifetime tank & valve / 10-yr media"
       ]
      ]
     }
@@ -369,12 +369,12 @@
     ]
    ],
    "included": [
-    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200; 1-year RO warranty)",
     "Professional installation",
     "System walkthrough at install",
-    "Lifetime system warranty, 10-year media warranty"
+    "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty"
    ],
-   "warranty": "Lifetime system warranty, 10-year media warranty",
+   "warranty": "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty",
    "options": [
     {
      "key": "ro",
@@ -420,7 +420,7 @@
     "The only dual-tank system designed to self-clean the carbon tank",
     "30 GPM valve flow for high-demand homes",
     "Dedicated media beds last longer and filter deeper",
-    "NSF-certified media, lifetime system warranty, 10-year media warranty"
+    "NSF-certified media, lifetime tank and valve warranty, 10-year media warranty"
    ],
    "nsf": true,
    "aspects": [
@@ -492,7 +492,7 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "Built for demand.",
-     "body": "Sized for larger homes: 30 GPM valve flow, 28 GPM system flow, dedicated media beds that last longer and filter deeper. NSF-certified media, lifetime system warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
+     "body": "Sized for larger homes: 30 GPM valve flow, 28 GPM system flow, dedicated media beds that last longer and filter deeper. NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
      "stats": [
       [
        "System flow",
@@ -508,7 +508,7 @@
       ],
       [
        "Warranty",
-       "Lifetime / 10-yr media"
+       "Lifetime tank & valve / 10-yr media"
       ]
      ]
     }
@@ -633,12 +633,12 @@
     ]
    ],
    "included": [
-    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200; 1-year RO warranty)",
     "Professional installation",
     "System walkthrough at install",
-    "Lifetime system warranty, 10-year media warranty"
+    "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty"
    ],
-   "warranty": "Lifetime system warranty, 10-year media warranty",
+   "warranty": "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty",
    "options": [
     {
      "key": "ro",
@@ -755,7 +755,7 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "The simplest system to own.",
-     "body": "Zero electricity, zero drain line, zero salt. 28 GPM valve flow, NSF-certified media, lifetime system warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
+     "body": "Zero electricity, zero drain line, zero salt. 28 GPM valve flow, NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
      "stats": [
       [
        "Valve flow",
@@ -771,7 +771,7 @@
       ],
       [
        "Warranty",
-       "Lifetime / 10-yr media"
+       "Lifetime tank & valve / 10-yr media"
       ]
      ]
     }
@@ -891,12 +891,12 @@
     ]
    ],
    "included": [
-    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200; 1-year RO warranty)",
     "Professional installation",
     "System walkthrough at install",
-    "Lifetime system warranty, 10-year media warranty"
+    "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty"
    ],
-   "warranty": "Lifetime system warranty, 10-year media warranty",
+   "warranty": "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty",
    "options": [
     {
      "key": "ro",
@@ -944,7 +944,7 @@
     "Dedicated ResinTech PFAS-selective resin tank, NSF/ANSI 61 certified",
     "Carbon first, so chlorine never reaches the PFAS resin",
     "Full 48,000-grain softening tank with the MSP ceramic disc valve",
-    "NSF-certified media, lifetime system warranty, 10-year media warranty"
+    "NSF-certified media, lifetime tank and valve warranty, 10-year media warranty"
    ],
    "nsf": true,
    "note": "PFAS levels vary by city and well. We review your water utility's report or a PFAS test with you on the call so the resin is sized for your water.",
@@ -1017,7 +1017,7 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "Three tanks, one price.",
-     "body": "Three 10\" × 54\" media tanks, 28 GPM valve flow, NSF-certified media, a lifetime system warranty with a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
+     "body": "Three 10\" × 54\" media tanks, 28 GPM valve flow, NSF-certified media, a lifetime tank and valve warranty with a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
      "stats": [
       [
        "Valve flow",
@@ -1033,7 +1033,7 @@
       ],
       [
        "Warranty",
-       "Lifetime / 10-yr media"
+       "Lifetime tank & valve / 10-yr media"
       ]
      ]
     }
@@ -1158,12 +1158,12 @@
     ]
    ],
    "included": [
-    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200; 1-year RO warranty)",
     "Professional installation",
     "System walkthrough at install",
-    "Lifetime system warranty, 10-year media warranty"
+    "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty"
    ],
-   "warranty": "Lifetime system warranty, 10-year media warranty",
+   "warranty": "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty",
    "note": "Final well-water configuration may depend on water test results. We review testing as part of your phone consultation.",
    "options": [
     {
@@ -1227,7 +1227,7 @@
     "Chemical-free iron and manganese treatment",
     "Self-cleaning Katalox Light media, low maintenance",
     "30 GPM valve flow built for well pumps",
-    "NSF-certified media, lifetime system warranty, 10-year media warranty"
+    "NSF-certified media, lifetime tank and valve warranty, 10-year media warranty"
    ],
    "nsf": true,
    "aspects": [
@@ -1307,7 +1307,7 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "Built for well pumps.",
-     "body": "30 GPM valve flow built to keep up with well pumps, NSF-certified media, lifetime system warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included. Add the pre-sediment filter and UV purifier for complete well protection.",
+     "body": "30 GPM valve flow built to keep up with well pumps, NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included. Add the pre-sediment filter and UV purifier for complete well protection.",
      "stats": [
       [
        "Valve flow",
@@ -1323,7 +1323,7 @@
       ],
       [
        "Warranty",
-       "Lifetime / 10-yr media"
+       "Lifetime tank & valve / 10-yr media"
       ]
      ]
     }
@@ -1445,12 +1445,12 @@
     ]
    ],
    "included": [
-    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200)",
+    "Reverse osmosis drinking-water system (tank RO included; tankless upgrade +$200; 1-year RO warranty)",
     "Professional installation",
     "System walkthrough at install",
-    "Lifetime system warranty, 10-year media warranty"
+    "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty"
    ],
-   "warranty": "Lifetime system warranty, 10-year media warranty",
+   "warranty": "Lifetime warranty on tank and valve, 10-year media warranty, 1-year labor warranty",
    "note": "Final well-water configuration may depend on water test results. We review testing as part of your phone consultation.",
    "options": [
     {
@@ -1586,7 +1586,7 @@
      "kicker": "The Numbers",
      "crossed": "Guesswork",
      "headline": "Maximum strength.",
-     "body": "Our most powerful well-water solution: oxidation, filtration and softening in one complete package, 28 GPM system flow, NSF-certified media, lifetime system warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
+     "body": "Our most powerful well-water solution: oxidation, filtration and softening in one complete package, 28 GPM system flow, NSF-certified media, lifetime tank and valve warranty, a 10-year media warranty, and a free reverse osmosis drinking-water system included.",
      "stats": [
       [
        "System flow",
@@ -1602,7 +1602,7 @@
       ],
       [
        "Warranty",
-       "Lifetime / 10-yr media"
+       "Lifetime tank & valve / 10-yr media"
       ]
      ]
     }
@@ -1729,9 +1729,9 @@
    "included": [
     "Dedicated drinking-water faucet",
     "Professional installation",
-    "Lifetime system warranty, 10-year media warranty"
+    "1-year warranty on the reverse osmosis system and labor"
    ],
-   "warranty": "Lifetime system warranty, 10-year media warranty",
+   "warranty": "1-year warranty on the reverse osmosis system and labor",
    "options": [],
    "what_it_does": "Purified, alkaline drinking water on demand, straight from a dedicated faucet at your sink. No storage tank, 70% less under-sink space, and water treated the moment you ask for it.",
    "leads": [
@@ -1910,9 +1910,9 @@
    "included": [
     "Dedicated drinking-water faucet",
     "Professional installation",
-    "Lifetime system warranty, 10-year media warranty"
+    "1-year warranty on the reverse osmosis system and labor"
    ],
-   "warranty": "Lifetime system warranty, 10-year media warranty",
+   "warranty": "1-year warranty on the reverse osmosis system and labor",
    "options": [
     {
      "key": "basement",

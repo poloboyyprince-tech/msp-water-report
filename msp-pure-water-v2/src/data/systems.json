@@ -826,7 +826,7 @@
    "badge": "PFAS Reduction",
    "price": 4999,
    "list_price": 8299,
-   "image": "system-pfas-three-tank.v1.webp",
+   "image": "system-pfas-three-tank.v2.webp",
    "image_alt": "MSP Pure Water PFAS Reduction Whole Home System: three tanks in a row, PFAS-selective resin tank with pass-through head, 10% crosslinked softening resin tank with ceramic disc valve, Jacobi catalytic carbon tank with pass-through head, and brine tank",
    "for": "Twin Cities homes that want PFAS (forever chemicals) reduced at every tap, along with soft water and no chlorine taste.",
    "problems": [
@@ -1041,33 +1041,33 @@
    "callouts": [
     {
      "label": "PFAS resin tank",
-     "x": 22,
-     "y": 42
+     "x": 33,
+     "y": 52
     },
     {
      "label": "Pass-through head",
-     "x": 22,
-     "y": 12
+     "x": 33,
+     "y": 28
     },
     {
      "label": "Softening resin",
-     "x": 46,
-     "y": 45
+     "x": 49,
+     "y": 52
     },
     {
      "label": "Ceramic disc valve",
-     "x": 46,
-     "y": 9
+     "x": 49,
+     "y": 24
     },
     {
      "label": "Carbon tank",
-     "x": 69,
-     "y": 45
+     "x": 64,
+     "y": 52
     },
     {
      "label": "Brine tank",
-     "x": 85,
-     "y": 62
+     "x": 76,
+     "y": 66
     }
    ],
    "description_lines": [

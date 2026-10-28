@@ -74,7 +74,7 @@ NAV = [
  ("Contact", "/contact/", None),
 ]
 def brand(cls=""):
-    return ('<a class="brand %s" href="/" aria-label="MSP Pure Water home"><img src="/assets/img/logo-gold.png" width="318" height="428" alt="MSP Pure Water shield logo">'
+    return ('<a class="brand %s" href="/" aria-label="MSP Pure Water home"><img src="/assets/img/logo.png" width="161" height="214" alt="MSP Pure Water shield logo">'
             '<span class="brand-word">MSP Pure Water<small>Twin Cities &middot; Greater Minnesota</small></span></a>') % cls
 def announce():
     return ('<div class="announce" role="region" aria-label="Announcement"><a href="/best-price-guarantee/" data-bpg><strong>Best Price Guarantee</strong><span class="dash"> &nbsp;&mdash;&nbsp; </span><span class="long">comparable system, lower installed quote? We\'ll beat it.</span><span class="short-only"> &middot; We\'ll beat any comparable quote</span></a>'
@@ -142,7 +142,7 @@ def local_business(full=False):
             "slogan": SITE["tagline"], "founder": {"@type": "Person", "name": SITE["founder"], "jobTitle": "Founder & CEO"}, "knowsAbout": KNOWS_ABOUT,
             "address": {"@type": "PostalAddress", "addressRegion": "MN", "addressCountry": "US"},
             "contactPoint": {"@type": "ContactPoint", "telephone": TEL, "contactType": "sales", "areaServed": "US-MN", "availableLanguage": "English"},
-            "image": BASE + SITE["og_image"], "logo": BASE + "/assets/img/logo-gold.png", "description": SITE["description"], "priceRange": "$799 - $5,999",
+            "image": BASE + SITE["og_image"], "logo": BASE + "/assets/img/logo.png", "description": SITE["description"], "priceRange": "$799 - $5,999",
             "areaServed": [{"@type": "City", "name": c["city"] + ", MN"} for c in CITIES] + [{"@type": "State", "name": "Minnesota"}],
             "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}],
             "sameAs": [u for u in [SITE.get("google_profile_url"), SITE["google_reviews_url"]] + SITE.get("social_profiles", []) if u]}, **extra)
@@ -166,7 +166,7 @@ def page(slug, title, desc, body, over_hero=False, schema=None, noindex=False, c
       '<meta property="og:type" content="website"><meta property="og:site_name" content="MSP Pure Water"><meta property="og:title" content="%s"><meta property="og:description" content="%s"><meta property="og:url" content="%s"><meta property="og:image" content="%s"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="MSP Pure Water">'
       '<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0B1426">'
       '<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1791077468735241&ev=PageView&noscript=1"></noscript>'
-      '<link rel="icon" href="/assets/img/favicon-v2.png" type="image/png"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon-v2.png">'
+      '<link rel="icon" href="/assets/img/favicon.png" type="image/png"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">'
       '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
       '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap">'
       '<link rel="stylesheet" href="' + asset_v("css/site.css") + '">%s'

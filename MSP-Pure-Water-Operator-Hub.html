@@ -816,9 +816,17 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
           <summary class="acc-q"><span class="qn">?</span> Does this remove PFAS / forever chemicals?<span class="chev">▶</span></summary>
           <div class="acc-a">Yes — the <strong>reverse osmosis removes about 99% of PFAS right at the tap</strong>, so your drinking water is covered. If you want PFAS handled <strong>throughout the whole home</strong>, we have a dedicated <strong>PFAS-Reduction System</strong> — a three-tank build (catalytic carbon → softening resin → a PFAS-reducing anion resin) that <strong>includes the RO</strong>, installed for <strong>$4,999</strong>. (We can also add the PFAS/PFOS-reducing resin to another build for +$500.)</div>
         </details>
-        <details class="acc" data-q="fridge refrigerator ice maker hookup ro line water connect 500 labor materials setup configuration">
+        <details class="acc" data-q="fridge refrigerator ice maker hookup ro line water connect 500 labor materials setup configuration routing basement run cabinet under sink copper pex pipe">
           <summary class="acc-q"><span class="qn">?</span> Can you hook the RO up to my fridge / ice maker?<span class="chev">▶</span></summary>
-          <div class="acc-a">Yes, we can run RO water to your <strong>fridge and ice maker</strong>. Whether we can and how involved it is depends on the home — where your fridge water line is and how everything’s configured. Because it’s additional labor and materials, it’s an <strong>extra $500</strong>.</div>
+          <div class="acc-a">Yes, we can run RO water to your <strong>fridge and ice maker</strong>. Whether we can and how involved it is depends on the home — where your fridge water line runs and how everything’s configured. Because it’s additional labor and materials, it’s an <strong>extra $500</strong>.
+            <div class="resp"><span class="rl">How the home’s plumbing shapes the job (know this before you quote)</span><strong>Pipe type &amp; size:</strong> most <strong>older homes</strong> are plumbed in <strong>¾" copper</strong>; most <strong>newer builds</strong> run <strong>1" PEX</strong>. <br><br><strong>Three fridge-routing scenarios:</strong>
+              <ol style="margin:8px 0 0;padding-left:20px">
+                <li><strong>Fridge line drops from the basement</strong> — easiest case. The RO goes in the <strong>basement</strong> and ties straight into that existing line up to the fridge.</li>
+                <li><strong>No basement drop</strong> — we <strong>split the RO line and route it through the cabinetry</strong> all the way over to the fridge, <em>if the layout allows it</em>.</li>
+                <li><strong>Routing to the fridge isn’t possible</strong> (island, flooring, no path) — we simply install the RO <strong>under the fridge</strong>, or <strong>under the sink</strong>. The customer still gets the same RO water.</li>
+              </ol>
+            </div>
+          </div>
         </details>
         <details class="acc" data-q="drain backwash water where go sewer septic drain line discharge regeneration waste">
           <summary class="acc-q"><span class="qn">?</span> Where does the drain / backwash water go?<span class="chev">▶</span></summary>
@@ -869,10 +877,6 @@ code{background:var(--bg3); border:1px solid var(--border); border-radius:5px; p
         <details class="acc" data-q="pfas forever chemicals removal ro 99 percent">
           <summary class="acc-q"><span class="qn">?</span> Does it remove PFAS / forever chemicals?<span class="chev">▶</span></summary>
           <div class="acc-a">The RO at the kitchen removes ~99% of PFAS at the tap — a rising, emotionally potent concern (watch for local contamination news, e.g. 3M-type settlements). Whole-home carbon helps too; the RO is the answer for drinking water.</div>
-        </details>
-        <details class="acc" data-q="fridge ice maker hookup talk out of it pressure">
-          <summary class="acc-q"><span class="qn">?</span> Can you hook it to my fridge/ice maker?<span class="chev">▶</span></summary>
-          <div class="acc-a">Newer fridges communicate poorly with RO pressure — generally <strong>talk customers out of it</strong> (or charge ~$300+ and set expectations). A kitchen island often makes routing impossible without tearing up flooring.</div>
         </details>
         <details class="acc" data-q="drain line backwash regeneration yard 2am once a month septic sewer">
           <summary class="acc-q"><span class="qn">?</span> Where does the drain/backwash water go?<span class="chev">▶</span></summary>
@@ -2574,6 +2578,8 @@ const DRILLS={
     {c:"Drinking Water (RO)",q:"Does our system remove PFAS?",a:"Yes — the <b>RO removes about 99% of PFAS right at the tap</b>. If they want PFAS handled <b>whole-home</b>, we can custom-build the system with a <b>special PFAS-removing resin for +$500</b>."},
     {c:"Drinking Water (RO)",q:"Can the customer buy RO filters cheaper on Amazon?",a:"Tankless filters are <b>proprietary</b> — they come through us. Tank-style filters <em>can</em> be bought elsewhere, but there’s <b>no guarantee of quality or that they’ll last</b>. <b>Ours are the highest quality and last the full year</b>; the $199/yr service swaps them, tests the water, and reprograms the system."},
     {c:"Install & Add-ons",q:"Can we hook the RO to the fridge / ice maker?",a:"Yes — we can run RO water to the <b>fridge and ice maker</b>. It depends on where the fridge line is and the setup, and because it’s extra labor and materials it’s an <b>additional $500</b>."},
+    {c:"Install & Add-ons",q:"What pipe will I find in older vs. newer homes?",a:"<b>Older homes:</b> ¾\" <b>copper</b>. <b>Newer builds:</b> 1\" <b>PEX</b>. (Our own connections are always PEX — no glue joints.)"},
+    {c:"Install & Add-ons",q:"How do we route the RO to the fridge?",a:"Three cases: <b>(1)</b> fridge line drops from the <b>basement</b> → put the RO in the basement and tie straight in (easiest). <b>(2)</b> No drop → <b>split the line and run it through the cabinetry</b> to the fridge, if the layout allows. <b>(3)</b> No path (island/flooring) → install the RO <b>under the fridge</b>, or <b>under the sink</b>. Same RO water either way."},
     {c:"Install & Add-ons",q:"Where does the backwash / drain water go?",a:"Straight to the <b>existing drain line</b> — wherever that already runs, whether sewer or septic. Nothing new needed."},
     {c:"Install & Add-ons",q:"Can we build custom systems?",a:"Yes — almost anything to the customer’s needs: <b>PFOS/PFAS-reducing resin</b>, a <b>calcite tank</b> to raise low pH on wells, a <b>carbon tank added to an existing softener</b> for whole-home filtration, or a fully custom build. <b>Custom orders require a $500 non-refundable deposit.</b>"},
     {c:"Install & Add-ons",q:"Customer’s well water is acidic / low pH — what do we do?",a:"Add a <b>calcite tank</b> — water passes through calcite media that slowly raises the pH and neutralizes the acid (the cause of blue-green staining and copper-pipe corrosion). Custom build; $500 non-refundable deposit."},

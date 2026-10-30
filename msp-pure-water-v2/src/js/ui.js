@@ -141,9 +141,7 @@
         if (g.type === "single") { var r = box.querySelector('input[name="cfg-' + g.key + '"]:checked'); if (r) { var c = g.choices[parseInt(r.value, 10)]; total += c.add; list += (c.list_add || 0); if (!c.silent) parts.push(c.label); } }
         else { var cb = box.querySelector('input[name="cfg-' + g.key + '"]'); if (cb && cb.checked) { total += g.add; list += (g.list_add || 0); parts.push(g.label); } }
       });
-      /* MSP pricing rule: every installed total ends in 99 */
-      total = Math.ceil((total + 1) / 100) * 100 - 1;
-      if (list) list = Math.ceil((list + 1) / 100) * 100 - 1;
+      /* Totals are the exact sum of the base price and the chosen add-ons (no rounding), so the math always adds up */
       return { total: total, list: list, parts: parts, line: cfg.name + (parts.length ? " + " + parts.join(" + ") : "") + " — " + money(total) + " installed" };
     }
     function applyRequires() {

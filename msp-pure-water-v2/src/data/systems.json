@@ -3,7 +3,7 @@
   "ro_included": "Reverse osmosis drinking-water system included with every whole-home system. Upgrade to the tankless HW800 AlkaPro for $200.",
   "financing": "Financing options available — ask during your consultation.",
   "travel": "Travel fees may apply for installations beyond 35 miles from Minneapolis.",
-  "basement_ro": "Basement installation is available for the tank reverse osmosis system (the pressurized one): $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units install under the kitchen sink."
+  "basement_ro": "Fixture installation: the kitchen faucet is included with every tank RO. Basement installation runs $500 for one fixture (kitchen faucet or fridge) or $750 for both. Tankless units install under the kitchen sink."
  },
  "categories": [
   {
@@ -137,24 +137,33 @@
     },
     {
      "key": "basement",
-     "label": "RO installation location (tank RO only)",
+     "label": "Fixture installation",
      "type": "single",
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
-       "label": "Under the kitchen sink",
+       "label": "Kitchen faucet, under the sink",
+       "title": "Kitchen Faucet",
+       "sub": "Standard installation under the kitchen sink",
+       "icon": "faucet",
        "add": 0,
        "inc": true,
        "list_add": 0,
        "silent": true
       },
       {
-       "label": "Basement, one line (kitchen sink or fridge)",
+       "label": "Basement install, one fixture (kitchen faucet or fridge)",
+       "title": "Basement, One Fixture",
+       "sub": "Kitchen faucet or fridge line",
+       "icon": "faucet",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement, both lines (kitchen sink and fridge)",
+       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
+       "title": "Basement, Both Fixtures",
+       "sub": "Kitchen faucet and fridge line",
+       "icon": "both",
        "add": 750,
        "list_add": 750
       }
@@ -438,24 +447,33 @@
     },
     {
      "key": "basement",
-     "label": "RO installation location (tank RO only)",
+     "label": "Fixture installation",
      "type": "single",
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
-       "label": "Under the kitchen sink",
+       "label": "Kitchen faucet, under the sink",
+       "title": "Kitchen Faucet",
+       "sub": "Standard installation under the kitchen sink",
+       "icon": "faucet",
        "add": 0,
        "inc": true,
        "list_add": 0,
        "silent": true
       },
       {
-       "label": "Basement, one line (kitchen sink or fridge)",
+       "label": "Basement install, one fixture (kitchen faucet or fridge)",
+       "title": "Basement, One Fixture",
+       "sub": "Kitchen faucet or fridge line",
+       "icon": "faucet",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement, both lines (kitchen sink and fridge)",
+       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
+       "title": "Basement, Both Fixtures",
+       "sub": "Kitchen faucet and fridge line",
+       "icon": "both",
        "add": 750,
        "list_add": 750
       }
@@ -727,24 +745,33 @@
     },
     {
      "key": "basement",
-     "label": "RO installation location (tank RO only)",
+     "label": "Fixture installation",
      "type": "single",
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
-       "label": "Under the kitchen sink",
+       "label": "Kitchen faucet, under the sink",
+       "title": "Kitchen Faucet",
+       "sub": "Standard installation under the kitchen sink",
+       "icon": "faucet",
        "add": 0,
        "inc": true,
        "list_add": 0,
        "silent": true
       },
       {
-       "label": "Basement, one line (kitchen sink or fridge)",
+       "label": "Basement install, one fixture (kitchen faucet or fridge)",
+       "title": "Basement, One Fixture",
+       "sub": "Kitchen faucet or fridge line",
+       "icon": "faucet",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement, both lines (kitchen sink and fridge)",
+       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
+       "title": "Basement, Both Fixtures",
+       "sub": "Kitchen faucet and fridge line",
+       "icon": "both",
        "add": 750,
        "list_add": 750
       }
@@ -1031,24 +1058,33 @@
     },
     {
      "key": "basement",
-     "label": "RO installation location (tank RO only)",
+     "label": "Fixture installation",
      "type": "single",
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
-       "label": "Under the kitchen sink",
+       "label": "Kitchen faucet, under the sink",
+       "title": "Kitchen Faucet",
+       "sub": "Standard installation under the kitchen sink",
+       "icon": "faucet",
        "add": 0,
        "inc": true,
        "list_add": 0,
        "silent": true
       },
       {
-       "label": "Basement, one line (kitchen sink or fridge)",
+       "label": "Basement install, one fixture (kitchen faucet or fridge)",
+       "title": "Basement, One Fixture",
+       "sub": "Kitchen faucet or fridge line",
+       "icon": "faucet",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement, both lines (kitchen sink and fridge)",
+       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
+       "title": "Basement, Both Fixtures",
+       "sub": "Kitchen faucet and fridge line",
+       "icon": "both",
        "add": 750,
        "list_add": 750
       }
@@ -1359,24 +1395,33 @@
     },
     {
      "key": "basement",
-     "label": "RO installation location (tank RO only)",
+     "label": "Fixture installation",
      "type": "single",
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
-       "label": "Under the kitchen sink",
+       "label": "Kitchen faucet, under the sink",
+       "title": "Kitchen Faucet",
+       "sub": "Standard installation under the kitchen sink",
+       "icon": "faucet",
        "add": 0,
        "inc": true,
        "list_add": 0,
        "silent": true
       },
       {
-       "label": "Basement, one line (kitchen sink or fridge)",
+       "label": "Basement install, one fixture (kitchen faucet or fridge)",
+       "title": "Basement, One Fixture",
+       "sub": "Kitchen faucet or fridge line",
+       "icon": "faucet",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement, both lines (kitchen sink and fridge)",
+       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
+       "title": "Basement, Both Fixtures",
+       "sub": "Kitchen faucet and fridge line",
+       "icon": "both",
        "add": 750,
        "list_add": 750
       }
@@ -1849,24 +1894,33 @@
    "options": [
     {
      "key": "basement",
-     "label": "RO installation location (tank RO only)",
+     "label": "Fixture installation",
      "type": "single",
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
-       "label": "Under the kitchen sink",
+       "label": "Kitchen faucet, under the sink",
+       "title": "Kitchen Faucet",
+       "sub": "Standard installation under the kitchen sink",
+       "icon": "faucet",
        "add": 0,
        "inc": true,
        "list_add": 0,
        "silent": true
       },
       {
-       "label": "Basement, one line (kitchen sink or fridge)",
+       "label": "Basement install, one fixture (kitchen faucet or fridge)",
+       "title": "Basement, One Fixture",
+       "sub": "Kitchen faucet or fridge line",
+       "icon": "faucet",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement, both lines (kitchen sink and fridge)",
+       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
+       "title": "Basement, Both Fixtures",
+       "sub": "Kitchen faucet and fridge line",
+       "icon": "both",
        "add": 750,
        "list_add": 750
       }

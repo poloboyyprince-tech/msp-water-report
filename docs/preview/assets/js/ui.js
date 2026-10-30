@@ -154,9 +154,9 @@
         if (!ok && cb.checked) {
           cb.checked = false;
           /* a radio group falls back to its first (standard) choice */
-          if (cb.type === "radio") { var first = box.querySelector('input[name="' + cb.name + '"]:not([data-requires])'); if (first) { first.checked = true; var grp = cb.closest("[data-group]"), lab = grp && grp.querySelector("[data-choice]"); if (lab) lab.textContent = "— " + first.nextElementSibling.textContent.replace(/\s\+\$[\d,]+$/, ""); } }
+          if (cb.type === "radio") { var first = box.querySelector('input[name="' + cb.name + '"]:not([data-requires])'); if (first) { first.checked = true; var grp = cb.closest("[data-group]"), lab = grp && grp.querySelector("[data-choice]"); if (lab) lab.textContent = "— " + (first.getAttribute("data-name") || first.nextElementSibling.textContent.replace(/\s\+\$[\d,]+$/, "")); } }
         }
-        var wrap = cb.closest(".chipopt"); if (wrap) wrap.classList.toggle("is-disabled", !ok);
+        var wrap = cb.closest(".chipopt, .fxopt"); if (wrap) wrap.classList.toggle("is-disabled", !ok);
       });
     }
     function render() {
@@ -180,7 +180,7 @@
     $("[data-next]", st).addEventListener("click", function () { show(i + 1); });
   });
   /* Option chip labels ("— Tank RO") */
-  $$("[data-group]").forEach(function (g) { var lab = $("[data-choice]", g); g.addEventListener("change", function () { var r = g.querySelector("input:checked"); if (!lab) return; if (r && r.type === "checkbox") lab.textContent = "— " + (r.checked ? "Added" : "No"); else if (r) lab.textContent = "— " + r.nextElementSibling.textContent.replace(/\s\+\$[\d,]+$/, ""); else { var cb = g.querySelector('input[type="checkbox"]'); if (cb) lab.textContent = "— " + (cb.checked ? "Added" : "No"); } }); });
+  $$("[data-group]").forEach(function (g) { var lab = $("[data-choice]", g); g.addEventListener("change", function () { var r = g.querySelector("input:checked"); if (!lab) return; if (r && r.type === "checkbox") lab.textContent = "— " + (r.checked ? "Added" : "No"); else if (r) lab.textContent = "— " + (r.getAttribute("data-name") || r.nextElementSibling.textContent.replace(/\s\+\$[\d,]+$/, "")); else { var cb = g.querySelector('input[type="checkbox"]'); if (cb) lab.textContent = "— " + (cb.checked ? "Added" : "No"); } }); });
   /* Gallery thumbs */
   $$(".gallery").forEach(function (g) { var main = g.querySelector(".main img"); g.querySelectorAll(".thumbs button").forEach(function (b) { b.addEventListener("click", function () { main.src = b.getAttribute("data-src"); main.alt = b.getAttribute("data-alt") || ""; g.querySelectorAll(".thumbs button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); }); }); }); });
   /* Schedule page: show chosen configuration */

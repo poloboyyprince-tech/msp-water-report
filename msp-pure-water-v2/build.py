@@ -368,6 +368,21 @@ def thumb(s, size=72):
     return '<a class="rthumb" href="%s" aria-label="%s"><img src="/assets/img/%s" width="%d" height="%d" loading="lazy" alt="%s"></a>' % (sys_href(s), e(s["name"]), s["image"].replace(".webp", "-640.webp") if has_img(s["image"].replace(".webp", "-640.webp")) else s["image"], size, size, e(s["image_alt"]))
 
 OPTION_IMG = {"sediment": "sediment-filter", "uv": "uv-purifier"}
+FX_ICON = {
+ "faucet": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3"/><path d="M9 3h6"/><path d="M12 6c-4 0-7 2-7 5h4c0-1.2 1.3-2 3-2s3 .8 3 2h4c0-3-3-5-7-5Z"/><path d="M5 11v3h4v-3"/><path d="M15 11v3h4v-3"/><path d="M17 14v3"/><path d="M17 21c-1 0-1.7-.7-1.7-1.6 0-.9 1.7-2.4 1.7-2.4s1.7 1.5 1.7 2.4c0 .9-.7 1.6-1.7 1.6Z"/></svg>',
+ "fridge": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="1.5"/><path d="M6 10h12"/><path d="M9 6v2"/><path d="M9 13v3"/></svg>',
+}
+def fixture_group(g, req):
+    """Fixture installation: kitchen faucet included with the tank RO; basement one fixture / both fixtures."""
+    cards = ""
+    for i, c in enumerate(g["choices"]):
+        icon = (FX_ICON["faucet"] + FX_ICON["fridge"]) if c.get("icon") == "both" else FX_ICON.get(c.get("icon", "faucet"), "")
+        price = '<em class="inc">Included</em>' if c.get("inc") else '<em>+%s</em>' % money(c["add"])
+        cards += ('<label class="fxopt"><input type="radio" name="cfg-%s" value="%d"%s%s data-name="%s"><span><i>%s</i><span class="fx-text"><b>%s</b><small>%s</small></span>%s</span></label>'
+                  % (g["key"], i, " checked" if i == 0 else "", req if i else "", e(c.get("title", c["label"])), icon, e(c.get("title", c["label"])), e(c.get("sub", "")), price))
+    return ('<div class="cfg-group fixture" data-group><span>%s <em data-choice>— %s</em></span><div class="fx-grid">%s</div>%s</div>'
+            % (e(g["label"]), e(g["choices"][0].get("title", g["choices"][0]["label"])), cards, '<p class="cfg-help">%s</p>' % e(g["note"]) if g.get("note") else ""))
+
 def option_thumb(key, label=""):
     sid = OPTION_IMG.get(key) or ("ro-tankless" if "tankless" in label.lower() else "ro-tank" if key == "ro" else None)
     if not sid or sid not in SYSTEMS: return ""
@@ -626,6 +641,8 @@ def product_page(s):
     for g in s.get("options", []):
         if g["type"] == "single":
             req = (' data-requires=\'%s\'' % json.dumps(g["requires"])) if g.get("requires") else ""
+            if g["key"] == "basement":
+                groups += fixture_group(g, req); continue
             groups += '<div class="cfg-group" data-group><span>%s <em data-choice>— %s</em></span><div class="chips">%s</div>%s</div>' % (e(g["label"]), e(g["choices"][0]["label"]), "".join(
                 '<label class="chipopt has-img"><input type="radio" name="cfg-%s" value="%d"%s%s><span>%s%s</span></label>' % (g["key"], i, " checked" if i == 0 else "", req if i else "", option_thumb(g["key"], c["label"]), e(c["label"]) + ("" if c.get("inc") else " +" + money(c["add"]))) for i, c in enumerate(g["choices"])),
                 '<p class="cfg-help">%s</p>' % e(g["note"]) if g.get("note") else "")

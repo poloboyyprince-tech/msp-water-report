@@ -3,7 +3,7 @@
   "ro_included": "Reverse osmosis drinking-water system included with every whole-home system. Upgrade to the tankless HW800 AlkaPro for $200.",
   "financing": "Financing options available — ask during your consultation.",
   "travel": "Travel fees may apply for installations beyond 35 miles from Minneapolis.",
-  "basement_ro": "Fixture installation: the kitchen faucet is included with every tank RO. Basement installation runs $500 for one fixture (kitchen faucet or fridge) or $750 for both. Tankless units install under the kitchen sink."
+  "basement_ro": "Fixture installation: the kitchen faucet under the sink is included with every tank RO. Each extra run is an additional fixture: $500 for one (a fridge line, or a basement install feeding the kitchen faucet), $750 for two (a basement install feeding the kitchen faucet and the fridge). Tankless units install under the kitchen sink."
  },
  "categories": [
   {
@@ -139,7 +139,7 @@
      "key": "basement",
      "label": "Fixture installation",
      "type": "single",
-     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
+     "note": "The kitchen faucet under the sink is included. Each extra run is an additional fixture: $500 for one, $750 for two. Additional fixtures are for the tank RO only, because its pressurized tank pushes the water there. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
        "label": "Kitchen faucet, under the sink",
@@ -152,17 +152,17 @@
        "silent": true
       },
       {
-       "label": "Basement install, one fixture (kitchen faucet or fridge)",
-       "title": "Basement, One Fixture",
-       "sub": "Kitchen faucet or fridge line",
-       "icon": "faucet",
+       "label": "One additional fixture",
+       "title": "One Additional Fixture",
+       "sub": "A fridge line from under the sink, or a basement install feeding the kitchen faucet",
+       "icon": "fridge",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
-       "title": "Basement, Both Fixtures",
-       "sub": "Kitchen faucet and fridge line",
+       "label": "Two additional fixtures",
+       "title": "Two Additional Fixtures",
+       "sub": "A basement install feeding both the kitchen faucet and the fridge",
        "icon": "both",
        "add": 750,
        "list_add": 750
@@ -449,7 +449,7 @@
      "key": "basement",
      "label": "Fixture installation",
      "type": "single",
-     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
+     "note": "The kitchen faucet under the sink is included. Each extra run is an additional fixture: $500 for one, $750 for two. Additional fixtures are for the tank RO only, because its pressurized tank pushes the water there. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
        "label": "Kitchen faucet, under the sink",
@@ -462,17 +462,17 @@
        "silent": true
       },
       {
-       "label": "Basement install, one fixture (kitchen faucet or fridge)",
-       "title": "Basement, One Fixture",
-       "sub": "Kitchen faucet or fridge line",
-       "icon": "faucet",
+       "label": "One additional fixture",
+       "title": "One Additional Fixture",
+       "sub": "A fridge line from under the sink, or a basement install feeding the kitchen faucet",
+       "icon": "fridge",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
-       "title": "Basement, Both Fixtures",
-       "sub": "Kitchen faucet and fridge line",
+       "label": "Two additional fixtures",
+       "title": "Two Additional Fixtures",
+       "sub": "A basement install feeding both the kitchen faucet and the fridge",
        "icon": "both",
        "add": 750,
        "list_add": 750
@@ -747,7 +747,7 @@
      "key": "basement",
      "label": "Fixture installation",
      "type": "single",
-     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
+     "note": "The kitchen faucet under the sink is included. Each extra run is an additional fixture: $500 for one, $750 for two. Additional fixtures are for the tank RO only, because its pressurized tank pushes the water there. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
        "label": "Kitchen faucet, under the sink",
@@ -760,17 +760,17 @@
        "silent": true
       },
       {
-       "label": "Basement install, one fixture (kitchen faucet or fridge)",
-       "title": "Basement, One Fixture",
-       "sub": "Kitchen faucet or fridge line",
-       "icon": "faucet",
+       "label": "One additional fixture",
+       "title": "One Additional Fixture",
+       "sub": "A fridge line from under the sink, or a basement install feeding the kitchen faucet",
+       "icon": "fridge",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
-       "title": "Basement, Both Fixtures",
-       "sub": "Kitchen faucet and fridge line",
+       "label": "Two additional fixtures",
+       "title": "Two Additional Fixtures",
+       "sub": "A basement install feeding both the kitchen faucet and the fridge",
        "icon": "both",
        "add": 750,
        "list_add": 750
@@ -1060,7 +1060,7 @@
      "key": "basement",
      "label": "Fixture installation",
      "type": "single",
-     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
+     "note": "The kitchen faucet under the sink is included. Each extra run is an additional fixture: $500 for one, $750 for two. Additional fixtures are for the tank RO only, because its pressurized tank pushes the water there. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
        "label": "Kitchen faucet, under the sink",
@@ -1073,17 +1073,17 @@
        "silent": true
       },
       {
-       "label": "Basement install, one fixture (kitchen faucet or fridge)",
-       "title": "Basement, One Fixture",
-       "sub": "Kitchen faucet or fridge line",
-       "icon": "faucet",
+       "label": "One additional fixture",
+       "title": "One Additional Fixture",
+       "sub": "A fridge line from under the sink, or a basement install feeding the kitchen faucet",
+       "icon": "fridge",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
-       "title": "Basement, Both Fixtures",
-       "sub": "Kitchen faucet and fridge line",
+       "label": "Two additional fixtures",
+       "title": "Two Additional Fixtures",
+       "sub": "A basement install feeding both the kitchen faucet and the fridge",
        "icon": "both",
        "add": 750,
        "list_add": 750
@@ -1397,7 +1397,7 @@
      "key": "basement",
      "label": "Fixture installation",
      "type": "single",
-     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
+     "note": "The kitchen faucet under the sink is included. Each extra run is an additional fixture: $500 for one, $750 for two. Additional fixtures are for the tank RO only, because its pressurized tank pushes the water there. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
        "label": "Kitchen faucet, under the sink",
@@ -1410,17 +1410,17 @@
        "silent": true
       },
       {
-       "label": "Basement install, one fixture (kitchen faucet or fridge)",
-       "title": "Basement, One Fixture",
-       "sub": "Kitchen faucet or fridge line",
-       "icon": "faucet",
+       "label": "One additional fixture",
+       "title": "One Additional Fixture",
+       "sub": "A fridge line from under the sink, or a basement install feeding the kitchen faucet",
+       "icon": "fridge",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
-       "title": "Basement, Both Fixtures",
-       "sub": "Kitchen faucet and fridge line",
+       "label": "Two additional fixtures",
+       "title": "Two Additional Fixtures",
+       "sub": "A basement install feeding both the kitchen faucet and the fridge",
        "icon": "both",
        "add": 750,
        "list_add": 750
@@ -1896,7 +1896,7 @@
      "key": "basement",
      "label": "Fixture installation",
      "type": "single",
-     "note": "Basement installation is for the tank RO only: its pressurized tank pushes water up to the fixture. The tankless RO installs under the kitchen sink.",
+     "note": "The kitchen faucet under the sink is included. Each extra run is an additional fixture: $500 for one, $750 for two. Additional fixtures are for the tank RO only, because its pressurized tank pushes the water there. The tankless RO installs under the kitchen sink.",
      "choices": [
       {
        "label": "Kitchen faucet, under the sink",
@@ -1909,17 +1909,17 @@
        "silent": true
       },
       {
-       "label": "Basement install, one fixture (kitchen faucet or fridge)",
-       "title": "Basement, One Fixture",
-       "sub": "Kitchen faucet or fridge line",
-       "icon": "faucet",
+       "label": "One additional fixture",
+       "title": "One Additional Fixture",
+       "sub": "A fridge line from under the sink, or a basement install feeding the kitchen faucet",
+       "icon": "fridge",
        "add": 500,
        "list_add": 500
       },
       {
-       "label": "Basement install, both fixtures (kitchen faucet and fridge)",
-       "title": "Basement, Both Fixtures",
-       "sub": "Kitchen faucet and fridge line",
+       "label": "Two additional fixtures",
+       "title": "Two Additional Fixtures",
+       "sub": "A basement install feeding both the kitchen faucet and the fridge",
        "icon": "both",
        "add": 750,
        "list_add": 750

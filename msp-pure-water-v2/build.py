@@ -625,8 +625,10 @@ def product_page(s):
     groups = ""
     for g in s.get("options", []):
         if g["type"] == "single":
-            groups += '<div class="cfg-group" data-group><span>%s <em data-choice>— %s</em></span><div class="chips">%s</div></div>' % (e(g["label"]), e(g["choices"][0]["label"]), "".join(
-                '<label class="chipopt has-img"><input type="radio" name="cfg-%s" value="%d"%s><span>%s%s</span></label>' % (g["key"], i, " checked" if i == 0 else "", option_thumb(g["key"], c["label"]), e(c["label"]) + ("" if c.get("inc") else " +" + money(c["add"]))) for i, c in enumerate(g["choices"])))
+            req = (' data-requires=\'%s\'' % json.dumps(g["requires"])) if g.get("requires") else ""
+            groups += '<div class="cfg-group" data-group><span>%s <em data-choice>— %s</em></span><div class="chips">%s</div>%s</div>' % (e(g["label"]), e(g["choices"][0]["label"]), "".join(
+                '<label class="chipopt has-img"><input type="radio" name="cfg-%s" value="%d"%s%s><span>%s%s</span></label>' % (g["key"], i, " checked" if i == 0 else "", req if i else "", option_thumb(g["key"], c["label"]), e(c["label"]) + ("" if c.get("inc") else " +" + money(c["add"]))) for i, c in enumerate(g["choices"])),
+                '<p class="cfg-help">%s</p>' % e(g["note"]) if g.get("note") else "")
             if g["key"] == "ro": groups += '<p class="cfg-help">See the <a href="/systems/ro-tank/">tank RO</a> and <a href="/systems/ro-tankless/">tankless RO</a>.</p>'
         else:
             groups += '<div class="cfg-group" data-group><span>%s <em data-choice>— %s</em></span><div class="chips"><label class="chipopt has-img"><input type="checkbox" name="cfg-%s"%s%s><span>%s%s +%s</span></label></div>%s</div>' % (

@@ -3,7 +3,7 @@
   "ro_included": "Reverse osmosis drinking-water system included with every whole-home system. Upgrade to the tankless HW800 AlkaPro for $200.",
   "financing": "Financing options available — ask during your consultation.",
   "travel": "Travel fees may apply for installations beyond 35 miles from Minneapolis.",
-  "basement_ro": "Basement installation is available for the tank reverse osmosis system (the pressurized one) for an additional $500. Tankless units install under the kitchen sink."
+  "basement_ro": "Basement installation is available for the tank reverse osmosis system (the pressurized one): $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units install under the kitchen sink."
  },
  "categories": [
   {
@@ -137,11 +137,28 @@
     },
     {
      "key": "basement",
-     "label": "Basement RO installation (tank RO only)",
-     "type": "toggle",
-     "add": 500,
-     "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink.",
+     "label": "RO installation location (tank RO only)",
+     "type": "single",
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "choices": [
+      {
+       "label": "Under the kitchen sink",
+       "add": 0,
+       "inc": true,
+       "list_add": 0,
+       "silent": true
+      },
+      {
+       "label": "Basement, one line (kitchen sink or fridge)",
+       "add": 500,
+       "list_add": 500
+      },
+      {
+       "label": "Basement, both lines (kitchen sink and fridge)",
+       "add": 750,
+       "list_add": 750
+      }
+     ],
      "requires": {
       "ro": 0
      }
@@ -421,11 +438,28 @@
     },
     {
      "key": "basement",
-     "label": "Basement RO installation (tank RO only)",
-     "type": "toggle",
-     "add": 500,
-     "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink.",
+     "label": "RO installation location (tank RO only)",
+     "type": "single",
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "choices": [
+      {
+       "label": "Under the kitchen sink",
+       "add": 0,
+       "inc": true,
+       "list_add": 0,
+       "silent": true
+      },
+      {
+       "label": "Basement, one line (kitchen sink or fridge)",
+       "add": 500,
+       "list_add": 500
+      },
+      {
+       "label": "Basement, both lines (kitchen sink and fridge)",
+       "add": 750,
+       "list_add": 750
+      }
+     ],
      "requires": {
       "ro": 0
      }
@@ -693,11 +727,28 @@
     },
     {
      "key": "basement",
-     "label": "Basement RO installation (tank RO only)",
-     "type": "toggle",
-     "add": 500,
-     "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink.",
+     "label": "RO installation location (tank RO only)",
+     "type": "single",
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "choices": [
+      {
+       "label": "Under the kitchen sink",
+       "add": 0,
+       "inc": true,
+       "list_add": 0,
+       "silent": true
+      },
+      {
+       "label": "Basement, one line (kitchen sink or fridge)",
+       "add": 500,
+       "list_add": 500
+      },
+      {
+       "label": "Basement, both lines (kitchen sink and fridge)",
+       "add": 750,
+       "list_add": 750
+      }
+     ],
      "requires": {
       "ro": 0
      }
@@ -980,11 +1031,28 @@
     },
     {
      "key": "basement",
-     "label": "Basement RO installation (tank RO only)",
-     "type": "toggle",
-     "add": 500,
-     "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink.",
+     "label": "RO installation location (tank RO only)",
+     "type": "single",
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "choices": [
+      {
+       "label": "Under the kitchen sink",
+       "add": 0,
+       "inc": true,
+       "list_add": 0,
+       "silent": true
+      },
+      {
+       "label": "Basement, one line (kitchen sink or fridge)",
+       "add": 500,
+       "list_add": 500
+      },
+      {
+       "label": "Basement, both lines (kitchen sink and fridge)",
+       "add": 750,
+       "list_add": 750
+      }
+     ],
      "requires": {
       "ro": 0
      }
@@ -1291,11 +1359,28 @@
     },
     {
      "key": "basement",
-     "label": "Basement RO installation (tank RO only)",
-     "type": "toggle",
-     "add": 500,
-     "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink.",
+     "label": "RO installation location (tank RO only)",
+     "type": "single",
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "choices": [
+      {
+       "label": "Under the kitchen sink",
+       "add": 0,
+       "inc": true,
+       "list_add": 0,
+       "silent": true
+      },
+      {
+       "label": "Basement, one line (kitchen sink or fridge)",
+       "add": 500,
+       "list_add": 500
+      },
+      {
+       "label": "Basement, both lines (kitchen sink and fridge)",
+       "add": 750,
+       "list_add": 750
+      }
+     ],
      "requires": {
       "ro": 0
      }
@@ -1764,11 +1849,28 @@
    "options": [
     {
      "key": "basement",
-     "label": "Basement RO installation (tank RO only)",
-     "type": "toggle",
-     "add": 500,
-     "list_add": 500,
-     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead for $500. Tankless units must go under the sink."
+     "label": "RO installation location (tank RO only)",
+     "type": "single",
+     "note": "Standard RO installation is under the kitchen sink. The tank RO is pressurized, so it can be installed in the basement instead: $500 runs one line to the kitchen sink or the refrigerator, $750 runs both. Tankless units must go under the sink.",
+     "choices": [
+      {
+       "label": "Under the kitchen sink",
+       "add": 0,
+       "inc": true,
+       "list_add": 0,
+       "silent": true
+      },
+      {
+       "label": "Basement, one line (kitchen sink or fridge)",
+       "add": 500,
+       "list_add": 500
+      },
+      {
+       "label": "Basement, both lines (kitchen sink and fridge)",
+       "add": 750,
+       "list_add": 750
+      }
+     ]
     }
    ],
    "what_it_does": "The proven PurePro 5-stage RO setup: purified water is produced continuously, stored in a pressurized steel tank, and delivered instantly the second you open the faucet.",

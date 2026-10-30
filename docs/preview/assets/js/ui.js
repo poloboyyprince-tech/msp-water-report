@@ -138,7 +138,7 @@
     function state() {
       var total = cfg.price, list = cfg.list || 0, parts = [];
       cfg.options.forEach(function (g) {
-        if (g.type === "single") { var r = box.querySelector('input[name="cfg-' + g.key + '"]:checked'); if (r) { var c = g.choices[parseInt(r.value, 10)]; total += c.add; list += (c.list_add || 0); parts.push(c.label); } }
+        if (g.type === "single") { var r = box.querySelector('input[name="cfg-' + g.key + '"]:checked'); if (r) { var c = g.choices[parseInt(r.value, 10)]; total += c.add; list += (c.list_add || 0); if (!c.silent) parts.push(c.label); } }
         else { var cb = box.querySelector('input[name="cfg-' + g.key + '"]'); if (cb && cb.checked) { total += g.add; list += (g.list_add || 0); parts.push(g.label); } }
       });
       /* MSP pricing rule: every installed total ends in 99 */
@@ -150,7 +150,12 @@
       box.querySelectorAll("input[data-requires]").forEach(function (cb) {
         var req = JSON.parse(cb.getAttribute("data-requires")), ok = true;
         Object.keys(req).forEach(function (k) { var r = box.querySelector('input[name="cfg-' + k + '"]:checked'); if (!r || parseInt(r.value, 10) !== req[k]) ok = false; });
-        cb.disabled = !ok; if (!ok) cb.checked = false;
+        cb.disabled = !ok;
+        if (!ok && cb.checked) {
+          cb.checked = false;
+          /* a radio group falls back to its first (standard) choice */
+          if (cb.type === "radio") { var first = box.querySelector('input[name="' + cb.name + '"]:not([data-requires])'); if (first) { first.checked = true; var grp = cb.closest("[data-group]"), lab = grp && grp.querySelector("[data-choice]"); if (lab) lab.textContent = "— " + first.nextElementSibling.textContent.replace(/\s\+\$[\d,]+$/, ""); } }
+        }
         var wrap = cb.closest(".chipopt"); if (wrap) wrap.classList.toggle("is-disabled", !ok);
       });
     }

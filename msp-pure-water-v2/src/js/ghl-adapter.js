@@ -106,11 +106,11 @@
   function fallback(el, kind) {
     var phone = el.getAttribute("data-phone") || "(952) 952-6206", tel = el.getAttribute("data-tel") || "+19529526206";
     el.setAttribute("data-state", "fallback");
-    var title = kind === "call" ? "Call or text to schedule." : kind === "calendar" ? "Online booking is opening soon." : kind === "contact" ? "Our contact form is opening soon." : "Online intake is opening soon.";
+    var title = kind === "contact" ? "Call, text or email us." : "Call or text to schedule.";
     var body = kind === "call" ? "Call or text and we’ll set a time for your free phone consultation. We answer within 24 hours, and there’s no deposit." : "Call or text and we’ll get you on the schedule right away. We’ll answer within 24 hours.";
     el.innerHTML = '<div class="ghl-fallback"><h3>' + title + '</h3><p>' + body + '</p>' +
       '<a class="phone" href="tel:' + tel + '">' + phone + '</a>' +
-      (kind === "contact" ? '<a class="btn btn-navy" href="mailto:info@msppurewaterco.com">Email info@msppurewaterco.com</a>' : kind === "call" ? '<a class="btn btn-navy" href="sms:' + tel + '">Text us</a>' : '<a class="btn btn-navy" href="/schedule/">Schedule page</a>') + '</div>';
+      (kind === "contact" ? '<a class="btn btn-navy" href="mailto:info@msppurewaterco.com">Email info@msppurewaterco.com</a>' : '<a class="btn btn-navy" href="sms:' + tel + '">Text us</a>') + '</div>';
   }
 
   /* Inject a pasted GHL embed code verbatim (iframe + script). Scripts inserted

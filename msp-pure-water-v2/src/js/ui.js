@@ -162,7 +162,7 @@
       var s = state(); if (totalEl) totalEl.textContent = money(s.total); if (lineEl) lineEl.textContent = s.parts.length ? s.parts.join(" · ") : "Standard configuration";
       var was = box.querySelector(".price .was"), save = box.querySelector(".save"), cur = box.querySelector(".price");
       if (cur && s.list) { var pre = cur.querySelector(".pre"); var smallEl = cur.querySelector("small"); cur.innerHTML = '<s class="was">' + money(s.list) + '</s>' + money(s.total) + (smallEl ? smallEl.outerHTML : ""); if (save) save.textContent = "Save " + money(s.list - s.total); }
-      if (cta) { cta.setAttribute("href", "/schedule/?system=" + encodeURIComponent(cfg.id)); cta.textContent = "Schedule Online · " + money(s.total); }
+      if (cta) { cta.textContent = "Schedule · " + money(s.total); cta.setAttribute("data-line", s.line); }
     }
     function remember() { var s = state(); if (window.MSPIntake) window.MSPIntake.setPreset({ system_interest: cfg.interest, water_source: cfg.water_source || "", system_id: cfg.id, system_config: s.line }); }
     box.addEventListener("change", render);
@@ -207,6 +207,38 @@
     var h = (location.hash || "").slice(1); slides.forEach(function (s, k) { if (s.id === h) show(k, false); });
     window.addEventListener("hashchange", function () { var hh = location.hash.slice(1); slides.forEach(function (s, k) { if (s.id === hh) show(k, false); }); });
   });
+
+  /* Schedule = call. There is no online scheduling: every schedule button is a tel: link.
+     Phones get the native call sheet; desktops get this popup with the number and Call / Text. */
+  (function () {
+    var pop, last;
+    function close() { if (!pop) return; pop.hidden = true; document.documentElement.classList.remove("callpop-open"); if (last && last.focus) last.focus(); }
+    function build(tel, phone) {
+      pop = document.createElement("div"); pop.className = "callpop"; pop.hidden = true;
+      pop.setAttribute("role", "dialog"); pop.setAttribute("aria-modal", "true"); pop.setAttribute("aria-labelledby", "callpop-title");
+      pop.innerHTML = '<div class="callpop-card"><button type="button" class="callpop-x" aria-label="Close">&times;</button>' +
+        '<p class="kicker">Schedule</p><h2 id="callpop-title">Call to Schedule</h2>' +
+        '<a class="callpop-num" href="' + tel + '">' + phone + '</a>' +
+        '<p class="callpop-line" data-callpop-line hidden></p>' +
+        '<p class="callpop-sub">Free phone consultation. No deposit. Open 24 hours.</p>' +
+        '<div class="callpop-actions"><a class="btn btn-gold btn-lg" href="' + tel + '" data-callpop-call>Call ' + phone + '</a>' +
+        '<a class="btn btn-outline on-light btn-lg" href="' + tel.replace(/^tel:/, "sms:") + '">Text Us</a></div></div>';
+      document.body.appendChild(pop);
+      pop.addEventListener("click", function (e) { if (e.target === pop || e.target.closest(".callpop-x")) close(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && pop && !pop.hidden) close(); });
+    }
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[data-call-pop]"); if (!a) return;
+      var desktop = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (!desktop) return; /* phone: the tel: link opens the native call sheet */
+      e.preventDefault();
+      if (!pop) build(a.getAttribute("href"), a.getAttribute("data-call-pop"));
+      var line = pop.querySelector("[data-callpop-line]"), txt = a.getAttribute("data-line");
+      line.hidden = !txt; line.textContent = txt ? "Calling about: " + txt : "";
+      last = a; pop.hidden = false; document.documentElement.classList.add("callpop-open");
+      var call = pop.querySelector("[data-callpop-call]"); if (call) call.focus();
+    });
+  })();
 
   /* Current year */
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });

@@ -60,7 +60,8 @@ window.MSP_GHL = {
 
   /* -------------------------------------------------------------------
      SCHEDULING — the ONE MSP Pure Water consultation calendar.
-     Every "Schedule Online" CTA on the site resolves to this calendar.
+     NOT IN USE: scheduling is by phone only. Every schedule button on the
+     site is a call link (see write() in build.py and the call popup in ui.js).
      calendarEmbedUrl: GHL → Calendars → (calendar) → Share → Embed link
        e.g. https://api.leadconnectorhq.com/widget/booking/XXXXXXXX
      thankYouPath: set the SAME path as the calendar's "Custom thank-you

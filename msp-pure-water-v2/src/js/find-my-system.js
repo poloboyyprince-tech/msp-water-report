@@ -130,7 +130,7 @@
         }
         state.submitting = false; btn.removeAttribute("aria-disabled"); btn.textContent = "Try again";
         if (res.error === "not_configured") {
-          status.innerHTML = "Online intake isn’t live yet. Call or text <a href=\"tel:+19529526206\"><b>(952) 952-6206</b></a> and we’ll take it from here, or <a href=\"/schedule/\" class=\"link\">pick a time online</a>.";
+          status.innerHTML = "Call or text <a href=\"tel:+19529526206\"><b>(952) 952-6206</b></a> and we’ll take it from here.";
           status.setAttribute("data-kind", "info");
         } else {
           status.innerHTML = "We couldn’t send that just now. Please try again, or call or text <a href=\"tel:+19529526206\"><b>(952) 952-6206</b></a>.";

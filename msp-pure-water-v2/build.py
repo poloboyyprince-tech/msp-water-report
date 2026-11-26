@@ -872,9 +872,11 @@ def llms_txt(full):
     return "\n".join(L)
 
 def write(path, content):
-    # Prince 2026-11-25: every "Schedule Now" button is a tap-to-call link (same look, same label)
+    # Prince 2026-11-25: you cannot schedule online. EVERY schedule button/link (any label) is a call link:
+    # phones get the native call sheet from tel:, desktops get the call popup (ui.js, [data-call-pop]).
     if path.endswith(".html"):
-        content = re.sub(r'href="[^"]*/schedule/">Schedule Now</a>', 'href="tel:%s" aria-label="Schedule now: call %s">Schedule Now</a>' % (TEL, PHONE), content)
+        content = re.sub(r'(<a\b[^>]*?)href="[^"]*/schedule/(?:\?system=([^"]*))?"',
+                         lambda m: '%shref="tel:%s" data-call-pop="%s"%s' % (m.group(1), TEL, PHONE, ' data-system="%s"' % m.group(2) if m.group(2) else ""), content)
     full = os.path.join(DIST, path); os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as f: f.write(content)
 

@@ -872,6 +872,9 @@ def llms_txt(full):
     return "\n".join(L)
 
 def write(path, content):
+    # Prince 2026-11-25: every "Schedule Now" button is a tap-to-call link (same look, same label)
+    if path.endswith(".html"):
+        content = re.sub(r'href="[^"]*/schedule/">Schedule Now</a>', 'href="tel:%s" aria-label="Schedule now: call %s">Schedule Now</a>' % (TEL, PHONE), content)
     full = os.path.join(DIST, path); os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w", encoding="utf-8") as f: f.write(content)
 
